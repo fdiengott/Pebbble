@@ -25,7 +25,6 @@
 | -----------       | -----------   | ----------------------          |
 | id                | integer       | not null, primary key           |
 | creator_id        | integer       | not null, foreign key, indexed  |
-| collection_id     | integer       | foreign key, indexed            |
 | title             | string        | not null, unique, scope: user   |
 | description       | string        | optional                        |
 | animated          | boolean       | inclusion [true, false]         |
@@ -33,12 +32,9 @@
 | created_at        | datetime      | not null                        |
 | updated_at        | datetime      | not null                        |
 
-- index on `collection_id`
 - index on `[creator_id, title], unique: true`
 - `creator_id` references `users`
-- `collection_id` references `collections`
 `creator_id` doesn't need it's own index since it'll already be index for the combination with title. 
-`collection_id` is optional, but is still indexed as it's a foreign key. 
 
 
 
@@ -68,6 +64,17 @@
 - index on `curator_id`
 - `curator_id` references `users`
 
+## `collections_cards`
+| __column name__   | __datatype__  | __details__                     |
+| -----------       | -----------   | ----------------------          |
+| id                | integer       | not null, primary key           |
+| card_id           | integer       | not null, foreign key, indexed  |
+| collection_id     | integer       | not null, foreign key, indexed  |
+| created_at        | datetime      | not null                        |
+| updated_at        | datetime      | not null                        |
+- card_id is a foreign_key referencing cards. It is indexed.
+- collection_id is a foreign_key referencing cards. It is indexed.
+`CollectionCards` is a joins table between `cards` and `collections` representing a many-to-many relationship.
 
 ## `likes`
 | __column name__   | __datatype__  | __details__                     |

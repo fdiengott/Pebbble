@@ -24,6 +24,7 @@ Note: Search is a custom route. This will be implemented only if the bonus endpo
 - `DELETE /api/cards/:id` - deletes a card. 
 - `PATCH /api/cards/:id` - edits a specific song. Returns the edited song. 
 - `GET /api/cards/search` - returns a list of cards that match either a category or a query string. 
+- `GET /api/collections/:collection_id/cards` - returns all of the cards in a collection (should use CollectionCardsController#index)
 
 Note: Search is a custom route that is used to search for cards either by type (aka category) or by a search string to match the cards title. This will only be implemented if the bonus phase is reached. 
 
@@ -39,3 +40,9 @@ Note: Search is a custom route that is used to search for cards either by type (
 - `GET /api/collections/:id` - returns a collection with all of its info along with a list of its cards. 
 - `POST /api/collections` - creates a new collection. Returns the collection. 
 - `PATCH /api/collections/:id` - edit a collection. Only when the curator_id matches the current user's id.
+- `DELETE /api/collections/:id` - deletes a collection. Only when the curator_id matches the current user's id. 
+
+### `collections_cards
+- `POST /api/collectionsCards` - adds a card to a collection
+- `DELETE /api/collectionsCards/:id` - removes a card from a collection
+

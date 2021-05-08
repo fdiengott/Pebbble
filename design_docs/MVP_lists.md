@@ -33,14 +33,6 @@ Pebbble is a clone of Dribbble.com, an application made for designers and creati
 
 
 
-
-
-
-
-
-
-
-
 # Clipper MVP List
 Clipper is a clone of Sticher.com, a podcast app that allows users to view, share, and follow a podcast channel's page, as well as, search for and listen to an episode. 
 
