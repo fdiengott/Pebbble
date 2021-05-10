@@ -7,9 +7,9 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
 
 // Actions
-const receiveCurrentUser = (user) => ({
+const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
-  user
+  currentUser
 });
 const logoutCurrentUser = () => ({
   type: RECEIVE_CURRENT_USER,
