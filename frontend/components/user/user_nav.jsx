@@ -3,7 +3,7 @@ import React from 'react';
 const UserNav = ({logout}) => {
   return (
     <ul className="user-nav">
-      <li><button onClick={logout}>Sign Out</button></li>
+      <li><a onClick={logout}>Sign Out</a></li>
     </ul>
   )
 }; 
