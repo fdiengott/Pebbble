@@ -8,9 +8,21 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-const App = () => (
 
-  <div>TEST</div>
+import LoginFormContainer from './session_form/login_form_container'; 
+import SignupFormContainer from './session_form/signup_form_container'; 
+import UserNavContainer from './user/user_nav_container';
+
+
+
+const App = () => (
+  <div>
+    <header>
+      {<UserNavContainer />}
+    </header>
+    <Route path="/login" component={LoginFormContainer} />
+    <Route path="/signup" component={SignupFormContainer} />
+  </div>
 ); 
 
 export default App; 

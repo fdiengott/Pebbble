@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         users: { [window.currentUser.id]: window.currentUser }
       }
     };
-
     // remove them from the window. 
-
+    
     // *************COMMENTED OUT TO TEST************
     // delete window.currentUser;
   } else {
