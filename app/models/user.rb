@@ -46,13 +46,17 @@ class User < ApplicationRecord
 
 
   ### HELPER METHODS
-  def num_likes
-
-  end
-
   def when_joined
     self.created_at.strftime("%b %Y")
   end
+
+  def num_followers
+  end
+
+  def num_following
+  end
+
+
 
 end
 
