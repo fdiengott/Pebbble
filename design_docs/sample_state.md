@@ -57,13 +57,13 @@
         collectionId: null,
       }, 
     }, 
-    follows: {
-      96: {
-        id: 96,
-        followerId: 63,
-        creatorId: 30,
-      },
-    },
+    // follows: {
+    //   96: {
+    //     id: 96,
+    //     followerId: 63,
+    //     creatorId: 30,
+    //   },
+    // },
     collections: {
       // this is when we are on another user's profile page and browsing their collections. 
       5: {
@@ -83,6 +83,8 @@
   ui: {
     cardModal: 16, // this is the id num for the card that should have a modal display. Null when no modal is displayed. 
     loading: false
+    
+    // should there be a modal key that points to a string. the id can be gotten from the url???
   },
   session: {
     currentUserId: 8,
