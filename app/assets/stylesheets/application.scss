@@ -10,6 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+// Reset
+ @import 'base/reset.scss'; 
+
+// External imports
+ @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+ 
+// Core
+@import 'core/layout.scss'; 
+@import 'core/colors.scss'; 
+@import 'core/fonts'; 
+
+// Components
+@import 'components/login.scss'; 
+@import 'components/signup.scss'; 
+@import 'components/header.scss'; 

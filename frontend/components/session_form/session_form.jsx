@@ -31,6 +31,8 @@ class SessionForm extends React.Component {
     const { formType, errors, otherSession, email, name } = this.props; 
     const signin = (formType === "Sign In");
 
+    const className = signin ? "login-form" : "signup-form"; 
+
     // if there are errors, display them, otherwise null
     let errorsList = null; 
     if (errors.length) {
@@ -62,23 +64,33 @@ class SessionForm extends React.Component {
     }
 
     return (
-      <>
-        <nav>{otherSession}</nav>
-        <form className="auth-form" onSubmit={this.handleSubmit}>
-          { errorsList }
-          <h2>{formType} to Pebbble</h2>
-          <div>
-            { nameInput }
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={this.state.username} onChange={this.handleInput("username")}/>
-          </div>
-          { emailInput }
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={this.state.password} onChange={this.handleInput("password")}/>
+      <div className={className}>
+        <aside>
+          <a className="logo">pebbble</a>
+          <h2>Discover the world’s top Designers & Creatives.</h2>
+          <div className={className+"-artwork"}></div>
+          <p className="artist"></p>
+        </aside>
+        <section>
+          <nav>{otherSession}</nav>
+          <div className="form-container">
+            <form className="auth-form" onSubmit={this.handleSubmit}>
+              { errorsList }
+              <h2>{formType} to Pebbble</h2>
+              <div>
+                { nameInput }
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" value={this.state.username} onChange={this.handleInput("username")}/>
+              </div>
+              { emailInput }
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" value={this.state.password} onChange={this.handleInput("password")}/>
 
-          <input type="submit" value={signin ? "Sign In" : "Create Account" }/>
-        </form>
-      </>
+              <input type="submit" value={signin ? "Sign In" : "Create Account" }/>
+            </form>
+          </div>
+        </section>
+      </div>
     )
   }
 

@@ -1,0 +1,20 @@
+.logo {
+  display: inline-block; 
+  font-family: $logo-font;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+header {
+  display: flex; 
+  justify-content: space-between;
+
+  & > * {
+    padding: 1.4rem .7rem; 
+  }
+
+  
+}
+.user-nav {
+  margin: 0; 
+}

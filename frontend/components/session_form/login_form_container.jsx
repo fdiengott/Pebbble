@@ -11,7 +11,7 @@ import { login } from '../../actions/session_actions';
 const mapStateToProps = (state) => ({
   errors: state.errors.session, 
   formType: "Sign In",
-  otherSession: <p>Not a member?<Link to="/signup">Sign Up</Link></p>,
+  otherSession: <p>Not a member? <Link to="/signup">Sign Up</Link></p>,
   email: null, // if this is true, render on the form 
   name: null, 
 })
