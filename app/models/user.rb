@@ -11,6 +11,15 @@ class User < ApplicationRecord
   ### AUTH METHODS
 
   def self.find_by_credentials(username, password)
+
+    # to allow for username or password. check if username includes '@'
+    # CHANGE VARIABLE NAME?
+    # if username.include?("@")
+    #   user = User.find_by(email: username)
+    # else 
+    #   user = User.find_by(username: username)
+    # end
+
     user = User.find_by(username: username)
 
     if user && user.is_password?(password)
