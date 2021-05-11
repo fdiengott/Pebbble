@@ -13,7 +13,8 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container'; 
 import Header from '../components/header/header'; 
 
-
+import * as UserActions from '../actions/user_actions'; 
+import * as UserAPIUtil from '../util/user_api_util'; 
 
 const App = () => (
   <>

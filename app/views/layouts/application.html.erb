@@ -8,6 +8,12 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('pebbble-icon.svg') %>
+    
+    <script>
+      window.clip_trumpeter = "<%= image_url('clip_trumpeter.png') %>"; 
+      window.clip_dancer = "<%= image_url('clip_dancer.png') %>"; 
+      window.avatar_default = "<%= image_url('avatar_default.gif') %>"; 
+    </script>
   </head>
 
   <body>

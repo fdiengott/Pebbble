@@ -20,14 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // remove them from the window. 
     
-    // *************COMMENTED OUT TO TEST************
-    // delete window.currentUser;
+    delete window.currentUser;
   } else {
     preloadedState = {}; 
   }
 
 
   store = configureStore(preloadedState);
+
+  // TESTING
+  window.dispatch = store.dispatch; 
+  window.getState = store.getState; 
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

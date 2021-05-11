@@ -37,13 +37,14 @@
     }
 
     .signup-form-artwork{
-      background-image: url('clip-trumpeter-who-brings-fun.png');
-      // background-color: blue;
+      background-image: $trumpeter; 
+      
+      // if this doesn't work on heroku try the below
+      // background-image: asset-url('clip_trumpeter.png');
     }
     
     .login-form-artwork{
-      background-image: url('clip-dancer.png');
-      // background-color: yellow;
+      background-image: $dancer;
     }
     
     .artwork {

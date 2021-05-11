@@ -39,6 +39,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.where("name ilike ?", "%#{params[:search]}%")
+    
+    if !@users.empty?
+      # return users, but how much info?
+    else 
+      # return empty array probably
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :name, :location, :email, :bio, :website_url, :password)
