@@ -37,13 +37,21 @@
     }
 
     .signup-form-artwork{
-      background-image: url(app/assets/images/clip-trumpeter-who-brings-fun.png);
-      background-color: blue;
+      background-image: url('clip-trumpeter-who-brings-fun.png');
+      background-size: cover;
+      height: 400px; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+      // max-width: 100%;
+      // position: relative;
+      // right: 0;
+      // left: 0;
+      // background-color: blue;
     }
 
     .login-form-artwork{
-      // background-image: url();
-      background-color: yellow;
+      background-image: url('clip-dancer.png');
+      // background-color: yellow;
     }
 
     .artwork {
