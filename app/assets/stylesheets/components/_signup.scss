@@ -96,7 +96,7 @@
           outline: 1px solid #eee;
         }
 
-        input[type="submit"] {
+        button {
           background-color: $bright-pink;
           
           border: none;
@@ -112,7 +112,7 @@
           margin-top: 25px;
         }
         
-        input[type="submit"]:hover {
+        button:hover {
           background-color: #e882a9; 
         }
 
