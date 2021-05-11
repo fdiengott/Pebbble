@@ -1,0 +1,155 @@
+@use "../core/library"; 
+
+.auth-form {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr;
+  grid-template-rows: 1fr;
+  font-family: Helvetica, sans-serif;
+
+  .login-form-aside {
+    background-color: $pink;
+  }
+
+  .signup-form-aside {
+    background-color: #f2d184; 
+  }
+  
+  aside {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $faded-pink;
+
+    & > * {
+      width: 66%;
+    }
+
+    .logo {
+      font-size: $logo-font-size; 
+    }
+
+    h2 {
+      margin: 30px 0;
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    .signup-form-artwork{
+      // background-image: url();
+      background-color: blue;
+    }
+
+    .login-form-artwork{
+      // background-image: url();
+      background-color: yellow;
+    }
+
+    .artwork {
+      width: 80%;
+      min-height: 300px;
+      margin: 15px 0; 
+    }
+
+    .artist {
+      font-size: 12px;
+    }
+
+    .login-form-artist::before {
+      content: 'Art by NAME_TO_CHANGE_LATER';
+    }
+    .signup-form-artist::before {
+      content: 'Art by NAME_TO_CHANGE_LATER';
+    }
+  }
+
+  section {
+    display: grid; 
+    grid-template-rows: 30px 1fr;
+
+    nav {
+      text-align: right;
+      margin: 25px; 
+    }
+
+    .form-container {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      
+      form, form div {
+        display: flex; 
+        flex-direction: column;
+        
+        h2 {
+          font-size: 28px;
+          color: black;
+          font-weight: 700;
+        }
+        
+        & > label {
+          margin: $form-spacing;
+          width: 450px;
+          font-weight: 700;
+        }
+
+        input {
+          margin-top: 10px;
+          background-color: #eee;
+          border: 1px solid transparent;
+          border-radius: 5px;
+          height: 40px;
+          width: 100%; 
+          padding-left: 10px;
+          transition: ease all 0.3s; 
+          outline: 1px transparent; 
+        }
+
+        input:focus {
+          box-shadow: $pink-input-outline;
+          border: 2px solid $pink;
+          outline: 1px transparent;
+          background-color: white;
+        }
+        
+        input:hover {
+          box-shadow: $pink-input-outline;
+          background-color: white;
+          outline: 1px solid #eee;
+        }
+
+        input[type="password"] {
+          font-weight: 400; 
+        }
+
+        button {
+          @include pink-button; 
+          margin: $form-spacing; 
+        }
+        
+        button:hover {
+          background-color: $hover-pink;  
+        }
+        
+      }
+      .name-container {
+        display: flex; 
+        flex-direction: row;
+        // justify-content: space-between;
+        width: 100%;
+        
+        label, input {
+          display: flex; 
+          flex-direction: column;
+        }
+        label {
+          width: 90%; 
+        }
+        
+      }
+    }
+  }
+  
+
+}

@@ -22,8 +22,10 @@
 @import 'core/layout.scss'; 
 @import 'core/colors.scss'; 
 @import 'core/fonts'; 
+@import 'core/library'; 
 
 // Components
-@import 'components/login.scss'; 
-@import 'components/signup.scss'; 
+// @import 'components/login.scss'; 
+// @import 'components/signup.scss'; 
+@import 'components/auth_form.scss'; 
 @import 'components/header.scss'; 

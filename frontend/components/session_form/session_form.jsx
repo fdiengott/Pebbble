@@ -48,8 +48,9 @@ class SessionForm extends React.Component {
     if (email) {
       emailInput = (
         <>
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" value={this.state.email} onChange={this.handleInput("email")}/>
+          <label htmlFor="email">Email
+            <input type="text" id="email" value={this.state.email} onChange={this.handleInput("email")}/>
+          </label>
         </>
       )
     }
@@ -57,19 +58,20 @@ class SessionForm extends React.Component {
     if (name) {
       nameInput = (
         <>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" value={this.state.name} onChange={this.handleInput("name")}/>
+          <label htmlFor="name">Name
+            <input type="text" id="name" value={this.state.name} onChange={this.handleInput("name")}/>
+          </label>
         </>
       )
     }
 
     return (
-      <div className={className}>
-        <aside>
+      <div className="auth-form">
+        <aside className={className+"-aside"}>
           <a className="logo">pebbble</a>
           <h2>Discover the world’s top Designers & Creatives.</h2>
-          <div className={className+"-artwork"}></div>
-          <p className="artist"></p>
+          <div className={className+"-artwork artwork"}></div>
+          <cite className={className+"-artist"}></cite>
         </aside>
         <section>
           <nav>{otherSession}</nav>
@@ -77,14 +79,30 @@ class SessionForm extends React.Component {
             <form className="auth-form" onSubmit={this.handleSubmit}>
               { errorsList }
               <h2>{formType} to Pebbble</h2>
-              <div>
+              <div className="name-container">
                 { nameInput }
-                <label htmlFor="username">Username</label>
-                <input type="text" id="username" value={this.state.username} onChange={this.handleInput("username")}/>
+
+                <label htmlFor="username">Username
+                  <input 
+                    type="text" 
+                    id="username" 
+                    value={this.state.username} 
+                    onChange={this.handleInput("username")}
+                  />
+                </label>
               </div>
+
               { emailInput }
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password" value={this.state.password} onChange={this.handleInput("password")} placeholder={signin ? null : "6+ characters"}/>
+
+              <label htmlFor="password">Password
+                <input 
+                  type="password" 
+                  id="password" 
+                  value={this.state.password} 
+                  onChange={this.handleInput("password")} 
+                  placeholder={signin ? null : "6+ characters"}
+                />
+              </label>
 
               <button>{ signin ? "Sign In" : "Create Account" }</button>
             </form>

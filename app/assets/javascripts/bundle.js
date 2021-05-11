@@ -512,12 +512,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       if (email) {
         emailInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "email"
-        }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "text",
           id: "email",
           value: this.state.email,
           onChange: this.handleInput("email")
-        }));
+        })));
       }
 
       var nameInput;
@@ -525,43 +525,47 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       if (name) {
         nameInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "name"
-        }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "text",
           id: "name",
           value: this.state.name,
           onChange: this.handleInput("name")
-        }));
+        })));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: className
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("aside", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        className: "auth-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("aside", {
+        className: className + "-aside"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         className: "logo"
       }, "pebbble"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Discover the world\u2019s top Designers & Creatives."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: className + "-artwork"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "artist"
+        className: className + "-artwork artwork"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("cite", {
+        className: className + "-artist"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, otherSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "auth-form",
         onSubmit: this.handleSubmit
-      }, errorsList, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, formType, " to Pebbble"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, nameInput, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+      }, errorsList, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, formType, " to Pebbble"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "name-container"
+      }, nameInput, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         htmlFor: "username"
-      }, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Username", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         id: "username",
         value: this.state.username,
         onChange: this.handleInput("username")
-      })), emailInput, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+      }))), emailInput, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         htmlFor: "password"
-      }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "password",
         id: "password",
         value: this.state.password,
         onChange: this.handleInput("password"),
         placeholder: signin ? null : "6+ characters"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, signin ? "Sign In" : "Create Account")))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, signin ? "Sign In" : "Create Account")))));
     }
   }]);
 
