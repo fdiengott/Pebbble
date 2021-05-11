@@ -12,20 +12,17 @@
  *
  */
 
-// Reset
- @import 'base/reset.scss'; 
-
-// External imports
+ // External imports
  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
- 
-// Core
-@import 'core/layout.scss'; 
-@import 'core/colors.scss'; 
-@import 'core/fonts'; 
-@import 'core/library'; 
 
-// Components
-// @import 'components/login.scss'; 
-// @import 'components/signup.scss'; 
-@import 'components/auth_form.scss'; 
-@import 'components/header.scss'; 
+ // Base
+ @import 'base/reset.scss'; 
+ @import 'base/layout.scss'; 
+ @import 'base/colors.scss'; 
+ @import 'base/fonts'; 
+ @import 'base/library'; 
+ @import 'base/accessibility';  
+ 
+ // Components
+ @import 'components/auth_form.scss'; 
+ @import 'components/header.scss'; 

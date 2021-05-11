@@ -1,6 +1,6 @@
 @use "../core/library"; 
 
-.auth-form {
+.auth-form-container {
   display: grid;
   grid-template-columns: 1.5fr 3fr;
   grid-template-rows: 1fr;
@@ -27,7 +27,7 @@
     }
 
     .logo {
-      font-size: $logo-font-size; 
+      @include logo; 
     }
 
     h2 {
@@ -82,6 +82,10 @@
         display: flex; 
         flex-direction: column;
         
+        .session-form-errors {
+          @include session-errors; 
+        }
+
         h2 {
           font-size: 28px;
           color: black;
@@ -124,27 +128,39 @@
         }
 
         button {
-          @include pink-button; 
+          @include color-button($bright-pink, white); 
           margin: $form-spacing; 
+          margin-bottom: -10px;
         }
         
         button:hover {
           background-color: $hover-pink;  
         }
+
+        .demo-login-button {
+          @include color-button($blue, white); 
+        }
+        .demo-login-button:hover {
+          background-color: $light-blue; 
+        }
         
       }
       .name-container {
-        display: flex; 
         flex-direction: row;
-        // justify-content: space-between;
+        justify-content: space-between;
         width: 100%;
-        
+
         label, input {
-          display: flex; 
+          display: flex;
           flex-direction: column;
         }
         label {
           width: 90%; 
+        }
+
+        // make this only on the first child
+        input {
+          width: 95%; 
         }
         
       }

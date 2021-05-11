@@ -1,0 +1,29 @@
+// things like border radius or specific box shadow 
+
+@mixin logo {
+  font-size: $logo-font-size; 
+  text-decoration: none;
+  &:visited {
+    color: inherit; 
+  }
+}
+
+@mixin color-button($btn-clr, $txt-clr) {
+  background-color: $btn-clr;
+          
+  border: none;
+  color: $txt-clr;
+  border-radius: 8px; 
+  width: 250px; 
+  height: 40px;
+  
+  font-size: 16px;
+  cursor: pointer;
+
+  padding: 0;   
+}
+
+@mixin session-errors {
+  color: red; 
+  padding-left: 5px;
+}

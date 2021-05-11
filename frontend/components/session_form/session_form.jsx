@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom';
 
 const nullUser = {
   name: "",
@@ -13,6 +14,7 @@ class SessionForm extends React.Component {
     this.state = nullUser; 
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   handleSubmit(e) {
@@ -25,6 +27,12 @@ class SessionForm extends React.Component {
     return (e) => {
       this.setState({ [type]: e.currentTarget.value }); 
     }
+  }
+
+  // DEMO LOGIN
+  handleDemoLogin(e) {
+    e.preventDefault(); 
+    this.props.processForm({username: "fred", password: 123456}); 
   }
 
   render() {
@@ -65,10 +73,20 @@ class SessionForm extends React.Component {
       )
     }
 
+    let demoLogin; 
+    if (signin) {
+      demoLogin = (
+        <button 
+          onClick={this.handleDemoLogin} 
+          className="demo-login-button"
+        >Demo Login</button>
+      )
+    }
+
     return (
-      <div className="auth-form">
+      <div className="auth-form-container">
         <aside className={className+"-aside"}>
-          <a className="logo">pebbble</a>
+          <Link to="/" className="logo">pebbble<span className="accessibility-text">Back to home page</span></Link>
           <h2>Discover the world’s top Designers & Creatives.</h2>
           <div className={className+"-artwork artwork"}></div>
           <cite className={className+"-artist"}></cite>
@@ -76,7 +94,7 @@ class SessionForm extends React.Component {
         <section>
           <nav>{otherSession}</nav>
           <div className="form-container">
-            <form className="auth-form" onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               { errorsList }
               <h2>{formType} to Pebbble</h2>
               <div className="name-container">
@@ -105,6 +123,7 @@ class SessionForm extends React.Component {
               </label>
 
               <button>{ signin ? "Sign In" : "Create Account" }</button>
+              { demoLogin }
             </form>
           </div>
         </section>
