@@ -38,6 +38,7 @@ export const updateUser = (user) => dispatch => (
   )
 ); 
 
-window.fetchUsers = fetchUsers; 
-window.fetchUser = fetchUser; 
-window.updateUser = updateUser; 
+// TESTING
+// window.fetchUsers = fetchUsers; 
+// window.fetchUser = fetchUser; 
+// window.updateUser = updateUser; 

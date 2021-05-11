@@ -40,10 +40,19 @@ The header and footer will render for every path except for `/login`, `/signup`,
 ## If logged in
 - `/account` 
   - `AccountHeader`
-  - `EditForm`
+  - `/account/likes`
+    - `CardsIndex`
+      - `CardIndexItem`
+  - `/account/collections`
+    - `CollectionsIndex`
+      - `CoollectionsIndexItem`
+  - `/account/about`
+    - `Profile`
+    - `EditForm`
 - `/cards/new`
   - `NewFormHeader`
   - `CardForm`
+
 
 ## Modals
 - new collection

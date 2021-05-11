@@ -327,10 +327,10 @@ var updateUser = function updateUser(user) {
       return dispatch(receiveUserErrors(err));
     });
   };
-};
-window.fetchUsers = fetchUsers;
-window.fetchUser = fetchUser;
-window.updateUser = updateUser;
+}; // TESTING
+// window.fetchUsers = fetchUsers; 
+// window.fetchUser = fetchUser; 
+// window.updateUser = updateUser;
 
 /***/ }),
 
@@ -371,6 +371,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.AuthRoute, {
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.ProtectedRoute, {
+    path: "/account/",
+    component: Account
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_header_header__WEBPACK_IMPORTED_MODULE_5__.default, null)));
 };
 
@@ -1006,7 +1009,7 @@ var usersReducer = function usersReducer() {
       return _objectSpread(_objectSpread({}, state), {}, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
-      return _objectSpread(_objectSpread({}, state), {}, _defineProperty({}, action.user.id, action.currentUser));
+      return _objectSpread(_objectSpread({}, state), {}, _defineProperty({}, action.user.id, action.user));
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USERS:
       // I'M UNSURE WHAT TO RETURN HERE

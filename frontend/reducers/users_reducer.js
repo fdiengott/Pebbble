@@ -13,7 +13,7 @@ const usersReducer = (state = {}, action) => {
       return {...state, [action.currentUser.id]: action.currentUser}
       
     case RECEIVE_USER: 
-      return {...state, [action.user.id]: action.currentUser}
+      return {...state, [action.user.id]: action.user}
 
     case RECEIVE_USERS: 
       // I'M UNSURE WHAT TO RETURN HERE
