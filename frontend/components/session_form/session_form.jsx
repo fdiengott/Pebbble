@@ -122,7 +122,7 @@ class SessionForm extends React.Component {
                 />
               </label>
 
-              <button>{ signin ? "Sign In" : "Create Account" }</button>
+              <button>{ signin ? "Sign In" : "Create Accounts" }</button>
               { demoLogin }
             </form>
           </div>
