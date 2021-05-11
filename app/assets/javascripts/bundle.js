@@ -559,7 +559,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         type: "password",
         id: "password",
         value: this.state.password,
-        onChange: this.handleInput("password")
+        onChange: this.handleInput("password"),
+        placeholder: signin ? null : "6+ characters"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: signin ? "Sign In" : "Create Account"

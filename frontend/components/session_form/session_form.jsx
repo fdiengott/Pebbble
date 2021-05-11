@@ -84,7 +84,7 @@ class SessionForm extends React.Component {
               </div>
               { emailInput }
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" value={this.state.password} onChange={this.handleInput("password")}/>
+              <input type="password" id="password" value={this.state.password} onChange={this.handleInput("password")} placeholder={signin ? null : "6+ characters"}/>
 
               <input type="submit" value={signin ? "Sign In" : "Create Account" }/>
             </form>

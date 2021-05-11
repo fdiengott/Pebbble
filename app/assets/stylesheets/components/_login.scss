@@ -1,6 +1,6 @@
 .login-form {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1.5fr 3fr;
   grid-template-rows: 1fr;
   font-family: Helvetica, sans-serif;
 
@@ -9,6 +9,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: $faded-pink;
 
@@ -21,14 +22,17 @@
     }
 
     h2 {
+      margin: 30px 0;
       font-weight: 700;
       font-size: 28px;
     }
 
     .login-form-artwork{
-      background-image: url();
-      width: 100%;
+      // background-image: url();
+      background-color: blue;
+      width: 80%;
       min-height: 250px;
+      margin: 15px 0; 
     }
     .artist {
       font-size: 12px;
@@ -44,6 +48,7 @@
 
     nav {
       text-align: right;
+      margin: 20px; 
     }
 
     .form-container {
@@ -71,7 +76,7 @@
           background-color: #eee;
           border: 1px solid transparent;
           border-radius: 5px;
-          height: 30px;
+          height: 40px;
           width: 100%; 
           padding-left: 10px;
           transition: ease all 0.3s; 
