@@ -53,7 +53,6 @@ The header and footer will render for every path except for `/login`, `/signup`,
   - `NewFormHeader`
   - `CardForm`
 
-
 ## Modals
 - new collection
 - contact creator
