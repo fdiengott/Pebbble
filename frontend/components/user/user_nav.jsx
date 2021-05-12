@@ -5,7 +5,7 @@ const UserNav = (props) => {
   const { logout, loggedIn, currentUser } = props; 
 
   const avatar = currentUser ? 
-    currentUser.imageUrl || window.avatar_default : 
+    currentUser.profilePicture || window.avatar_default : 
     window.avatar_default
   
   return loggedIn ? (
@@ -13,7 +13,9 @@ const UserNav = (props) => {
       <ul role="list" className="user-nav">
         <li>
           <Link to="/account">
-            <img src={avatar} alt="profile avatar" className="avatar"/>
+            <div className="image-cropper">
+              <img src={avatar} alt="profile avatar" className="avatar"/>
+            </div>
           </Link>
           <ul role="list" className="user-dropdown">
             <li><Link to="/account">Profile</Link></li>

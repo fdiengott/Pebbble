@@ -45,11 +45,6 @@ header {
     height: inherit;
   }
 
-  .avatar {
-    height: 40px;
-    border-radius: 50%;
-  }
-
   li:first-child {
     position: relative; 
   }
@@ -84,6 +79,13 @@ header {
       color: #000;
     }
   }
+
+  .image-cropper {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
 }
 
 .standard-header {
@@ -114,7 +116,7 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
+
   // .login-btn {
     
   // }

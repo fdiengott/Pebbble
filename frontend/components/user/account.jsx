@@ -16,11 +16,13 @@ class Account extends React.Component {
 
     const { currentUser } = this.props; 
     const avatar = currentUser.profilePicture || window.avatar_default; 
-
+    
     const header = (
       <section className='account-header-container'>
         <div className="details-container">
-          <img src={avatar} alt="Profile picture avatar"/>
+          <div className="image-cropper">
+            <img src={avatar} alt="Profile picture avatar"/>
+          </div>
           <ul role="list">
             <h3>{currentUser.name}</h3>
             <p>{currentUser.location}</p>
