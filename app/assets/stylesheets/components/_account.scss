@@ -64,7 +64,7 @@
 .account-nav {
   display: flex;
   justify-content: flex-start;
-  width: 90%;
+  width: $width-percentage;
   margin: 25px 0;
   border-bottom: 1px solid $lighter-gray;
   

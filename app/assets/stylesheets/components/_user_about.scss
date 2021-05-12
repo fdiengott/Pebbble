@@ -1,0 +1,24 @@
+
+
+.user-about-container {
+  display: flex;
+  justify-content: center;
+
+  .user-about {
+    width: $width-percentage;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+}
+
+
+
+
+// TESTING
+footer {
+  display: block;
+  height: 400px;
+
+  background-color: beige;
+}

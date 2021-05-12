@@ -66,6 +66,8 @@ class Account extends React.Component {
           <Route path="/account/about/edit" component={UserEditFormContainer}/> 
           <Route path="/account/profile" component={UserAboutContainer}/> 
         </Switch>
+        {/* FOR TESTING */}
+        <footer></footer>
       </div>
     )
   }
