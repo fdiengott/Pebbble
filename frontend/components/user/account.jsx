@@ -24,9 +24,9 @@ class Account extends React.Component {
             <img src={avatar} alt="Profile picture avatar"/>
           </div>
           <ul role="list">
-            <h3>{currentUser.name}</h3>
+            <h1>{currentUser.name}</h1>
             <p>{currentUser.location}</p>
-            <Link to="/account/about/edit">Edit Profile</Link>
+            <Link className="edit-profile-btn" to="/account/about/edit">Edit Profile</Link>
           </ul>
         </div>
         
@@ -34,14 +34,21 @@ class Account extends React.Component {
     )
 
     const nav = (
-      <nav className="account-nav">
-        <ul role="list" className="account-nav-list">
-          <li><NavLink to="/account/cards">Cards</NavLink></li>
-          <li><NavLink to="/account/collections">Collections</NavLink></li>
-          <li><NavLink to="/account/likes">Liked Cards</NavLink></li>
-          <li><NavLink to="/account/profile">About</NavLink></li>
-        </ul>
-      </nav>
+      <div className="account-nav-borderline">
+        <nav className="account-nav">
+          <ul role="list" className="account-nav-list">
+            <li><NavLink to="/account/cards">Cards <span    
+              className="user-stats">{/* cards */}</span></NavLink></li>
+            <li><NavLink to="/account/collections">Collections <span    
+              className="user-stats"
+              >{/* collections */}</span></NavLink></li>
+            <li><NavLink to="/account/likes">Liked Cards <span    
+              className="user-stats"
+              >{/* likes */}</span></NavLink></li>
+            <li><NavLink to="/account/profile">About</NavLink></li>
+          </ul>
+        </nav>
+      </div>
     )
 
     return (

@@ -12,13 +12,13 @@ const UserNav = (props) => {
     <>
       <ul role="list" className="user-nav">
         <li>
-          <Link to="/account">
+          <Link to="/account/cards">
             <div className="image-cropper">
               <img src={avatar} alt="profile avatar" className="avatar"/>
             </div>
           </Link>
           <ul role="list" className="user-dropdown">
-            <li><Link to="/account">Profile</Link></li>
+            <li><Link to="/account/cards">Profile</Link></li>
             <hr/>
             <li><Link to="/account/about/edit">Edit Profile</Link></li>
             <hr/>

@@ -4,7 +4,7 @@ $line-height: 24px;
 .logo {
   display: inline-block; 
   font-family: $logo-font;
-  font-weight: 700;
+  font-weight: 800;
   font-size: $line-height;
 
   a {
@@ -22,7 +22,7 @@ header {
   justify-content: space-between;
 
   & > * {
-    padding: 1.4rem .7rem; 
+    padding: 18px 12px; 
   }
 
   ul {
@@ -75,7 +75,7 @@ header {
     }
 
     li:hover, a:hover {
-      background-color: $lighter-gray;
+      background-color: $lightest-gray;
       color: #000;
     }
   }
@@ -89,7 +89,7 @@ header {
 }
 
 .standard-header {
-  border-bottom: 1px solid $light-gray;
+  border-bottom: 1px solid $lightest-gray;
 
   & > ul:first-child {
     display: flex;

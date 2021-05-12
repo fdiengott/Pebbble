@@ -1,17 +1,22 @@
-
+@use "../core/library"; 
 
 .account-header-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 60px 0;
+  font-family: $sans-serif;
 
   .details-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     .image-cropper {
-      height: 80px;
-      width: 80px;
+      $image-diameter: 130px; 
+
+      height: $image-diameter;
+      width: $image-diameter;
       overflow: hidden;
       border-radius: 50%;
     }
@@ -20,25 +25,60 @@
       display: flex;
       flex-direction: column;
     }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+    
+    p {
+      color: $gray;
+      font-size: 18px;
+    }
+
+    .edit-profile-btn {
+      padding: 8px 0;
+      margin-top: 8px;
+      width: 120px;
+      text-align: center;
+
+      border-radius: 8px;
+      border: 1px solid $light-gray;
+      
+      color: black;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .edit-profile-btn:hover {
+      border: 1px solid $gray;
+    }
   }
 
 }
 
-.account-nav {
+.account-nav-borderline {
   display: flex;
   justify-content: center;
-  width: 95%;
-  // background-color: blue;
-  padding: 25px 0;
+}
+
+.account-nav {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  margin: 25px 0;
+  border-bottom: 1px solid $lighter-gray;
   
   .account-nav-list{
-    border-bottom: 1px solid $light-gray;
+    padding: 0;
+    margin: 20px 0;
     display: flex;
     flex-direction: row;
+
+    font-size: 18px;
   }
 
   li {
-    margin-right: 10px;
+    margin-right: 30px;
 
     a {
       font-weight: 600;
@@ -48,6 +88,9 @@
     
     a.active {
       color: black;
+      span {
+        color: $gray;
+      }
     }
   }
 }
