@@ -1237,11 +1237,14 @@ var UserNav = function UserNav(props) {
     to: "cards/new",
     className: "pink-button"
   }, "Upload")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-    role: "list"
+    role: "list",
+    className: "header-auth-buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    to: "/login"
+    to: "/login",
+    className: "login-btn"
   }, "Sign in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    to: "/signup"
+    to: "/signup",
+    className: "signup-btn"
   }, "Sign up"));
 };
 

@@ -38,9 +38,11 @@ header {
   }
 
   .pink-button {
-    padding: $item-height 18px;
+    padding: 5px 16px;
     margin: 0 10px;
     text-decoration: none;
+    width: inherit;
+    height: inherit;
   }
 
   .avatar {
@@ -54,11 +56,12 @@ header {
   
   li:first-child:hover .user-dropdown {
     opacity: 1;
+    z-index: 1;
   }
   
   .user-dropdown {
     position: absolute; 
-    z-index: 1;
+    z-index: -1;
     opacity: 0;
     padding: 15px 0; 
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -83,3 +86,39 @@ header {
   }
 }
 
+.standard-header {
+  border-bottom: 1px solid $light-gray;
+
+  & > ul:first-child {
+    display: flex;
+    
+    & > li {
+      margin: 0 14px 0 12px;
+    }
+  }
+
+  & > ul > li {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.header-auth-buttons > *{
+  @extend .pink-button; 
+  width: inherit;
+  height: inherit;
+}
+
+.header-auth-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .login-btn {
+    
+  }
+  
+  .signup-btn {
+  }
+
+}

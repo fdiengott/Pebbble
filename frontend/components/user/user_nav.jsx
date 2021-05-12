@@ -30,9 +30,9 @@ const UserNav = (props) => {
       </ul>
     </>
   ) : (
-    <ul role="list">
-      <Link to="/login">Sign in</Link>
-      <Link to="/signup">Sign up</Link>
+    <ul role="list" className="header-auth-buttons">
+      <Link to="/login" className="login-btn">Sign in</Link>
+      <Link to="/signup" className="signup-btn">Sign up</Link>
     </ul>
   )
   
