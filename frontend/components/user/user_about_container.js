@@ -4,11 +4,11 @@ import UserAbout from './user_about';						//display component
 
 const mapStateToProps = (state) => ({
   user: state.entities.users[state.session.id],
-})
+}); 
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUser: (userId) => dispatch(fetchUser(userId)),
-})
+  // fetchUser: (userId) => dispatch(fetchUser(userId)),
+}); 
 
 export default connect(
   mapStateToProps,

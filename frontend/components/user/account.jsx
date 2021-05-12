@@ -3,8 +3,8 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom'; 
 
 // Component Imports
-import UserAbout from './user_about';
-
+import UserAboutContainer from './user_about_container';
+import UserEditFormContainer from './user_edit_form_container';
 
 class Account extends React.Component {
   constructor(props) {
@@ -12,6 +12,8 @@ class Account extends React.Component {
   }
 
   render() {
+    // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
+
     const { currentUser } = this.props; 
     const avatar = currentUser.imageUrl || window.avatar_default; 
 
@@ -50,7 +52,8 @@ class Account extends React.Component {
           {/* <Route path="/account/likes" component={CardsIndexContainer}/>  */}
 
           {/* <Route path="/account/collections" component={CollectionsIndexContainer}/>  */}
-          <Route path="/account/profile" component={UserAbout}/> 
+          <Route path="/account/about/edit" component={UserEditFormContainer}/> 
+          <Route path="/account/profile" component={UserAboutContainer}/> 
         </Switch>
       </>
     )
