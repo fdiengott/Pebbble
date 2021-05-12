@@ -37,10 +37,10 @@
     }
 
     .signup-form-artwork{
-      background-image: $trumpeter; 
+      background-image: $saxophonist; 
       
       // if this doesn't work on heroku try the below
-      // background-image: asset-url('clip_trumpeter.png');
+      // background-image: asset-url('clip_saxophonist.png');
     }
     
     .login-form-artwork{
@@ -61,11 +61,12 @@
       font-size: 12px;
     }
 
+    // these need to be links in the html
     .login-form-artist::before {
-      content: 'Art by NAME_TO_CHANGE_LATER';
+      content: 'Art by Icons 8';
     }
     .signup-form-artist::before {
-      content: 'Art by NAME_TO_CHANGE_LATER';
+      content: 'Art by Icons 8';
     }
   }
 

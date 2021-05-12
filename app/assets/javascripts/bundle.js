@@ -1051,40 +1051,44 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var currentUser = this.props.currentUser;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "name"
-      }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        id: "name",
-        value: currentUser.name,
-        onChange: this.handleInput("name")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "location"
-      }, "Location", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        id: "location",
-        value: currentUser.location,
-        onChange: this.handleInput("location")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "bio"
-      }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-        id: "bio",
-        cols: "30",
-        rows: "10",
-        value: currentUser.bio,
-        onChange: this.handleInput("bio")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "websiteUrl"
-      }, "Personal Website", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        id: "websiteUrl",
-        value: currentUser.websiteUrl,
-        onChange: this.handleInput("websiteUrl")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "pink-button"
-      }, "Save Profile"));
+      return (
+        /*#__PURE__*/
+        // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "name"
+        }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "text",
+          id: "name",
+          value: currentUser.name,
+          onChange: this.handleInput("name")
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "location"
+        }, "Location", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "text",
+          id: "location",
+          value: currentUser.location || "",
+          onChange: this.handleInput("location")
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "bio"
+        }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+          id: "bio",
+          cols: "30",
+          rows: "10",
+          value: currentUser.bio || "",
+          onChange: this.handleInput("bio")
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+          htmlFor: "websiteUrl"
+        }, "Personal Website", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "text",
+          id: "websiteUrl",
+          value: currentUser.websiteUrl || "",
+          onChange: this.handleInput("websiteUrl")
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          className: "pink-button"
+        }, "Save Profile"))
+      );
     }
   }]);
 

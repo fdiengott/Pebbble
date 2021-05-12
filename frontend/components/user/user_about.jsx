@@ -6,7 +6,6 @@ class UserAbout extends React.Component {
     super(props); 
   }
 
-
   // componentDidMount() {
   //   this.props.fetchUser(this.props.user.id); 
   // }
