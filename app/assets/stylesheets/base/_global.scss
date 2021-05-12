@@ -1,0 +1,5 @@
+@use "../core/library"; 
+
+.pink-button {
+  @include color-button($bright-pink, white); 
+}

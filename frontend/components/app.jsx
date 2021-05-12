@@ -16,11 +16,14 @@ import AccountContainer from './user/account_container';
 const App = () => (
   <>
     <Switch>
+      {/* CardFormComponent */}
+      <Route path="/" component={Header}/>
+    </Switch>
+    <Switch>
       {/* <ProtectedRoute path="/account/about/edit" component={} /> */}
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Header />  
     </Switch>
   </>
 ); 
