@@ -295,10 +295,10 @@ var receiveUser = function receiveUser(user) {
   };
 };
 
-var receiveUserErrors = function receiveUserErrors(error) {
+var receiveUserErrors = function receiveUserErrors(errors) {
   return {
     type: RECEIVE_USER_ERRORS,
-    error: error
+    errors: errors
   };
 };
 
@@ -351,7 +351,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _components_header_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/header/header */ "./frontend/components/header/header.jsx");
+/* harmony import */ var _components_header_header_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/header/header_container */ "./frontend/components/header/header_container.js");
 /* harmony import */ var _user_account_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user/account_container */ "./frontend/components/user/account_container.js");
 
 
@@ -363,10 +363,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     path: "/",
-    component: _components_header_header__WEBPACK_IMPORTED_MODULE_5__.default
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.ProtectedRoute, {
+    component: _components_header_header_container__WEBPACK_IMPORTED_MODULE_5__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.ProtectedRoute, {
     path: "/account",
     component: _user_account_container__WEBPACK_IMPORTED_MODULE_6__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.AuthRoute, {
@@ -400,15 +400,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Header = function Header() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("figure", {
+var Header = function Header(_ref) {
+  var loggedIn = _ref.loggedIn,
+      url = _ref.url;
+  var links = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("figure", {
     className: "header-logo logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/"
-  }, "Pebbble"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Github Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "LinkedIn")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_user_nav_container__WEBPACK_IMPORTED_MODULE_1__.default, null));
+  }, "Pebbble"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Github Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "LinkedIn")); // to add card create
+
+  var pathsNotToRender = ["/login", "/signup"];
+  return pathsNotToRender.includes(url) ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, links, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_user_nav_container__WEBPACK_IMPORTED_MODULE_1__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
+
+/***/ }),
+
+/***/ "./frontend/components/header/header_container.js":
+/*!********************************************************!*\
+  !*** ./frontend/components/header/header_container.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./frontend/components/header/header.jsx");
+
+ //display component
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    url: ownProps.location.pathname,
+    loggedIn: Boolean(state.session.id)
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps)(_header__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -470,7 +502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    errors: state.errors.session,
+    errors: state.errors,
     formType: "Sign In",
     otherSession: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Not a member? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/signup"
@@ -714,7 +746,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    errors: state.errors.session,
+    errors: state.errors,
     formType: "Sign up",
     otherSession: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Already a member? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/login"
@@ -799,7 +831,9 @@ var Account = /*#__PURE__*/function (_React$Component) {
       // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
       var currentUser = this.props.currentUser;
       var avatar = currentUser.imageUrl || window.avatar_default;
-      var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+        className: "account-header-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "details-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: avatar,
@@ -809,18 +843,23 @@ var Account = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, currentUser.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/account/about/edit"
       }, "Edit Profile"))));
-      var nav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        role: "list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      var nav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
+        className: "account-nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        role: "list",
+        className: "account-nav-list"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
         to: "/account/cards"
-      }, "Cards")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      }, "Cards")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
         to: "/account/collections"
-      }, "Collections")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      }, "Collections")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
         to: "/account/likes"
-      }, "Liked Cards")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      }, "Liked Cards")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
         to: "/account/profile"
-      }, "About")));
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, header, nav, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+      }, "About"))));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "account"
+      }, header, nav, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/account/about/edit",
         component: _user_edit_form_container__WEBPACK_IMPORTED_MODULE_2__.default
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -1044,13 +1083,15 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+        console.log(_this2.props.currentUser);
+
+        _this2.setState(_defineProperty({}, type, "".concat(e.currentTarget.value)));
       };
     }
   }, {
     key: "render",
     value: function render() {
-      var currentUser = this.props.currentUser;
+      var currentUser = this.state.currentUser;
       return (
         /*#__PURE__*/
         // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
@@ -1281,13 +1322,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
-});
+
+var errorsReducer = function errorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    errors: []
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var _nullErrors = {
+    errors: []
+  };
+
+  switch (action.type) {
+    // Set errors
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
+      return {
+        errors: action.errors
+      };
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER_ERRORS:
+      return {
+        errors: action.errors
+      };
+    // Reset errors
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      return _nullErrors;
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
+      return _nullErrors;
+
+    default:
+      return state;
+  }
+};
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
 /***/ }),
@@ -1321,41 +1394,6 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
-
-/***/ }),
-
-/***/ "./frontend/reducers/session_errors_reducer.js":
-/*!*****************************************************!*\
-  !*** ./frontend/reducers/session_errors_reducer.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
-
-
-var sessionErrorsReducer = function sessionErrorsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
-
-  switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
-      return action.errors;
-
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      return [];
-
-    default:
-      return state;
-  }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sessionErrorsReducer);
 
 /***/ }),
 

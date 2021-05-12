@@ -3,3 +3,7 @@
 .pink-button {
   @include color-button($bright-pink, white); 
 }
+
+.pink-button:hover {
+  background-color: $hover-pink;  
+}

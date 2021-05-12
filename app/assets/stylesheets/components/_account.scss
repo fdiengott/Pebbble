@@ -1,0 +1,48 @@
+
+
+.account-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .details-container {
+    display: flex;
+    flex-direction: row;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+}
+
+.account-nav {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  // background-color: blue;
+  padding: 25px 0;
+  
+  .account-nav-list{
+    border-bottom: 1px solid $light-gray;
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    margin-right: 10px;
+
+    a {
+      font-weight: 600;
+      text-decoration: none;
+      color: $gray;
+    }
+    
+    a.active {
+      color: black;
+    }
+  }
+}
+
+

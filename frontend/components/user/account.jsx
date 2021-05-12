@@ -1,6 +1,6 @@
 // React Imports
 import React from 'react'; 
-import { Switch, Route, Link } from 'react-router-dom'; 
+import { Switch, Route, Link, NavLink } from 'react-router-dom'; 
 
 // Component Imports
 import UserAboutContainer from './user_about_container';
@@ -18,7 +18,7 @@ class Account extends React.Component {
     const avatar = currentUser.imageUrl || window.avatar_default; 
 
     const header = (
-      <section>
+      <section className='account-header-container'>
         <div className="details-container">
           <img src={avatar} alt="Profile picture avatar"/>
           <ul role="list">
@@ -27,23 +27,25 @@ class Account extends React.Component {
             <Link to="/account/about/edit">Edit Profile</Link>
           </ul>
         </div>
+        
       </section>
     )
 
     const nav = (
-      <ul role="list">
-        <li><Link to="/account/cards">Cards</Link></li>
-        <li><Link to="/account/collections">Collections</Link></li>
-        <li><Link to="/account/likes">Liked Cards</Link></li>
-        <li><Link to="/account/profile">About</Link></li>
-      </ul>
+      <nav className="account-nav">
+        <ul role="list" className="account-nav-list">
+          <li><NavLink to="/account/cards">Cards</NavLink></li>
+          <li><NavLink to="/account/collections">Collections</NavLink></li>
+          <li><NavLink to="/account/likes">Liked Cards</NavLink></li>
+          <li><NavLink to="/account/profile">About</NavLink></li>
+        </ul>
+      </nav>
     )
 
     return (
-      <>
+      <div className="account">
         { header }
         { nav }
-        <hr/>
         <Switch>
           {/* this will include cards, collections, liked shots, and about, depending upon the url */}
           
@@ -55,7 +57,7 @@ class Account extends React.Component {
           <Route path="/account/about/edit" component={UserEditFormContainer}/> 
           <Route path="/account/profile" component={UserAboutContainer}/> 
         </Switch>
-      </>
+      </div>
     )
   }
 }

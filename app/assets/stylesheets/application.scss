@@ -13,16 +13,19 @@
  *= require_self
  */
 
+//  Should I only import the core files (reset, colors, fonts, global) and components and @use or @extend within components the other files
+
  // Base
  @import 'base/reset.scss'; 
  @import 'base/layout.scss'; 
  @import 'base/colors.scss'; 
- @import 'base/fonts'; 
  @import 'base/library'; 
- @import 'base/accessibility';  
- @import 'base/pictures';  
+ @import 'base/fonts'; 
  @import 'base/global';  
+ @import 'base/pictures';  
+ @import 'base/accessibility';  
  
  // Components
  @import 'components/auth_form.scss'; 
  @import 'components/header.scss'; 
+ @import 'components/account'; 

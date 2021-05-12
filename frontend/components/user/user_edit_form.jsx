@@ -17,12 +17,13 @@ class UserEditForm extends React.Component {
 
   handleInput(type) {
     return (e) => {
-      this.setState({ [type]: e.currentTarget.value });
+      console.log(this.props.currentUser);
+      this.setState({ [type]: `${e.currentTarget.value}` });
     }
   }
 
   render() {
-    const {currentUser} = this.props; 
+    const {currentUser} = this.state; 
 
     return (
       // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT

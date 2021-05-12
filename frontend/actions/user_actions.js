@@ -14,9 +14,9 @@ const receiveUser = (user) => ({
   user
 }); 
 
-const receiveUserErrors = (error) => ({
+const receiveUserErrors = (errors) => ({
   type: RECEIVE_USER_ERRORS, 
-  error
+  errors
 }); 
 
 export const fetchUsers = () => dispatch => (

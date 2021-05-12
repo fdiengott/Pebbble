@@ -9,7 +9,7 @@ import SessionForm from './session_form';
 import { signup } from '../../actions/session_actions'; 
 
 const mapStateToProps = (state) => ({
-  errors: state.errors.session, 
+  errors: state.errors, 
   formType: "Sign up",
   otherSession: <p>Already a member? <Link to="/login">Sign In</Link></p>,
   email: true, // if this is true, render on the form 

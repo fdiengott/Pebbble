@@ -10,15 +10,14 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util'; 
 import LoginFormContainer from './session_form/login_form_container'; 
 import SignupFormContainer from './session_form/signup_form_container'; 
-import Header from '../components/header/header'; 
+import HeaderContainer from '../components/header/header_container'; 
 import AccountContainer from './user/account_container'; 
 
 const App = () => (
   <>
-    <Switch>
-      {/* CardFormComponent */}
-      <Route path="/" component={Header}/>
-    </Switch>
+    {/* Header should be protected. Inside header, have 2 renders. If path is for card upload change content and style */}
+    {/* <ProtectedRoute path="/" component={Header}/>  */}
+    <Route path="/" component={HeaderContainer}/> 
     <Switch>
       {/* <ProtectedRoute path="/account/about/edit" component={} /> */}
       <ProtectedRoute path="/account" component={AccountContainer}/>
