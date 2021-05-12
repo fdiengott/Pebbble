@@ -1,8 +1,20 @@
+$item-height: 10px;
+$line-height: 24px; 
+
 .logo {
   display: inline-block; 
   font-family: $logo-font;
   font-weight: 700;
-  font-size: 18px;
+  font-size: $line-height;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    color: $gray;
+  }
 }
 
 header {
@@ -13,8 +25,61 @@ header {
     padding: 1.4rem .7rem; 
   }
 
+  ul {
+    margin: 0;
+  }
   
 }
 .user-nav {
-  margin: 0; 
+  display: flex;
+
+  & > * {
+    margin: 0 8px;
+  }
+
+  .pink-button {
+    padding: $item-height 18px;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+
+  .avatar {
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  li:first-child {
+    position: relative; 
+  }
+  
+  li:first-child:hover .user-dropdown {
+    opacity: 1;
+  }
+  
+  .user-dropdown {
+    position: absolute; 
+    z-index: 1;
+    opacity: 0;
+    padding: 15px 0; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: white;
+    width: 200px;
+    top: 48px;
+    right: 0;
+    transform: translateX(50%);
+    
+    & a {
+      display: block;
+      text-decoration: none;
+      color: $gray;
+      padding: 0 15px; 
+      transition: color 250ms;
+    }
+
+    li:hover, a:hover {
+      background-color: $lighter-gray;
+      color: #000;
+    }
+  }
 }
+

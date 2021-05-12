@@ -7,12 +7,12 @@ const Header = ({ url }) => {
   // debugger
   const logo = (
     <figure className="header-logo logo">
-      <Link to="/">Pebbble</Link>
+      <Link to="/">pebbble</Link>
     </figure>
   )
 
   const renderedHeader = (url !== '/cards/new') ? (
-    <header>
+    <header className="standard-header">
       <ul role="list">
         <li>{ logo }</li>
         <li>Github Link</li>

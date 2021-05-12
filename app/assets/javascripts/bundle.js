@@ -407,8 +407,10 @@ var Header = function Header(_ref) {
     className: "header-logo logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/"
-  }, "Pebbble"));
-  var renderedHeader = url !== '/cards/new' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+  }, "pebbble"));
+  var renderedHeader = url !== '/cards/new' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+    className: "standard-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     role: "list"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, logo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Github Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "LinkedIn")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_user_nav_container__WEBPACK_IMPORTED_MODULE_1__.default, null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: "header-new-card"
@@ -1207,7 +1209,7 @@ var UserNav = function UserNav(props) {
   var logout = props.logout,
       loggedIn = props.loggedIn,
       currentUser = props.currentUser;
-  var avatar = currentUser ? currentUser.imageUrl : window.avatar_default;
+  var avatar = currentUser ? currentUser.imageUrl || window.avatar_default : window.avatar_default;
   return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     role: "list",
     className: "user-nav"

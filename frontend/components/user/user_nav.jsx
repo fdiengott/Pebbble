@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 const UserNav = (props) => {
   const { logout, loggedIn, currentUser } = props; 
 
-  const avatar = ( currentUser ? currentUser.imageUrl : window.avatar_default ); 
+  const avatar = currentUser ? 
+    currentUser.imageUrl || window.avatar_default : 
+    window.avatar_default
   
   return loggedIn ? (
     <>
