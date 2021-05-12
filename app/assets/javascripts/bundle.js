@@ -401,16 +401,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Header = function Header(_ref) {
-  var loggedIn = _ref.loggedIn,
-      url = _ref.url;
-  var links = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("figure", {
+  var url = _ref.url;
+  // debugger
+  var logo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("figure", {
     className: "header-logo logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/"
-  }, "Pebbble"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Github Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "LinkedIn")); // to add card create
+  }, "Pebbble"));
+  var renderedHeader = url !== '/cards/new' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    role: "list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, logo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Github Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "LinkedIn")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_user_nav_container__WEBPACK_IMPORTED_MODULE_1__.default, null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+    className: "header-new-card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    role: "list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, logo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Publish your Card")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    onClick: function onClick() {
+      return window.history.back();
+    }
+  }, "X")))); // to add card create
 
   var pathsNotToRender = ["/login", "/signup"];
-  return pathsNotToRender.includes(url) ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, links, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_user_nav_container__WEBPACK_IMPORTED_MODULE_1__.default, null));
+  return pathsNotToRender.includes(url) ? null : renderedHeader;
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
@@ -435,8 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    url: ownProps.location.pathname,
-    loggedIn: Boolean(state.session.id)
+    url: ownProps.location.pathname
   };
 };
 
