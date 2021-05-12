@@ -9,6 +9,12 @@
     display: flex;
     flex-direction: row;
 
+    img {
+      border-radius: 50%;
+      max-width: 80px;
+      height: auto;
+    }
+
     ul {
       display: flex;
       flex-direction: column;

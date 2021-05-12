@@ -15,7 +15,7 @@ class Account extends React.Component {
     // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
 
     const { currentUser } = this.props; 
-    const avatar = currentUser.imageUrl || window.avatar_default; 
+    const avatar = currentUser.profilePicture || window.avatar_default; 
 
     const header = (
       <section className='account-header-container'>

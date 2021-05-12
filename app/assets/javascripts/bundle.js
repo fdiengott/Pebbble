@@ -842,7 +842,7 @@ var Account = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
       var currentUser = this.props.currentUser;
-      var avatar = currentUser.imageUrl || window.avatar_default;
+      var avatar = currentUser.profilePicture || window.avatar_default;
       var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
         className: "account-header-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
