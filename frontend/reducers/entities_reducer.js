@@ -5,7 +5,7 @@ import cards from './cards_reducer';
 
 const entitiesReducer = combineReducers({
   users,
-  // cards, 
+  cards, 
 }); 
 
 export default entitiesReducer; 

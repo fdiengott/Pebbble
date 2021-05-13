@@ -6,6 +6,10 @@ import {
   RECEIVE_USER_ERRORS,
   RECEIVE_USER,
 } from '../actions/user_actions'; 
+import { 
+  RECEIVE_CARD_ERRORS,
+  RECEIVE_CARD,
+} from '../actions/card_actions'; 
 
 const errorsReducer = (state = [], action) => {
   Object.freeze(state); 
@@ -17,12 +21,16 @@ const errorsReducer = (state = [], action) => {
       return action.errors; 
     case RECEIVE_USER_ERRORS:
       return action.errors; 
+    case RECEIVE_CARD_ERRORS:
+      return action.errors; 
       
       
     // Reset errors
     case RECEIVE_CURRENT_USER: 
       return _nullErrors; 
     case RECEIVE_USER: 
+      return _nullErrors; 
+    case RECEIVE_CARD: 
       return _nullErrors; 
   
     default:
