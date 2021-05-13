@@ -11066,6 +11066,8 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.currentUser;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
+    _this.deleteFile = _this.deleteFile.bind(_assertThisInitialized(_this));
+    _this.openUploadInput = _this.openUploadInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -11112,10 +11114,26 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "deleteFile",
+    value: function deleteFile() {
+      this.setState({
+        photoFile: ""
+      });
+    }
+  }, {
+    key: "openUploadInput",
+    value: function openUploadInput() {
+      this.setState({
+        upload: !this.state.upload
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var currentUser = this.state;
-      var success = this.state.success;
+      var _this$state = this.state,
+          success = _this$state.success,
+          upload = _this$state.upload;
       var errors = this.props.errors;
       var alert;
       var errorMessages;
@@ -11138,66 +11156,66 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
         }));
       }
 
-      return (
-        /*#__PURE__*/
-        // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
-          className: "main-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "alert-banner"
-        }, alert), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "edit-profile-form-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-          className: "edit-profile-form",
-          onSubmit: this.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "delete-avatar-form"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_avatar__WEBPACK_IMPORTED_MODULE_1__.default, {
-          currentUser: currentUser
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-          className: "pink-button"
-        }, "Upload new picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-          className: "gray-button"
-        }, "Delete")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "new-avatar-form"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "file",
-          name: "avatar-file",
-          id: "avatar-file",
-          onChange: this.handleFile
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          htmlFor: "name"
-        }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "text",
-          id: "name",
-          value: currentUser.name,
-          onChange: this.handleInput("name")
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          htmlFor: "location"
-        }, "Location", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "text",
-          id: "location",
-          value: currentUser.location || "",
-          onChange: this.handleInput("location")
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          htmlFor: "bio"
-        }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-          id: "bio",
-          cols: "30",
-          rows: "10",
-          value: currentUser.bio || "",
-          onChange: this.handleInput("bio")
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-          htmlFor: "websiteUrl"
-        }, "Personal Website", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "text",
-          id: "websiteUrl",
-          value: currentUser.websiteUrl || "",
-          onChange: this.handleInput("websiteUrl")
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          className: "pink-button"
-        }, "Save Profile"))))
-      );
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+        className: "main-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "alert-banner"
+      }, alert), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "edit-profile-form-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "edit-profile-form",
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "delete-avatar-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_avatar__WEBPACK_IMPORTED_MODULE_1__.default, {
+        currentUser: currentUser
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        className: "pink-button",
+        onClick: this.openUploadInput
+      }, "Upload new picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+        className: "gray-button",
+        onClick: this.deleteFile
+      }, "Delete")), upload ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "new-avatar-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "file",
+        name: "avatar-file",
+        id: "avatar-file",
+        onChange: this.handleFile
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "pink-button upload-btn"
+      }, "Upload Now")) : false, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        htmlFor: "name"
+      }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        id: "name",
+        value: currentUser.name,
+        onChange: this.handleInput("name")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        htmlFor: "location"
+      }, "Location", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        id: "location",
+        value: currentUser.location || "",
+        onChange: this.handleInput("location")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        htmlFor: "bio"
+      }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+        id: "bio",
+        cols: "30",
+        rows: "10",
+        value: currentUser.bio || "",
+        onChange: this.handleInput("bio")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        htmlFor: "websiteUrl"
+      }, "Personal Website", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        id: "websiteUrl",
+        value: currentUser.websiteUrl || "",
+        onChange: this.handleInput("websiteUrl")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "pink-button"
+      }, "Save Profile"))));
     }
   }]);
 

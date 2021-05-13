@@ -9,6 +9,9 @@ class UserEditForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this); 
     this.handleFile = this.handleFile.bind(this); 
+    this.deleteFile = this.deleteFile.bind(this); 
+    this.openUploadInput = this.openUploadInput.bind(this); 
+    
   }
 
   handleSubmit(e) {
@@ -41,9 +44,18 @@ class UserEditForm extends React.Component {
     this.setState({photoFile: e.currentTarget.files[0]})
   }
 
+  deleteFile() {
+    this.setState({ photoFile: "" })
+  }
+
+  openUploadInput() {
+    this.setState({ upload: !this.state.upload })
+  }
+
+
   render() {
     const currentUser = this.state; 
-    const { success } = this.state; 
+    const { success, upload } = this.state; 
     const { errors } = this.props; 
 
     let alert; 
@@ -65,7 +77,6 @@ class UserEditForm extends React.Component {
 
 
     return (
-      // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
       <main className="main-container">
         <div className="alert-banner">
           { alert }
@@ -74,17 +85,18 @@ class UserEditForm extends React.Component {
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
               <Avatar currentUser={currentUser}/>
-              <a className="pink-button">Upload new picture</a>
-              <a className="gray-button">Delete</a>
+              <a className="pink-button" onClick={this.openUploadInput}>Upload new picture</a>
+              <a className="gray-button" onClick={this.deleteFile}>Delete</a>
             </div>
-            <div className="new-avatar-form">
-              <input 
-                type="file" 
-                name="avatar-file" 
-                id="avatar-file"
-                onChange={this.handleFile}
-              />
-            </div>
+            { upload ? 
+              <div className="new-avatar-form">
+                <input 
+                  type="file" 
+                  name="avatar-file" 
+                  id="avatar-file"
+                  onChange={this.handleFile}/>
+                <button className="pink-button upload-btn">Upload Now</button>
+              </div> : false }
             <label htmlFor="name">Name
               <input type="text" id="name" value={currentUser.name} onChange={this.handleInput("name")}/>
             </label>

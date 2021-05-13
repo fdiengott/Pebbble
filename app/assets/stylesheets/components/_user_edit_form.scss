@@ -51,6 +51,15 @@
     }
   }
 
+  .new-avatar-form {
+    input {
+      background-color: white;
+    }
+    .upload-btn {
+      margin: 15px 0 10px 0;
+    }
+  }
+
   .image-cropper {
     @include image-cropper(100px); 
     margin-right: 20px;

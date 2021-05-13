@@ -11,3 +11,8 @@
 * {
   font-family: $sans-serif;
 }
+
+*::selection {
+  background-color: $bright-pink;
+  color: white;
+}
