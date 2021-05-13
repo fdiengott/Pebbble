@@ -21,6 +21,7 @@ class Api::UsersController < ApplicationController
   
   def update
     @user = selected_user
+
     if @user && @user.update(user_params)
       render '/api/users/show'
     elsif !@user
@@ -51,7 +52,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :name, :location, :email, :bio, :website_url, :password)
+    params.require(:user).permit(:username, :name, :location, :email, :bio, :website_url, :password, :profile_picture)
   end
 
   def selected_user

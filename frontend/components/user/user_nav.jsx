@@ -1,21 +1,16 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
+import Avatar from './avatar';
 
 const UserNav = (props) => {
   const { logout, loggedIn, currentUser } = props; 
-
-  const avatar = currentUser ? 
-    currentUser.profilePicture || window.avatar_default : 
-    window.avatar_default
   
   return loggedIn ? (
     <>
       <ul role="list" className="user-nav">
         <li>
           <Link to="/account/cards">
-            <div className="image-cropper">
-              <img src={avatar} alt="profile avatar" className="avatar"/>
-            </div>
+            <Avatar currentUser={currentUser} />
           </Link>
           <ul role="list" className="user-dropdown">
             <li><Link to="/account/cards">Profile</Link></li>

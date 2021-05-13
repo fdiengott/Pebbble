@@ -13,13 +13,17 @@ export const fetchUser = (userId) => (
   })
 ); 
 
-export const updateUser = (user) => (
+export const updateUser = ({id, formData}) => {
+  
+  return (
   $.ajax({
     method: "PATCH",
-    url: `/api/users/${user.id}`,
-    data: { user }
+    url: `/api/users/${id}`,
+    data: formData,
+    contentType: false, 
+    processData: false, 
   })
-); 
+)}; 
 
 
 // is this right? 

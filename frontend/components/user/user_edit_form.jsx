@@ -1,23 +1,44 @@
 import React from 'react'; 
 
+import Avatar from './avatar'; 
+
 class UserEditForm extends React.Component {
   constructor(props) {
     super(props); 
     this.state = this.props.currentUser; 
 
     this.handleSubmit = this.handleSubmit.bind(this); 
+    this.handleFile = this.handleFile.bind(this); 
   }
 
   handleSubmit(e) {
     e.preventDefault(); 
 
-    this.props.updateUser(this.state).then(() => this.setState({ success: true })); 
+    const formData = new FormData(); 
+    
+    formData.append('user[name]', this.state.name)
+    formData.append('user[location]', this.state.location)
+    formData.append('user[bio]', this.state.bio)
+    formData.append('user[website_url]', this.state.websiteUrl)
+    if (this.state.photoFile) {
+      formData.append('user[profile_picture]', this.state.photoFile)
+    }
+
+    const formattedUser = {id: this.state.id, formData}; 
+
+    this.props.updateUser(formattedUser).then(
+      () => this.setState({ success: true })
+    ); 
   }
 
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: `${e.currentTarget.value}` });
     }
+  }
+
+  handleFile(e) {
+    this.setState({photoFile: e.currentTarget.files[0]})
   }
 
   render() {
@@ -38,27 +59,31 @@ class UserEditForm extends React.Component {
           There was a problem updating your profile. 
         </div>
         errorMessages = <ul role="list" className="form-errors">{ 
-          errors.map(err => <li>{err}</li> ) 
+          errors.map((err, i) => <li key={i}>{err}</li> ) 
         }</ul>; 
     }
 
-    const avatar = currentUser.profilePicture || window.avatar_default; 
 
     return (
       // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
       <main className="main-container">
-        { alert }
+        <div className="alert-banner">
+          { alert }
+        </div>
         <div className="edit-profile-form-container">
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
-              <div className="image-cropper">
-                <img src={avatar} alt="Profile picture avatar"/>
-              </div>
+              <Avatar currentUser={currentUser}/>
               <a className="pink-button">Upload new picture</a>
               <a className="gray-button">Delete</a>
             </div>
             <div className="new-avatar-form">
-
+              <input 
+                type="file" 
+                name="avatar-file" 
+                id="avatar-file"
+                onChange={this.handleFile}
+              />
             </div>
             <label htmlFor="name">Name
               <input type="text" id="name" value={currentUser.name} onChange={this.handleInput("name")}/>
