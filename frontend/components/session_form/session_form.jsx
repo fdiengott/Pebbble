@@ -85,7 +85,7 @@ class SessionForm extends React.Component {
 
     return (
       <div className="auth-form-container">
-        <aside className={className+"-aside"}>
+        <aside className={className+"-aside aside"}>
           <Link to="/" className="logo">pebbble<span className="accessibility-text">Back to home page</span></Link>
           <h2>Discover the world’s top Designers & Creatives.</h2>
           <div className={className+"-artwork artwork"}></div>

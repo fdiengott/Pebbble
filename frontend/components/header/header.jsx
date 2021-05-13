@@ -1,6 +1,9 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
+
 import UserNavContainer from './../user/user_nav_container';
 
 const Header = ({ url, loggedIn }) => {
@@ -32,8 +35,16 @@ const Header = ({ url, loggedIn }) => {
       <header className="standard-header">
         <ul role="list">
           <li>{ logo }</li>
-          <li>Github Link</li>
-          <li>LinkedIn</li>
+          <li>
+            <a className="icon" target="_blank" href="https://github.com/fdiengott/" >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </li>
+          <li>
+            <a className="icon" target="_blank" href="https://www.linkedin.com/in/freddiengott/">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </li>
         </ul>
         <UserNavContainer />
       </header>

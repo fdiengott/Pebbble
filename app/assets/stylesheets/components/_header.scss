@@ -22,9 +22,9 @@ header {
   justify-content: space-between;
   margin: 0 15px;
 
-  & > * {
-    padding: 18px 12px; 
-  }
+  // & > * {
+  //   padding: 18px 12px; 
+  // }
 
   ul {
     margin: 0;
@@ -33,23 +33,25 @@ header {
 }
 .user-nav {
   display: flex;
+  align-items: center;
 
   & > * {
     margin: 0 8px;
   }
 
   .pink-button {
-    padding: 5px 16px;
-    margin: 0 10px;
+    // padding: 5px 16px;
+    // margin: 0 10px;
     text-decoration: none;
     width: inherit;
     height: inherit;
   }
 
-  li:first-child {
+  > li:first-child {
     position: relative; 
+    padding: 18px 10px; 
   }
-  
+
   li:first-child:hover .user-dropdown {
     opacity: 1;
     z-index: 1;
@@ -63,7 +65,7 @@ header {
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     background-color: white;
     width: 250px;
-    top: 50px;
+    top: 65px;
     right: 0;
     transform: translateX(50%);
 
@@ -98,18 +100,15 @@ header {
 
 .standard-header {
   border-bottom: 1px solid $lightest-gray;
+  height: 77px;
+  margin: 0 20px;
 
-  & > ul:first-child {
-    display: flex;
-    
-    & > li {
-      margin: 0 14px 0 12px;
-    }
-  }
-
-  & > ul > li {
+  > ul:first-child {
     display: flex;
     align-items: center;
+    width: 300px;
+    padding-left: 20px;
+    justify-content: space-between;
   }
 }
 
@@ -195,3 +194,4 @@ header {
     }
   }
 }
+
