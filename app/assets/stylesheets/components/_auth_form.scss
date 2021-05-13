@@ -26,9 +26,14 @@
       width: 66%;
     }
 
-    .logo {
+    .logo, .logo:visited {
       @include logo; 
+      color: $hover-pink;
+      font-weight: 800;
     }
+    // .logo:hover {
+    //   // color: $faded-pink; 
+    // }
 
     h2 {
       margin: 30px 0;

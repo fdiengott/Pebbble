@@ -144,3 +144,54 @@ header {
   }
 
 }
+
+.signup-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #faf9fe;
+  padding: 0 80px;
+  // height: 400px;
+
+  main {
+    width: 60%;
+    margin-right: 26px;
+
+    h1 {
+      font-weight: 700;
+      font-size: $h1-size;
+      line-height: 1.5;
+    }
+
+    a {
+      padding: 15px 18px;
+    }
+    
+    & * {
+      margin: 20px 0;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+  }
+  
+  aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 40%;
+    text-align: right;
+    margin: 15px 0;
+
+    img {
+      height: 100%;
+    }
+
+    span {
+      color: $faded-pink; 
+      font-size: 14px;
+    }
+  }
+}

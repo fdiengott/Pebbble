@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import UserNavContainer from './../user/user_nav_container';
 
-const Header = ({ url }) => {
+const Header = ({ url, loggedIn }) => {
   // debugger
   const logo = (
     <figure className="header-logo logo">
@@ -11,15 +11,34 @@ const Header = ({ url }) => {
     </figure>
   )
 
+  const signupBanner = !loggedIn ? (
+    <section className="signup-banner">
+      <main>
+        <h1>Dicover the world's top designers & creatives</h1>
+        <p>Pebbble is the leading destination to find & showcase creative work and home to the world's best design professionals</p>
+        <Link to="/signup" className="pink-button">Sign up</Link>
+      </main>
+      <aside>
+        <img src={window.splash_img} alt="Pebbble is the leading destination to find & showcase creative work and home to the world's best design professionals"/>
+        <span>Art by Romain Briaux</span>
+      </aside>
+    </section>
+  ) : (
+    null
+  ); 
+
   const renderedHeader = (url !== '/cards/new') ? (
-    <header className="standard-header">
-      <ul role="list">
-        <li>{ logo }</li>
-        <li>Github Link</li>
-        <li>LinkedIn</li>
-      </ul>
-      <UserNavContainer />
-    </header>
+    <>
+      <header className="standard-header">
+        <ul role="list">
+          <li>{ logo }</li>
+          <li>Github Link</li>
+          <li>LinkedIn</li>
+        </ul>
+        <UserNavContainer />
+      </header>
+      { signupBanner }
+    </>
   ) : (
     <header className="header-new-card">
       <ul role="list">
