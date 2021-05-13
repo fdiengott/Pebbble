@@ -11342,14 +11342,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var errorsReducer = function errorsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    errors: []
-  };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var _nullErrors = {
-    errors: []
-  };
+  var _nullErrors = [];
 
   switch (action.type) {
     // Set errors

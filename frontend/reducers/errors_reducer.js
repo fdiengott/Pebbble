@@ -7,10 +7,10 @@ import {
   RECEIVE_USER,
 } from '../actions/user_actions'; 
 
-const errorsReducer = (state = { errors: [] }, action) => {
+const errorsReducer = (state = [], action) => {
   Object.freeze(state); 
-  const _nullErrors = { errors: [] }; 
-
+  const _nullErrors = []; 
+  
   switch (action.type) {
     // Set errors
     case RECEIVE_SESSION_ERRORS:
