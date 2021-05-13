@@ -1,3 +1,4 @@
+@use "../base/library"; 
 $item-height: 10px;
 $line-height: 24px; 
 
@@ -61,16 +62,23 @@ header {
     padding: 15px 0; 
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     background-color: white;
-    width: 200px;
-    top: 48px;
+    width: 250px;
+    top: 50px;
     right: 0;
     transform: translateX(50%);
+
+    hr {
+      width: calc(100% - 50px);
+
+      border: 0; 
+      border-bottom: 1px solid $lighter-gray;
+    }
     
     & a {
       display: block;
       text-decoration: none;
       color: $gray;
-      padding: 0 15px; 
+      padding: 10px 25px; 
       transition: color 250ms;
     }
 
@@ -117,12 +125,22 @@ header {
   justify-content: center;
   align-items: center;
 
-  // .login-btn {
-    
-  // }
+  .login-btn {
+    @include color-button(white, $gray); 
+  }
   
-  // .signup-btn {
-
-  // }
+  .signup-btn {
+    @extend .pink-button; 
+  }
+  
+  .login-btn, .signup-btn {
+    text-decoration: none; 
+    padding: 10px; 
+    margin-left: 10px; 
+  }
+  
+  .login-btn:hover {
+    background-color: #f6f6f6; 
+  }
 
 }
