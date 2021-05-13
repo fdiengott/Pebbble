@@ -3,16 +3,63 @@
 .user-about-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
 
   .user-about {
     width: $width-percentage;
     display: grid;
     grid-template-columns: 2fr 1fr;
-  }
+    grid-template-rows: 3fr 2fr;
 
+    main {
+      margin-right: 8%;
+
+      border-bottom: 1px solid $lighter-gray;
+    }
+
+    .pink-link {
+      text-decoration: none;
+      color: $bright-pink;
+      font-weight: 600;
+      transition: color 250ms;
+    }
+
+    .pink-link:hover {
+      color: $hover-pink;
+    }
+
+    span {
+      margin-right: 24px;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+
+      i {
+        text-align: center;
+        width: 20px;
+        margin-right: 14px;
+      }
+    }
+
+    .gray-bg {
+      background-color: #f4f4f4;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    section, div {
+      margin-top: 20px;
+    }
+
+  }
 }
 
-
+.bio-section > * {
+  margin-bottom: 10px;
+}
 
 
 // TESTING

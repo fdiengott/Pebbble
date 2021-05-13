@@ -8,7 +8,7 @@
 - having a username/email input
 
 
-
+- add to account form, on hover pink links if the user has info already
 
 
 
