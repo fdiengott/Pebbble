@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :edit] 
 
     resources :cards, except: [:new, :edit]
-    get '/users/:user_id/cards', to: 'users_cards#index'
+    get '/users/:creator_id/cards', to: 'user_cards#index'
 
 
   end
