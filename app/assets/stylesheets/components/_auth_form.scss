@@ -162,12 +162,12 @@
           flex-direction: column;
         }
         label {
-          width: 90%; 
+          width: 100%; 
         }
 
         // make this only on the first child
-        input {
-          width: 95%; 
+        label:nth-child(2) {
+          margin-left: 10px;
         }
         
       }
