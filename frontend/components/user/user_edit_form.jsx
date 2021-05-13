@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'; 
 
 import Avatar from './avatar'; 
 
@@ -84,7 +85,9 @@ class UserEditForm extends React.Component {
         <div className="edit-profile-form-container">
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
-              <Avatar currentUser={currentUser}/>
+              <Link to="/account">
+                <Avatar currentUser={currentUser}/>
+              </Link>
               <a className="pink-button" onClick={this.openUploadInput}>Upload new picture</a>
               <a className="gray-button" onClick={this.deleteFile}>Delete</a>
             </div>
