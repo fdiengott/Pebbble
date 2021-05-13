@@ -3,11 +3,11 @@ $line-height: 24px;
 
 .logo {
   display: inline-block; 
-  font-family: $logo-font;
-  font-weight: 800;
-  font-size: $line-height;
-
+  
   a {
+    font-family: $logo-font;
+    font-weight: 800;
+    font-size: $line-height;
     text-decoration: none;
     color: black;
   }

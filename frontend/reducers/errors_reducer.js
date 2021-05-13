@@ -14,9 +14,9 @@ const errorsReducer = (state = { errors: [] }, action) => {
   switch (action.type) {
     // Set errors
     case RECEIVE_SESSION_ERRORS:
-      return { errors: action.errors }
+      return action.errors; 
     case RECEIVE_USER_ERRORS:
-      return { errors: action.errors }
+      return action.errors; 
       
       
     // Reset errors

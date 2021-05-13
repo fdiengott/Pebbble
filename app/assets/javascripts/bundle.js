@@ -10226,7 +10226,7 @@ var updateUser = function updateUser(user) {
     return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user).then(function (newUser) {
       return dispatch(receiveUser(newUser));
     }, function (err) {
-      return dispatch(receiveUserErrors(err));
+      return dispatch(receiveUserErrors(err.responseJSON));
     });
   };
 }; // TESTING
@@ -10544,7 +10544,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
       if (errors.length) {
         errorsList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-          className: "session-form-errors"
+          className: "form-errors"
         }, errors.map(function (err, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
             key: i
@@ -10743,9 +10743,19 @@ var Account = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
-      var currentUser = this.props.currentUser;
-      var avatar = currentUser.profilePicture || window.avatar_default;
-      var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+      var _this$props = this.props,
+          currentUser = _this$props.currentUser,
+          user = _this$props.user;
+      var avatar;
+
+      if (currentUser) {
+        avatar = currentUser.profilePicture || window.avatar_default;
+      } else {
+        avatar = user.profilePicture || window.avatar_default;
+      } // if there's a current user, personal account header, otherwise, user show page
+
+
+      var header = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
         className: "account-header-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "details-container"
@@ -10759,7 +10769,18 @@ var Account = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, currentUser.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         className: "edit-profile-btn",
         to: "/account/about/edit"
-      }, "Edit Profile"))));
+      }, "Edit Profile")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+        className: "user-show-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "details-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "image-cropper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: avatar,
+        alt: "Profile picture avatar"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        role: "list"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, currentUser.name))));
       var nav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "account-nav-borderline"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
@@ -11017,30 +11038,74 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
   _createClass(UserEditForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      this.props.updateUser(this.state);
+      this.props.updateUser(this.state).then(function () {
+        return _this2.setState({
+          success: true
+        });
+      });
     }
   }, {
     key: "handleInput",
     value: function handleInput(type) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        console.log(_this2.props.currentUser);
-
-        _this2.setState(_defineProperty({}, type, "".concat(e.currentTarget.value)));
+        _this3.setState(_defineProperty({}, type, "".concat(e.currentTarget.value)));
       };
     }
   }, {
     key: "render",
     value: function render() {
-      var currentUser = this.state.currentUser;
+      var currentUser = this.state;
+      var success = this.state.success;
+      var errors = this.props.errors;
+      var alert;
+      var errorMessages;
+
+      if (success) {
+        alert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "success-message"
+        }, "Profile updated successfully");
+      } else if (errors && errors.length) {
+        alert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "error-message"
+        }, "There was a problem updating your profile.");
+        errorMessages = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+          role: "list",
+          className: "form-errors"
+        }, errors.map(function (err) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, err);
+        }));
+      }
+
+      var avatar = currentUser.profilePicture || window.avatar_default;
       return (
         /*#__PURE__*/
         // NEED TO ADD HEADER, UPLOAD NEW PICTURE BUTTON AND COMPONENT. DELETE PICTURE COMPONENT
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+          className: "main-container"
+        }, alert, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "edit-profile-form-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+          className: "edit-profile-form",
           onSubmit: this.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "delete-avatar-form"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "image-cropper"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: avatar,
+          alt: "Profile picture avatar"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+          className: "pink-button"
+        }, "Upload new picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+          className: "gray-button"
+        }, "Delete")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "new-avatar-form"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "name"
         }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "text",
@@ -11056,13 +11121,13 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
           onChange: this.handleInput("location")
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "bio"
-        }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+        }, "Bio", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
           id: "bio",
           cols: "30",
           rows: "10",
           value: currentUser.bio || "",
           onChange: this.handleInput("bio")
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "ONLINE PRESENCE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           htmlFor: "websiteUrl"
         }, "Personal Website", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
           type: "text",
@@ -11071,7 +11136,7 @@ var UserEditForm = /*#__PURE__*/function (_React$Component) {
           onChange: this.handleInput("websiteUrl")
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           className: "pink-button"
-        }, "Save Profile"))
+        }, "Save Profile"))))
       );
     }
   }]);
@@ -11104,7 +11169,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    errors: state.errors
   };
 };
 
@@ -11288,14 +11354,10 @@ var errorsReducer = function errorsReducer() {
   switch (action.type) {
     // Set errors
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
-      return {
-        errors: action.errors
-      };
+      return action.errors;
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER_ERRORS:
-      return {
-        errors: action.errors
-      };
+      return action.errors;
     // Reset errors
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:

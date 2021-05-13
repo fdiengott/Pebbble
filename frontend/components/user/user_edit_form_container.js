@@ -3,7 +3,8 @@ import { updateUser } from '../../actions/user_actions';					//actions
 import UserEditForm from './user_edit_form';						//display component
 
 const mapStateToProps = (state) => ({
-  currentUser: state.entities.users[state.session.id]
+  currentUser: state.entities.users[state.session.id],
+  errors: state.errors,
 }); 
 
 const mapDispatchToProps = (dispatch) => ({

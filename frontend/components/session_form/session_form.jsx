@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
     let errorsList = null; 
     if (errors.length) {
       errorsList = (
-        <ul className="session-form-errors">
+        <ul className="form-errors">
           {errors.map((err, i) => ( <li key={i}>{err}</li> ))}
         </ul>
       )

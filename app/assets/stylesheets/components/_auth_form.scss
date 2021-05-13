@@ -89,7 +89,7 @@
         flex-direction: column;
         
         .session-form-errors {
-          @include session-errors; 
+          @include form-errors; 
         }
 
         h2 {

@@ -14,12 +14,7 @@
     align-items: center;
 
     .image-cropper {
-      $image-diameter: 130px; 
-
-      height: $image-diameter;
-      width: $image-diameter;
-      overflow: hidden;
-      border-radius: 50%;
+      @include image-cropper(130px); 
     }
 
     ul {
@@ -52,6 +47,10 @@
     }
     .edit-profile-btn:hover {
       border: 1px solid $gray;
+    }
+    .edit-profile-btn:active {
+      background-color: $lighter-gray;
+      border: 1px solid $lighter-gray 
     }
   }
 

@@ -1,6 +1,7 @@
 // things like border radius or specific box shadow 
 
 @mixin logo {
+  font-family: $logo-font;
   font-size: $logo-font-size; 
   text-decoration: none;
   &:visited {
@@ -14,16 +15,70 @@
   border: none;
   color: $txt-clr;
   border-radius: 8px; 
-  width: 250px; 
-  height: 40px;
+  width: inherit; 
+  height: inherit;
   
   font-size: 16px;
   cursor: pointer;
 
-  padding: 0;   
+  padding: 5px 0;   
 }
 
-@mixin session-errors {
+@mixin form-errors {
   color: red; 
   padding-left: 5px;
+}
+
+@mixin form-styling($width) {
+  display: flex; 
+  flex-direction: column;
+  
+  .form-errors {
+    @include form-errors; 
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: black;
+    font-weight: 700;
+  }
+  
+  & > label {
+    margin: $form-spacing;
+    width: $width;
+    font-weight: 700;
+  }
+  
+  input, textarea {
+  margin-top: 10px;
+  background-color: #eee;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  height: 40px;
+  width: 100%; 
+  padding-left: 10px;
+  transition: ease all 0.3s; 
+  outline: 1px transparent; 
+  font-weight: 400;
+  }
+  
+  input:focus, textarea:focus {
+    box-shadow: $pink-input-outline;
+    border: 2px solid $pink;
+    outline: 1px transparent;
+    background-color: white;
+  }
+  
+  input:hover, textarea:hover {
+    box-shadow: $pink-input-outline;
+    background-color: white;
+    outline: 1px solid #eee;
+  }
+}
+
+@mixin image-cropper($image-diameter) {
+  height: $image-diameter;
+  width: $image-diameter;
+  overflow: hidden;
+  border-radius: 50%;
 }

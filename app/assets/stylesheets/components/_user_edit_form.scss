@@ -1,0 +1,57 @@
+@use "../base/library"; 
+
+
+.edit-profile-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-profile-form {
+  @include form-styling(600px); 
+  
+  
+  textarea {
+    height: 110px;
+  }
+
+  h3 {
+    margin-top: 30px;
+    padding-bottom: 8px;
+
+    font-size: 16px;
+    color: #444444;
+
+    border-bottom: 1px solid $lighter-gray;
+  }
+
+  .pink-button {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    width: 150px;
+  }
+
+  .delete-avatar-form {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 10px; 
+      padding: 10px;
+      width: inherit;
+      height: inherit; 
+    }
+
+    .gray-button {
+      @include color-button($lightest-gray, black); 
+      padding: 10px; 
+    }
+    .gray-button:hover {
+      background-color: $lighter-gray; 
+    }
+  }
+
+  .image-cropper {
+    @include image-cropper(100px); 
+    margin-right: 20px;
+  }
+}

@@ -14,10 +14,16 @@ class Account extends React.Component {
   render() {
     // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
 
-    const { currentUser } = this.props; 
-    const avatar = currentUser.profilePicture || window.avatar_default; 
+    const { currentUser, user } = this.props; 
+    let avatar; 
+    if (currentUser) {
+      avatar = currentUser.profilePicture || window.avatar_default; 
+    } else {
+      avatar = user.profilePicture || window.avatar_default; 
+    }
     
-    const header = (
+    // if there's a current user, personal account header, otherwise, user show page
+    const header = currentUser ? (
       <section className='account-header-container'>
         <div className="details-container">
           <div className="image-cropper">
@@ -29,7 +35,19 @@ class Account extends React.Component {
             <Link className="edit-profile-btn" to="/account/about/edit">Edit Profile</Link>
           </ul>
         </div>
-        
+      </section>
+    ) : (
+      <section className='user-show-container'>
+        <div className="details-container">
+          <div className="image-cropper">
+            <img src={avatar} alt="Profile picture avatar"/>
+          </div>
+          <ul role="list">
+            <h1>{currentUser.name}</h1>
+            {/* <button>Follow</button> */}
+            {/* <button className="pink-button">Hire Me</button> */}
+          </ul>
+        </div>
       </section>
     )
 
