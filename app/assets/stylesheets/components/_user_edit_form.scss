@@ -9,7 +9,6 @@
 .edit-profile-form {
   @include form-styling(600px); 
   
-  
   textarea {
     height: 110px;
   }
@@ -33,6 +32,8 @@
   .delete-avatar-form {
     display: flex;
     align-items: center;
+
+    margin: 50px 0 30px 0;
 
     a {
       margin: 0 10px; 

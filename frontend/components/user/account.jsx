@@ -4,7 +4,7 @@ import { Switch, Route, Link, NavLink } from 'react-router-dom';
 
 // Component Imports
 import UserAboutContainer from './user_about_container';
-import UserEditFormContainer from './user_edit_form_container';
+
 
 class Account extends React.Component {
   constructor(props) {
@@ -81,7 +81,6 @@ class Account extends React.Component {
           {/* <Route path="/account/likes" component={CardsIndexContainer}/>  */}
 
           {/* <Route path="/account/collections" component={CollectionsIndexContainer}/>  */}
-          <Route path="/account/about/edit" component={UserEditFormContainer}/> 
           <Route path="/account/profile" component={UserAboutContainer}/> 
         </Switch>
         {/* FOR TESTING */}
