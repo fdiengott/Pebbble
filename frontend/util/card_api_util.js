@@ -18,7 +18,7 @@ export const fetchCard = cardId => (
     method: "GET", 
     url: `api/cards/${cardId}`
   })
-  ); 
+); 
   
 export const createCard = ({ formData }) => (
   $.ajax({
@@ -27,8 +27,7 @@ export const createCard = ({ formData }) => (
     data: formData, 
     contentType: false, 
     processData: false
-  })
-    
+  })  
 );
 
 export const updateCard = ({cardId, formData}) => (

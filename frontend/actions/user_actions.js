@@ -4,6 +4,7 @@ export const RECEIVE_USERS = "RECEIVE_USERS";
 export const RECEIVE_USER = "RECEIVE_USER"; 
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS"; 
 
+// ACTIONS
 const receiveUsers = (users) => ({
   type: RECEIVE_USERS, 
   users
@@ -19,6 +20,7 @@ const receiveUserErrors = (errors) => ({
   errors
 }); 
 
+// THUNK ACTION CREATORS
 export const fetchUsers = () => dispatch => (
   UserAPIUtil.fetchUsers().then(
     users => dispatch(receiveUsers(users))
@@ -27,7 +29,7 @@ export const fetchUsers = () => dispatch => (
 export const fetchUser = (userId) => dispatch => (
   UserAPIUtil.fetchUser(userId).then(
     user => dispatch(receiveUser(user)),
-    err => dispatch(receiveUserErrors(err)) // handle errors? 
+    err => dispatch(receiveUserErrors(err.responseJSON))
   )
 ); 
 
