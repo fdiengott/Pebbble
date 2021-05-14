@@ -26,6 +26,7 @@ const App = () => (
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
+      {/* <Route path="/users/:userId" component={} /> */}
       <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
       <Route path="/:category" component={CardIndexContainer}/> 
 

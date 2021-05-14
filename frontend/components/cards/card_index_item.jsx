@@ -24,7 +24,7 @@ const CardIndexItem = ({ card }) => {
           <img src={card.img} alt={card.title}/>
         </div>
       </Link>
-      <CardIndexItemFooter card={card} /* user={user} */ />
+      <CardIndexItemFooter card={card} user={user} />
     </li>
   )
 }

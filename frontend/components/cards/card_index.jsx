@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'; 
 
 import CardIndexItemContainer from './card_index_item_container'; 
+import CardIndexItem from './card_index_item'; 
 import { selectCardsByCategory, selectUserByCard } from '../../reducers/selectors';
 
 
@@ -11,11 +12,14 @@ class CardIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCards(); 
+    this.props.fetchCardsAndUsers(); 
   }
 
   render() {
-    const { cards } = props;  
+    // cards is an array, users is an object
+    const { cards, users } = props;  
+
+    // will refactor to make this its own table
     const categories = [ "typography", "illustration", "animation", "web design" ]; 
 
     const categoryLinks = categories.map( (lnk, i) => (
@@ -23,8 +27,6 @@ class CardIndex extends React.Component {
         <NavLink to={`/${lnk}`}>{lnk}</NavLink>
       </li>
     )); 
-      
-    // HOW DO I CONNECT THE USER? 
 
     return (
       <main>
@@ -34,7 +36,7 @@ class CardIndex extends React.Component {
           </ul>
         </nav>
         <ul>
-          { cards.map(card => <CardIndexItemContainer key={card.id} card={card} /* user={} */ />) }
+          { cards.map(card => <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />) }
         </ul>
       </main>
     )
