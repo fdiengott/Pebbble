@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { NavLink } from 'react-router-dom'; 
 
-import CardIndexItem from './card_index_item'; 
-import { selectCardsByCategory, userByCard } from '../../reducers/selectors';
+import CardIndexItemContainer from './card_index_item_container'; 
+import { selectCardsByCategory, selectUserByCard } from '../../reducers/selectors';
 
 
 class CardIndex extends React.Component {
@@ -25,7 +25,6 @@ class CardIndex extends React.Component {
     )); 
       
     // HOW DO I CONNECT THE USER? 
-    // const user = userByCard(state)
 
     return (
       <main>
@@ -35,7 +34,8 @@ class CardIndex extends React.Component {
           </ul>
         </nav>
         <ul>
-          { cards.map(card => <CardIndexItem key={card.id} card={card} /* user={} */ />) }
+          { cards.map(card => <CardIndexItemContainer key={card.id} card={card} /* user={} */ />) }
+                                                {/* HOW DO I ACCESS THIS ^^ in the container? */}
         </ul>
       </main>
     )

@@ -10,7 +10,7 @@ const UserNav = (props) => {
       <ul role="list" className="user-nav">
         <li>
           <Link to="/account/cards">
-            <Avatar currentUser={currentUser} />
+            <Avatar user={currentUser} />
           </Link>
           <ul role="list" className="user-dropdown">
             <li><Link to="/account/cards">Profile</Link></li>

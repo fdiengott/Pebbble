@@ -2,11 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-
+// COMPONENTS
+import CardIndexItemFooter from './card_index_item_footer'; 
 
 const CardIndexItem = ({ card }) => {
-
-
   return (
     <li>
       <Link to={`/cards/${card.id}`}>
@@ -25,13 +24,7 @@ const CardIndexItem = ({ card }) => {
           <img src={card.img} alt={card.title}/>
         </div>
       </Link>
-      <aside>
-        {/* <Avatar currentUser={user}/> */}
-        <div>
-          <span className={card.liked ? "icon-pink" : "icon-gray"} /* onClick={} */
-          >{<FontAwesomeIcon icon={faHeart}/>}</span><span>{card.likes}</span>
-        </div>
-      </aside>
+      <CardIndexItemFooter card={card} /* user={user} */ />
     </li>
   )
 }

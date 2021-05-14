@@ -6,7 +6,7 @@ import CardIndex from './card_index';						//display component
 import { cardsArray, selectCardsByCategory } from '../../reducers/selectors'; 
 
 const mapStateToProps = (state, ownProps) => ({
-  cards: cardsArray(state.entities.cards), 
+  cards: allCardsArray(state), 
   cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
 }); 
 

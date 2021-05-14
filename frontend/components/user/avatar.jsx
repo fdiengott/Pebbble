@@ -1,9 +1,9 @@
 import React from 'react'; 
 
-const Avatar = ({currentUser}) => {
+const Avatar = ({user}) => {
 
-  const avatar = currentUser ? 
-    currentUser.profilePicture || window.avatar_default : 
+  const avatar = user ? 
+    user.profilePicture || window.avatar_default : 
     window.avatar_default
 
   return (
