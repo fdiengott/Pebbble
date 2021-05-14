@@ -22,7 +22,12 @@
 
     ul {
       @include flex(space-between, center); 
+      min-width: 500px;
       width: 60%;
+      overflow-x: visible;
+      li {
+        margin: 0 10px; 
+      }
     }
   }
 
