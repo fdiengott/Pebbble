@@ -1,0 +1,1 @@
+json.profile_picture user.profile_picture.attached? ? url_for(user.profile_picture) : nil

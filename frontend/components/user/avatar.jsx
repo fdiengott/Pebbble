@@ -11,6 +11,6 @@ const Avatar = ({user}) => {
       <img src={avatar} alt="profile avatar" className="avatar"/>
     </div>
   )
-}
+}; 
 
 export default Avatar; 

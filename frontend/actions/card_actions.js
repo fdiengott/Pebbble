@@ -29,7 +29,11 @@ const receiveCardErrors = (errors) => ({
 // THUNK ACTION CREATORS
 export const fetchCards = () => dispatch => (
   CardAPIUtil.fetchCards().then(
-    cards => dispatch(receiveCards(cards)), 
+    (res) => {
+      // return one of these
+      dispatch(receiveCards(res.cards))
+      dispatch(receiverUsers(res.users))
+    }, 
     err => dispatch(receiveCardErrors(err))
   )
 ); 

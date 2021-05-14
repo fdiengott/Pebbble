@@ -35,7 +35,6 @@ class CardIndex extends React.Component {
         </nav>
         <ul>
           { cards.map(card => <CardIndexItemContainer key={card.id} card={card} /* user={} */ />) }
-                                                {/* HOW DO I ACCESS THIS ^^ in the container? */}
         </ul>
       </main>
     )

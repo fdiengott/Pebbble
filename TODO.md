@@ -12,6 +12,7 @@
 
 
 
+- categories table
 
 
 

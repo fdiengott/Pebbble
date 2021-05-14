@@ -86,7 +86,7 @@ class UserEditForm extends React.Component {
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
               <Link to="/account">
-                <Avatar currentUser={currentUser}/>
+                <Avatar user={currentUser}/>
               </Link>
               <a className="pink-button" onClick={this.openUploadInput}>Upload new picture</a>
               <a className="gray-button" onClick={this.deleteFile}>Delete</a>
