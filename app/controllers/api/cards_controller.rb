@@ -1,6 +1,6 @@
 class Api::CardsController < ApplicationController
   def index
-    @cards = Card.includes(:creator)
+    @cards = Card.includes(:creator, profile_picture: :blob)
     render '/api/cards/index'
   end
 

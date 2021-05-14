@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_one_attached :profile_picture
+  has_one_attached :profile_picture, dependent: :destroy
   has_many :cards, 
     foreign_key: :creator_id, 
     class_name: :Card,
