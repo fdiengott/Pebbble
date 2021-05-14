@@ -13,6 +13,7 @@ class CardIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchCardsAndUsers(); 
+    this.props.history.push('/all');
   }
 
   render() {
@@ -30,7 +31,7 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
-    return (
+    return (  
       <main className="card-index-container">
         <nav>
           <ul role="list">
@@ -38,7 +39,9 @@ class CardIndex extends React.Component {
           </ul>
         </nav>
         <ul className="card-index" role="list">
-          { cardsByCategory.map(card => <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />) }
+          { cardsByCategory.map(card => (
+            <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
+          ))}
         </ul>
       </main>
     )

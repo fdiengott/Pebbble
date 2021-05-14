@@ -12,14 +12,20 @@ class CardDetails extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCard(this.props.card.id)
+    this.props.fetchCard(this.props.match.params.cardId).then( card => (
+        this.props.fetchUser(card.card.creatorId)
+      )
+    ); 
   }
 
   render() {
     const { user, card } = this.props; 
+    
+    if (!user || !card) return null; 
+
 
     const avatarLink = (
-      <Link to={`/users/${user.id}`}> 
+      <Link to={`/users/${card.creatorId}`}> 
         <Avatar user={user}/>
       </Link>
     ); 
@@ -33,7 +39,7 @@ class CardDetails extends React.Component {
             <div className="card-header-text">
               <h2>{card.title}</h2>
               <div className="inline-card-header-text">
-                <span>{user.name}</span>
+                <span>{name}</span>
                 <span><button>Follow</button></span>
                 <span><button>Hire Me</button></span>
               </div>
@@ -50,7 +56,7 @@ class CardDetails extends React.Component {
         <p>{card.description}</p>
         <footer>
           { avatarLink }
-          <h3>{user.name}</h3>
+          <h3>{name}</h3>
           <button className="pink-button"
             ><FontAwesomeIcon icon={faEnvelope} 
             />Hire Me

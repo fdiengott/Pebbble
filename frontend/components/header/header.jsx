@@ -10,7 +10,7 @@ const Header = ({ url, loggedIn }) => {
   // debugger
   const logo = (
     <figure className="header-logo logo">
-      <Link to="/">pebbble</Link>
+      <Link to="/all">pebbble</Link>
     </figure>
   )
 

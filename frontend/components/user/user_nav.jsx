@@ -20,7 +20,7 @@ const UserNav = (props) => {
             <li><Link to="/account/likes">Liked Cards</Link></li>
             <li><Link to="/account/collections">Collections</Link></li>
             <hr/>
-            <li><Link to="/" onClick={logout}>Sign Out</Link></li>
+            <li><Link to="/all" onClick={logout}>Sign Out</Link></li>
           </ul>
         </li>
         <li><Link to="cards/new" className="pink-button">Upload</Link></li>

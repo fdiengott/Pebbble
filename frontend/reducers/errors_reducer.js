@@ -32,6 +32,8 @@ const errorsReducer = (state = [], action) => {
       return _nullErrors; 
     case RECEIVE_CARD: 
       return _nullErrors; 
+    // case CLEAR_ERRORS: 
+    //   return _nullErrors; 
   
     default:
       return state; 

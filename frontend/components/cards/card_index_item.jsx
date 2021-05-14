@@ -12,17 +12,17 @@ const CardIndexItem = ({ card, user }) => {
     <li className="card-index-item">
       <Link to={`/cards/${card.id}`}>
         <div className="card-img">
-          <div className="card-hover-info">
-            <h4>{card.title}</h4>
-            <section>
-              <div className="card-button" /* onClick={} */ >
+          <section className="card-hover-info">
+            <h3>{card.title}</h3>
+            <aside className="card-buttons">
+              <div /* onClick={} */ >
                 <button>{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
               </div>
-              <div className="card-button" /* onClick={} */ >
+              <div /* onClick={} */ >
                 <button>{<FontAwesomeIcon icon={faHeart}/>}</button>
               </div>
-            </section>
-          </div>
+            </aside>
+          </section>
           <img src={card.img} alt={card.title}/>
         </div>
       </Link>
