@@ -4,8 +4,16 @@
 // Users:
 // numLikes, followers, numfollowing, followed
 
+export const userByCard = (state, card) => {
+  return state.entities.users[card.creatorId]; 
+}; 
+
 // Cards:
-// liked, saved
+// liked, saved, followedUsersCards
+export const cardsArray = (state) => {
+  return Object.values(state.entities.cards); 
+}; 
+
 export const selectCardsByCategory = (state, category) => {
   const { cards } = state.entities; 
 

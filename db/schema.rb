@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_183431) do
+ActiveRecord::Schema.define(version: 2021_05_14_031110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_183431) do
     t.string "title", null: false
     t.string "description"
     t.boolean "animated", default: false, null: false
-    t.string "style", null: false
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id", "title"], name: "index_cards_on_creator_id_and_title", unique: true

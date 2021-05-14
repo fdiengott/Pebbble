@@ -13,6 +13,7 @@ import SignupFormContainer from './session_form/signup_form_container';
 import HeaderContainer from '../components/header/header_container'; 
 import AccountContainer from './user/account_container';
 import UserEditFormContainer from './user/user_edit_form_container';
+import CardIndexContainer from './cards/card_index_container';
 
 const App = () => (
   <>
@@ -24,6 +25,7 @@ const App = () => (
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
+      <Route path="/:category" component={CardIndexContainer}/> 
     </Switch>
     {/* <Route path="/" component={FooterContainer}/>  */}
   </>
