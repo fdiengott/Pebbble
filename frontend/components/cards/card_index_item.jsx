@@ -1,13 +1,15 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'; 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 // COMPONENTS
 import CardIndexItemFooter from './card_index_item_footer'; 
 
-const CardIndexItem = ({ card }) => {
+const CardIndexItem = ({ card, user }) => {
   return (
-    <li>
+    <li className="card-index-item">
       <Link to={`/cards/${card.id}`}>
         <div className="card-img">
           <div className="card-hover-info">

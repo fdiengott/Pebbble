@@ -7,9 +7,10 @@ const mapStateToProps = (state, ownProps) => {
   const card = state.entities.cards[cardId]; 
   
   return {
-  card,
-  user: state.entities.users[card.id]
-}; }
+    card,
+    user: state.entities.users[cardId],
+  }; 
+}
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCard: (cardId) => dispatch(fetchCard(cardId)),

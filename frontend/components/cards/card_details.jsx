@@ -19,7 +19,7 @@ class CardDetails extends React.Component {
     const { user, card } = this.props; 
 
     const avatarLink = (
-      <Link to="#"> {/* this will be to the user show page*/}
+      <Link to={`/users/${user.id}`}> 
         <Avatar user={user}/>
       </Link>
     ); 
@@ -43,7 +43,7 @@ class CardDetails extends React.Component {
             <button>Save</button>
             <button><span>{
               <FontAwesomeIcon icon={faHeart} />
-            }</span> Like</button>
+            }</span>Like</button>
           </aside>
         </header>
         <img src={card.img} alt={card.title}/>
