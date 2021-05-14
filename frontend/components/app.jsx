@@ -28,7 +28,7 @@ const App = () => (
       <AuthRoute path="/signup" component={SignupFormContainer} />
       {/* <Route path="/users/:userId" component={} /> */}
       <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
-      <Route path="/" component={CardIndexContainer}/> 
+      {/* <Route path="/" component={CardIndexContainer}/>  */}
       <Route path="/:category" component={CardIndexContainer}/> 
 
     </Switch>

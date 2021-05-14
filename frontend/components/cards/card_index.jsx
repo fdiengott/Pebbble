@@ -17,10 +17,12 @@ class CardIndex extends React.Component {
 
   render() {
     // cards is an array, users is an object
-    const { cards, users } = this.props;  
+    const { cardsByCategory, users } = this.props;  
 
     // will refactor to make this its own table
-    const categories = [ "typography", "illustration", "animation", "web design" ]; 
+    const categories = ["typography", "illustration", "animation", "web design" ]; 
+
+    categories.unshift("all"); 
 
     const categoryLinks = categories.map( (lnk, i) => (
       <li key={i}>
@@ -29,14 +31,14 @@ class CardIndex extends React.Component {
     )); 
 
     return (
-      <main>
+      <main className="card-index-container">
         <nav>
-          <ul>
+          <ul role="list">
             { categoryLinks }
           </ul>
         </nav>
         <ul className="card-index" role="list">
-          { cards.map(card => <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />) }
+          { cardsByCategory.map(card => <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />) }
         </ul>
       </main>
     )

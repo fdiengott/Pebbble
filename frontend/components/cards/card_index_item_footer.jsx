@@ -7,7 +7,7 @@ import Avatar from '../user/avatar';
 
 const CardIndexItemFooter = ({ card, user }) => {
   return (
-    <aside>
+    <aside className="card-index-footer">
       <Link to={`/users/${user.id}`}>
         <Avatar user={user}/>
       </Link>

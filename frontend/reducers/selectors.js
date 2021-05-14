@@ -20,8 +20,10 @@ export const allCardsArray = (state) => {
 
 export const selectCardsByCategory = (state, category) => {
   const { cards } = state.entities; 
+
+  if (category === 'all') return toArray(cards); 
   
-  return toArray(cards).filter(card => card.style === category); 
+  return toArray(cards).filter(card => card.category === category); 
 }; 
 
 export const selectCardsByUserId = (state, userId) => {
