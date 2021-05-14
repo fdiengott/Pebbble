@@ -9,20 +9,22 @@ const CardIndexItem = ({ card }) => {
 
   return (
     <li>
-      <div className="card-img">
-        <div className="card-hover-info">
-          <h4>{card.title}</h4>
-          <section>
-            <div className="card-button" /* onClick={} */ >
-              <button>{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
-            </div>
-            <div className="card-button" /* onClick={} */ >
-              <button>{<FontAwesomeIcon icon={faHeart}/>}</button>
-            </div>
-          </section>
+      <Link to={`/cards/${card.id}`}>
+        <div className="card-img">
+          <div className="card-hover-info">
+            <h4>{card.title}</h4>
+            <section>
+              <div className="card-button" /* onClick={} */ >
+                <button>{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
+              </div>
+              <div className="card-button" /* onClick={} */ >
+                <button>{<FontAwesomeIcon icon={faHeart}/>}</button>
+              </div>
+            </section>
+          </div>
+          <img src={card.img} alt={card.title}/>
         </div>
-        <img src={card.img} alt={card.title}/>
-      </div>
+      </Link>
       <aside>
         {/* <Avatar currentUser={user}/> */}
         <div>

@@ -3,7 +3,7 @@ import { fetchCard } from '../../actions/card_actions';					//actions
 import CardDetails from './card_details';						//display component
 
 const mapStateToProps = (state, ownProps) => ({
-  card: 
+  card: state.entities.cards[ownProps.match.params.cardId]
 })
 
 const mapDispatchToProps = (dispatch) => ({

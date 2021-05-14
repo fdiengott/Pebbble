@@ -5,7 +5,6 @@ import CardIndexItem from './card_index_item';
 import { selectCardsByCategory, userByCard } from '../../reducers/selectors';
 
 
-
 class CardIndex extends React.Component {
   constructor(props) {
     super(props); 
@@ -36,7 +35,7 @@ class CardIndex extends React.Component {
           </ul>
         </nav>
         <ul>
-          { cards.map(card => <CardIndexItem key={card.id} card={card} user={} />) }
+          { cards.map(card => <CardIndexItem key={card.id} card={card} /* user={} */ />) }
         </ul>
       </main>
     )
