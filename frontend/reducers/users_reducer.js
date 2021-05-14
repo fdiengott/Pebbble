@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions'; 
+import { RECEIVE_CARDS_AND_USERS } from '../actions/card_actions'; 
 import {
   RECEIVE_USERS,
   RECEIVE_USER,
@@ -17,6 +18,9 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USERS: 
       // I'M UNSURE WHAT TO RETURN HERE
       return {...state, ...action.users}; 
+
+    case RECEIVE_CARDS_AND_USERS: 
+      return {...state, ...action.data.users}; 
 
     default:
       return state; 

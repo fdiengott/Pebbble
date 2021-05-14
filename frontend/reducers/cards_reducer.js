@@ -2,6 +2,7 @@ import {
   RECEIVE_CARDS,
   RECEIVE_CARD,
   REMOVE_CARD,
+  RECEIVE_CARDS_AND_USERS, 
 } from '../actions/card_actions'; 
 
 
@@ -19,6 +20,9 @@ const cardsReducer = (state = {}, action) => {
       let nextState = {...state}; 
       delete nextState[action.cardId]; 
       return nextState; 
+
+    case RECEIVE_CARDS_AND_USERS: 
+      return {...state, ...action.data.cards}; 
       
     default:
       return state;

@@ -4,6 +4,10 @@
 // Users:
 // numLikes, followers, numfollowing, followed
 
+export const selectAllUsers = (state) => {
+  return state.entities.users; 
+}
+
 export const selectUserByCard = (state, card) => {
   return state.entities.users[card.creatorId]; 
 }; 
