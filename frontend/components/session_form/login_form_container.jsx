@@ -12,8 +12,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors, 
   formType: "Sign In",
   login: true,
-  email: null, // if this is true, render on the form 
-  name: null, 
 })
 
 const mapDispatchToProps = (dispatch) => ({
