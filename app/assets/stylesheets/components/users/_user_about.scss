@@ -47,7 +47,7 @@
     .gray-bg {
       background-color: #f4f4f4;
       padding: 16px;
-      border-radius: 8px;
+      border-radius: $border-radius; 
     }
 
     section, div {

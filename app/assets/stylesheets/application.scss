@@ -26,9 +26,10 @@
  @import 'base/accessibility';  
  
  // Components
- @import 'components/auth_form.scss'; 
+ @import 'components/users/auth_form.scss'; 
  @import 'components/header.scss'; 
- @import 'components/account'; 
- @import 'components/user_about'; 
- @import 'components/user_edit_form'; 
- @import 'components/card_index'; 
+ @import 'components/users/account'; 
+ @import 'components/users/user_about'; 
+ @import 'components/users/user_edit_form'; 
+ @import 'components/cards/card_index'; 
+ @import 'components/cards/card_details'; 

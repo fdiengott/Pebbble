@@ -37,7 +37,7 @@
       width: 120px;
       text-align: center;
 
-      border-radius: 8px;
+      border-radius: $border-radius; 
       border: 1px solid $light-gray;
       
       color: black;

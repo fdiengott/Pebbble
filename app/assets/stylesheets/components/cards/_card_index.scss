@@ -12,22 +12,20 @@
     a {
       text-transform: capitalize;
       text-decoration: none;
+      padding: 10px; 
       color: $gray;
     }
     a.active {
       color: black;
       font-weight: bold;
       background-color: $lightest-gray;
+      border-radius: $border-radius; 
     }
 
     ul {
       @include flex(space-between, center); 
       min-width: 500px;
       width: 60%;
-      overflow-x: visible;
-      li {
-        margin: 0 10px; 
-      }
     }
   }
 
@@ -45,7 +43,7 @@
 
 .card-img {
   background-color: #bdbdff;
-  border-radius: 8px;
+  border-radius: $border-radius; 
   display: flex;
   flex-basis: 300px; 
   height: 150px;
@@ -84,7 +82,7 @@
     padding-left: 8px; 
   }
   button {
-    border-radius: 8px;
+    border-radius: $border-radius; 
 
     $side: 36px; 
     width: $side;
@@ -110,14 +108,14 @@
   @include flex(space-between);
   padding: 5px 3px;
 
-  // background-color: #f89d7c;
-
   h3 {
     font-size: 16px;
   }
-
-  > div:first-child {
+  
+  a {
     @include flex(flex-start); 
+    color: black; 
+    text-decoration: none;
     // width: 50%; 
   }
 
