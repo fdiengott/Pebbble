@@ -30,16 +30,21 @@ class CardDetails extends React.Component {
       </Link>
     ); 
 
+    
     return (
-
-      <main>
+      <main className="card-details">
+        <div className="back-banner" onClick={() => window.history.back()}>
+          <span>&times;</span>
+        </div>
         <header>
           <section>
-            { avatarLink }
+            <div className="image-cropper">
+              { avatarLink }
+            </div>
             <div className="card-header-text">
               <h2>{card.title}</h2>
               <div className="inline-card-header-text">
-                <span>{name}</span>
+                <span>{user.name}</span>
                 <span><button>Follow</button></span>
                 <span><button>Hire Me</button></span>
               </div>
@@ -56,7 +61,7 @@ class CardDetails extends React.Component {
         <p>{card.description}</p>
         <footer>
           { avatarLink }
-          <h3>{name}</h3>
+          <h3>{user.name}</h3>
           <button className="pink-button"
             ><FontAwesomeIcon icon={faEnvelope} 
             />Hire Me

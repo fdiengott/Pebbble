@@ -1,2 +1,43 @@
 
-// @include image-cropper(40px); 
+
+.card-details {
+  // @include flex($flex-direction: column); 
+  position: relative;
+  top: -80px;
+  background-color: white;
+  
+  .back-banner {
+    $banner-height: 50px; 
+    $X-height: 26px; 
+
+    // position: relative;
+    // top: -80px; 
+    @include flex(flex-end); 
+    padding-right: ($banner-height - $X-height) / 2 ; 
+    height: $banner-height; 
+    font-size: $X-height;
+
+    cursor: pointer; 
+    
+    background-color: rgba(0,0,0,0.8); 
+
+    span {
+      color: $lighter-gray; 
+      transition: color 250ms;
+    }
+
+    span:hover {
+      color: white; 
+    }
+  }
+  
+  .image-cropper {
+    @include image-cropper(40px); 
+  }
+}
+
+
+
+
+
+

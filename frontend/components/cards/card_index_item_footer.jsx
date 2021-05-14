@@ -9,12 +9,10 @@ const CardIndexItemFooter = ({ card, user }) => {
   
   return (
     <aside className="card-index-footer">
-      <div>
-        <Link to={`/users/${user.id}`}>
-          <Avatar user={user}/>
-        </Link>
+      <Link to={`/users/${user.id}`}>
+        <Avatar user={user}/>
         <h3>{user.name}</h3>
-      </div>
+      </Link>
       <div>
         <span className={card.liked ? "icon-pink" : "icon-gray"} /* onClick={} */
         >{<FontAwesomeIcon icon={faHeart}/>}</span><span>{card.likes}</span>
