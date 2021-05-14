@@ -31,16 +31,94 @@
 .card-index {
   @include flex(space-between, center); 
   flex-wrap: wrap;
+  gap: 20px 40px; 
 }
 
 .card-index-item {
-  background-color: #bdbdff;
   width: 300px;
 }
 
+.card-img {
+  background-color: #bdbdff;
+  border-radius: 8px;
+  display: flex;
+  flex-basis: 300px; 
+  height: 150px;
+  position: relative;
+}
+
+
+.card-hover-info {
+  opacity: 0; 
+  transition: opacity 250ms;
+  background: linear-gradient(180deg, 
+  rgba(0,0,0,0) 30%, 
+  rgba(0,0,0,0.4) 100%);
+  color: white;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+  z-index: 1; 
+  
+  @include flex(space-between, flex-end);
+  padding: 15px; 
+
+
+  &:hover {
+    opacity: 1; 
+  }
+}
+
+.card-buttons {
+  @include flex(space-between, center); 
+
+  & > div {
+    padding-left: 8px; 
+  }
+  button {
+    border-radius: 8px;
+
+    $side: 36px; 
+    width: $side;
+    width: $side;
+    border: none;
+    outline: none; 
+    cursor: pointer;
+
+    &:hover {
+      background-color: $lighter-gray; 
+    }
+    &:active {
+      background-color: $light-gray; 
+    }
+  }
+  
+}
+
+
+
+
 .card-index-footer {
+  @include flex(space-between);
+  padding: 5px 3px;
+
+  // background-color: #f89d7c;
+
+  h3 {
+    font-size: 16px;
+  }
+
+  > div:first-child {
+    @include flex(flex-start); 
+    // width: 50%; 
+  }
+
   .image-cropper {
     @include image-cropper(40px); 
+    margin-right: 10px;
   }
 }
 

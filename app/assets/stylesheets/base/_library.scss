@@ -22,6 +22,10 @@
   cursor: pointer;
 
   padding: 5px 0;   
+
+  &:hover {
+    background-color: darken($btn-clr, 20%);
+  }
 }
 
 @mixin form-errors {
@@ -83,7 +87,7 @@
   border-radius: 50%;
 }
 
-@mixin flex($justify-content: center, $align-items: flex-start, $flex-direction: row) {
+@mixin flex($justify-content: center, $align-items: center, $flex-direction: row) {
   display: flex; 
   justify-content: $justify-content;
   align-items: $align-items;
