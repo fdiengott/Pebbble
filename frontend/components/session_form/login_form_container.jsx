@@ -6,18 +6,19 @@ import { Link } from 'react-router-dom';
 // component imports
 import SessionForm from './session_form';
 // actions
-import { login } from '../../actions/session_actions'; 
+import { login, clearErrors } from '../../actions/session_actions'; 
 
 const mapStateToProps = (state) => ({
   errors: state.errors, 
   formType: "Sign In",
-  otherSession: <p>Not a member? <Link to="/signup">Sign Up</Link></p>,
+  login: true,
   email: null, // if this is true, render on the form 
   name: null, 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  processForm: user => dispatch(login(user))
+  processForm: user => dispatch(login(user)), 
+  clearErrors: () => dispatch(clearErrors()),
 })
 
 export default connect(

@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { formType, errors, otherSession, email, name } = this.props; 
+    const { formType, errors, email, name } = this.props; 
     const signin = (formType === "Sign In");
 
     const className = signin ? "login-form" : "signup-form"; 
@@ -82,6 +82,10 @@ class SessionForm extends React.Component {
         >Demo Login</button>
       )
     }
+
+    const otherSession = this.props.login ? 
+      <p>Not a member? <Link onClick={this.props.clearErrors} to="/signup">Sign Up</Link></p> :
+      <p>Already a member? <Link onClick={this.props.clearErrors} to="/login">Sign In</Link></p>; 
 
     return (
       <div className="auth-form-container">
