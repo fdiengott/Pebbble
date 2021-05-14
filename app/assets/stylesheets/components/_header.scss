@@ -91,10 +91,7 @@ header {
   }
 
   .image-cropper {
-    height: 40px;
-    width: 40px;
-    overflow: hidden;
-    border-radius: 50%;
+    @include image-cropper(40px); 
   }
 }
 
@@ -164,6 +161,7 @@ header {
     }
 
     a {
+      text-decoration: none;
       padding: 15px 18px;
     }
     
