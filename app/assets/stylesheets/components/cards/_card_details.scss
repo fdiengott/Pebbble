@@ -1,7 +1,7 @@
 
 
 .card-details {
-  // @include flex($flex-direction: column); 
+  
   position: relative;
   top: -80px;
   background-color: white;
@@ -30,10 +30,111 @@
       color: white; 
     }
   }
-  
+
   .image-cropper {
-    @include image-cropper(40px); 
+    @include image-cropper(60px); 
+    margin-right: 15px;
   }
+
+  .card-details-container {
+    @include flex($flex-direction: column); 
+    margin: 80px;
+    
+    header {
+      @include flex(space-between); 
+      width: 90%;
+      
+      section {
+        @include flex($flex-direction: row); 
+        
+      }
+      
+      .card-header-text {
+        @include flex(space-around, flex-start, column); 
+
+        h2 {
+          font-weight: 800;  
+        }
+      }
+
+      aside {
+        button {
+          @include color-button($lightest-gray); 
+          font-weight: 600;
+          padding: 8px 18px; 
+          margin-left: 15px;
+        }
+      }
+
+    }
+
+    .image-container {
+      overflow: hidden; border-radius: $border-radius;
+      margin-top: 40px;
+      margin-bottom: 60px;
+
+      // TESTING
+      width: 100%;
+      height: 783px * .75;  
+      background-color: #a1dbfc;
+
+      img {
+        width: 100%;
+        height: 100%;
+
+      }
+    }
+
+
+    footer {
+      @include flex(center, center, column); 
+      width: 100%;
+      margin: 20px 0; 
+      
+      p {
+        align-self: flex-start;
+        margin-bottom: 40px;
+      }
+      
+      .avatar-container {
+        $image-diameter: 80px; 
+        @include flex(center, center); 
+
+        hr {
+          position: absolute; 
+          width: 86vw;
+          z-index: 1;
+        }
+
+        a {
+          z-index: 2;
+          padding: 0 10px; 
+          background-color: white; 
+
+          .image-cropper {
+            margin: 20px 0; 
+            @include image-cropper($image-diameter); 
+            z-index: 2;
+          }
+        }
+      }
+
+      h3 {
+        margin-bottom: 15px;
+      }
+
+      button {
+        width: unset;
+        height: unset;
+
+        span {
+          margin-right: 10px;
+        }
+      }
+    }
+
+  }
+  
 }
 
 

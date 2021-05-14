@@ -9,7 +9,7 @@
   }
 }
 
-@mixin color-button($btn-clr, $txt-clr) {
+@mixin color-button($btn-clr, $txt-clr: black) {
   background-color: $btn-clr;
           
   border: none;
@@ -24,7 +24,7 @@
   padding: 5px 0;   
 
   &:hover {
-    background-color: darken($btn-clr, 20%);
+    background-color: darken($btn-clr, 10%);
   }
 }
 

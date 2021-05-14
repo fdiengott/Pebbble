@@ -36,37 +36,45 @@ class CardDetails extends React.Component {
         <div className="back-banner" onClick={() => window.history.back()}>
           <span>&times;</span>
         </div>
-        <header>
-          <section>
-            <div className="image-cropper">
+        <div className="card-details-container">
+          <header>
+            <section>
+              <div className="image-cropper">
+                { avatarLink }
+              </div>
+              <div className="card-header-text">
+                <h2>{card.title}</h2>
+                <div className="inline-card-header-text">
+                  <p>{user.name}<span>&#183;</span
+                  ><a className="follow-button">Follow</a><span>&#183;</span>
+                  <a className="email-button">Hire Me</a>
+                  </p>
+                </div>
+              </div>
+            </section>
+            <aside>
+              <button>Save</button>
+              <button><span>{
+                <FontAwesomeIcon icon={faHeart} />
+              }</span>Like</button>
+            </aside>
+          </header>
+          <div className="image-container">
+            <img src={card.img} alt={card.title}/>
+          </div>
+          <footer>
+            <p>{card.description}</p>
+            <div className='avatar-container'>
+              <hr/>
               { avatarLink }
             </div>
-            <div className="card-header-text">
-              <h2>{card.title}</h2>
-              <div className="inline-card-header-text">
-                <span>{user.name}</span>
-                <span><button>Follow</button></span>
-                <span><button>Hire Me</button></span>
-              </div>
-            </div>
-          </section>
-          <aside>
-            <button>Save</button>
-            <button><span>{
-              <FontAwesomeIcon icon={faHeart} />
-            }</span>Like</button>
-          </aside>
-        </header>
-        <img src={card.img} alt={card.title}/>
-        <p>{card.description}</p>
-        <footer>
-          { avatarLink }
-          <h3>{user.name}</h3>
-          <button className="pink-button"
-            ><FontAwesomeIcon icon={faEnvelope} 
-            />Hire Me
-          </button>
-        </footer>
+            <h3>{user.name}</h3>
+            <button className="pink-button"
+              ><span><FontAwesomeIcon icon={faEnvelope} 
+              /></span>Hire Me
+            </button>
+          </footer>
+        </div>
       </main>
     )
   }
