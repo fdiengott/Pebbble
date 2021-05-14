@@ -6,7 +6,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import UserNavContainer from './../user/user_nav_container';
 
-const Header = ({ url, loggedIn }) => {
+const Header = ({ url, loggedIn, homePage }) => {
   // debugger
   const logo = (
     <figure className="header-logo logo">
@@ -14,7 +14,7 @@ const Header = ({ url, loggedIn }) => {
     </figure>
   )
 
-  const signupBanner = !loggedIn ? (
+  const signupBanner = (!loggedIn && homePage) ? (
     <section className="signup-banner">
       <main>
         <h1>Dicover the world's top designers & creatives</h1>
