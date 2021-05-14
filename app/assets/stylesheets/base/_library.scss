@@ -82,3 +82,10 @@
   overflow: hidden;
   border-radius: 50%;
 }
+
+@mixin flex($justify-content: center, $align-items: flex-start, $flex-direction: row) {
+  display: flex; 
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+}

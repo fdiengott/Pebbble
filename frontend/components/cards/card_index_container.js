@@ -10,7 +10,7 @@ import {
 } from '../../reducers/selectors'; 
 
 const mapStateToProps = (state, ownProps) => ({
-  cards: allCardsArray(state), 
+  // cards: allCardsArray(state), 
   users: selectAllUsers(state), // all users, as an object,
   cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
 }); 
