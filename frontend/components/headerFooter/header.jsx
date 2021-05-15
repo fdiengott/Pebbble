@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
 
-import UserNavContainer from './../user/user_nav_container';
+import UserNavContainer from '../user/user_nav_container';
 
-const Header = ({ url, loggedIn, homePage }) => {
-  // debugger
+const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
+
+  if (pathsNotToRender.includes(url)) return null; 
+
   const logo = (
     <figure className="header-logo logo">
       <Link to="/all">pebbble</Link>
@@ -30,7 +32,7 @@ const Header = ({ url, loggedIn, homePage }) => {
     null
   ); 
 
-  const renderedHeader = (url !== '/cards/new') ? (
+  return (url !== '/cards/new') ? (
     <>
       <header className="standard-header">
         <ul role="list">
@@ -60,10 +62,6 @@ const Header = ({ url, loggedIn, homePage }) => {
     </header>
   )
 
-  // to add card create
-  const pathsNotToRender = ["/login", "/signup"]; 
-
-  return pathsNotToRender.includes(url) ? null : renderedHeader
 }; 
 
 export default Header; 

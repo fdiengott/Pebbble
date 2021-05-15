@@ -8,7 +8,7 @@
 
 
 
-- Todo: seed db, footer, user's page, upload card form
+- Todo: footer, user's page, upload card form
 
 - Collections require a selector for the first 4 cards url in them. 
 - To get card index items to animate, onHover=(toggle autoplay css attribute), onBlur={toggle attribute}

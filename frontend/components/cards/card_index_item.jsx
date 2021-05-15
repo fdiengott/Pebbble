@@ -57,7 +57,7 @@ class CardIndexItem extends React.Component {
           onMouseLeave={this.autoPlayOff}
         >
           { cardHover }
-          <video src={card.img} autoPlay={this.state.autoPlay} muted/>
+          <video src={card.img} /*autoPlay={this.state.autoPlay}*/ autoPlay loop muted/>
         </div>
       )
     } else {

@@ -10,7 +10,8 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util'; 
 import LoginFormContainer from './session_form/login_form_container'; 
 import SignupFormContainer from './session_form/signup_form_container'; 
-import HeaderContainer from '../components/header/header_container'; 
+import HeaderContainer from './headerFooter/header_container'; 
+import FooterContainer from './headerFooter/footer_container'; 
 import AccountContainer from './user/account_container';
 import UserEditFormContainer from './user/user_edit_form_container';
 import CardIndexContainer from './cards/card_index_container';
@@ -31,7 +32,7 @@ const App = () => (
       <Route path="/:category" component={CardIndexContainer}/> 
       <Route path="/" component={CardIndexContainer}/> 
     </Switch>
-    {/* <Route path="/" component={FooterContainer}/>  */}
+    <Route path="/" component={FooterContainer}/> 
   </>
 ); 
 
