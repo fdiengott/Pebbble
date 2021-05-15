@@ -39,6 +39,10 @@
 
 .card-index-item {
   width: 300px;
+
+  img {
+    border-radius: $border-radius;
+  }
 }
 
 .card-img {
@@ -48,6 +52,10 @@
   flex-basis: 300px; 
   height: 150px;
   position: relative;
+
+  img, video {
+    width: 100%;
+  }
 }
 
 
