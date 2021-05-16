@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom';
+import Errors from '../util/errors';
 
 const nullUser = {
   name: "",
@@ -41,47 +42,26 @@ class SessionForm extends React.Component {
 
     const className = signin ? "login-form" : "signup-form"; 
 
-    // if there are errors, display them, otherwise null
-    let errorsList = null; 
-    if (errors.length) {
-      errorsList = (
-        <ul className="form-errors">
-          {errors.map((err, i) => ( <li key={i}>{err}</li> ))}
-        </ul>
-      )
-    }
-
     // if it's a signup form, add the extra fields, otherwise no
-    let emailInput; 
-    if (email) {
-      emailInput = (
-        <>
-          <label htmlFor="email">Email
-            <input type="text" id="email" value={this.state.email} onChange={this.handleInput("email")}/>
-          </label>
-        </>
-      )
-    }
-    let nameInput; 
-    if (name) {
-      nameInput = (
-        <>
-          <label htmlFor="name">Name
-            <input type="text" id="name" value={this.state.name} onChange={this.handleInput("name")}/>
-          </label>
-        </>
-      )
-    }
+    let emailInput = email ? (
+      <label htmlFor="email">Email
+        <input type="text" id="email" value={this.state.email} onChange={this.handleInput("email")}/>
+      </label>
+    ) : null; 
 
-    let demoLogin; 
-    if (signin) {
-      demoLogin = (
-        <button 
-          onClick={this.handleDemoLogin} 
-          className="demo-login-button"
-        >Demo Login</button>
-      )
-    }
+    let nameInput = name ? (
+      <label htmlFor="name">Name
+        <input type="text" id="name" value={this.state.name} onChange={this.handleInput("name")}/>
+      </label>
+    ) : null; 
+
+    let demoLogin = (signin) ? (
+      <button 
+        onClick={this.handleDemoLogin} 
+        className="demo-login-button"
+      >Demo Login</button>
+    ) : null; 
+    
 
     const otherSession = this.props.login ? 
       <p>Not a member? <Link onClick={this.props.clearErrors} to="/signup">Sign Up</Link></p> :
@@ -99,7 +79,7 @@ class SessionForm extends React.Component {
           <nav>{otherSession}</nav>
           <div className="form-container">
             <form onSubmit={this.handleSubmit}>
-              { errorsList }
+              <Errors errors={errors}/>
               <h2>{formType} to Pebbble</h2>
               <div className="name-container">
                 { nameInput }
