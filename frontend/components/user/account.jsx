@@ -7,6 +7,7 @@ import UserAboutContainer from './user_about_container';
 import CurrentUserHeader from './current_user_header'; 
 import UserShowHeader from './user_show_header'; 
 import AccountNavBar from './account_nav_bar'; 
+import CardsIndexContainer from '../cards/card_index_item_container'; 
 
 
 class Account extends React.Component {

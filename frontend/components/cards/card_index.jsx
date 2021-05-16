@@ -12,8 +12,13 @@ class CardIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCardsAndUsers(); 
-    this.props.history.push('/all');
+    if (this.props.frontpage) {
+      this.props.fetchCardsAndUsers(); 
+      this.props.history.push('/all');
+    } else {
+      this.props.fetchUserCards(this.props.userId); 
+      this.props.history.push('/cards');
+    }
   }
 
   render() {

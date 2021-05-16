@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 
-const UserShowHeader = (props) => {
+const UserShowHeader = ({avatar, user}) => {
 
   return (
     <section className='user-show-container'>

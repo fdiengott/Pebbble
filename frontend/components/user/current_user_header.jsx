@@ -1,7 +1,8 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'; 
 
 
-const CurrentUserHeader = (props) => {
+const CurrentUserHeader = ({avatar, currentUser}) => {
 
   return (
     <section className='account-header-container'>
