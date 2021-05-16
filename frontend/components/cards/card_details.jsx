@@ -30,7 +30,13 @@ class CardDetails extends React.Component {
       </Link>
     ); 
 
-    
+    const image = card.animated ? (
+      <video src={card.img} autoPlay loop muted/>
+    ) : (
+      <img src={card.img} alt={card.title}/>
+    )
+
+
     return (
       <main className="card-details">
         <div className="back-banner" onClick={() => window.history.back()}>
@@ -60,7 +66,7 @@ class CardDetails extends React.Component {
             </aside>
           </header>
           <div className="image-container">
-            <img src={card.img} alt={card.title}/>
+            { image }
           </div>
           <footer>
             <p>{card.description}</p>

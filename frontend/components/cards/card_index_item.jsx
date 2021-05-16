@@ -20,7 +20,6 @@ class CardIndexItem extends React.Component {
   }
 
   autoPlayOn () {
-    // debugger
     this.setState({autoPlay: true})
   }
 
@@ -30,8 +29,6 @@ class CardIndexItem extends React.Component {
 
   render () {
     const { card, user } = this.props; 
-
-    debugger
 
     const cardHover = (
       <section className="card-hover-info">

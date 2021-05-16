@@ -1,0 +1,37 @@
+
+.main-footer {
+  padding: $landing-page-padding; 
+  padding-bottom: 10px;
+  font-size: 12px;
+  background-color: #ebebeb;
+
+  .footer-logo {
+    a {
+      color: $bright-pink; 
+      font-size: 32px;
+      font-weight: 900;
+      transition: color 250ms;
+
+      &:hover {
+        color: darken($bright-pink, 20%); 
+      }
+    }
+  }
+
+  section {
+    p {
+      max-width: 250px;
+    }
+  }
+
+  img {
+    max-width: 25px;
+  }
+
+  div {
+    border-top: 1px solid $lighter-gray;
+    @include flex(space-between); 
+    margin: 40px 0; 
+    padding: 20px 0; 
+  }
+}

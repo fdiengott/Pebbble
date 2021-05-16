@@ -7,13 +7,13 @@ const Footer = ({ url, homePage, pathsNotToRender }) => {
 
 
   const logo = (
-    <figure className="header-logo logo">
+    <figure className="footer-logo logo">
       <Link to="/all">pebbble</Link>
     </figure>
   )
 
   return (
-    <footer>
+    <footer className="main-footer">
       <section>
         { logo }
         <p>Dribbble is the world’s leading community for creatives to share, grow, and get hired.</p>
