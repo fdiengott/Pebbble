@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => ({
   loggedIn: Boolean(state.session.id),
   homePage: ["/", "/all"].includes(ownProps.location.pathname),
   pathsNotToRender: ["/login", "/signup"],
-})
+}); 
 
 export default connect(
   mapStateToProps,

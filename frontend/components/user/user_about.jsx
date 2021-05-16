@@ -12,11 +12,10 @@ class UserAbout extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.userShowPage) {
-      // this.props.fetchUser(this.props.user.id); 
-    } else {
+    // increase efficiency as 
+    if (!this.props.userShowPage) {
       this.props.fetchUser(this.props.currentUser.id); 
-    }
+    } 
   }
 
   render() {

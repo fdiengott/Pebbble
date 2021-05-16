@@ -11,10 +11,6 @@ import CardIndexContainer from '../cards/card_index_container';
 
 
 class Account extends React.Component {
-  constructor(props) {
-    super(props); 
-  }
-
   componentDidMount() {
     if (this.props.userShow) {
       this.props.fetchUser(this.props.userId); 
