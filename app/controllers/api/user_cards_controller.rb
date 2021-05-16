@@ -1,6 +1,6 @@
 class Api::UserCardsController < ApplicationController 
   def index
     @cards = Card.where(creator_id: params[:creator_id])
-    render 'api/cards/index'
+    render 'api/user_cards/index'
   end
 end

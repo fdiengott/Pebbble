@@ -1,9 +1,8 @@
 import React from 'react'; 
 import { NavLink } from 'react-router-dom'; 
 
-import CardIndexItemContainer from './card_index_item_container'; 
 import CardIndexItem from './card_index_item'; 
-import { selectCardsByCategory, selectUserByCard } from '../../reducers/selectors';
+// import { selectCardsByCategory, selectUserByCard } from '../../reducers/selectors';
 
 
 class CardIndex extends React.Component {
@@ -16,6 +15,7 @@ class CardIndex extends React.Component {
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
     } else {
+      // debugger
       this.props.fetchUserCards(this.props.userId); 
     }
   }
@@ -23,11 +23,10 @@ class CardIndex extends React.Component {
   render() {
     // cards is an array, users is an object
     const { 
-      selectCardsByCategory, 
+      cardsByCategory, 
       users, 
       cards, 
-      frontpage, 
-      user 
+      frontpage
     } = this.props;  
 
     // will refactor to make this its own table
@@ -42,7 +41,7 @@ class CardIndex extends React.Component {
     )); 
 
     const cardIndex = frontpage ? (
-      selectCardsByCategory.map(card => (
+      cardsByCategory.map(card => (
         <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
       ))
       ) : (
@@ -55,13 +54,11 @@ class CardIndex extends React.Component {
       <main className="card-index-container">
         <nav>
           <ul role="list">
-            { categoryLinks }
+            { frontpage ? categoryLinks : null }
           </ul>
         </nav>
         <ul className="card-index" role="list">
-          { selectCardsByCategory.map(card => (
-            <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
-          ))}
+          { cardIndex }
         </ul>
       </main>
     )

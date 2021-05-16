@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 const AccountNavBar = ({ user }) => {
 
-  debugger
   // if it's the current user make the url build off of /account/, otherwise the user's show page
   const urlRoot = user ? `users/${user.id}` : 'account'; 
 

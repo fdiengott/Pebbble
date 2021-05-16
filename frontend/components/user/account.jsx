@@ -7,7 +7,7 @@ import UserAboutContainer from './user_about_container';
 import CurrentUserHeader from './current_user_header'; 
 import UserShowHeader from './user_show_header'; 
 import AccountNavBar from './account_nav_bar'; 
-import CardsIndexContainer from '../cards/card_index_item_container'; 
+import CardIndexContainer from '../cards/card_index_container'; 
 
 
 class Account extends React.Component {
@@ -24,8 +24,6 @@ class Account extends React.Component {
   render() {
     const { currentUser, user, userShow } = this.props; 
     
-    debugger // check if there's a current user
-
     // if neither have loaded early return
     if (userShow && !user) return null; 
 
@@ -52,12 +50,12 @@ class Account extends React.Component {
         <Switch>
           {/* this will include cards, collections, liked shots, and about, depending upon the url */}
           
-          <Route path="/account/cards" component={CardsIndexContainer}/> 
+          <Route path="/account/cards" component={CardIndexContainer}/> 
           {/* <Route path="/account/likes" component={CardsIndexContainer}/>  */}
           {/* <Route path="/account/collections" component={CollectionsIndexContainer}/>  */}
 
           <Route path="/account/profile" component={UserAboutContainer}/> 
-          <Route path="/users/:userId/cards" component={CardsIndexContainer}/> 
+          <Route path="/users/:userId/cards" component={CardIndexContainer}/> 
           {/* <Route path="/users/:userId/likes" component={CardsIndexContainer}/>  */}
           {/* <Route path="/users/:userId/collections" component={CollectionsIndexContainer}/>  */}
           {/* <Route path="/users/:userId/profile" component={UserAboutContainer}/>  */}

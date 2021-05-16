@@ -28,7 +28,7 @@ export const selectCardsByCategory = (state, category) => {
 
 export const selectCardsByUserId = (state, userId) => {
   const cardsArr = toArray(state.entities.cards);
-  return cardsArr.filter( card => card.creatorId === userId );
+  return cardsArr.filter( card => card.creatorId === parseInt(userId));
 }; 
 
 // Collections:
