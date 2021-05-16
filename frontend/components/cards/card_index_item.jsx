@@ -71,9 +71,10 @@ class CardIndexItem extends React.Component {
       <li className="card-index-item">
         <Link to={`/cards/${card.id}`}>
           { cardElement }
-          {/* <img src={card.img} alt={card.title}/> */}
         </Link>
-        <CardIndexItemFooter card={card} user={user} />
+        { 
+          user ? <CardIndexItemFooter card={card} user={user} /> : null
+        }
       </li>
     )
   }

@@ -10,12 +10,12 @@ import {
 } from '../../reducers/selectors'; 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  // debugger
   return ({
   frontpage: ownProps.match.path === "/:category",
   cards: selectCardsByUserId(state, ownProps.match.params.userId), 
   users: selectAllUsers(state), // all users, as an object,
-  user: state.entites.users[ownProps.match.params.userId], 
+  user: state.entities.users[ownProps.match.params.userId], 
   cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
 })}; 
 

@@ -15,22 +15,32 @@ class Account extends React.Component {
     super(props); 
   }
 
-  render() {
-    // REFACTOR TO USE FOR ANY USER, NOT JUST CURRENT USER
+  componentDidMount() {
+    if (this.props.userShow) {
+      this.props.fetchUser(this.props.userId); 
+    }
+  }
 
-    const { currentUser, user } = this.props; 
+  render() {
+    const { currentUser, user, userShow } = this.props; 
+    
+    debugger // check if there's a current user
+
+    // if neither have loaded early return
+    if (userShow && !user) return null; 
+
     let avatar; 
-    if (currentUser) {
-      avatar = currentUser.profilePicture || window.avatar_default; 
-    } else {
+    if (userShow) {
       avatar = user.profilePicture || window.avatar_default; 
+    } else {
+      avatar = currentUser.profilePicture || window.avatar_default; 
     }
     
     // if there's a current user, personal account header, otherwise, user show page
-    const header = currentUser ? (
-      <CurrentUserHeader avatar={avatar} currentUser={currentUser}/>
-    ) : (
+    const header = userShow ? (
       <UserShowHeader avatar={avatar} user={user}/>
+    ) : (
+      <CurrentUserHeader avatar={avatar} currentUser={currentUser}/>
     )
 
     return (
@@ -38,17 +48,19 @@ class Account extends React.Component {
         { header }
 
         {/* will need to pass some arguments for num cards, num collections, num likes.  */}
-        <AccountNavBar />
+        <AccountNavBar user={user} />
         <Switch>
           {/* this will include cards, collections, liked shots, and about, depending upon the url */}
           
-          {/* how to make it so that these get the right props? One has a different container with a selector? */}
           <Route path="/account/cards" component={CardsIndexContainer}/> 
-
           {/* <Route path="/account/likes" component={CardsIndexContainer}/>  */}
           {/* <Route path="/account/collections" component={CollectionsIndexContainer}/>  */}
 
           <Route path="/account/profile" component={UserAboutContainer}/> 
+          <Route path="/users/:userId/cards" component={CardsIndexContainer}/> 
+          {/* <Route path="/users/:userId/likes" component={CardsIndexContainer}/>  */}
+          {/* <Route path="/users/:userId/collections" component={CollectionsIndexContainer}/>  */}
+          {/* <Route path="/users/:userId/profile" component={UserAboutContainer}/>  */}
         </Switch>
       </div>
     )

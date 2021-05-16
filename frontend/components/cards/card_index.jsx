@@ -17,13 +17,18 @@ class CardIndex extends React.Component {
       this.props.history.push('/all');
     } else {
       this.props.fetchUserCards(this.props.userId); 
-      this.props.history.push('/cards');
     }
   }
 
   render() {
     // cards is an array, users is an object
-    const { cardsByCategory, users } = this.props;  
+    const { 
+      selectCardsByCategory, 
+      users, 
+      cards, 
+      frontpage, 
+      user 
+    } = this.props;  
 
     // will refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 
@@ -36,6 +41,16 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
+    const cardIndex = frontpage ? (
+      selectCardsByCategory.map(card => (
+        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
+      ))
+      ) : (
+      cards.map(card => (
+        <CardIndexItem key={card.id} card={card}/>
+      ))
+    )
+
     return (  
       <main className="card-index-container">
         <nav>
@@ -44,7 +59,7 @@ class CardIndex extends React.Component {
           </ul>
         </nav>
         <ul className="card-index" role="list">
-          { cardsByCategory.map(card => (
+          { selectCardsByCategory.map(card => (
             <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
           ))}
         </ul>

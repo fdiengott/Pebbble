@@ -9,7 +9,7 @@ const CardIndexItemFooter = ({ card, user }) => {
   
   return (
     <aside className="card-index-footer">
-      <Link to={`/users/${user.id}`}>
+      <Link to={`/users/${user.id}/cards`}>
         <Avatar user={user}/>
         <h3>{user.name}</h3>
       </Link>
