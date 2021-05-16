@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';					//actions
-import UserNav from './user_nav';						//display component
+import CurrentUserDropdown from './current_user_dropdown';						//display component
 
 const mapStateToProps = (state) => ({
   loggedIn: Boolean(state.session.id),
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps, 
   mapDispatchToProps,
-)(UserNav);
+)(CurrentUserDropdown);

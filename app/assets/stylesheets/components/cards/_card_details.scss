@@ -1,20 +1,18 @@
 
 
 .card-details {
-  
+  @include flex($flex-direction: column); 
   position: relative;
   top: -80px;
   background-color: white;
   
   .back-banner {
+    width: 100vw;
     $banner-height: 50px; 
     $X-height: 26px; 
 
-    // position: relative;
-    // top: -80px; 
     @include flex(flex-end); 
-    padding-right: ($banner-height - $X-height) / 2 ; 
-    height: $banner-height; 
+    margin-right: ($banner-height - $X-height) / 2 ; 
     font-size: $X-height;
 
     cursor: pointer; 
@@ -24,6 +22,7 @@
     span {
       color: $lighter-gray; 
       transition: color 250ms;
+      margin-right: 30px;
     }
 
     span:hover {
@@ -38,11 +37,11 @@
 
   .card-details-container {
     @include flex($flex-direction: column); 
-    margin: 80px;
+    margin-top: 60px;
     
     header {
       @include flex(space-between); 
-      width: 90%;
+      width: 100%;
       
       section {
         @include flex($flex-direction: row); 
@@ -55,6 +54,64 @@
         h2 {
           font-weight: 800;  
         }
+
+        span {
+          margin: 0 8px;
+        }
+
+        .inline-card-header-text {
+          p {
+            @include flex(flex-start); 
+          }
+          div {
+            position: relative; 
+
+            .email-popup {
+              display: none;
+              position: absolute; 
+              background-color: black;
+              color: white; 
+              font-size: 14px;
+              padding: 10px 20px; 
+              bottom: 35px; 
+              text-align: center;
+              width: 200px;
+              line-height: 1.2;
+              left: 50%;
+              transform: translateX(-50%);
+              border-radius: $border-radius;
+            }
+
+            &:hover .email-popup {
+              display: block; 
+
+            }
+            .arrow-down {
+              width: 0;
+              height: 0;
+              border-top: 10px solid black;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              position: absolute;
+              bottom: -10px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        }
+
+        .follow-button {
+          cursor: pointer;
+          transition: color 150ms;
+
+          &:hover {
+            color: $bright-pink; 
+          }
+        }
+        .email-button {
+          cursor: pointer;
+          color: $bright-pink; 
+        }
       }
 
       aside {
@@ -64,6 +121,10 @@
           padding: 8px 18px; 
           margin-left: 15px;
         }
+
+        span {
+          margin-right: 8px;
+        }
       }
 
     }
@@ -72,16 +133,13 @@
       overflow: hidden; border-radius: $border-radius;
       margin-top: 40px;
       margin-bottom: 60px;
-
-      // TESTING
-      width: 100%;
-      height: 783px * .75;  
       background-color: #a1dbfc;
-
+      
+      
       img {
+        max-width: 80vh * 1.3333;
         width: 100%;
-        height: 100%;
-
+        height: auto; 
       }
     }
 

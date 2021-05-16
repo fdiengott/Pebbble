@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import Avatar from './avatar';
 
-const UserNav = (props) => {
+const CurrentUserDropdown = (props) => {
   const { logout, loggedIn, currentUser } = props; 
   
   return loggedIn ? (
@@ -35,4 +35,4 @@ const UserNav = (props) => {
   
 }; 
 
-export default UserNav; 
+export default CurrentUserDropdown; 

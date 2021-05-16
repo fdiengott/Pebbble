@@ -25,6 +25,7 @@ const App = () => (
     <Switch>
       <Route path="/account/about/edit" component={UserEditFormContainer}/> 
       <ProtectedRoute path="/account" component={AccountContainer}/>
+      <Route path="/users/:userId" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       {/* <Route path="/users/:userId" component={} /> */}

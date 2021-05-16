@@ -16,10 +16,10 @@ const Footer = ({ url, homePage, pathsNotToRender }) => {
     <footer className="main-footer">
       <section>
         { logo }
-        <p>Dribbble is the world’s leading community for creatives to share, grow, and get hired.</p>
+        <p>Pebbble is the world’s leading community for creatives to share, grow, and get hired.</p>
       </section>
       <div>
-        <p className="copywright-text">© 2021 Dribbble. All rights reserved.</p>
+        <p className="copywright-text">© 2021 Pebbble. All rights reserved.</p>
         <img src={window.pebbble_svg} alt="pebbble logo"/>
         {/* if i include a global count of cards posted */}
       </div>
