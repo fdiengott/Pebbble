@@ -48,15 +48,17 @@
 }
 
 .card-img {
-  background-color: #bdbdff;
-  border-radius: $border-radius; 
+  // TESTING
+  // background-color: #bdbdff;
+
   display: flex;
   
   width: 100%;
   height: auto; 
   position: relative;
-
+  
   img, video {
+    border-radius: $border-radius; 
     width: 100%;
   }
 }
