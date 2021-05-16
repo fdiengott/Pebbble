@@ -38,7 +38,9 @@
 }
 
 .card-index-item {
-  width: 300px;
+  // width: 300px;
+  flex: 280px; 
+  max-width: 350px;
 
   img {
     border-radius: $border-radius;
@@ -49,8 +51,9 @@
   background-color: #bdbdff;
   border-radius: $border-radius; 
   display: flex;
-  flex-basis: 300px; 
-  height: 150px;
+  
+  width: 100%;
+  height: auto; 
   position: relative;
 
   img, video {
