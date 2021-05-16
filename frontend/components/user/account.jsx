@@ -58,7 +58,7 @@ class Account extends React.Component {
           <Route path="/users/:userId/cards" component={CardIndexContainer}/> 
           {/* <Route path="/users/:userId/likes" component={CardsIndexContainer}/>  */}
           {/* <Route path="/users/:userId/collections" component={CollectionsIndexContainer}/>  */}
-          {/* <Route path="/users/:userId/profile" component={UserAboutContainer}/>  */}
+          <Route path="/users/:userId/profile" component={UserAboutContainer}/> 
         </Switch>
       </div>
     )

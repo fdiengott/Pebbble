@@ -12,19 +12,26 @@ class UserAbout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.user.id); 
+    if (this.props.userShowPage) {
+      // this.props.fetchUser(this.props.user.id); 
+    } else {
+      this.props.fetchUser(this.props.currentUser.id); 
+    }
   }
 
   render() {
-    const { user } = this.props; 
+    const { user, currentUser, userShowPage } = this.props; 
 
-    const bio = (user.bio ? 
-      <p>{user.bio}</p> : 
+    // if it's a user show page, display their info, otherwise it's the current user's account page
+    const renderedUser = userShowPage ? user : currentUser; 
+
+    const bio = (renderedUser.bio ? 
+      <p>{renderedUser.bio}</p> : 
       <Link to="/account/about/edit" className="pink-link">Add Bio</Link>)
 
     const website = (
-      user.websiteUrl ? 
-      <p>{user.websiteUrl}</p> : 
+      renderedUser.websiteUrl ? 
+      <p>{renderedUser.websiteUrl}</p> : 
       <Link to="/account/about/edit" className="pink-link">Add website links</Link>
     )
     
@@ -38,14 +45,14 @@ class UserAbout extends React.Component {
           <aside className="gray-bg">
             <p><i>{
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
-              }</i>{user.location}</p>
+              }</i>{renderedUser.location}</p>
             <p><i>{
                 <FontAwesomeIcon icon={faUsers} />
-              }</i>Member since {user.whenJoined}</p>
+              }</i>Member since {renderedUser.whenJoined}</p>
           </aside>
           <section>
-            <span>{user.followers} followers</span
-              ><span>{user.following} following</span>
+            <span>{renderedUser.followers} followers</span
+              ><span>{renderedUser.following} following</span>
           </section>
           <div>
             <h3>Social</h3>
