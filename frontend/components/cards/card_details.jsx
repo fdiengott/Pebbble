@@ -51,16 +51,16 @@ class CardDetails extends React.Component {
               <div className="card-header-text">
                 <h2>{card.title}</h2>
                 <div className="inline-card-header-text">
-                  <p>{user.name}<span>&#183;</span>
+                  <div>{user.name}<span>&#183;</span>
                     <a className="follow-button">Follow</a>
                     <span>&#183;</span>
-                    <div>
+                    <div className="email-wrapper">
                       <a className="email-button">Hire Me</a>
-                      <p className="email-popup">Send a message about a work opportunity
+                      <u className="email-popup">Send a message about a work opportunity
                         <u className="arrow-down"></u>
-                      </p>
+                      </u>
                     </div>
-                  </p>
+                  </div>
                 </div>
               </div>
             </section>

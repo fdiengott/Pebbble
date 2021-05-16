@@ -1,11 +1,5 @@
 import React from 'react'; 
-import { Provider } from 'react-redux'; 
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util'; 
 import LoginFormContainer from './session_form/login_form_container'; 
@@ -19,17 +13,16 @@ import CardDetailsContainer from './cards/card_details_container';
 
 const App = () => (
   <>
-    {/* Header should be protected. Inside header, have 2 renders. If path is for card upload change content and style */}
-    {/* <ProtectedRoute path="/" component={Header}/>  */}
+    {/* protect routes can only access if logged in; auth routes can only access if logged out */}
     <Route path="/" component={HeaderContainer}/> 
     <Switch>
       <Route path="/account/about/edit" component={UserEditFormContainer}/> 
-      <ProtectedRoute path="/account" component={AccountContainer}/>
       <Route path="/users/:userId" component={AccountContainer}/>
+      <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
+      {/* <ProtectedRoute path="/cards/new" component={CardFormContainer}/> */}
+      <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      {/* <Route path="/users/:userId" component={} /> */}
-      <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
       <Route path="/:category" component={CardIndexContainer}/> 
       <Route path="/" component={CardIndexContainer}/> 
     </Switch>

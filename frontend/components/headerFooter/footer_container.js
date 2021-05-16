@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
   url: ownProps.location.pathname, 
   homePage: ["/", "/all"].includes(ownProps.location.pathname),
-  pathsNotToRender: ["/login", "/signup", "/cards"],
+  pathsNotToRender: ["/login", "/signup", "/cards/new"],
 }}
 
 export default connect(

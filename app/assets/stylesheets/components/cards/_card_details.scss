@@ -38,6 +38,7 @@
   .card-details-container {
     @include flex($flex-direction: column); 
     margin-top: 60px;
+    max-width: 80vh * 1.3333;
     
     header {
       @include flex(space-between); 
@@ -60,10 +61,10 @@
         }
 
         .inline-card-header-text {
-          p {
+          > div {
             @include flex(flex-start); 
           }
-          div {
+          .email-wrapper {
             position: relative; 
 
             .email-popup {
@@ -152,6 +153,7 @@
       p {
         align-self: flex-start;
         margin-bottom: 40px;
+
       }
       
       .avatar-container {
