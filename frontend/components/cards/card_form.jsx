@@ -26,6 +26,8 @@ class CardForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this); 
     this.handleFile = this.handleFile.bind(this); 
+    this.handleDrop = this.handleDrop.bind(this); 
+    this.handleFileHelper = this.handleFileHelper.bind(this); 
     this.handleCategory = this.handleCategory.bind(this); 
     this.handleInput = this.handleInput.bind(this); 
     this.checkSubmit = this.checkSubmit.bind(this); 
@@ -63,7 +65,15 @@ class CardForm extends React.Component {
   }
 
   handleFile(e) {
-    const file = e.currentTarget.files[0]; 
+    this.handleFileHelper(e.currentTarget.files[0]); 
+  }
+
+  handleDrop(e) {
+    e.preventDefault(); 
+    this.handleFileHelper(e.dataTransfer.files[0]); 
+  }
+
+  handleFileHelper(file) {
     const fileReader = new FileReader; 
     fileReader.onloadend = () => {
       this.setState({ imgFile: file, imgUrl: fileReader.result }, this.checkSubmit) 
@@ -78,7 +88,6 @@ class CardForm extends React.Component {
     } else {
       this.setState({ animated: false }); 
     }
-    
   }
 
   checkSubmit() {
@@ -94,6 +103,7 @@ class CardForm extends React.Component {
       imgUrl: null, 
     })
   }
+
 
   render() {
     // debugger  
@@ -139,7 +149,7 @@ class CardForm extends React.Component {
           { imgPreview }
         </div>
       ) : (
-        <Dropzone handleFile={this.handleFile} />
+        <Dropzone handleFile={this.handleFile} handleDrop={this.handleDrop} />
       )
 
     return (

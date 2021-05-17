@@ -3,11 +3,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'; 
 
 
-const Dropzone = ({ handleFile }) => {
+const Dropzone = ({ handleFile, handleDrop }) => {
   
+  const dragOver = (e) => {
+    e.preventDefault(); 
+  }
+  const dragEnter = (e) => {
+    e.preventDefault(); 
+  }
+  const dragLeave = (e) => {
+    e.preventDefault(); 
+  }
+
+  // const handleDrop = (e) => {
+  //   e.preventDefault(); 
+    
+  // }
+
   return (
     <div className="drop-zone-container">
-      <label className="drop-zone-text" htmlFor="filebtn">
+      <label className="drop-zone-text" htmlFor="filebtn"
+        onDragOver={dragOver}
+        onDragEnter={dragEnter}
+        onDragLeave={dragLeave}
+        onDrop={handleDrop}
+      >
         <FontAwesomeIcon icon={faCloudUploadAlt} className="icon"/>
         <h1>Drag and drop an image</h1>
         <h3>or <span 
@@ -18,8 +38,8 @@ const Dropzone = ({ handleFile }) => {
       <input type="file" 
         id="filebtn"
         className="drop-zone-btn" 
-        // className="drop-zone-btn-area" 
-        onInput={ handleFile }/>
+        onInput={ handleFile }
+        />
     </div>
   )
 }
