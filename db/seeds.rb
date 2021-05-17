@@ -13,6 +13,16 @@ Card.destroy_all
 
 # **************************************************************
 
+User.create(
+  username: "fred",
+  name: "Fred Chopin",
+  location: "Paris", 
+  email: "betterThanDebussy@me.co",
+  bio: "C'est la vie",
+  website_url: "https://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin",
+  password: 123456
+)
+
 u = User.create(
   username: "yoshiyukiyagi",
   name:     "Yoshiyuki Yagi",
