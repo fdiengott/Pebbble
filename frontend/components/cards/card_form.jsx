@@ -13,12 +13,16 @@ class CardForm extends React.Component {
       category: "",  
       imgFile: null, 
       disabled: true,
-      creatorId: this.props.currentUserId
+      creatorId: this.props.currentUserId,
+      redirect: false,
+      cardId: 0
     }
 
     this.handleSubmit = this.handleSubmit.bind(this); 
     this.handleFile = this.handleFile.bind(this); 
     this.handleCategory = this.handleCategory.bind(this); 
+    this.handleInput = this.handleInput.bind(this); 
+    this.checkSubmit = this.checkSubmit.bind(this); 
   }
 
   handleSubmit(e) {
@@ -35,36 +39,32 @@ class CardForm extends React.Component {
     }
 
     this.props.createCard(formData).then(
-      card => { 
-        debugger
-        return (
-          <Redirect to={`/cards/${card.id}`} />
-        )
-      }
+      card => this.setState({ redirect: true, cardId: card.card.id })
     ); 
   }
 
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.target.value })
-      this.checkSubmit(); 
+      setTimeout(this.checkSubmit(), 500)
     }
   }
 
   handleCategory(category) {
     return () => {
       this.setState({ category: category }); 
-      this.checkSubmit(); 
+      setTimeout(this.checkSubmit(), 500)
     }
   }
 
   handleFile(e) {
     this.setState({ imgFile: e.currentTarget.files[0] }) 
-    this.checkSubmit(); 
+    window.setTimeout(this.checkSubmit(), 2000)
   }
 
   checkSubmit() {
     const { title, category, imgFile } = this.state; 
+    // debugger
     if ([title, category, imgFile].every(el => !!el) ) {
       this.setState({ disabled: false })
     }
@@ -73,6 +73,11 @@ class CardForm extends React.Component {
   render() {
     // debugger  
     const { errors } = this.props;
+    const { cardId, redirect } = this.state; 
+
+    if (redirect) {
+      return <Redirect to={`/cards/${cardId}`} />
+    }
 
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 

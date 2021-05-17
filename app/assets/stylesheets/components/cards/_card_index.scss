@@ -1,6 +1,7 @@
 
 .card-index-container {
   padding: 0 $landing-page-padding;
+  background-color: #f9f9f9;
 
   ul {
     padding: 0;
@@ -81,6 +82,7 @@
   
   @include flex(space-between, flex-end);
   padding: 15px; 
+  border-radius: $border-radius; 
 
 
   &:hover {
