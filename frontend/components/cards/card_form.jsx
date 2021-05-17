@@ -42,6 +42,7 @@ class CardForm extends React.Component {
     formData.append('card[description]', this.state.description); 
     formData.append('card[category]', this.state.category); 
     formData.append('card[creator_id]', this.state.creatorId); 
+    formData.append('card[animated]', this.state.animated); 
     
     if (this.state.imgFile) {
       formData.append('card[img]', this.state.imgFile); 
@@ -82,7 +83,7 @@ class CardForm extends React.Component {
     if (file) {
       fileReader.readAsDataURL(file); 
     }
-
+    debugger
     if (["image/gif", "video/mp4"].includes(file.type)) {
       this.setState({ animated: true }); 
     } else {

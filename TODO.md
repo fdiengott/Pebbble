@@ -8,7 +8,7 @@
 
 
 
-- Todo: style user's about page, add drag events on upload card form
+- Todo: style user's about page
 
 - Collections require a selector for the first 4 cards url in them. 
 - To get card index items to animate, onHover=(toggle autoplay css attribute), onBlur={toggle attribute}
@@ -20,7 +20,9 @@
 
 
 
-
+ Things to fix: 
+  1. upload video, user's show page renders image
+  2. card edit form, card delete button
 
 
 
