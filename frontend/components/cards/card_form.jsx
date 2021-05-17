@@ -12,7 +12,8 @@ class CardForm extends React.Component {
       animated: false, 
       category: "",  
       imgFile: null, 
-      disabled: true
+      disabled: true,
+      creatorId: this.props.currentUserId
     }
 
     this.handleSubmit = this.handleSubmit.bind(this); 
@@ -26,14 +27,20 @@ class CardForm extends React.Component {
     
     formData.append('card[title]', this.state.title); 
     formData.append('card[description]', this.state.description); 
-    formData.append('card[category]', this.state.type); 
+    formData.append('card[category]', this.state.category); 
+    formData.append('card[creator_id]', this.state.creatorId); 
     
     if (this.state.imgFile) {
       formData.append('card[img]', this.state.imgFile); 
     }
 
     this.props.createCard(formData).then(
-      card => <Redirect to={`/cards/${card.id}`} />
+      card => { 
+        debugger
+        return (
+          <Redirect to={`/cards/${card.id}`} />
+        )
+      }
     ); 
   }
 
@@ -64,6 +71,7 @@ class CardForm extends React.Component {
   }
 
   render() {
+    // debugger  
     const { errors } = this.props;
 
     const categories = ["typography", "illustration", "animation", "web design" ]; 

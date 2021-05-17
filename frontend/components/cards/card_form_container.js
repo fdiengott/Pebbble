@@ -6,6 +6,7 @@ import CardForm from './card_form';						//display component
 
 const mapStateToProps = (state) => ({
   errors: state.errors, 
+  currentUserId: state.session.id,
 }); 
 
 const mapDispatchToProps = (dispatch) => ({
