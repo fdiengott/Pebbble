@@ -8,7 +8,7 @@
 
 
 
-- Todo: style user's about page, upload card form
+- Todo: style user's about page, style upload card form
 
 - Collections require a selector for the first 4 cards url in them. 
 - To get card index items to animate, onHover=(toggle autoplay css attribute), onBlur={toggle attribute}

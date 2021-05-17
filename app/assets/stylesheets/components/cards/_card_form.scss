@@ -1,0 +1,70 @@
+
+.header-new-card {
+  background-color: #0d0c22;
+  margin: 0 0 20px 0; 
+  ul {
+    @include flex(space-between); 
+    width: 100%;
+    color: white; 
+    padding: 10px 25px; 
+  }
+
+  .logo > a {
+    color: white;
+    &:hover {
+      color: darken(white, 10%);
+    }
+  }
+}
+
+
+.card-form {
+  @include flex(space-between, $flex-direction: column); 
+  
+  main {
+    @include flex(space-around); 
+  }
+  .img-input {
+    
+  }
+  .img-details {
+    @include flex(space-between, flex-start, column); 
+
+    label {
+      margin: $form-spacing;
+      width: 450px;
+      @include flex(flex-start, space-between, column); 
+    }
+
+    .category-input {
+      background-color: $lightest-gray; 
+
+    }
+  }
+
+  footer {
+    @include flex(space-between); 
+    position: sticky;
+    bottom: 0;
+    padding: 10px 15px; 
+    border-top: 1px solid $lighter-gray;
+    background-color: white;
+    width: 100%;
+
+    .submit-btn, .cancel-btn {
+      width: unset;
+      padding: 5px 10px; 
+    }
+
+    .submit-btn {
+      @extend .pink-button; 
+    }
+      
+    .cancel-btn {
+      border: 1px solid $light-gray; 
+      border-radius: $border-radius;
+      cursor: pointer;
+    }
+    
+  }
+}

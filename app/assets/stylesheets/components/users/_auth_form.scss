@@ -88,9 +88,7 @@
     }
 
     .form-container {
-      display: flex; 
-      justify-content: center;
-      align-items: center;
+      @include flex(); 
       
       form, form div {
         display: flex; 

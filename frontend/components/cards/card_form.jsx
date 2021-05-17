@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 
 import Errors from '../util/errors'; 
+import Dropzone from '../util/dropzone'; 
 
 class CardForm extends React.Component {
   constructor(props) {
@@ -45,21 +46,21 @@ class CardForm extends React.Component {
 
   handleInput(type) {
     return (e) => {
-      this.setState({ [type]: e.target.value })
-      setTimeout(this.checkSubmit, 0)
+      this.setState({ [type]: e.target.value }, this.checkSubmit)
+      // setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleCategory(category) {
     return () => {
-      this.setState({ category: category }); 
-      setTimeout(this.checkSubmit, 0)
+      this.setState({ category: category }, this.checkSubmit); 
+      // setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleFile(e) {
-    this.setState({ imgFile: e.currentTarget.files[0] }) 
-    window.setTimeout(this.checkSubmit, 0)
+    this.setState({ imgFile: e.currentTarget.files[0] }, this.checkSubmit) 
+    // window.setTimeout(this.checkSubmit, 0)
   }
 
   checkSubmit() {
@@ -89,31 +90,38 @@ class CardForm extends React.Component {
 
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <section className="img-input">
-          <input type="file" name="img" onChange={this.handleFile} 
-            accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
-        </section>
-        <section className="img-details">
-          <Errors errors={errors} />
-          <label htmlFor="title">Title
-            <input type="text" onChange={this.handleInput("title")} value={this.state.title}/>
-          </label>
-          <label htmlFor="description">Description
-            <textarea type="text" onChange={this.handleInput("description")} value={this.state.description}
-              cols="30" rows="10"/>
-          </label>
-          <label htmlFor="category">Category
-            <p>{ categoryString }</p>
-          </label>
-          <div className="category-input">
-            <u>Category options</u>
-            { categoriesInput }
-          </div>
-        </section>
+      <form onSubmit={this.handleSubmit} className="card-form">
+        <main>
+          <section className="img-input">
+            
+            <input type="file" name="img" onChange={this.handleFile} 
+              accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
+          </section>
+
+          <section className="img-details">
+            <Errors errors={errors} />
+            <label htmlFor="title" >Title*
+              <input type="text" onChange={this.handleInput("title")} value={this.state.title} aria-required/>
+            </label>
+
+            <label htmlFor="description">Description
+              <textarea type="text" onChange={this.handleInput("description")} value={this.state.description}
+                cols="30" rows="10"/>
+            </label>
+
+            <label htmlFor="category" >Category*
+              <input value={ categoryString } className="category-input"/>
+            </label>
+            <div className="category-input-list-wrapper">
+              <u>Category options</u>
+              { categoriesInput }
+            </div>
+          </section>
+        </main>
+
         <footer>
-          <a className="cancel-button" onClick={() => window.history.back()}>Cancel</a>
-          <button className="submit-btn" disabled={this.state.disabled}>Submit</button>
+          <a className="cancel-btn" onClick={() => window.history.back()}>Cancel</a>
+          <button className="submit-btn" disabled={this.state.disabled}>Publish</button>
         </footer>
       </form>
     )
