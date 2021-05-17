@@ -57,7 +57,10 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
       <ul role="list">
         <li>{ logo }</li>
         <li><h1>Publish your Card</h1></li>
-        <li><a onClick={() => window.history.back()}>X</a></li>
+        <li><a 
+        onClick={() => window.history.back()}
+        className="close-btn"
+        >X</a></li>
       </ul>
     </header>
   )

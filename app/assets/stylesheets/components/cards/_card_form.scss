@@ -1,19 +1,37 @@
 
 .header-new-card {
-  background-color: #0d0c22;
+  $card-form-banner-clr: #0d0c22; 
+  background-color: $card-form-banner-clr;
   margin: 0 0 20px 0; 
+
+  
   ul {
     @include flex(space-between); 
     width: 100%;
     color: white; 
     padding: 10px 25px; 
-  }
 
+    .close-btn {
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 100%;
+      margin-right: -10px;
+
+      &:hover {
+        background-color: lighten($card-form-banner-clr, 15%);
+      }
+    }
+  }
+  
   .logo > a {
     color: white;
     &:hover {
       color: darken(white, 10%);
     }
+  }
+
+  h1 {
+    font-weight: 700;
   }
 }
 
@@ -23,6 +41,7 @@
   
   main {
     @include flex(space-around); 
+    margin-bottom: 40px;
   }
   .img-input {
     background-color: lightblue; 
@@ -38,9 +57,38 @@
       @include flex(flex-start, space-between, column); 
     }
 
+    input {
+      @include inputHover();
+    }
+
     .category-input {
       background-color: $lightest-gray; 
+      &:hover, &:focus {
+        box-shadow: unset; 
+        background-color: #eee; 
+        outline: unset; 
+      }
+      &:hover {
+        cursor: not-allowed; 
+      }
+    }
 
+    .categories-input-list {
+      @include flex(space-between); 
+      flex-wrap: wrap; 
+      padding: 0; 
+      width: 100%;
+
+      > * {
+        color: $bright-pink; 
+        transition: color 100ms;
+        cursor: pointer;
+        
+        &:hover {
+          color: $hover-pink; 
+          text-decoration: underline; 
+        }
+      }
     }
   }
 
@@ -53,20 +101,30 @@
     background-color: white;
     width: 100%;
 
-    .submit-btn, .cancel-btn {
-      width: unset;
-      padding: 5px 10px; 
-    }
-
     .submit-btn {
-      @extend .pink-button; 
+      @include color-button($hover-pink, white); 
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: $hover-pink; 
+      }
+
+      &.active {
+        @extend .pink-button; 
+      }
     }
-      
+    
     .cancel-btn {
       border: 1px solid $light-gray; 
       border-radius: $border-radius;
       cursor: pointer;
     }
     
+    .submit-btn, .submit-btn.active, .cancel-btn {
+      width: unset;
+      padding: 5px 10px; 
+    }
+
+
   }
 }

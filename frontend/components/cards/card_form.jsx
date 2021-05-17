@@ -98,7 +98,7 @@ class CardForm extends React.Component {
   render() {
     // debugger  
     const { errors } = this.props;
-    const { cardId, redirect, category, imgUrl, animated } = this.state; 
+    const { cardId, redirect, category, imgUrl, animated, disabled } = this.state; 
 
     if (redirect) {
       return <Redirect to={`/cards/${cardId}`} />
@@ -106,10 +106,16 @@ class CardForm extends React.Component {
 
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 
-    const categoryString = category ? category.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "): ""; 
+    const capitalize = sent => (
+      sent.split(" ")
+        .map(word => word[0].toUpperCase() + word.slice(1))
+        .join(" ")
+    )
+
+    const categoryString = category ? capitalize(category): ""; 
     const categoriesInput = (
-      <ul className="categories-input-list">
-        {categories.map((cat, i) => <li key={i} onClick={this.handleCategory(cat)}>{cat}</li>)}
+      <ul className="categories-input-list" role="list">
+        {categories.map((cat, i) => <li key={i} onClick={this.handleCategory(cat)}>{capitalize(cat)}</li>)}
       </ul>
     )
 
@@ -143,7 +149,7 @@ class CardForm extends React.Component {
           </section>
 
           <section className="img-details">
-            <Errors errors={errors} />
+            { errors.length ? <Errors errors={errors} /> : null }
             <label htmlFor="title" >Title*
               <input type="text" onChange={this.handleInput("title")} value={this.state.title} aria-required/>
             </label>
@@ -157,7 +163,7 @@ class CardForm extends React.Component {
               <input value={ categoryString } className="category-input" readOnly/>
             </label>
             <div className="category-input-list-wrapper">
-              <u>Category options</u>
+              <label>Category options</label>
               { categoriesInput }
             </div>
           </section>
@@ -165,7 +171,10 @@ class CardForm extends React.Component {
 
         <footer>
           <a className="cancel-btn" onClick={() => window.history.back()}>Cancel</a>
-          <button className="submit-btn" disabled={this.state.disabled}>Publish</button>
+          <button 
+            className={disabled ? "submit-btn" : "submit-btn active"} 
+            disabled={disabled}
+            >Publish</button>
         </footer>
       </form>
     )

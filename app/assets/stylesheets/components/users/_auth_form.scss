@@ -109,35 +109,9 @@
           width: 450px;
           font-weight: 700;
         }
-
-        input {
-          margin-top: 10px;
-          background-color: #eee;
-          border: 1px solid transparent;
-          border-radius: 5px;
-          height: 40px;
-          width: 100%; 
-          padding-left: 10px;
-          transition: ease all 0.3s; 
-          outline: 1px transparent; 
-          font-weight: 400;
-        }
-
-        input:focus {
-          box-shadow: $pink-input-outline;
-          border: 2px solid $pink;
-          outline: 1px transparent;
-          background-color: white;
-        }
         
-        input:hover {
-          box-shadow: $pink-input-outline;
-          background-color: white;
-          outline: 1px solid #eee;
-        }
-
-        input[type="password"] {
-          font-weight: 400; 
+        input {
+          @include inputHover(); 
         }
 
         button {
