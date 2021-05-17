@@ -16,6 +16,7 @@ class CardForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this); 
+    this.handleFile = this.handleFile.bind(this); 
     this.handleCategory = this.handleCategory.bind(this); 
   }
 
@@ -39,21 +40,27 @@ class CardForm extends React.Component {
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.target.value })
+      this.checkSubmit(); 
     }
   }
 
   handleCategory(category) {
     return () => {
       this.setState({ category: category }); 
+      this.checkSubmit(); 
     }
   }
 
   handleFile(e) {
     this.setState({ imgFile: e.currentTarget.files[0] }) 
+    this.checkSubmit(); 
   }
 
-  enableSubmit() {
-    this.setState({ disabled: false })
+  checkSubmit() {
+    const { title, category, imgFile } = this.state; 
+    if ([title, category, imgFile].every(el => !!el) ) {
+      this.setState({ disabled: false })
+    }
   }
 
   render() {
@@ -66,11 +73,6 @@ class CardForm extends React.Component {
         {categories.map((cat, i) => <li key={i} onClick={this.handleCategory(cat)}>{cat}</li>)}
       </ul>
     )
-
-    const { title, category, imgFile } = this.state; 
-    if ([title, category, imgFile].every(el => !!el) ) {
-      this.enableSubmit();
-    }
 
     return (
       <form onSubmit={this.handleSubmit}>
