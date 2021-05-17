@@ -4,6 +4,7 @@ import React from 'react';
 
 
 const Dropzone = ({ handleFile }) => {
+  
   return (
     <div className="drop-zone-container">
       <label className="drop-zone-text" htmlFor="filebtn">
@@ -18,7 +19,7 @@ const Dropzone = ({ handleFile }) => {
         id="filebtn"
         className="drop-zone-btn" 
         // className="drop-zone-btn-area" 
-        onClick={ handleFile }/>
+        onInput={ handleFile }/>
     </div>
   )
 }

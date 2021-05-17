@@ -130,15 +130,15 @@ class CardForm extends React.Component {
       const imgInput = imgPreview ? (
         <div className="img-wrapper">
           <div>
-            <a onClick={this.resetImage}>
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </a>
+            <div>
+              <a onClick={this.resetImage}>
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </a>
+            </div>
           </div>
           { imgPreview }
         </div>
       ) : (
-        // <input type="file" name="img" onChange={this.handleFile} 
-        //   accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
         <Dropzone handleFile={this.handleFile} />
       )
 

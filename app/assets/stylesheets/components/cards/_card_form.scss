@@ -46,10 +46,46 @@
   .img-input {
     // background-color: lightblue; 
     margin-right: 40px;
-    @include flex(center, flex-start); 
+    @include flex(center, center); 
     $drop-zone-width: 650px; 
-    min-width: $drop-zone-width;
+    width: $drop-zone-width;
     height: $drop-zone-width / 1.33333;
+    border-radius: $border-radius; 
+    overflow: hidden; 
+
+    .img-wrapper {
+      @include flex(); 
+      position: relative;
+      height: 100%;
+
+      > div:first-child {
+        opacity: 0;
+        position: absolute; 
+        width: 95%;
+        height: 95%;
+        @include flex(flex-end, flex-start); 
+        transition: opacity 250ms;
+
+        &:hover {
+          opacity: 1;
+        }
+        
+        div {
+          background-color: rgba(0,0,0,0.8);
+          border-radius: $border-radius; 
+          color: $light-gray; 
+          cursor: pointer;
+          a {
+            padding: 8px 12px;
+            display: block;
+          }
+        }
+      }
+      img, video {
+        width: 100%; 
+        z-index: -1;
+      }
+    }
   }
   .img-details {
     @include flex(space-between, flex-start, column); 
