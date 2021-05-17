@@ -8,6 +8,9 @@
 
 require 'open-uri'
 
+User.destroy_all
+Card.destroy_all
+
 # **************************************************************
 
 u = User.create(
