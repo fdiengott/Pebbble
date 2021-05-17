@@ -1,0 +1,45 @@
+
+
+.drop-zone-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @include flex(); 
+
+  .drop-zone-btn {
+    opacity: 0;
+    position: absolute; 
+    width: 0.1px; 
+    height: 0.1px; 
+    overflow: hidden; 
+  }
+  
+  .drop-zone-text {
+    @include flex($flex-direction: column); 
+    width: 100%;
+    height: 100%;
+
+    border: 3px dashed $light-gray; 
+    border-radius: $border-radius;
+    transition: border 250ms;
+    cursor: pointer;
+
+    .icon {
+      font-size: 120px;
+      transition: color 250ms; 
+    }
+    
+    &:hover {
+      border: 3px dashed $bright-pink; 
+      .icon {
+        color: $bright-pink; 
+      }
+    }
+  }
+
+
+
+
+
+
+}

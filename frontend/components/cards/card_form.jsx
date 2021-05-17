@@ -137,8 +137,9 @@ class CardForm extends React.Component {
           { imgPreview }
         </div>
       ) : (
-        <input type="file" name="img" onChange={this.handleFile} 
-          accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
+        // <input type="file" name="img" onChange={this.handleFile} 
+        //   accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
+        <Dropzone handleFile={this.handleFile} />
       )
 
     return (
@@ -156,7 +157,7 @@ class CardForm extends React.Component {
 
             <label htmlFor="description">Description
               <textarea type="text" onChange={this.handleInput("description")} value={this.state.description}
-                cols="30" rows="10"/>
+                cols="30" rows="6"/>
             </label>
 
             <label htmlFor="category" >Category*

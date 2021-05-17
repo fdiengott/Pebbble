@@ -2,7 +2,7 @@
 .header-new-card {
   $card-form-banner-clr: #0d0c22; 
   background-color: $card-form-banner-clr;
-  margin: 0 0 20px 0; 
+  margin: 0 0 30px 0; 
 
   
   ul {
@@ -40,13 +40,16 @@
   @include flex(space-between, $flex-direction: column); 
   
   main {
-    @include flex(space-around); 
+    @include flex(flex-start, space-around); 
     margin-bottom: 40px;
   }
   .img-input {
-    background-color: lightblue; 
-    width: 300px; 
-    margin-right: 30px;
+    // background-color: lightblue; 
+    margin-right: 40px;
+    @include flex(center, flex-start); 
+    $drop-zone-width: 650px; 
+    min-width: $drop-zone-width;
+    height: $drop-zone-width / 1.33333;
   }
   .img-details {
     @include flex(space-between, flex-start, column); 
@@ -59,6 +62,11 @@
 
     input {
       @include inputHover();
+    }
+
+    textarea {
+      @extend input; 
+      height: 100%;
     }
 
     .category-input {
@@ -77,6 +85,7 @@
       @include flex(space-between); 
       flex-wrap: wrap; 
       padding: 0; 
+      margin-top: 0;
       width: 100%;
 
       > * {
@@ -102,11 +111,13 @@
     width: 100%;
 
     .submit-btn {
-      @include color-button($hover-pink, white); 
+      $lighter-pink: lighten($hover-pink, 8%); 
+
+      @include color-button($lighter-pink, white); 
       cursor: not-allowed;
 
       &:hover {
-        background-color: $hover-pink; 
+        background-color: $lighter-pink; 
       }
 
       &.active {
