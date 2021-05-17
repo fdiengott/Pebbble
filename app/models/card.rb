@@ -3,7 +3,7 @@ class Card < ApplicationRecord
   validates :title, uniqueness: { scope: :creator_id }
   validates :animated, inclusion: { in: [true, false] }
   validates :category, inclusion: { in: [ "typography", "illustration", "animation", "web design" ]}
-  validate :ensure_img
+  # validate :ensure_img
 
   has_one_attached :img, dependent: :destroy
   belongs_to :creator,
