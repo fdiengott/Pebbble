@@ -46,25 +46,24 @@ class CardForm extends React.Component {
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.target.value })
-      setTimeout(this.checkSubmit(), 500)
+      setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleCategory(category) {
     return () => {
       this.setState({ category: category }); 
-      setTimeout(this.checkSubmit(), 500)
+      setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleFile(e) {
     this.setState({ imgFile: e.currentTarget.files[0] }) 
-    window.setTimeout(this.checkSubmit(), 2000)
+    window.setTimeout(this.checkSubmit, 0)
   }
 
   checkSubmit() {
     const { title, category, imgFile } = this.state; 
-    // debugger
     if ([title, category, imgFile].every(el => !!el) ) {
       this.setState({ disabled: false })
     }
@@ -73,7 +72,7 @@ class CardForm extends React.Component {
   render() {
     // debugger  
     const { errors } = this.props;
-    const { cardId, redirect } = this.state; 
+    const { cardId, redirect, category } = this.state; 
 
     if (redirect) {
       return <Redirect to={`/cards/${cardId}`} />
@@ -81,11 +80,13 @@ class CardForm extends React.Component {
 
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 
+    const categoryString = category ? category.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "): null; 
     const categoriesInput = (
       <ul className="categories-input-list">
         {categories.map((cat, i) => <li key={i} onClick={this.handleCategory(cat)}>{cat}</li>)}
       </ul>
     )
+
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -102,8 +103,11 @@ class CardForm extends React.Component {
             <textarea type="text" onChange={this.handleInput("description")} value={this.state.description}
               cols="30" rows="10"/>
           </label>
+          <label htmlFor="category">Category
+            <p>{ categoryString }</p>
+          </label>
           <div className="category-input">
-            <p>Card Type</p>
+            <u>Category options</u>
             { categoriesInput }
           </div>
         </section>
