@@ -1,8 +1,12 @@
 import React from 'react'; 
 import { Redirect } from 'react-router';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 import Errors from '../util/errors'; 
 import Dropzone from '../util/dropzone'; 
+
 
 class CardForm extends React.Component {
   constructor(props) {
@@ -13,6 +17,7 @@ class CardForm extends React.Component {
       animated: false, 
       category: "",  
       imgFile: null, 
+      imgUrl: null, 
       disabled: true,
       creatorId: this.props.currentUserId,
       redirect: false,
@@ -24,6 +29,7 @@ class CardForm extends React.Component {
     this.handleCategory = this.handleCategory.bind(this); 
     this.handleInput = this.handleInput.bind(this); 
     this.checkSubmit = this.checkSubmit.bind(this); 
+    this.resetImage = this.resetImage.bind(this); 
   }
 
   handleSubmit(e) {
@@ -47,20 +53,32 @@ class CardForm extends React.Component {
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.target.value }, this.checkSubmit)
-      // setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleCategory(category) {
     return () => {
       this.setState({ category: category }, this.checkSubmit); 
-      // setTimeout(this.checkSubmit, 0)
     }
   }
 
   handleFile(e) {
-    this.setState({ imgFile: e.currentTarget.files[0] }, this.checkSubmit) 
-    // window.setTimeout(this.checkSubmit, 0)
+    const file = e.currentTarget.files[0]; 
+    const fileReader = new FileReader; 
+    fileReader.onloadend = () => {
+      this.setState({ imgFile: file, imgUrl: fileReader.result }, this.checkSubmit) 
+    }
+    
+    if (file) {
+      fileReader.readAsDataURL(file); 
+    }
+
+    if (["image/gif", "video/mp4"].includes(file.type)) {
+      this.setState({ animated: true }); 
+    } else {
+      this.setState({ animated: false }); 
+    }
+    
   }
 
   checkSubmit() {
@@ -70,10 +88,17 @@ class CardForm extends React.Component {
     }
   }
 
+  resetImage() {
+    this.setState({
+      imgFile: null, 
+      imgUrl: null, 
+    })
+  }
+
   render() {
     // debugger  
     const { errors } = this.props;
-    const { cardId, redirect, category } = this.state; 
+    const { cardId, redirect, category, imgUrl, animated } = this.state; 
 
     if (redirect) {
       return <Redirect to={`/cards/${cardId}`} />
@@ -81,21 +106,40 @@ class CardForm extends React.Component {
 
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 
-    const categoryString = category ? category.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "): null; 
+    const categoryString = category ? category.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" "): ""; 
     const categoriesInput = (
       <ul className="categories-input-list">
         {categories.map((cat, i) => <li key={i} onClick={this.handleCategory(cat)}>{cat}</li>)}
       </ul>
     )
 
+    const imgPreview = imgUrl ? (
+      animated ? 
+      <video src={imgUrl} autoPlay loop muted/> :
+      <img src={imgUrl}/> 
+     ) : (
+      null
+     ); 
+
+      const imgInput = imgPreview ? (
+        <div className="img-wrapper">
+          <div>
+            <a onClick={this.resetImage}>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </a>
+          </div>
+          { imgPreview }
+        </div>
+      ) : (
+        <input type="file" name="img" onChange={this.handleFile} 
+          accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
+      )
 
     return (
       <form onSubmit={this.handleSubmit} className="card-form">
         <main>
           <section className="img-input">
-            
-            <input type="file" name="img" onChange={this.handleFile} 
-              accept="image/jpeg, image/png, image/webp, image/gif, video/mp4"/>
+            { imgInput }
           </section>
 
           <section className="img-details">
@@ -110,7 +154,7 @@ class CardForm extends React.Component {
             </label>
 
             <label htmlFor="category" >Category*
-              <input value={ categoryString } className="category-input"/>
+              <input value={ categoryString } className="category-input" readOnly/>
             </label>
             <div className="category-input-list-wrapper">
               <u>Category options</u>
