@@ -20,15 +20,17 @@ export const fetchCard = cardId => (
   })
 ); 
   
-export const createCard = ({ formData }) => (
+export const createCard = ( card ) => {
+  debugger // check that card/formData was properly received
+  return (
   $.ajax({
     method: "POST", 
     url: `/api/cards`,
-    data: formData, 
+    data: card, 
     contentType: false, 
     processData: false
   })  
-);
+)};
 
 export const updateCard = ({cardId, formData}) => (
   $.ajax({

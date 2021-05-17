@@ -1,6 +1,8 @@
 import React from 'react'; 
 
 const Errors = ({ errors }) => {
+  debugger
+
   if (!!errors.length) return null; 
 
   return (
