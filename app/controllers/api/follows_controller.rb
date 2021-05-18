@@ -1,5 +1,10 @@
 class Api::FollowsController < ApplicationController
 
+  def index 
+    @follows = Follow.all
+    render 'api/follows/index'
+  end
+
   def create
     @follow = Follow.new(follows_params)
 
@@ -12,7 +17,7 @@ class Api::FollowsController < ApplicationController
 
   def destroy
     @follow = Follow.find_by(id: params[:id])
-    
+
     if @follow && @follow.destroy 
       render 'api/follows/show'
     else

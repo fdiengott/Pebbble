@@ -1,6 +1,8 @@
-class Api::UserFollowingsController < ApplicationController
+class Api::FollowedUsersController < ApplicationController
   def index
-    @users = User.where(follower_id: params[:follower_id]).with_attached_profile_picture
-    render '/users/api/index'
+    @users = User.find_by(id: params[:creator_id]).followed_users
+    render '/api/users/index'
   end
+
+
 end

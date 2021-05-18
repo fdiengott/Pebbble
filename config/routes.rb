@@ -1,9 +1,5 @@
 # == Route Map
-#
-#         Prefix Verb   URI Pattern                                          Controller#Action
-#    api_session DELETE /api/session(.:format)                               api/sessions#destroy {:format=>:json}
-#                POST   /api/session(.:format)                               api/sessions#create {:format=>:json}
-
+# 
 #      api_users GET    /api/users(.:format)                                 api/users#index {:format=>:json}
 #                POST   /api/users(.:format)                                 api/users#create {:format=>:json}
 #       api_user GET    /api/users/:id(.:format)                             api/users#show {:format=>:json}
@@ -20,11 +16,12 @@
 
 #            api GET    /api/users/:creator_id/cards(.:format)               api/user_cards#index {:format=>:json}
 
+#    api_follows GET    /api/follows(.:format)                               api/follows#index {:format=>:json}
 #    api_follows POST   /api/follows(.:format)                               api/follows#create {:format=>:json}
 #     api_follow DELETE /api/follows/:id(.:format)                           api/follows#destroy {:format=>:json}
 
 #                GET    /api/users/:creator_id/followers(.:format)           api/user_followers#index {:format=>:json}
-#                GET    /api/users/:follower_id/followings(.:format)         api/followed_users#index {:format=>:json}
+#                GET    /api/users/:follower_id/followedUsers(.:format)      api/followed_users#index {:format=>:json}
 
 #           root GET    /                                                    static_pages#root
 
@@ -40,13 +37,13 @@ Rails.application.routes.draw do
     # custom controller to keep cards controller skinny api endpoints RESTful
     get '/users/:creator_id/cards', to: 'user_cards#index'
 
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:index, :create, :destroy]
 
     # to get all of the followers of a user
     get '/users/:creator_id/followers', to: 'user_followers#index'
 
     # to get all of the users a user is following
-    get '/users/:follower_id/followings', to: 'followed_users#index'
+    get '/users/:follower_id/followedUsers', to: 'followed_users#index'
 
   end
 
