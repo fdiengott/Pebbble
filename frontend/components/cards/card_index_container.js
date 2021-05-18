@@ -10,7 +10,6 @@ import {
 } from '../../reducers/selectors'; 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   const userId = ownProps.match.params.userId; 
   const currentUserId = state.session.id; 
   
