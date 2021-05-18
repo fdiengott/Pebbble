@@ -1,9 +1,11 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
-const Footer = ({ url, homePage, pathsNotToRender }) => {
+const Footer = ({ url, pathsNotToRender }) => {
+  const urlArr = url.split("/"); 
+  const cardEdit = urlArr[urlArr.length-1] === 'edit' && urlArr[1] === 'cards'; 
 
-  if (pathsNotToRender.includes(url)) return null; 
+  if (pathsNotToRender.includes(url) || cardEdit) return null; 
 
 
   const logo = (
