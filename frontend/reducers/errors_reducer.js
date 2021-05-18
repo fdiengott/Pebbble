@@ -1,14 +1,12 @@
 import {
   RECEIVE_CURRENT_USER, 
-  RECEIVE_SESSION_ERRORS,
   CLEAR_ERRORS,
 } from '../actions/session_actions'; 
 import { 
-  RECEIVE_USER_ERRORS,
   RECEIVE_USER,
 } from '../actions/user_actions'; 
 import { 
-  RECEIVE_CARD_ERRORS,
+  RECEIVE_ERRORS,
   RECEIVE_CARD,
 } from '../actions/card_actions'; 
 
@@ -18,13 +16,8 @@ const errorsReducer = (state = [], action) => {
   
   switch (action.type) {
     // Set errors
-    case RECEIVE_SESSION_ERRORS:
+    case RECEIVE_ERRORS:
       return action.errors; 
-    case RECEIVE_USER_ERRORS:
-      return action.errors; 
-    case RECEIVE_CARD_ERRORS:
-      return action.errors; 
-      
       
     // Reset errors
     case RECEIVE_CURRENT_USER: 
