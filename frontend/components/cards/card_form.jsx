@@ -34,6 +34,7 @@ class CardForm extends React.Component {
     this.resetImage = this.resetImage.bind(this); 
   }
 
+
   handleSubmit(e) {
     e.preventDefault(); 
     const formData = new FormData(); 
@@ -43,6 +44,8 @@ class CardForm extends React.Component {
     formData.append('card[category]', this.state.category); 
     formData.append('card[creator_id]', this.state.creatorId); 
     formData.append('card[animated]', this.state.animated); 
+    formData.append('card[id]', this.state.cardId); 
+
     
     if (this.state.imgFile) {
       formData.append('card[img]', this.state.imgFile); 

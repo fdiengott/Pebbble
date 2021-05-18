@@ -35,7 +35,7 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
   const urlArr = url.split("/"); 
   const cardEdit = urlArr[urlArr.length-1] === 'edit' && urlArr[1] === 'cards'; 
   const cardNew = url === '/cards/new'; 
-  debugger
+  
   return (cardNew || cardEdit) ? (
     <header className="header-card-form">
       <ul role="list">

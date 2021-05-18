@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import { updateCard } from '../../actions/card_actions';					//actions
+import { updateCard, fetchCard } from '../../actions/card_actions';					//actions
 import { clearErrors } from '../../actions/session_actions'; 
 
 import CardForm from './card_form';						//display component
@@ -33,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   processCard: (card) => dispatch(updateCard(card)),
   clearErrors: () => dispatch(clearErrors()),
+  fetchCard: (cardId) => dispatch(fetchCard(cardId)),
 }); 
 
 export default connect(

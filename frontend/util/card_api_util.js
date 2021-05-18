@@ -30,7 +30,7 @@ export const createCard = ( card ) => (
   })  
 );
 
-export const updateCard = ({cardId, formData}) => (
+export const updateCard = (cardId, formData) => (
   $.ajax({
     method: "PATCH", 
     url: `/api/cards/${cardId}`,

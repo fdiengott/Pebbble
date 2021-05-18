@@ -41,7 +41,7 @@ class Api::CardsController < ApplicationController
 
   private 
   def card_params
-    params.require(:card).permit(:creator_id, :title, :description, :animated, :category, :img)
+    params.require(:card).permit(:creator_id, :title, :description, :animated, :category, :img, :id)
   end
 
   def selected_card
