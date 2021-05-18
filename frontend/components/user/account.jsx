@@ -23,18 +23,11 @@ class Account extends React.Component {
     // if neither have loaded early return
     if (userShow && !user) return null; 
 
-    let avatar; 
-    if (userShow) {
-      avatar = user.profilePicture || window.avatar_default; 
-    } else {
-      avatar = currentUser.profilePicture || window.avatar_default; 
-    }
-    
     // if there's a current user, personal account header, otherwise, user show page
     const header = userShow ? (
-      <UserShowHeader avatar={avatar} user={user}/>
+      <UserShowHeader user={user}/>
     ) : (
-      <CurrentUserHeader avatar={avatar} currentUser={currentUser}/>
+      <CurrentUserHeader currentUser={currentUser}/>
     )
 
     return (

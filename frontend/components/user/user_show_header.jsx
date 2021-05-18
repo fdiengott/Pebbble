@@ -1,18 +1,17 @@
 import React from 'react'; 
+import Avatar from './avatar'; 
 
 
-const UserShowHeader = ({avatar, user}) => {
+const UserShowHeader = ({user}) => {
 
   return (
     <section className='user-show-container'>
       <div className="details-container">
-        <div className="image-cropper">
-          <img src={avatar} alt="Profile picture avatar"/>
-        </div>
+        <Avatar user={user}/>
         <ul role="list">
           <h1>{user.name}</h1>
-          {/* <button>Follow</button> */}
-          {/* <button className="pink-button">Hire Me</button> */}
+          <a className="gray-button">Follow</a>
+          <a className="pink-button">Hire Me</a>
         </ul>
       </div>
     </section>
