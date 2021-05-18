@@ -168,10 +168,11 @@ class CardForm extends React.Component {
 
             <label htmlFor="description">Description
               <textarea type="text" onChange={this.handleInput("description")} value={this.state.description}
-                cols="30" rows="6"/>
+                cols="30" rows="4"/>
             </label>
 
-            <label htmlFor="category" >Category*
+            <label htmlFor="category" 
+            className="category-label">Category*<span>Select options below</span>
               <input value={ categoryString } className="category-input" readOnly/>
             </label>
             <div className="category-input-list-wrapper">

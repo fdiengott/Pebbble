@@ -91,7 +91,7 @@
     @include flex(space-between, flex-start, column); 
 
     label {
-      margin: $form-spacing;
+      margin-bottom: $form-spacing;
       width: 400px;
       @include flex(flex-start, space-between, column); 
     }
@@ -105,11 +105,16 @@
       height: 100%;
     }
 
+    .category-label span {
+      color: $light-gray; 
+      font-size: 14px;
+    }
+
     .category-input {
-      background-color: $lightest-gray; 
+      background-color: $lighter-gray; 
       &:hover, &:focus {
         box-shadow: unset; 
-        background-color: #eee; 
+        background-color: $lighter-gray; 
         outline: unset; 
       }
       &:hover {
@@ -121,7 +126,7 @@
       @include flex(space-between); 
       flex-wrap: wrap; 
       padding: 0; 
-      margin-top: 0;
+      margin: 0;
       width: 100%;
 
       > * {
