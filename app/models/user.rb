@@ -82,12 +82,16 @@ class User < ApplicationRecord
   end
 
   def num_followers
+    User.find_by(id: self.id).followers.count
   end
-
+  
   def num_following
+    User.find_by(id: self.id).followed_users.count
   end
 
-
+  def user_cards 
+    User.find_by(id: 8).cards
+  end
 
 end
 

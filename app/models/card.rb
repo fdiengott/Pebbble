@@ -20,5 +20,4 @@ class Card < ApplicationRecord
     end
   end
 
-
 end
