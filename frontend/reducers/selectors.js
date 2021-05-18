@@ -38,6 +38,13 @@ export const selectCardsByUserId = (state, userId) => {
 // Follows
 // creatorIds for where the followerId is the current user
 
+// returns an array of creatorIds
+export const selectFollowedUsers = (state, followerId) => {
+  return toArray(state.entities.follows).filter(follow => (
+    follow.followerId === followerId
+  )).map(follow => follow.creatorId)
+}; 
+
 
 // HELPER METHODS
 const toArray = obj => {

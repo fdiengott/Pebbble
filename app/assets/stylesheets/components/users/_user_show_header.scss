@@ -22,13 +22,16 @@
   .user-buttons {
     @include flex(flex-start); 
     
-    .gray-button {
+    &:first-child {
       @include color-button($lightest-gray, black); 
       padding: 10px; 
       margin-right: 20px;
       span {
         margin-right: 4px;
       }
+    }
+    &:first-child.pink-button {
+      @extend .pink-button; 
     }
   }
 }

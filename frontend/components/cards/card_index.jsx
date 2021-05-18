@@ -12,6 +12,7 @@ class CardIndex extends React.Component {
 
   componentDidMount() {
     if (this.props.frontpage) {
+      // this.props.fetchFollowedUsersCards(this.props.currentUserId); 
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
     } else {
@@ -19,7 +20,7 @@ class CardIndex extends React.Component {
         // if it's a user show page
         this.props.fetchUserCards(this.props.userId) : 
         // if it's the current user's page
-        this.props.fetchUserCards(this.props.currentUserId) 
+        this.props.fetchUserCards(this.props.currentUserId)
     }
   }
 
@@ -29,7 +30,8 @@ class CardIndex extends React.Component {
       cardsByCategory, 
       users, 
       cards, 
-      frontpage
+      frontpage, 
+
     } = this.props;  
 
     // will refactor to make this its own table

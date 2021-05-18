@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
-import {fetchCardsAndUsers, fetchUserCards } from '../../actions/card_actions';					//actions
+import {fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards } from '../../actions/card_actions';					//actions
+import { fetchFollows } from '../../actions/follow_actions'; 
 import CardIndex from './card_index';						//display component
-import { selectCardsByUserId } from '../../reducers/selectors'; 
+import { selectCardsByUserId, selectFollowedUsers } from '../../reducers/selectors'; 
 
 // selectors
 import { 
@@ -19,12 +20,15 @@ const mapStateToProps = (state, ownProps) => {
     frontpage: ["/:category", "/"].includes(ownProps.match.path),
     cards: userId ? selectCardsByUserId(state, userId) : selectCardsByUserId(state, currentUserId), 
     users: selectAllUsers(state), // all users, as an object,
-    cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
+    cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category),
+    selectFollowedUsers: selectFollowedUsers(state, currentUserId),
 })}; 
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
   fetchUserCards: (userId) => dispatch(fetchUserCards(userId)),
+  fetchFollows: () => dispatch(fetchFollows()),
+  fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
 });
 
 export default connect(

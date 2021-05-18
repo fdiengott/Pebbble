@@ -18,7 +18,7 @@ class Account extends React.Component {
   }
 
   render() {
-    const { currentUser, user, userShow } = this.props; 
+    const { currentUser, user, userShow, followingUser } = this.props; 
     
     // if neither have loaded early return
     if (userShow && !user) return null; 
@@ -27,7 +27,7 @@ class Account extends React.Component {
     const header = userShow ? (
       <UserShowHeader user={user}/>
     ) : (
-      <CurrentUserHeader currentUser={currentUser}/>
+      <CurrentUserHeader currentUser={currentUser} followingUser={followingUser}/>
     )
 
     return (

@@ -79,4 +79,4 @@ export const fetchFollowedUsersCards = (userId) => dispatch => (
 ); 
 
 // TESTING
-window.fetchFollowedUsersCards = fetchFollowedUsersCards; 
+// window.fetchFollowedUsersCards = fetchFollowedUsersCards; 
