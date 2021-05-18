@@ -20,6 +20,8 @@
 #    api_follows POST   /api/follows(.:format)                               api/follows#create {:format=>:json}
 #     api_follow DELETE /api/follows/:id(.:format)                           api/follows#destroy {:format=>:json}
 
+#                GET    /api/follows/:follower_id/cards(.:format)            api/followed_cards#index {:format=>:json}
+
 #                GET    /api/users/:creator_id/followers(.:format)           api/user_followers#index {:format=>:json}
 #                GET    /api/users/:follower_id/followedUsers(.:format)      api/followed_users#index {:format=>:json}
 
@@ -39,11 +41,14 @@ Rails.application.routes.draw do
 
     resources :follows, only: [:index, :create, :destroy]
 
+    get 'follows/:follower_id/cards', to: 'followed_cards#index'
+
     # to get all of the followers of a user
     get '/users/:creator_id/followers', to: 'user_followers#index'
 
     # to get all of the users a user is following
     get '/users/:follower_id/followedUsers', to: 'followed_users#index'
+
 
   end
 
