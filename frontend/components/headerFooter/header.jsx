@@ -35,12 +35,12 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
   const urlArr = url.split("/"); 
   const cardEdit = urlArr[urlArr.length-1] === 'edit' && urlArr[1] === 'cards'; 
   const cardNew = url === '/cards/new'; 
-
-  return (cardNew && cardEdit) ? (
+  debugger
+  return (cardNew || cardEdit) ? (
     <header className="header-card-form">
       <ul role="list">
         <li>{ logo }</li>
-        <li><h1>{ urlEnd === "edit" ? "Edit your Card" : "Publish your Card" }</h1></li>
+        <li><h1>{ cardEdit ? "Edit your Card" : "Publish your Card" }</h1></li>
         <li><a 
         onClick={() => window.history.back()}
         className="close-btn"
