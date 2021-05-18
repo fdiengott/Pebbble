@@ -134,10 +134,10 @@
       overflow: hidden; border-radius: $border-radius;
       margin-top: 40px;
       margin-bottom: 60px;
-      background-color: #a1dbfc;
+      // background-color: #a1dbfc;
       
       
-      img {
+      img, video {
         max-width: 80vh * 1.3333;
         width: 100%;
         height: auto; 

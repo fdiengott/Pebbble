@@ -32,7 +32,22 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
     null
   ); 
 
-  return (url !== '/cards/new') ? (
+  const urlArr = url.split("/"); 
+  const cardEdit = urlArr[urlArr.length-1] === 'edit' && urlArr[1] === 'cards'; 
+  const cardNew = url === '/cards/new'; 
+  
+  return (cardNew || cardEdit) ? (
+    <header className="header-card-form">
+      <ul role="list">
+        <li>{ logo }</li>
+        <li><h1>{ cardEdit ? "Edit your Card" : "Publish your Card" }</h1></li>
+        <li><a 
+        onClick={() => window.history.back()}
+        className="close-btn"
+        >X</a></li>
+      </ul>
+    </header>
+  ) : (
     <>
       <header className="standard-header">
         <ul role="list">
@@ -52,14 +67,6 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
       </header>
       { signupBanner }
     </>
-  ) : (
-    <header className="header-new-card">
-      <ul role="list">
-        <li>{ logo }</li>
-        <li><h1>Publish your Card</h1></li>
-        <li><a onClick={() => window.history.back()}>X</a></li>
-      </ul>
-    </header>
   )
 
 }; 

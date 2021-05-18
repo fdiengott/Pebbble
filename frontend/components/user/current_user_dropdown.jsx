@@ -23,7 +23,7 @@ const CurrentUserDropdown = (props) => {
             <li><Link to="/all" onClick={logout}>Sign Out</Link></li>
           </ul>
         </li>
-        <li><Link to="cards/new" className="pink-button">Upload</Link></li>
+        <li><Link to="/cards/new" className="pink-button">Upload</Link></li>
       </ul>
     </>
   ) : (

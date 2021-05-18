@@ -1,0 +1,185 @@
+
+.header-card-form {
+  $card-form-banner-clr: #0d0c22; 
+  background-color: $card-form-banner-clr;
+  margin: 0 0 30px 0; 
+
+  
+  ul {
+    @include flex(space-between); 
+    width: 100%;
+    color: white; 
+    padding: 10px 25px; 
+
+    .close-btn {
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 100%;
+      margin-right: -10px;
+
+      &:hover {
+        background-color: lighten($card-form-banner-clr, 15%);
+      }
+    }
+  }
+  
+  .logo > a {
+    color: white;
+    &:hover {
+      color: darken(white, 10%);
+    }
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+}
+
+
+.card-form {
+  @include flex(space-between, $flex-direction: column); 
+  height: 100vh;
+
+  main {
+    @include flex($align-items: stretch); 
+    flex-wrap: wrap;
+    margin: 40px 0;
+  }
+  .img-input {
+    // background-color: lightblue; 
+    margin-right: 40px;
+    margin-bottom: 40px;
+    @include flex(center, center); 
+    $drop-zone-width: 650px; 
+    width: $drop-zone-width;
+    height: $drop-zone-width / 1.33333;
+    border-radius: $border-radius; 
+    overflow: hidden; 
+
+    .img-wrapper {
+      @include flex(); 
+      position: relative;
+      height: 100%;
+
+      > div:first-child {
+        opacity: 0;
+        position: absolute; 
+        width: 95%;
+        height: 95%;
+        @include flex(flex-end, flex-start); 
+        transition: opacity 250ms;
+
+        &:hover {
+          opacity: 1;
+        }
+        
+        div {
+          background-color: rgba(0,0,0,0.8);
+          border-radius: $border-radius; 
+          color: $light-gray; 
+          cursor: pointer;
+          a {
+            padding: 8px 12px;
+            display: block;
+          }
+        }
+      }
+      img, video {
+        width: 100%; 
+        z-index: -1;
+      }
+    }
+  }
+  .img-details {
+    @include flex(space-between, flex-start, column); 
+
+    label {
+      margin-bottom: 8px;
+      width: 400px;
+      @include flex(flex-start, stretch, column); 
+    }
+
+    input {
+      @include inputHover();
+    }
+
+    textarea {
+      @extend input; 
+      height: 100%;
+    }
+
+    .category-label span {
+      color: $light-gray; 
+      font-size: 14px;
+    }
+
+    .category-input {
+      background-color: $lighter-gray; 
+      &:hover, &:focus {
+        box-shadow: unset; 
+        background-color: $lighter-gray; 
+        outline: unset; 
+      }
+      &:hover {
+        cursor: not-allowed; 
+      }
+    }
+
+    .categories-input-list {
+      @include flex(space-between); 
+      flex-wrap: wrap; 
+      padding: 0; 
+      margin: 0;
+      width: 100%;
+
+      > * {
+        color: $bright-pink; 
+        transition: color 100ms;
+        cursor: pointer;
+        
+        &:hover {
+          color: $hover-pink; 
+          text-decoration: underline; 
+        }
+      }
+    }
+  }
+
+  footer {
+    @include flex(space-between); 
+    position: sticky;
+    bottom: 0;
+    padding: 10px 15px; 
+    border-top: 1px solid $lighter-gray;
+    background-color: white;
+    width: 100%;
+
+    .submit-btn {
+      $lighter-pink: lighten($hover-pink, 8%); 
+
+      @include color-button($lighter-pink, white); 
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: $lighter-pink; 
+      }
+
+      &.active {
+        @extend .pink-button; 
+      }
+    }
+    
+    .cancel-btn {
+      border: 1px solid $light-gray; 
+      border-radius: $border-radius;
+      cursor: pointer;
+    }
+    
+    .submit-btn, .submit-btn.active, .cancel-btn {
+      width: unset;
+      padding: 5px 10px; 
+    }
+
+
+  }
+}

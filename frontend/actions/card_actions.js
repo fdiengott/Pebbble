@@ -63,7 +63,7 @@ export const createCard = (card) => dispatch => (
   )
 ); 
 export const updateCard = (card) => dispatch => (
-  CardAPIUtil.updateCard(card).then(
+  CardAPIUtil.updateCard(parseInt(card.get("card[id]")), card).then(
     card => dispatch(receiveCard(card)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )

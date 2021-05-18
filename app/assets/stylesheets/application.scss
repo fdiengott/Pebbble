@@ -14,9 +14,9 @@
  */
 
 // Base
-@import 'base/reset.scss'; 
-@import 'base/layout.scss'; 
-@import 'base/colors.scss'; 
+@import 'base/reset'; 
+@import 'base/layout'; 
+@import 'base/colors'; 
 @import 'base/library'; 
 @import 'base/fonts'; 
 @import 'base/global';  
@@ -24,12 +24,15 @@
 @import 'base/accessibility';  
 
 // Components
-@import 'components/users/auth_form.scss'; 
-@import 'components/header.scss'; 
+@import 'components/users/auth_form'; 
+@import 'components/header'; 
 @import 'components/users/account'; 
 @import 'components/users/user_about'; 
 @import 'components/users/user_edit_form'; 
+@import 'components/users/user_show_header'; 
 @import 'components/cards/card_index'; 
 @import 'components/cards/card_details'; 
 @import 'components/footer'; 
+@import 'components/cards/card_form'; 
+@import 'components/dropzone'; 
  

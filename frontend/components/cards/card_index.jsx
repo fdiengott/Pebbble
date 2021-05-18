@@ -15,8 +15,11 @@ class CardIndex extends React.Component {
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
     } else {
-      // debugger
-      this.props.fetchUserCards(this.props.userId); 
+      this.props.userId ? 
+        // if it's a user show page
+        this.props.fetchUserCards(this.props.userId) : 
+        // if it's the current user's page
+        this.props.fetchUserCards(this.props.currentUserId) 
     }
   }
 
@@ -52,11 +55,15 @@ class CardIndex extends React.Component {
 
     return (  
       <main className="card-index-container">
-        <nav>
-          <ul role="list">
-            { frontpage ? categoryLinks : null }
-          </ul>
-        </nav>
+        {
+          frontpage ? (
+            <nav>
+              <ul role="list">
+                { categoryLinks }
+              </ul>
+            </nav>
+          ) : null
+        }
         <ul className="card-index" role="list">
           { cardIndex }
         </ul>

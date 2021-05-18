@@ -6,22 +6,16 @@
 - add to account form, on hover pink links if the user has info already
 
 
-
-
-- Todo: style user's about page, upload card form
-
 - Collections require a selector for the first 4 cards url in them. 
 - To get card index items to animate, onHover=(toggle autoplay css attribute), onBlur={toggle attribute}
-
-- Add 'required' and asterisks to form fields
 
 
 - categories table
 
 
 
-
-
+ Things to fix: 
+  
 
 
 
