@@ -36,21 +36,22 @@ class CardDetails extends React.Component {
     
     if (!user || !card)       return null; 
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
-
-
+    
+    
     const avatarLink = (
-      <Link to={`/users/${card.creatorId}`}> 
+      <Link to={`/users/${card.creatorId}/cards`}> 
         <Avatar user={user}/>
       </Link>
     ); 
-
+    
     const image = card.animated ? (
       <video src={card.img} autoPlay loop muted/>
     ) : (
       <img src={card.img} alt={card.title}/>
     )
 
-    const currentUserButtons = (currentUserId === card.creatorId) ? (
+    const currentUserPage = currentUserId === card.creatorId; 
+    const currentUserButtons = currentUserPage ? (
       <div className="card-alter-buttons">
         <Link 
           className="gray-button"
@@ -78,7 +79,10 @@ class CardDetails extends React.Component {
               <div className="card-header-text">
                 <h2>{card.title}</h2>
                 <div className="inline-card-header-text">
-                  <div>{user.name}<span>&#183;</span>
+                  <div><Link 
+                    to={`/users/${card.creatorId}/cards`}
+                    className="user-link"
+                    >{user.name}</Link><span>&#183;</span>
                     <a className="follow-button">Follow</a>
                     <span>&#183;</span>
                     <div className="email-wrapper">
@@ -109,10 +113,14 @@ class CardDetails extends React.Component {
               { avatarLink }
             </div>
             <h3>{user.name}</h3>
-            <button className="pink-button"
-              ><span><FontAwesomeIcon icon={faEnvelope} 
-              /></span>Hire Me
-            </button>
+            {
+              currentUserPage ? null : (
+                <button className="pink-button"
+                    ><span><FontAwesomeIcon icon={faEnvelope} 
+                    /></span>Hire Me
+                </button>
+                )
+            }
           </footer>
         </div>
       </main>

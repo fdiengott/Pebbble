@@ -64,6 +64,11 @@
           > div {
             @include flex(flex-start); 
           }
+
+          .user-link {
+            color: black; 
+            text-decoration: none;
+          }
           .email-wrapper {
             position: relative; 
 
@@ -134,8 +139,7 @@
       overflow: hidden; border-radius: $border-radius;
       margin-top: 40px;
       margin-bottom: 60px;
-      // background-color: #a1dbfc;
-      
+      max-height: 600px;
       
       img, video {
         max-width: 80vh * 1.3333;
@@ -150,6 +154,17 @@
       width: 100%;
       margin: 20px 0; 
       
+      .card-alter-buttons {
+        margin-bottom: 40px;
+        > * {
+          @include color-button($lightest-gray, black); 
+          border-radius: unset;
+          padding: 20px 14px;
+          text-decoration: none;
+        }
+      }
+
+
       p {
         align-self: flex-start;
         margin-bottom: 40px;
