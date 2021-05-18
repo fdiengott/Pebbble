@@ -6,11 +6,21 @@ import CardForm from './card_form';						//display component
 
 const mapStateToProps = (state) => ({
   errors: state.errors, 
-  currentUserId: state.session.id,
+
+  title: "", 
+  description: "", 
+  animated: false, 
+  category: "",  
+  imgFile: null, 
+  imgUrl: null, 
+  disabled: true,
+  creatorId: state.session.id,
+  redirect: false,
+  cardId: 0
 }); 
 
 const mapDispatchToProps = (dispatch) => ({
-  createCard: (card) => dispatch(createCard(card)),
+  processCard: (card) => dispatch(createCard(card)),
   clearErrors: () => dispatch(clearErrors()),
 }); 
 

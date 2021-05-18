@@ -52,7 +52,10 @@ class CardDetails extends React.Component {
 
     const currentUserButtons = (currentUserId === card.creatorId) ? (
       <div className="card-alter-buttons">
-        {/* <Link className="gray-button">Edit</Link> */}
+        <Link 
+          className="gray-button"
+          to={`/cards/${card.id}/edit`}
+        >Edit</Link>
         <a 
         className="gray-button"
         onClick={this.handleDelete}

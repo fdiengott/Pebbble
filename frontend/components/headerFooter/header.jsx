@@ -32,6 +32,8 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
     null
   ); 
 
+  const urlArr = url.split("/")
+
   return (url !== '/cards/new') ? (
     <>
       <header className="standard-header">
@@ -53,10 +55,10 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
       { signupBanner }
     </>
   ) : (
-    <header className="header-new-card">
+    <header className="header-card-form">
       <ul role="list">
         <li>{ logo }</li>
-        <li><h1>Publish your Card</h1></li>
+        <li><h1>{urlArr[urlArr.length-1] === "edit" ? "Edit your Card" : "Publish your Card"}</h1></li>
         <li><a 
         onClick={() => window.history.back()}
         className="close-btn"

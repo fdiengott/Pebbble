@@ -12,16 +12,16 @@ class CardForm extends React.Component {
   constructor(props) {
     super(props); 
     this.state = {
-      title: "", 
-      description: "", 
-      animated: false, 
-      category: "",  
-      imgFile: null, 
-      imgUrl: null, 
-      disabled: true,
-      creatorId: this.props.currentUserId,
-      redirect: false,
-      cardId: 0
+      title: this.props.title,
+      description: this.props.description,
+      animated: this.props.animated,
+      category: this.props.category,
+      imgFile: this.props.imgFile,
+      imgUrl: this.props.imgUrl,
+      disabled: this.props.disabled,
+      creatorId: this.props.creatorId,
+      redirect: this.props.redirect,
+      cardId: this.props.cardId,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this); 
@@ -48,7 +48,7 @@ class CardForm extends React.Component {
       formData.append('card[img]', this.state.imgFile); 
     }
 
-    this.props.createCard(formData).then(
+    this.props.processCard(formData).then(
       card => this.setState({ redirect: true, cardId: card.card.id })
     ); 
   }
@@ -107,7 +107,7 @@ class CardForm extends React.Component {
 
 
   render() {
-    // debugger  
+    debugger  
     const { errors } = this.props;
     const { cardId, redirect, category, imgUrl, animated, disabled } = this.state; 
 

@@ -10,7 +10,8 @@ import AccountContainer from './user/account_container';
 import UserEditFormContainer from './user/user_edit_form_container';
 import CardIndexContainer from './cards/card_index_container';
 import CardDetailsContainer from './cards/card_details_container';
-import CardFormContainer from './cards/card_form_container'; 
+import CardCreateFormContainer from './cards/card_create_form_container'; 
+import CardEditFormContainer from './cards/card_edit_form_container'; 
 
 const App = () => (
   <>
@@ -19,7 +20,8 @@ const App = () => (
     <Switch>
       <Route path="/account/about/edit" component={UserEditFormContainer}/> 
       <Route path="/users/:userId" component={AccountContainer}/>
-      <ProtectedRoute path="/cards/new" component={CardFormContainer}/>
+      <ProtectedRoute path="/cards/new" component={CardCreateFormContainer}/>
+      <ProtectedRoute path="/cards/:cardId/edit" component={CardEditFormContainer}/>
       <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
