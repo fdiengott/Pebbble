@@ -72,7 +72,9 @@ card = Card.create(
   creator_id: u.id, 
   title: "Luminance", 
   animated: false, 
-  description: "Hi Dribblers.\nTodays I am a very sharing a very an experimental shot which I have just done with it, Its just design idea inspiration for lamp web template or landing page.\nI hope you really like the idea and you really like the this new unique and very neat designing concept.", 
+  description: "Hi Dribblers.
+  Todays I am a very sharing a very an experimental shot which I have just done with it, Its just design idea inspiration for lamp web template or landing page.
+  I hope you really like the idea and you really like the this new unique and very neat designing concept.", 
   category: "web design"
 )
 
@@ -120,7 +122,9 @@ u = User.create(
   name:     "Peter Gaillard",
   location: "Columbia, SC",
   email:    'petergaillard@me.it',
-  bio: "Motion and Interactive Designer\n\npeter@petergaillard.com", 
+  bio: "Motion and Interactive Designer
+  
+  peter@petergaillard.com", 
   website_url: "petergaillard.com",
   password: 123456
 )
@@ -182,7 +186,8 @@ u = User.create(
   name:     "Maja Bjeletic",
   location: "Novi Sad, Serbia",
   email:    'majabjeletic@me.it',
-  bio: "Digital Designer specialising in UI Design\nContact for collaboration: maja.bjeletic987@gmail.com", 
+  bio: "Digital Designer specialising in UI Design
+  Contact for collaboration: maja.bjeletic987@gmail.com", 
   website_url: "https://www.instagram.com/maja_b_design/",
   password: 123456
 )
@@ -197,7 +202,10 @@ card = Card.create(
   creator_id: u.id, 
   title: "Inspiring Creatures", 
   animated: false, 
-  description: "---------------------------------------------------\nFollow my work on\nInstagram: @maja_b_design\nThanks 🙌", 
+  description: "---------------------------------------------------
+  Follow my work on
+  Instagram: @maja_b_design
+  Thanks 🙌", 
   category: "web design"
 )
 
@@ -211,7 +219,11 @@ card = Card.create(
   creator_id: u.id, 
   title: "Green-Purple-Green", 
   animated: false, 
-  description: "Green-Purple-Green\n---------------------------------------------------\nFollow my work on\nInstagram: @maja_b_design\nThanks 🙌", 
+  description: "Green-Purple-Green
+  ---------------------------------------------------
+  Follow my work on
+  Instagram: @maja_b_design
+  Thanks 🙌", 
   category: "web design"
 )
 
@@ -228,7 +240,8 @@ u = User.create(
   location: "Saint-Petersburg",
   email:    'gregoryriaguzov@me.it',
   bio: "Lead UI/UX Designer at @cuberto
-  💌 etotgrisha@gmail.com\n👀 instagram.com/gregg.design", 
+  💌 etotgrisha@gmail.com
+  👀 instagram.com/gregg.design", 
   website_url: "https://www.instagram.com/gregg.design/",
   password: 123456
 )
@@ -272,7 +285,8 @@ u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-pict
 card = Card.create(
   creator_id: u.id, 
   title: "Tula", 
-  description: "Grow Your Technology Team\nYour challenge is our progress", 
+  description: "Grow Your Technology Team
+  Your challenge is our progress", 
   animated: false, 
   category: "web design"
 )
@@ -304,7 +318,9 @@ u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-pict
 card = Card.create(
   creator_id: u.id, 
   title: "Artist", 
-  description: "Hey Guys!!\n\nMy new illustration. Enjoyed making this one. Hope you like it!", 
+  description: "Hey Guys!!
+  
+  My new illustration. Enjoyed making this one. Hope you like it!", 
   animated: false, 
   category: "illustration"
 )
@@ -348,7 +364,10 @@ u = User.create(
   name:     "Facu Bottazzi",
   location: "Buenos Aires, Argentina",
   email:    'facubottazzi@me.it',
-  bio: "Graphic Designer - Lettering & Illustration\n\nFor work inquires:\nfacundobottazzi@gmail.com", 
+  bio: "Graphic Designer - Lettering & Illustration
+  
+  For work inquires:
+  facundobottazzi@gmail.com", 
   website_url: "https://www.instagram.com/facubottazzi/",
   password: 123456
 )
@@ -360,7 +379,14 @@ u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-pict
 card = Card.create(
   creator_id: u.id, 
   title: "Decade Defector", 
-  description: "Funk group, with the goal and need, to create a logo that conveys the organic and modern of their music. They approached me, with a great interest in my work, for which I am very happy. By the way, projects with musical groups are always very fun!\n\nI hope you like it.\nFeedback appreciated!\n\nMy other profiles...\n\nInstagram / Behance", 
+  description: "Funk group, with the goal and need, to create a logo that conveys the organic and modern of their music. They approached me, with a great interest in my work, for which I am very happy. By the way, projects with musical groups are always very fun!
+  
+  I hope you like it.
+  Feedback appreciated!
+  
+  My other profiles...
+  
+  Instagram / Behance", 
   animated: false, 
   category: "typography"
 )
@@ -373,7 +399,11 @@ card.img.attach(io: card_file, filename: "#{u.username}-#{card.title}." + "png")
 card = Card.create(
   creator_id: u.id, 
   title: "Sed", 
-  description: "'SED'\nExperimental Type\nPlaying with morphologies and sensations.\n\nYour feedback is welcome :)", 
+  description: "'SED'
+  Experimental Type
+  Playing with morphologies and sensations.
+  
+  Your feedback is welcome :)", 
   animated: false, 
   category: "typography"
 )
@@ -431,7 +461,9 @@ u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-pict
 card = Card.create(
   creator_id: u.id, 
   title: "Searching", 
-  description: "Our team has started animating illustrations. This is an illustration by Thierry Fousse in Flame Style.\n\nWhat styles or illustrations would you like us to bring to life?", 
+  description: "Our team has started animating illustrations. This is an illustration by Thierry Fousse in Flame Style.
+  
+  What styles or illustrations would you like us to bring to life?", 
   animated: true, 
   category: "animation"
 )
