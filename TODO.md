@@ -15,7 +15,7 @@
 
 
  Things to fix: 
-  2. card edit form - remove footer, sticky submit area. Test edit form
+  
 
 
 
