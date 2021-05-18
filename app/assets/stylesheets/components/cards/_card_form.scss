@@ -38,14 +38,17 @@
 
 .card-form {
   @include flex(space-between, $flex-direction: column); 
-  
+  height: 100vh;
+
   main {
-    @include flex(flex-start, space-around); 
-    margin-bottom: 40px;
+    @include flex($align-items: stretch); 
+    flex-wrap: wrap;
+    margin: 40px 0;
   }
   .img-input {
     // background-color: lightblue; 
     margin-right: 40px;
+    margin-bottom: 40px;
     @include flex(center, center); 
     $drop-zone-width: 650px; 
     width: $drop-zone-width;
@@ -91,9 +94,9 @@
     @include flex(space-between, flex-start, column); 
 
     label {
-      margin-bottom: $form-spacing;
+      margin-bottom: 8px;
       width: 400px;
-      @include flex(flex-start, space-between, column); 
+      @include flex(flex-start, stretch, column); 
     }
 
     input {
