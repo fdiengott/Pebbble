@@ -14,6 +14,21 @@ class User < ApplicationRecord
     class_name: :Card,
     dependent: :destroy
 
+  has_many :followers, 
+    foreign_key: :follower_id,
+    class_name: :Follow
+
+  has_many :followed, 
+    foreign_key: :creator_id,
+    class_name: :Follow
+
+  has_many :followers, 
+    through: :followers, 
+    source: :Follow
+
+  has_many :followed, 
+    through: :followed, 
+    source: :Follow
 
   ### AUTH METHODS
 

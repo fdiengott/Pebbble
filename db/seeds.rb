@@ -442,6 +442,26 @@ card_file = open('https://pebbble-seeds.s3.amazonaws.com/pebbble_seed_pics/denis
 card.img.attach(io: card_file, filename: "#{u.username}-#{card.title}." + "m4v")
 
 
+# ***********************************************************
+# ***********************************************************
+# ***********************************************************
+
+# ************** FOLLOWS ******************
+
+ids = User.pluck(:id)
+combos = []
+
+while combos.length < 30
+  newCombo = [ids.sample, ids.sample]
+  
+  if newCombo.uniq.length > 1 && !combos.include?(newCombo)
+    combos << newCombo
+    Follow.create(follower_id: newCombo[0], creator_id: newCombo[1])
+  end
+  
+end
 
 
+# ***********************************************************
+# ***********************************************************
   
