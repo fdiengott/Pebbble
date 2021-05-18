@@ -69,3 +69,11 @@ export const deleteCard = (cardId) => dispatch => (
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 ); 
+
+// FOLLOWS
+export const fetchFollowedUsersCards = (userId) => dispatch => (
+  CardAPIUtil.fetchFollowedUsersCards(userId).then(
+    data => dispatch(receiveCardsAndUsers(data)), 
+    err => dispatch(receiveCardErrors(err.responseJSON))
+  )
+); 

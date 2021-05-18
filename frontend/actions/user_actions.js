@@ -43,6 +43,20 @@ export const updateUser = (user) => dispatch => (
   )
 ); 
 
+export const fetchFollowers = (creatorId) => dispatch => (
+  UserAPIUtil.fetchFollowers(creatorId).then(
+    users => dispatch(receiveUsers(users)), 
+    err => dispatch(receiveUserErrors(err))
+  )
+); 
+
+export const fetchFollowedUsers = (followerId) => dispatch => (
+  UserAPIUtil.fetchFollowedUsers(followerId).then(
+    users => dispatch(receiveUsers(users)), 
+    err => dispatch(receiveUserErrors(err))
+  )
+); 
+
 // TESTING
 // window.fetchUsers = fetchUsers; 
 // window.fetchUser = fetchUser; 

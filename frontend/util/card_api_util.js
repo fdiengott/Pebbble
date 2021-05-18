@@ -46,3 +46,12 @@ export const deleteCard = cardId => (
     url: `api/cards/${cardId}`
   })
 ); 
+
+
+// FOLLOWS
+export const fetchFollowedUsersCards = (userId) => (
+  $.ajax({
+    method: "GET", 
+    url: `api/follows/${userId}/cards`
+  })
+);

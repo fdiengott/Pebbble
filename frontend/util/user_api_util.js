@@ -25,7 +25,6 @@ export const updateUser = ({id, formData}) => (
 
 
 // FOLLOWS
-
 export const fetchFollowers = (creatorId) => (
   $.ajax({
     method: "GET", 
