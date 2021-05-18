@@ -55,11 +55,15 @@ class CardIndex extends React.Component {
 
     return (  
       <main className="card-index-container">
-        <nav>
-          <ul role="list">
-            { frontpage ? categoryLinks : null }
-          </ul>
-        </nav>
+        {
+          frontpage ? (
+            <nav>
+              <ul role="list">
+                { categoryLinks }
+              </ul>
+            </nav>
+          ) : null
+        }
         <ul className="card-index" role="list">
           { cardIndex }
         </ul>

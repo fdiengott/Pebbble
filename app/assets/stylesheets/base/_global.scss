@@ -2,7 +2,7 @@
 
 .pink-button {
   @include color-button($bright-pink, white); 
-  padding: 10px; 
+  padding: 10px 14px; 
 }
 
 .pink-button:hover {
