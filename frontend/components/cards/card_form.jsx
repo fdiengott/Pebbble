@@ -83,7 +83,7 @@ class CardForm extends React.Component {
     if (file) {
       fileReader.readAsDataURL(file); 
     }
-    debugger
+    
     if (["image/gif", "video/mp4"].includes(file.type)) {
       this.setState({ animated: true }); 
     } else {
@@ -107,8 +107,7 @@ class CardForm extends React.Component {
 
 
   render() {
-    debugger  
-    const { errors } = this.props;
+    const { errors, submitText } = this.props;
     const { cardId, redirect, category, imgUrl, animated, disabled } = this.state; 
 
     if (redirect) {
@@ -187,7 +186,7 @@ class CardForm extends React.Component {
           <button 
             className={disabled ? "submit-btn" : "submit-btn active"} 
             disabled={disabled}
-            >Publish</button>
+            >{submitText}</button>
         </footer>
       </form>
     )

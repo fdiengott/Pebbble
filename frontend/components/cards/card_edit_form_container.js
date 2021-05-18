@@ -5,7 +5,6 @@ import { clearErrors } from '../../actions/session_actions';
 import CardForm from './card_form';						//display component
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   const cardId = ownProps.match.params.cardId; 
   
   const { 
@@ -28,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
   creatorId,
   redirect: false,
   cardId,
+  submitText: "Save",
 })}; 
 
 const mapDispatchToProps = (dispatch) => ({

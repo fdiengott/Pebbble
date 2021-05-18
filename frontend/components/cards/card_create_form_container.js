@@ -16,7 +16,8 @@ const mapStateToProps = (state) => ({
   disabled: true,
   creatorId: state.session.id,
   redirect: false,
-  cardId: 0
+  cardId: 0,
+  submitText: "Publish",
 }); 
 
 const mapDispatchToProps = (dispatch) => ({
