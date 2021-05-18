@@ -21,7 +21,6 @@
 
 
  Things to fix: 
-  1. upload video, user's show page renders image
   2. card edit form, card delete button
 
 

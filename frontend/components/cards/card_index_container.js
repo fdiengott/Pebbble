@@ -10,13 +10,17 @@ import {
 } from '../../reducers/selectors'; 
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+  debugger
+  const userId = ownProps.match.params.userId; 
+  const currentUserId = state.session.id; 
+  
   return ({
-  frontpage: ["/:category", "/"].includes(ownProps.match.path),
-  cards: selectCardsByUserId(state, ownProps.match.params.userId), 
-  users: selectAllUsers(state), // all users, as an object,
-  userId: ownProps.match.params.userId, 
-  cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
+    userId, 
+    currentUserId,
+    frontpage: ["/:category", "/"].includes(ownProps.match.path),
+    cards: userId ? selectCardsByUserId(state, userId) : selectCardsByUserId(state, currentUserId), 
+    users: selectAllUsers(state), // all users, as an object,
+    cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category)
 })}; 
 
 const mapDispatchToProps = (dispatch) => ({

@@ -15,8 +15,11 @@ class CardIndex extends React.Component {
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
     } else {
-      // debugger
-      this.props.fetchUserCards(this.props.userId); 
+      this.props.userId ? 
+        // if it's a user show page
+        this.props.fetchUserCards(this.props.userId) : 
+        // if it's the current user's page
+        this.props.fetchUserCards(this.props.currentUserId) 
     }
   }
 
