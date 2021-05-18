@@ -33,8 +33,9 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
   ); 
 
   const urlArr = url.split("/")
+  const urlEnd = urlArr[urlArr.length-1]; 
 
-  return (url !== '/cards/new') ? (
+  return (url !== '/cards/new' && urlEnd !== 'edit') ? (
     <>
       <header className="standard-header">
         <ul role="list">
@@ -58,7 +59,7 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
     <header className="header-card-form">
       <ul role="list">
         <li>{ logo }</li>
-        <li><h1>{urlArr[urlArr.length-1] === "edit" ? "Edit your Card" : "Publish your Card"}</h1></li>
+        <li><h1>{ urlEnd === "edit" ? "Edit your Card" : "Publish your Card" }</h1></li>
         <li><a 
         onClick={() => window.history.back()}
         className="close-btn"
