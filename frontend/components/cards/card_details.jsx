@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'; 
+import { Link, Redirect } from 'react-router-dom'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,6 +9,10 @@ import Avatar from '../user/avatar';
 class CardDetails extends React.Component {
   constructor(props) {
     super(props); 
+
+    this.state = { deleted: false }
+
+    this.handleDelete = this.handleDelete.bind(this); 
   }
 
   componentDidMount() {
@@ -18,10 +22,20 @@ class CardDetails extends React.Component {
     ); 
   }
 
+  handleDelete() {
+    const response = confirm("Are you sure you want to delete this screenshot?")
+    if (response) {
+      this.props.deleteCard(this.props.card.id).then(
+        alert("Card deleted successfully")
+      ).then(this.setState({ deleted: true })); 
+    }
+  }
+
   render() {
-    const { user, card } = this.props; 
+    const { user, card, currentUserId } = this.props; 
     
-    if (!user || !card) return null; 
+    if (!user || !card)       return null; 
+    if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
 
 
     const avatarLink = (
@@ -35,6 +49,16 @@ class CardDetails extends React.Component {
     ) : (
       <img src={card.img} alt={card.title}/>
     )
+
+    const currentUserButtons = (currentUserId === card.creatorId) ? (
+      <div className="card-alter-buttons">
+        {/* <Link className="gray-button">Edit</Link> */}
+        <a 
+        className="gray-button"
+        onClick={this.handleDelete}
+        >Delete</a>
+      </div>
+    ) : null; 
 
 
     return (
@@ -76,6 +100,7 @@ class CardDetails extends React.Component {
           </div>
           <footer>
             <p>{card.description}</p>
+            { currentUserButtons }
             <div className='avatar-container'>
               <hr/>
               { avatarLink }
