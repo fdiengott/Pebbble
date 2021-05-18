@@ -77,3 +77,6 @@ export const fetchFollowedUsersCards = (userId) => dispatch => (
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 ); 
+
+// TESTING
+window.fetchFollowedUsersCards = fetchFollowedUsersCards; 

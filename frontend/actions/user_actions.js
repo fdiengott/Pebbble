@@ -53,7 +53,7 @@ export const fetchFollowers = (creatorId) => dispatch => (
 export const fetchFollowedUsers = (followerId) => dispatch => (
   UserAPIUtil.fetchFollowedUsers(followerId).then(
     users => dispatch(receiveUsers(users)), 
-    err => dispatch(receiveUserErrors(err))
+    err => dispatch(receiveUserErrors(err.responseJSON))
   )
 ); 
 
@@ -61,3 +61,5 @@ export const fetchFollowedUsers = (followerId) => dispatch => (
 // window.fetchUsers = fetchUsers; 
 // window.fetchUser = fetchUser; 
 // window.updateUser = updateUser; 
+// window.fetchFollowedUsers = fetchFollowedUsers; 
+// window.fetchFollowers = fetchFollowers; 

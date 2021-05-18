@@ -44,3 +44,7 @@ export const deleteFollow = (followId) => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
+
+// window.fetchFollows = fetchFollows; 
+// window.createFollow = createFollow; 
+// window.deleteFollow = deleteFollow; 

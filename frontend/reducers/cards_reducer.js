@@ -22,7 +22,7 @@ const cardsReducer = (state = {}, action) => {
       return nextState; 
 
     case RECEIVE_CARDS_AND_USERS: 
-      return {...state, ...action.data.cards}; 
+      return action.data.cards; 
       
     default:
       return state;

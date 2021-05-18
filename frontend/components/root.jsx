@@ -10,7 +10,6 @@ const Root = ({ store }) => (
     <HashRouter>
       <ScrollToTop />
       <App />
-      {/* </ScrollToTop> */}
     </HashRouter>
   </Provider>
 );
