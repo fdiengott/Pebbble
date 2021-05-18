@@ -3,7 +3,7 @@ import * as CardAPIUtil from '../util/card_api_util';
 export const RECEIVE_CARDS = "RECEIVE_CARDS"; 
 export const RECEIVE_CARD = "RECEIVE_CARD"; 
 export const REMOVE_CARD = "REMOVE_CARD"; 
-export const RECEIVE_CARD_ERRORS = "RECEIVE_CARD_ERRORS"; 
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS"; 
 export const RECEIVE_CARDS_AND_USERS = "RECEIVE_CARDS_AND_USERS"; 
 
 // ACTIONS
@@ -23,7 +23,7 @@ const removeCard = (cardId) => ({
 });
 
 const receiveCardErrors = (errors) => ({
-  type: RECEIVE_CARD_ERRORS, 
+  type: RECEIVE_ERRORS, 
   errors
 }); 
 
@@ -36,11 +36,6 @@ const receiveCardsAndUsers = (data) => ({
 export const fetchCardsAndUsers = () => dispatch => (
   CardAPIUtil.fetchCards().then(
     data => dispatch(receiveCardsAndUsers(data)),
-    // (res) => {
-    //   // return one of these
-    //   dispatch(receiverUsers(res.users))
-    //   return dispatch(receiveCards(res.cards))
-    // }, 
     err => dispatch(receiveCardErrors(err))
   )
 ); 
