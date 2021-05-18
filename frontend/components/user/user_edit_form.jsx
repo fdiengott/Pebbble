@@ -32,7 +32,7 @@ class UserEditForm extends React.Component {
 
     this.props.updateUser(formattedUser).then(
       () => this.setState({ success: true })
-    ); 
+    ).then(window.scrollTo(0,0)); 
   }
 
   handleInput(type) {

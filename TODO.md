@@ -9,15 +9,13 @@
 - Collections require a selector for the first 4 cards url in them. 
 - To get card index items to animate, onHover=(toggle autoplay css attribute), onBlur={toggle attribute}
 
-- Add 'required' and asterisks to form fields
-
 
 - categories table
 
 
 
  Things to fix: 
-  2. card edit form - update header text and submit/save button, remove footer
+  2. card edit form - remove footer, sticky submit area. Test edit form
 
 
 
