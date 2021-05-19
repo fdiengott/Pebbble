@@ -43,6 +43,7 @@ export const updateUser = (user) => dispatch => (
   )
 ); 
 
+
 export const fetchFollowers = (creatorId) => dispatch => (
   UserAPIUtil.fetchFollowers(creatorId).then(
     users => dispatch(receiveUsers(users)), 

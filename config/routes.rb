@@ -24,6 +24,7 @@
 
 #                GET    /api/users/:creator_id/followers(.:format)           api/user_followers#index {:format=>:json}
 #                GET    /api/users/:follower_id/followedUsers(.:format)      api/followed_users#index {:format=>:json}
+#                GET    /api/users/:follower_id/follows(.:format)            api/user_follows#index {:format=>:json}
 
 #           root GET    /                                                    static_pages#root
 
@@ -48,7 +49,9 @@ Rails.application.routes.draw do
 
     # to get all of the users a user is following
     get '/users/:follower_id/followedUsers', to: 'followed_users#index'
-
+    
+    # to get the follows for a specific follower
+    get '/users/:follower_id/follows', to: 'user_follows#index'
 
   end
 

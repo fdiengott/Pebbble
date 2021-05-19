@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards } from '../../actions/card_actions';					//actions
-import { fetchFollows } from '../../actions/follow_actions'; 
+import { fetchFollows, fetchUserFollows } from '../../actions/follow_actions'; 
 import CardIndex from './card_index';						//display component
 import { selectCardsByUserId, selectFollowedUsers } from '../../reducers/selectors'; 
 
@@ -28,6 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
   fetchUserCards: (userId) => dispatch(fetchUserCards(userId)),
   fetchFollows: () => dispatch(fetchFollows()),
+  fetchUserFollows: () => dispatch(fetchUserFollows()),
   fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
 });
 

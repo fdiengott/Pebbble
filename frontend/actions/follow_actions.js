@@ -32,6 +32,15 @@ export const fetchFollows = () => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
+
+// fetch userFollows
+export const fetchUserFollows = (followerId) => dispatch => (
+  FollowAPIUtil.fetchUserFollows(followerId).then(
+    follows => dispatch(receiveFollows(follows)), 
+    err => dispatch(receiveErrors(err.responseJSON))
+  )
+); 
+
 export const createFollow = (follow) => dispatch => {
   return (
   FollowAPIUtil.createFollow(follow).then(
