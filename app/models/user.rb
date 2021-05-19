@@ -16,11 +16,13 @@ class User < ApplicationRecord
 
   has_many :received_follows, 
     foreign_key: :follower_id,
-    class_name: :Follow
+    class_name: :Follow,
+    dependent: :destroy
 
   has_many :received_followed, 
     foreign_key: :creator_id,
-    class_name: :Follow
+    class_name: :Follow,
+    dependent: :destroy
 
   has_many :followers, 
     through: :received_followed, 

@@ -8,13 +8,13 @@
 
 require 'open-uri'
 
-User.destroy_all
-Card.destroy_all
 Follow.destroy_all
+Card.destroy_all
+User.destroy_all
 
 # **************************************************************
 
-User.create(
+u = User.create(
   username: "fred",
   name: "Fred Chopin",
   location: "Paris", 
@@ -23,6 +23,25 @@ User.create(
   website_url: "https://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin",
   password: 123456
 )
+
+pro_pic_file = open('https://pebbble-seeds.s3.amazonaws.com/pebbble_seed_pics/chopin.jpeg')
+
+u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-picture" + ".jpeg")
+
+# *************
+
+card = Card.create(
+  creator_id: u.id, 
+  title: "Cloth A", 
+  animated: true, 
+  category: "animation"
+)
+
+card_file = open('https://pebbble-seeds.s3.amazonaws.com/pebbble_seed_pics/A.mp4')
+
+card.img.attach(io: card_file, filename: "#{u.username}-#{card.title}." + "mp4")
+
+# **************************************************************
 
 u = User.create(
   username: "yoshiyukiyagi",
