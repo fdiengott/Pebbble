@@ -55,3 +55,12 @@ export const fetchFollowedUsersCards = (userId) => (
     url: `api/follows/${userId}/cards`
   })
 );
+
+
+// COLLECTIONS
+export const fetchCollectionCards = (collectionId) => (
+  $.ajax({
+    method: "GET", 
+    url: `/api/collections/${collectionId}/cards`,
+  })
+); 
