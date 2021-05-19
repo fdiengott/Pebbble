@@ -516,4 +516,36 @@ end
 
 # ***********************************************************
 # ***********************************************************
-  
+# ***********************************************************
+
+
+# ************** COLLECTIONS ******************
+
+20.times do 
+  title = Faker::Book.title
+  curator_id = ids.sample
+
+  Collection.create(title: title, curator_id: curator_id)
+end
+
+
+# ************** COLLECTIONS_CARDS ******************
+
+card_ids = Card.pluck(:id)
+collection_ids = Collection.pluck(:id)
+combos = []
+
+40.times do 
+  card_id = card_ids.sample
+  collection_id = collection_ids.sample
+  newCombo = [card_id, collection_id]
+
+  unless combos.include?(newCombo)
+    CollectionsCard.create(card_id: card_id, collection_id: collection_id) 
+    combos << newCombo
+  end
+end
+
+
+# ***********************************************************
+# ***********************************************************
