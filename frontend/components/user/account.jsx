@@ -17,6 +17,10 @@ class Account extends React.Component {
     }
   }
 
+  getFollows(followerId) {
+    this.props.fetchUserFollows(followerId); 
+  }
+
   render() {
     const { 
       currentUser, 
@@ -30,6 +34,11 @@ class Account extends React.Component {
     
     // if neither have loaded early return
     if (userShow && !user) return null; 
+    
+    if (userShow && !Object.keys(follows).length) {
+      this.getFollows(currentUser.id); 
+      return null; 
+    }
 
     // if there's a current user, personal account header, otherwise, user show page
     const header = userShow ? (

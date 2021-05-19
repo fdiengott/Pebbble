@@ -3,7 +3,7 @@ import Account from './account';						//display component
 import { selectCardsByUserId, selectUserByCard } from '../../reducers/selectors'; 
 import { selectFollowedUsers } from '../../reducers/selectors'; 
 import { fetchUser } from '../../actions/user_actions';					//actions
-import { createFollow, deleteFollow } from '../../actions/follow_actions';					//actions
+import { createFollow, deleteFollow, fetchUserFollows } from '../../actions/follow_actions';					//actions
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   fetchFollowedUsers: (followerId) => (
     dispatch(fetchFollowedUsers(followerId))
+  ),
+  fetchUserFollows: (followerId) => (
+    dispatch(fetchUserFollows(followerId))
   ),
   followUser: follow => dispatch(createFollow(follow)),
   unfollowUser: followId => dispatch(deleteFollow(followId)),

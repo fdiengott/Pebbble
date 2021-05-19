@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
   fetchUserCards: (userId) => dispatch(fetchUserCards(userId)),
   fetchFollows: () => dispatch(fetchFollows()),
-  fetchUserFollows: () => dispatch(fetchUserFollows()),
+  fetchUserFollows: (followerId) => dispatch(fetchUserFollows(followerId)),
   fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
 });
 

@@ -1,4 +1,4 @@
-class Api::UserFollows < ApplicationController 
+class Api::UserFollowsController < ApplicationController 
 
   def index
     @follows = Follow.where(follower_id: params[:follower_id])
