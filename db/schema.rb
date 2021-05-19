@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_190134) do
+ActiveRecord::Schema.define(version: 2021_05_19_210400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_05_19_190134) do
     t.datetime "updated_at", null: false
     t.bigint "collection_id", null: false
     t.bigint "card_id", null: false
-    t.index ["card_id"], name: "index_collections_cards_on_card_id"
+    t.index ["card_id", "collection_id"], name: "index_collections_cards_on_card_id_and_collection_id", unique: true
     t.index ["collection_id"], name: "index_collections_cards_on_collection_id"
   end
 
