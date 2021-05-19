@@ -38,11 +38,17 @@ class CardIndex extends React.Component {
       // if (this.state.followersCards) {
       if (type === "popular") {
         this.props.fetchCardsAndUsers().then(
-          this.setState({ followersCards: false })
+          this.setState({ 
+            followersCards: false, 
+            followDropdown: !this.state.followDropdown 
+          })
         )
       } else {
         this.props.fetchFollowedUsersCards(this.props.currentUserId).then(
-          this.setState({ followersCards: true }) 
+          this.setState({ 
+            followersCards: true, 
+            followDropdown: !this.state.followDropdown
+          }) 
         )
       }
     }
@@ -90,19 +96,19 @@ class CardIndex extends React.Component {
     const followingFilter = (
       <div className="cards-filter">
         <a onClick={this.handleDropdown}
-        >{buttonText} <span>{icon}</span></a>
+        >{buttonText} <span> {icon}</span></a>
         <ul 
           className={this.state.followDropdown ? "dropdown-active" : "dropdown-hidden"}
           role="list"
         >
           <li 
-            className={ followersCards ? "pink" : "" }
-            onClick={this.handleClick("following")}
-            >Following</li>
-          <li 
             className={ followersCards ? "" : "pink" }
             onClick={this.handleClick("popular")}
             >Popular</li>
+          <li 
+            className={ followersCards ? "pink" : "" }
+            onClick={this.handleClick("following")}
+            >Following</li>
         </ul>
       </div>
       ) 

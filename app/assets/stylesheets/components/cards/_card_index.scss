@@ -75,11 +75,15 @@
     width: 140px;
     border: 1px solid $lighter-gray;
     border-radius: $border-radius;
-    top: 40px;
+    top: 50px;
 
     .pink {
       color: $bright-pink; 
       font-weight: 600;
+    }
+
+    li:first-child {
+      border-bottom: 1px solid $lightest-gray
     }
 
     > * {
