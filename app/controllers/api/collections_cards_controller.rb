@@ -13,7 +13,7 @@ class Api::CollectionsCardsController < ApplicationController
 
   def destroy
     @collections_card = CollectionsCard.find_by(id: params[:id])
-    if @collections_card && @collections_card.curator_id == current_user.id
+    if @collections_card
       @collections_card.destroy
       render '/api/collections_cards/show'
     else
