@@ -8,9 +8,9 @@
 
 require 'open-uri'
 
-User.destroy_all
-Card.destroy_all
 Follow.destroy_all
+Card.destroy_all
+User.destroy_all
 
 # **************************************************************
 
