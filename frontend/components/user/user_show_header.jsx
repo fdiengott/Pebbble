@@ -63,13 +63,13 @@ class UserShowHeader extends React.Component {
         className="white-button"
         onClick={this.toggleFollow}
       ><span
-      ><FontAwesomeIcon icon={faPlus}/></span> Following</a>
+      ><FontAwesomeIcon icon={faCheck}/></span> Following</a>
     ) : (
       <a 
         className="gray-button"
         onClick={this.toggleFollow}
       ><span
-      ><FontAwesomeIcon icon={faCheck}/></span> Follow</a>
+      ><FontAwesomeIcon icon={faPlus}/></span> Follow</a>
     )
 
 

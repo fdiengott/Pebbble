@@ -23,7 +23,7 @@
     @include flex(flex-start); 
     
     .white-button, .gray-button {
-      padding: 10px; 
+      padding: 10px 14px; 
       margin-right: 20px;
       span {
         margin-right: 4px;
@@ -32,10 +32,10 @@
 
     .white-button {
       @include color-button(white, black); 
-      border: 1px solid $lightest-gray; 
+      border: 1px solid $lighter-gray; 
       
       &:hover {
-        border: 1px solid $light-gray; 
+        border: 1px solid darken($light-gray, 10%); 
         background-color: unset;
       }
     }
