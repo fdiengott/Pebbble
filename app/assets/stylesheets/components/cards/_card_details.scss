@@ -39,6 +39,15 @@
     @include flex($flex-direction: column); 
     margin-top: 60px;
     max-width: 80vh * 1.3333;
+
+    .form-errors {
+      padding: 0;
+      font-size: 14px;
+      color: red;
+      font-style: italic;
+      list-style: none;
+      align-self: flex-start;
+    }
     
     header {
       @include flex(space-between); 

@@ -19,6 +19,14 @@
     @include image-cropper(80px); 
   }
   
+  .form-errors {
+    padding: 0;
+    font-size: 14px;
+    color: red;
+    font-style: italic;
+    list-style: none;
+  }
+
   .user-buttons {
     @include flex(flex-start); 
     
