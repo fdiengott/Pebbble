@@ -24,10 +24,7 @@ class CardDetails extends React.Component {
   componentDidMount() {
     this.props.fetchCard(this.props.match.params.cardId)
       .then( card => this.props.fetchUser(card.card.creatorId))
-      .then( res => {
-        debugger
-        return this.props.fetchUserFollows(this.props.currentUserId)
-      })
+      .then( () => this.props.fetchUserFollows(this.props.currentUserId))
   }
 
   handleDelete() {
@@ -67,13 +64,9 @@ class CardDetails extends React.Component {
   }
 
   checkFollows() {
-    const followed = Object.values(this.props.follows)
+    return Object.values(this.props.follows)
       .map(follow => follow.creatorId)
       .includes(this.props.user.id)
-
-    debugger
-
-    return followed; 
   }
 
   render() {
@@ -83,7 +76,6 @@ class CardDetails extends React.Component {
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
 
     const followed = this.checkFollows(); 
-    debugger
 
     const followButtonText = followed ? "Following" : "Follow"
     const followButton = (
