@@ -32,18 +32,20 @@ export const fetchFollows = () => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
-export const createFollow = (follow) => dispatch => (
+export const createFollow = (follow) => dispatch => {
+  return (
   FollowAPIUtil.createFollow(follow).then(
     follow => dispatch(receiveFollow(follow)), 
     err => dispatch(receiveErrors(err.responseJSON))
   )
-); 
-export const deleteFollow = (followId) => dispatch => (
+)}; 
+export const deleteFollow = (followId) => dispatch => {
+  return (
   FollowAPIUtil.deleteFollow(followId).then(
-    follow => dispatch(removeFollow(follow)), 
+    follow => dispatch(removeFollow(follow.id)), 
     err => dispatch(receiveErrors(err.responseJSON))
   )
-); 
+)}; 
 
 // window.fetchFollows = fetchFollows; 
 // window.createFollow = createFollow; 

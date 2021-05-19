@@ -3,17 +3,20 @@ import Account from './account';						//display component
 import { selectCardsByUserId, selectUserByCard } from '../../reducers/selectors'; 
 import { selectFollowedUsers } from '../../reducers/selectors'; 
 import { fetchUser } from '../../actions/user_actions';					//actions
+import { createFollow, deleteFollow } from '../../actions/follow_actions';					//actions
 
 
 const mapStateToProps = (state, ownProps) => {
-  const userId = ownProps.match.params.userId; 
+  const userId = parseInt(ownProps.match.params.userId); 
+  const currentUserId = state.session.id; 
 
   return ({
-  currentUser: state.entities.users[state.session.id],
+  currentUser: state.entities.users[currentUserId],
   userShow: ownProps.match.path === "/users/:userId",
   userId,
   user: state.entities.users[ownProps.match.params.userId],
   followingUser: selectFollowedUsers(state, state.session.id).includes(userId),
+  follows: state.entities.follows, 
   // currentUserCards: selectCardsByUserId(state, state.session.id),
   // cards: selectCardsByUserId(ownProps.match.params.userId),
   // collections: selector for num collections,
@@ -25,6 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchFollowedUsers: (followerId) => (
     dispatch(fetchFollowedUsers(followerId))
   ),
+  followUser: follow => dispatch(createFollow(follow)),
+  unfollowUser: followId => dispatch(deleteFollow(followId)),
+
   // fetchUsersCards: (userId) => dispatch(fetchUserCards(userId)),
 })
 

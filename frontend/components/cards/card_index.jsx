@@ -13,6 +13,7 @@ class CardIndex extends React.Component {
   componentDidMount() {
     if (this.props.frontpage) {
       // this.props.fetchFollowedUsersCards(this.props.currentUserId); 
+      this.props.fetchFollows(); 
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
     } else {

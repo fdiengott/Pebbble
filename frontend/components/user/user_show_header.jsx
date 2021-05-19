@@ -1,6 +1,9 @@
+import React from 'react'; 
+
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'; 
+import { selectFollowId } from '../../reducers/selectors'; 
+
 import Avatar from './avatar'; 
 
 
@@ -8,11 +11,42 @@ class UserShowHeader extends React.Component {
   constructor (props) {
     super(props); 
 
-    this.state = {followed: this.props.followingUser}; 
+    this.state = { followed: this.props.followingUser }; 
+
+    this.toggleFollow = this.toggleFollow.bind(this); 
+  }
+
+  toggleFollow() {
+    const {
+      user,
+      followUser,
+      unfollowUser,
+      currentUser,
+    } = this.props; 
+
+    if (this.state.followed) {
+      const followId = selectFollowId(
+        this.props.follows, 
+        this.props.currentUser.id,
+        this.props.user.id  
+      )
+      
+      //unfollow
+      unfollowUser(followId).then(
+        this.setState({ followed: !this.state.followed })
+      )
+    } else {
+      //follow
+      followUser({ follow: { 
+        creator_id: user.id, 
+        follower_id: currentUser.id 
+      }}).then(this.setState({ followed: !this.state.followed }))
+    }
   }
 
   render () {
-    const { user } = this.props; 
+    const { user, followingUser } = this.props; 
+
     const colors = ['purple', 'white', 'dark-blue', 'yellow', 'pink']
     let blockColors = []; 
 
@@ -31,8 +65,8 @@ class UserShowHeader extends React.Component {
           <h1>{user.name}</h1>
           <div className="user-buttons">
             <a 
-              className={"gray-button"}
-              // onClick={}
+              className={followingUser ? "pink-button" : "gray-button"}
+              onClick={this.toggleFollow}
             ><span
             ><FontAwesomeIcon icon={faPlus}/></span> Follow</a>
             <a className="pink-button">Hire Me</a>

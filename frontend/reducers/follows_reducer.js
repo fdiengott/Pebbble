@@ -10,8 +10,10 @@ const followsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_FOLLOWS:
       return action.follows; 
+
     case RECEIVE_FOLLOW:
       return {...state, [action.follow.id]: action.follow}; 
+
     case REMOVE_FOLLOW:
       let nextState = {...state}; 
       delete nextState[action.followId]; 

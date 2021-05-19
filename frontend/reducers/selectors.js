@@ -40,13 +40,23 @@ export const selectCardsByUserId = (state, userId) => {
 
 // returns an array of creatorIds
 export const selectFollowedUsers = (state, followerId) => {
-  return toArray(state.entities.follows).filter(follow => (
-    follow.followerId === followerId
-  )).map(follow => follow.creatorId)
+  return selectFollows(state, followerId).map(follow => follow.creatorId)
 }; 
 
+// takes in an array of follows
+export const selectFollowId = (follows, followerId, creatorId) => {
+  return toArray(follows).filter(follow => (
+    follow.followerId === followerId && follow.creatorId === creatorId
+  ))[0].id
+}
 
 // HELPER METHODS
 const toArray = obj => {
   return Object.values(obj); 
+}; 
+
+const selectFollows = (state, followerId) => {
+  return toArray(state.entities.follows).filter(follow => (
+    follow.followerId === followerId
+  ))
 }; 

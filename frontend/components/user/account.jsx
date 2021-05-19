@@ -18,16 +18,31 @@ class Account extends React.Component {
   }
 
   render() {
-    const { currentUser, user, userShow, followingUser } = this.props; 
+    const { 
+      currentUser, 
+      user, 
+      userShow, 
+      followingUser, 
+      followUser, 
+      unfollowUser,
+      follows
+    } = this.props; 
     
     // if neither have loaded early return
     if (userShow && !user) return null; 
 
     // if there's a current user, personal account header, otherwise, user show page
     const header = userShow ? (
-      <UserShowHeader user={user}/>
+      <UserShowHeader 
+        user={user}
+        followingUser={followingUser}
+        followUser={followUser}
+        unfollowUser={unfollowUser}
+        currentUser={currentUser}
+        follows={follows}
+      />
     ) : (
-      <CurrentUserHeader currentUser={currentUser} followingUser={followingUser}/>
+      <CurrentUserHeader currentUser={currentUser} />
     )
 
     return (
