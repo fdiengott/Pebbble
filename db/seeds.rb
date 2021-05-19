@@ -10,6 +10,7 @@ require 'open-uri'
 
 User.destroy_all
 Card.destroy_all
+Follow.destroy_all
 
 # **************************************************************
 
@@ -62,9 +63,9 @@ u = User.create(
   password: 123456
 )
 
-pro_pic_file = open('https://pebbble-seeds.s3.amazonaws.com/pebbble_seed_pics/yoshiyuki-yagi.webp')
+pro_pic_file = open('https://pebbble-seeds.s3.amazonaws.com/pebbble_seed_pics/shayan-umar.jpg')
 
-u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-picture" + ".webp")
+u.profile_picture.attach(io: pro_pic_file, filename: "#{u.username}-profile-picture" + ".jpg")
 
 # *************
 

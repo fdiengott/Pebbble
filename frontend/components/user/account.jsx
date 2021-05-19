@@ -29,13 +29,15 @@ class Account extends React.Component {
       followingUser, 
       followUser, 
       unfollowUser,
-      follows
+      follows,
+      signInError,
+      errors,
     } = this.props; 
     
     // if neither have loaded early return
     if (userShow && !user) return null; 
     
-    if (userShow && !Object.keys(follows).length) {
+    if (userShow && !Object.keys(follows).length && currentUser) {
       this.getFollows(currentUser.id); 
       return null; 
     }
@@ -49,6 +51,8 @@ class Account extends React.Component {
         unfollowUser={unfollowUser}
         currentUser={currentUser}
         follows={follows}
+        signInError={signInError}
+        errors={errors}
       />
     ) : (
       <CurrentUserHeader currentUser={currentUser} />

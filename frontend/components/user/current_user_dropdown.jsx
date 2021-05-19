@@ -28,8 +28,8 @@ const CurrentUserDropdown = (props) => {
     </>
   ) : (
     <ul role="list" className="header-auth-buttons">
-      <Link to="/login" className="login-btn">Sign in</Link>
-      <Link to="/signup" className="signup-btn">Sign up</Link>
+      <Link to="/login" className="login-btn" onClick={props.clearErrors}>Sign in</Link>
+      <Link to="/signup" className="signup-btn" onClick={props.clearErrors}>Sign up</Link>
     </ul>
   )
   

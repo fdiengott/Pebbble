@@ -45,3 +45,5 @@ export const logout = () => dispatch => {
 }; 
 
 export const clearErrors = () => dispatch => dispatch(clearSessionErrors()); 
+
+export const signInError = () => dispatch => dispatch(receiveSessionErrors(["Must be signed in."]))

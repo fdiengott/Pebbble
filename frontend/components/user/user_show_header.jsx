@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { selectFollowId } from '../../reducers/selectors'; 
 
 import Avatar from './avatar'; 
+import Errors from '../util/errors';
 
 
 class UserShowHeader extends React.Component { 
@@ -19,16 +20,24 @@ class UserShowHeader extends React.Component {
   toggleFollow() {
     const {
       user,
+      follows, 
       followUser,
       unfollowUser,
       currentUser,
+      signInError,
+
     } = this.props; 
+
+    if (!currentUser) {
+      signInError(); 
+      return; 
+    }
 
     if (this.state.followed) {
       const followId = selectFollowId(
-        this.props.follows, 
-        this.props.currentUser.id,
-        this.props.user.id  
+        follows, 
+        currentUser.id,
+        user.id  
       )
       
       //unfollow
@@ -45,7 +54,7 @@ class UserShowHeader extends React.Component {
   }
 
   render () {
-    const { user, followingUser } = this.props; 
+    const { user, followingUser, errors } = this.props; 
 
     const colors = ['purple', 'white', 'dark-blue', 'yellow', 'pink']
     let blockColors = []; 
@@ -78,6 +87,7 @@ class UserShowHeader extends React.Component {
         <div className="details-container">
           <Avatar user={user}/>
           <h1>{user.name}</h1>
+          <Errors errors={errors}/>
           <div className="user-buttons">
             { followButton }
             <a className="pink-button">Hire Me</a>

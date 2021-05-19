@@ -4,7 +4,7 @@ import { selectCardsByUserId, selectUserByCard } from '../../reducers/selectors'
 import { selectFollowedUsers } from '../../reducers/selectors'; 
 import { fetchUser } from '../../actions/user_actions';					//actions
 import { createFollow, deleteFollow, fetchUserFollows } from '../../actions/follow_actions';					//actions
-
+import { signInError } from '../../actions/session_actions'; 
 
 const mapStateToProps = (state, ownProps) => {
   const userId = parseInt(ownProps.match.params.userId); 
@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   user: state.entities.users[ownProps.match.params.userId],
   follows: state.entities.follows, 
   followingUser: selectFollowedUsers(state, state.session.id).includes(userId),
+  errors: state.errors, 
   // currentUserCards: selectCardsByUserId(state, state.session.id),
   // cards: selectCardsByUserId(ownProps.match.params.userId),
   // collections: selector for num collections,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
   ),
   followUser: follow => dispatch(createFollow(follow)),
   unfollowUser: followId => dispatch(deleteFollow(followId)),
+  signInError: () => dispatch(signInError()),
     
   // fetchFollowedUsers: (followerId) => (
   //   dispatch(fetchFollowedUsers(followerId))

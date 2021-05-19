@@ -6,7 +6,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import CurrentUserDropdownContainer from '../user/current_user_dropdown_container.js';
 
-const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
+const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors }) => {
 
   if (pathsNotToRender.includes(url)) return null; 
 
@@ -63,7 +63,7 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender }) => {
             </a>
           </li>
         </ul>
-        <CurrentUserDropdownContainer />
+        <CurrentUserDropdownContainer clearErrors={clearErrors}/>
       </header>
       { signupBanner }
     </>
