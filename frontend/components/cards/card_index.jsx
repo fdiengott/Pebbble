@@ -9,9 +9,14 @@ class CardIndex extends React.Component {
   constructor(props) {
     super(props); 
 
-    this.state = { followersCards: false, clicked: false }; 
+    this.state = { 
+      followersCards: false, 
+      clicked: false,
+      followDropdown: false, 
+    }; 
 
     this.handleClick = this.handleClick.bind(this); 
+    this.handleDropdown = this.handleDropdown.bind(this); 
   }
 
   componentDidMount() {
@@ -28,16 +33,23 @@ class CardIndex extends React.Component {
     }
   }
 
-  handleClick() {
-    if (this.state.followersCards) {
-      this.props.fetchCardsAndUsers().then(
-        this.setState({ followersCards: false })
-      )
-    } else {
-      this.props.fetchFollowedUsersCards(this.props.currentUserId).then(
-        this.setState({ followersCards: true }) 
-      )
+  handleClick(type) {
+    return () => {
+      // if (this.state.followersCards) {
+      if (type === "popular") {
+        this.props.fetchCardsAndUsers().then(
+          this.setState({ followersCards: false })
+        )
+      } else {
+        this.props.fetchFollowedUsersCards(this.props.currentUserId).then(
+          this.setState({ followersCards: true }) 
+        )
+      }
     }
+  }
+
+  handleDropdown() {
+    this.setState({ followDropdown: !this.state.followDropdown })
   }
 
   render() {
@@ -47,7 +59,6 @@ class CardIndex extends React.Component {
       users, 
       cards, 
       frontpage, 
-
     } = this.props;  
 
     // will refactor to make this its own table
@@ -73,13 +84,25 @@ class CardIndex extends React.Component {
 
     const icon = <FontAwesomeIcon icon={this.state.clicked ? faChevronUp : faChevronDown}/>
 
-    const followingFilter = this.state.followersCards ? (
-      <a onClick={this.handleClick}
-      >Following <span>{icon}</span></a>
-      ) : (
-      <a onClick={this.handleClick}
-      >Popular <span>{icon}</span></a>
-    )
+    const { followersCards } = this.state; 
+    const buttonText = followersCards ? "Following" : "Popular"; 
+
+    const followingFilter = (
+      <div>
+        <a onClick={this.handleDropdown}
+        >{buttonText} <span>{icon}</span></a>
+        <ul className={this.state.followDropdown ? "dropdown-active" : "dropdown-hidden"}>
+          <li 
+            className={ followersCards ? "pink" : "" }
+            onClick={this.handleClick("following")}
+            >Following</li>
+          <li 
+            className={ followersCards ? "" : "pink" }
+            onClick={this.handleClick("popular")}
+            >Popular</li>
+        </ul>
+      </div>
+      ) 
 
 
     return (  
