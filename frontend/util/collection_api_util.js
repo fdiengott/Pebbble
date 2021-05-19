@@ -5,6 +5,14 @@ export const fetchCollection = (collectionId) => (
     url: `/api/collections/${collectionId}`,
   })
 ); 
+
+export const fetchUserCollections = (curatorId) => (
+  $.ajax({
+    method: "GET", 
+    url: `/users/${curatorId}/collections/`,
+  })
+); 
+
 export const createCollection = (collection) => (
   $.ajax({
     method: "POST", 
