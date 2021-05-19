@@ -37,18 +37,18 @@ class CardIndex extends React.Component {
     return () => {
       // if (this.state.followersCards) {
       if (type === "popular") {
-        this.props.fetchCardsAndUsers().then(
+        this.props.fetchCardsAndUsers().then( () => (
           this.setState({ 
             followersCards: false, 
             followDropdown: !this.state.followDropdown 
-          })
+          }))
         )
       } else {
-        this.props.fetchFollowedUsersCards(this.props.currentUserId).then(
+        this.props.fetchFollowedUsersCards(this.props.currentUserId).then( () => (
           this.setState({ 
             followersCards: true, 
             followDropdown: !this.state.followDropdown
-          }) 
+          }))
         )
       }
     }
