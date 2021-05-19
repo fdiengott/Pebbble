@@ -15,8 +15,8 @@ const mapStateToProps = (state, ownProps) => {
   userShow: ownProps.match.path === "/users/:userId",
   userId,
   user: state.entities.users[ownProps.match.params.userId],
-  followingUser: selectFollowedUsers(state, state.session.id).includes(userId),
   follows: state.entities.follows, 
+  followingUser: selectFollowedUsers(state, state.session.id).includes(userId),
   // currentUserCards: selectCardsByUserId(state, state.session.id),
   // cards: selectCardsByUserId(ownProps.match.params.userId),
   // collections: selector for num collections,
@@ -25,15 +25,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
-  fetchFollowedUsers: (followerId) => (
-    dispatch(fetchFollowedUsers(followerId))
-  ),
   fetchUserFollows: (followerId) => (
     dispatch(fetchUserFollows(followerId))
   ),
   followUser: follow => dispatch(createFollow(follow)),
   unfollowUser: followId => dispatch(deleteFollow(followId)),
-
+    
+  // fetchFollowedUsers: (followerId) => (
+  //   dispatch(fetchFollowedUsers(followerId))
+  // ),
   // fetchUsersCards: (userId) => dispatch(fetchUserCards(userId)),
 })
 
