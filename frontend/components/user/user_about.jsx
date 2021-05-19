@@ -33,7 +33,7 @@ class UserAbout extends React.Component {
       <a href={renderedUser.websiteUrl} target="_blank">{renderedUser.websiteUrl}</a> : 
       <Link to="/account/about/edit" className="pink-link">Add website links</Link>
     )
-    
+
     return (
       <div className="user-about-container">
         <section className="user-about">
@@ -50,8 +50,8 @@ class UserAbout extends React.Component {
               }</i>Member since {renderedUser.whenJoined}</p>
           </aside>
           <section>
-            <span>{renderedUser.followers} followers</span
-              ><span>{renderedUser.following} following</span>
+            <span>{renderedUser.numFollowers} followers</span
+              ><span>{renderedUser.numFollowing} following</span>
           </section>
           <div>
             <h3>Social</h3>
