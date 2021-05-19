@@ -4,8 +4,9 @@ class Api::CollectionCardsController < ApplicationController
 
   def index
     # this needs eager loading
-    @cards = Collection.find_by(id: params[:collection_id]).cards
-    render '/api/cards/index'
+    @collection = Collection.find_by(id: params[:collection_id])
+    @cards = @collection.cards
+    render '/api/collections_cards/index' # this will render cards and the collection
   end
 
 end
