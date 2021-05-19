@@ -22,17 +22,32 @@
   .user-buttons {
     @include flex(flex-start); 
     
-    &:first-child {
-      @include color-button($lightest-gray, black); 
+    .white-button, .gray-button {
       padding: 10px; 
       margin-right: 20px;
       span {
         margin-right: 4px;
       }
     }
-    &:first-child.pink-button {
-      @extend .pink-button; 
+
+    .white-button {
+      @include color-button(white, black); 
+      border: 1px solid $lightest-gray; 
+      
+      &:hover {
+        border: 1px solid $light-gray; 
+        background-color: unset;
+      }
     }
+    .gray-button {
+      @include color-button($lightest-gray, black); 
+      
+      &:hover {
+        background-color: darken($lightest-gray, 10%); 
+      }
+    }
+
+    
   }
 }
 

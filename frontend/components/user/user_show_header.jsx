@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { selectFollowId } from '../../reducers/selectors'; 
 
@@ -58,17 +58,28 @@ class UserShowHeader extends React.Component {
       }
     }
 
+    const followButton = followingUser ? (
+      <a 
+        className="white-button"
+        onClick={this.toggleFollow}
+      ><span
+      ><FontAwesomeIcon icon={faPlus}/></span> Following</a>
+    ) : (
+      <a 
+        className="gray-button"
+        onClick={this.toggleFollow}
+      ><span
+      ><FontAwesomeIcon icon={faCheck}/></span> Follow</a>
+    )
+
+
     return (
       <section className='user-show-container'>
         <div className="details-container">
           <Avatar user={user}/>
           <h1>{user.name}</h1>
           <div className="user-buttons">
-            <a 
-              className={followingUser ? "pink-button" : "gray-button"}
-              onClick={this.toggleFollow}
-            ><span
-            ><FontAwesomeIcon icon={faPlus}/></span> Follow</a>
+            { followButton }
             <a className="pink-button">Hire Me</a>
           </div>
         </div>
