@@ -32,6 +32,10 @@ class User < ApplicationRecord
     through: :received_follows, 
     source: :creator
 
+  has_many :collections, 
+    foreign_key: :curator_id, 
+    class_name: :Collection
+
   ### AUTH METHODS
 
   def self.find_by_credentials(username, password)
