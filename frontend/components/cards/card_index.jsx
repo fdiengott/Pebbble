@@ -1,18 +1,21 @@
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'; 
 import { NavLink } from 'react-router-dom'; 
 
 import CardIndexItem from './card_index_item'; 
-// import { selectCardsByCategory, selectUserByCard } from '../../reducers/selectors';
-
 
 class CardIndex extends React.Component {
   constructor(props) {
     super(props); 
+
+    this.state = { followersCards: false, clicked: false }; 
+
+    this.handleClick = this.handleClick.bind(this); 
   }
 
   componentDidMount() {
     if (this.props.frontpage) {
-      // this.props.fetchFollowedUsersCards(this.props.currentUserId); 
       this.props.fetchFollows(); 
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
@@ -22,6 +25,18 @@ class CardIndex extends React.Component {
         this.props.fetchUserCards(this.props.userId) : 
         // if it's the current user's page
         this.props.fetchUserCards(this.props.currentUserId)
+    }
+  }
+
+  handleClick() {
+    if (this.state.followersCards) {
+      this.props.fetchCardsAndUsers().then(
+        this.setState({ followersCards: false })
+      )
+    } else {
+      this.props.fetchFollowedUsersCards(this.props.currentUserId).then(
+        this.setState({ followersCards: true }) 
+      )
     }
   }
 
@@ -56,15 +71,29 @@ class CardIndex extends React.Component {
       ))
     )
 
+    const icon = <FontAwesomeIcon icon={this.state.clicked ? faChevronUp : faChevronDown}/>
+
+    const followingFilter = this.state.followersCards ? (
+      <a onClick={this.handleClick}
+      >Following <span>{icon}</span></a>
+      ) : (
+      <a onClick={this.handleClick}
+      >Popular <span>{icon}</span></a>
+    )
+
+
     return (  
       <main className="card-index-container">
         {
           frontpage ? (
-            <nav>
-              <ul role="list">
-                { categoryLinks }
-              </ul>
-            </nav>
+            <div>
+              { followingFilter }
+              <nav>
+                <ul role="list">
+                  { categoryLinks }
+                </ul>
+              </nav>
+            </div>
           ) : null
         }
         <ul className="card-index" role="list">

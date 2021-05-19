@@ -71,12 +71,13 @@ export const deleteCard = (cardId) => dispatch => (
 ); 
 
 // FOLLOWS
-export const fetchFollowedUsersCards = (userId) => dispatch => (
+export const fetchFollowedUsersCards = (userId) => dispatch => {
+  return (
   CardAPIUtil.fetchFollowedUsersCards(userId).then(
     data => dispatch(receiveCardsAndUsers(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
-); 
+)}; 
 
 // TESTING
 // window.fetchFollowedUsersCards = fetchFollowedUsersCards; 
