@@ -6,6 +6,7 @@ import { selectFollowId } from '../../reducers/selectors';
 
 
 import Avatar from '../user/avatar'; 
+import Errors from '../util/errors';
 
 
 class CardDetails extends React.Component {
@@ -43,7 +44,13 @@ class CardDetails extends React.Component {
       unfollowUser,
       currentUserId,
       follows,
+      signInError
     } = this.props; 
+
+    if (!currentUserId) {
+      signInError(); 
+      return; 
+    }
 
     const followed = this.checkFollows(); 
 
@@ -70,7 +77,7 @@ class CardDetails extends React.Component {
   }
 
   render() {
-    const { user, card, currentUserId, follows } = this.props; 
+    const { user, card, currentUserId, follows, errors } = this.props; 
     
     if (!user || !card)       return null; 
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
@@ -119,6 +126,7 @@ class CardDetails extends React.Component {
           <span>&times;</span>
         </div>
         <div className="card-details-container">
+          <Errors errors={errors} />
           <header>
             <section>
               <div className="image-cropper">
