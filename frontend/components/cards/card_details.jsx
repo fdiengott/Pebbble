@@ -12,17 +12,22 @@ class CardDetails extends React.Component {
   constructor(props) {
     super(props); 
 
-    this.state = { deleted: false, followed: this.props.followingUser }
+    this.state = { 
+      deleted: false, 
+      followingUser: this.props.followingUser 
+    }
 
     this.handleDelete = this.handleDelete.bind(this); 
     this.toggleFollow = this.toggleFollow.bind(this); 
   }
 
   componentDidMount() {
-    this.props.fetchCard(this.props.match.params.cardId).then( card => (
-        this.props.fetchUser(card.card.creatorId)
-      )
-    ); 
+    this.props.fetchCard(this.props.match.params.cardId)
+      .then( card => this.props.fetchUser(card.card.creatorId))
+      .then( res => {
+        debugger
+        return this.props.fetchUserFollows(this.props.currentUserId)
+      })
   }
 
   handleDelete() {
@@ -43,7 +48,9 @@ class CardDetails extends React.Component {
       follows,
     } = this.props; 
 
-    if (this.state.followed) {
+    const followed = this.checkFollows(); 
+
+    if (followed) {
       const followId = selectFollowId(follows, currentUserId, user.id)
       
       //unfollow
@@ -59,26 +66,38 @@ class CardDetails extends React.Component {
     }
   }
 
+  checkFollows() {
+    const followed = Object.values(this.props.follows)
+      .map(follow => follow.creatorId)
+      .includes(this.props.user.id)
+
+    debugger
+
+    return followed; 
+  }
+
   render() {
-    const { user, card, currentUserId } = this.props; 
+    const { user, card, currentUserId, follows } = this.props; 
     
     if (!user || !card)       return null; 
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
-    
-    
-    const avatarLink = (
-      <Link to={`/users/${card.creatorId}/cards`}> 
-        <Avatar user={user}/>
-      </Link>
-    ); 
 
-    const followButtonText = this.state.followed ? "Following" : "Follow"
+    const followed = this.checkFollows(); 
+    debugger
+
+    const followButtonText = followed ? "Following" : "Follow"
     const followButton = (
       <a 
         className="follow-button"
         onClick={this.toggleFollow}
         >{followButtonText}</a>
     ) 
+    
+    const avatarLink = (
+      <Link to={`/users/${card.creatorId}/cards`}> 
+        <Avatar user={user}/>
+      </Link>
+    ); 
     
     const image = card.animated ? (
       <video src={card.img} autoPlay loop muted/>

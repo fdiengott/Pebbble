@@ -11,14 +11,14 @@ import CardDetails from './card_details';						//display component
 const mapStateToProps = (state, ownProps) => {
   const cardId = ownProps.match.params.cardId; 
   const card = state.entities.cards[cardId]; 
-  const user = state.entities.users[card.creatorId]; 
+  // const user = state.entities.users[card.creatorId]; 
 
   return card ? ({
     card,
-    user,
+    user: state.entities.users[card.creatorId],
     currentUserId: state.session.id, 
     follows: state.entities.follows, 
-    followingUser: selectFollowedUsers(state, state.session.id).includes(user.id),
+    followingUser: selectFollowedUsers(state, state.session.id).includes(card.creatorId),
   }) : ({
     card,
     currentUserId: state.session.id, 
