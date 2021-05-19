@@ -82,16 +82,19 @@ class CardIndex extends React.Component {
       ))
     )
 
-    const icon = <FontAwesomeIcon icon={this.state.clicked ? faChevronUp : faChevronDown}/>
+    const icon = <FontAwesomeIcon icon={this.state.followDropdown ? faChevronUp : faChevronDown}/>
 
     const { followersCards } = this.state; 
     const buttonText = followersCards ? "Following" : "Popular"; 
 
     const followingFilter = (
-      <div>
+      <div className="cards-filter">
         <a onClick={this.handleDropdown}
         >{buttonText} <span>{icon}</span></a>
-        <ul className={this.state.followDropdown ? "dropdown-active" : "dropdown-hidden"}>
+        <ul 
+          className={this.state.followDropdown ? "dropdown-active" : "dropdown-hidden"}
+          role="list"
+        >
           <li 
             className={ followersCards ? "pink" : "" }
             onClick={this.handleClick("following")}
@@ -116,6 +119,7 @@ class CardIndex extends React.Component {
                   { categoryLinks }
                 </ul>
               </nav>
+              <div></div>
             </div>
           ) : null
         }
