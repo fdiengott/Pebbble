@@ -1,15 +1,17 @@
 
-export const createCollectionsCards = (collectionsCard) => (
+
+
+export const createCollectionsCard = (collectionsCard) => (
   $.ajax({
     method: "POST", 
     url: "/api/collections_cards",
     data: collectionsCard,
   })
 ); 
-export const createCollectionsCards = (collectionsCardId) => (
+export const deleteCollectionsCard = (collectionsCardId) => (
   $.ajax({
-    method: "POST", 
-    url: `/api/collections_cards/${collectionsCard}`,
+    method: "DELETE", 
+    url: `/api/collections_cards/${collectionsCardId}`,
   })
 ); 
 
