@@ -56,14 +56,20 @@ Rails.application.routes.draw do
     # to get all of the followers of a user
     get '/users/:creator_id/followers', to: 'user_followers#index'
 
+    # to get all of the collections of a user
+    get '/users/:curator_id/collections', to: 'user_collections#index'
+
     # to get all of the users a user is following
     get '/users/:follower_id/followedUsers', to: 'followed_users#index'
     
     # to get the follows for a specific follower
     get '/users/:follower_id/follows', to: 'user_follows#index'
-
+    
     resources :collections, only: [:show, :create, :update, :destroy]
     resources :collectionscards, only: [:create, :destroy]
+    
+    get '/collections/:collection_id/cards', to: 'collection_cards#index'
+    
 
   end
 
