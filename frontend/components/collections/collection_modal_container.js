@@ -3,11 +3,14 @@ import { createCollection, fetchUserCollections } from '../../actions/collection
 import { createCollectionsCard } from '../../actions/collections_card_actions';				//actions
 import CollectionModal from './collection_modal';				//display component
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  debugger
+  return ({
   currentUserId: state.session.id, 
   collections: state.entities.collections, 
+  active: state.ui.modal,
   haveCollections: !!Object.keys(state.entities.collections).length,
-});
+})};
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUserCollections: (userId) => dispatch(fetchUserCollections(userId)),

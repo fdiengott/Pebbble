@@ -75,3 +75,5 @@ class CollectionModal extends React.Component {
     )
   }
 }
+
+export default CollectionModal; 
