@@ -6,6 +6,9 @@ import {
   RECEIVE_COLLECTION_AND_CARDS,
 } from '../actions/card_actions'; 
 
+import {
+  RECEIVE_COLLECTIONS_AND_CARDS,
+} from '../actions/collection_actions'; 
 
 const cardsReducer = (state = {}, action) => {
   Object.freeze(state); 
@@ -29,6 +32,11 @@ const cardsReducer = (state = {}, action) => {
     // comes with collections
     case RECEIVE_COLLECTION_AND_CARDS: 
       return action.data.cards; 
+
+    case RECEIVE_COLLECTIONS_AND_CARDS: 
+      debugger
+      return action.data.cards; 
+
       
     default:
       return state;

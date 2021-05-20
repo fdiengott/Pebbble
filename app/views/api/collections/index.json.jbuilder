@@ -9,7 +9,7 @@
       
   json.cards do 
 
-    collection.cards.each do |card, i|
+    collection.cards.each_with_index do |card, i|
       break if i >= 4
 
       json.set! card.id do 

@@ -2,6 +2,7 @@ import {
   RECEIVE_COLLECTIONS, 
   RECEIVE_COLLECTION, 
   REMOVE_COLLECTION, 
+  RECEIVE_COLLECTIONS_AND_CARDS,
 } from '../actions/collection_actions'; 
 
 import { RECEIVE_COLLECTION_AND_CARDS } from '../actions/card_actions'; 
@@ -11,7 +12,7 @@ const collectionsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_COLLECTIONS: 
-      return action.collections; 
+      return action.data.collections; 
 
     case RECEIVE_COLLECTION:
       return { ...state, [action.collection.id]: action.collection }
@@ -23,6 +24,9 @@ const collectionsReducer = (state = {}, action) => {
 
     case RECEIVE_COLLECTION_AND_CARDS:
       return action.data.collection; 
+
+    case RECEIVE_COLLECTIONS_AND_CARDS:
+      return action.data.collections; 
 
     default:
       return state; 

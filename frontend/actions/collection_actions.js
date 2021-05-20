@@ -1,15 +1,15 @@
 import * as CollectionAPIUtil from '../util/collection_api_util'; 
 
-export const RECEIVE_COLLECTIONS = "RECEIVE_COLLECTIONS"; 
+export const RECEIVE_COLLECTIONS_AND_CARDS = "RECEIVE_COLLECTIONS_AND_CARDS"; 
 export const RECEIVE_COLLECTION = "RECEIVE_COLLECTION"; 
 export const REMOVE_COLLECTION = "REMOVE_COLLECTION"; 
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"; 
 
 
 // ACTIONS
-const receiveCollections = (collections) => ({
-  type: RECEIVE_COLLECTIONS,
-  collections
+const receiveCollections = (data) => ({
+  type: RECEIVE_COLLECTIONS_AND_CARDS,
+  data
 }); 
 const receiveCollection = (collection) => ({
   type: RECEIVE_COLLECTION,
@@ -28,7 +28,7 @@ const receiveErrors = (errors) => ({
 // THUNK ACTION CREATORS
 export const fetchUserCollections = (curatorId) => dispatch => (
   CollectionAPIUtil.fetchUserCollections(curatorId).then(
-    collections => dispatch(receiveCollections(collections)),
+    data => dispatch(receiveCollections(data)),
     err => dispatch(receiveErrors(err))
   )
 );

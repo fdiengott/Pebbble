@@ -9,7 +9,7 @@ export const fetchCollection = (collectionId) => (
 export const fetchUserCollections = (curatorId) => (
   $.ajax({
     method: "GET", 
-    url: `/users/${curatorId}/collections/`,
+    url: `/api/users/${curatorId}/collections/`,
   })
 ); 
 
