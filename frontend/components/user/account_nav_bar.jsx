@@ -12,11 +12,11 @@ const AccountNavBar = ({ user }) => {
         <ul role="list" className="account-nav-list">
 
           <li><NavLink to={`/${urlRoot}/cards`}>Cards <span    
-            className="user-stats">{/* cards */}</span></NavLink></li>
+            className="user-stats">{user.numCards}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/collections`}>Collections <span    
             className="user-stats"
-            >{/* collections */}</span></NavLink></li>
+            >{user.numCollections}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/likes`}>Liked Cards <span    
             className="user-stats"
