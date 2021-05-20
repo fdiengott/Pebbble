@@ -2,7 +2,7 @@
 
 json.collections do 
   json.set! @collection.id do
-    json.extract! @collection, :id, :title, :curator_id
+    json.extract! @collection, :id, :title, :curator_id, :num_cards, :num_creators
   end
 end
 

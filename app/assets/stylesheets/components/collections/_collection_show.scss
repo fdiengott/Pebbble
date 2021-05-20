@@ -1,0 +1,40 @@
+
+
+.collection-show-header {
+  flex-direction: column;
+  padding: $landing-page-padding/2 $landing-page-padding;
+  margin: unset;
+
+  > * {
+    padding: 10px 0; 
+  }
+  
+  h1 {
+    font-size: 42px;
+    font-weight: 700;
+    padding: unset;
+  }
+
+  span {
+    margin: 0 5px; 
+  }
+  
+  > div {
+    display: flex;
+  }
+
+  a {
+    display: flex; 
+    color: black; 
+    text-decoration: none; 
+
+    &:hover {
+      opacity: 0.8; 
+    }
+  }
+
+  .image-cropper {
+    @include image-cropper(40px); 
+    margin-right: 10px;
+  }
+}
