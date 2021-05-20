@@ -52,9 +52,13 @@
     
   footer {
     padding: 10px; 
+    @include flex(center, center, column); 
 
     h3 {
-      padding: 10px 0;
+      padding-top: 10px; 
+    }
+    p {
+      color: $gray;
     }
     span {
       padding: 0 5px;
