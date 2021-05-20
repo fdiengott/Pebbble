@@ -61,6 +61,7 @@
 
 .colored-blocks {
   position: relative;
+  z-index: -1;
 
   div {
     width: 300px;
@@ -74,7 +75,7 @@
   }
   div:last-child {
     top: 30%;
-    left: 50%; 
+    right: 20%; 
   }
 
   .purple {

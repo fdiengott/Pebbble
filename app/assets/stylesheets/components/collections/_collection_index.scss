@@ -14,17 +14,14 @@
   }
 
   .image-container {
-    $min_width: 340px; 
-    $max_width: 440px; 
+    $min_width: 300px; 
+    $max_width: 360px; 
     // flex: $min_width; 
     max-width: $max_width;
-    border-radius: $border-radius*3;
+    border-radius: $border-radius*2;
     gap: 5px; 
     overflow: hidden;
     @include flex(space-between, center, column);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     
     img, video {
       width: 100%;
@@ -41,14 +38,35 @@
       @include flex(space-between, flex-end); 
       padding: 0;
       gap: 5px; 
+      width: 100%;
 
       > * {
-        height: ($min_width - 5) / 3; 
-        flex: ($min_width - 5) / 3; 
+        height: ($min_width - 39) / 3; 
+        flex: ($min_width - 39) / 3; 
         max-width: $max_width / 3;
-        // max-width: $max_width/3;
+        min-width: $min_width / 3;
+        background-color: $lighter-gray;
       }
     }
   }
     
+}
+
+.no-collections-container {
+  @include flex($flex-direction: column);
+  margin-bottom: 60px;
+
+  img {
+    width: 60%;
+    max-width: 650px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  p {
+    text-align: center;
+  }
 }
