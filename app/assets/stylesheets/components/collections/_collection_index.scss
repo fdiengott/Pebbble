@@ -1,0 +1,54 @@
+
+.collections-index-list {
+  padding: 
+    0 
+    $landing-page-padding 
+    $landing-page-padding/2 
+    $landing-page-padding;
+    
+  @include flex(space-between); 
+    
+
+  > li {
+    @include flex(space-between, center, column); 
+  }
+
+  .image-container {
+    $min_width: 340px; 
+    $max_width: 440px; 
+    // flex: $min_width; 
+    max-width: $max_width;
+    border-radius: $border-radius*3;
+    gap: 5px; 
+    overflow: hidden;
+    @include flex(space-between, center, column);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    img, video {
+      width: 100%;
+      height: auto; 
+    }
+    
+    
+    .main-image {
+      flex: $min_width; 
+      max-width: $max_width;
+    }
+    
+    .sub-images {
+      @include flex(space-between, flex-end); 
+      padding: 0;
+      gap: 5px; 
+
+      > * {
+        height: ($min_width - 5) / 3; 
+        flex: ($min_width - 5) / 3; 
+        max-width: $max_width / 3;
+        // max-width: $max_width/3;
+      }
+    }
+  }
+    
+}

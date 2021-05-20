@@ -14,5 +14,11 @@ class Collection < ApplicationRecord
     through: :received_collections_cards, 
     source: :card
   
-  
+  def num_cards 
+    self.cards.count
+  end
+
+  def num_creators
+    self.cards.pluck(:creator_id).uniq.count
+  end
 end
