@@ -1,5 +1,4 @@
 import {
-  RECEIVE_COLLECTIONS, 
   RECEIVE_COLLECTION, 
   REMOVE_COLLECTION, 
   RECEIVE_COLLECTIONS_AND_CARDS,
@@ -11,9 +10,6 @@ const collectionsReducer = (state = {}, action) => {
   Object.freeze(state); 
 
   switch (action.type) {
-    case RECEIVE_COLLECTIONS: 
-      return action.data.collections; 
-
     case RECEIVE_COLLECTION:
       return { ...state, [action.collection.id]: action.collection }
 

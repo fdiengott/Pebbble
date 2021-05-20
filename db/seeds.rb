@@ -547,5 +547,8 @@ combos = []
 end
 
 
+# Pruning collections that don't have any cards
+Collection.includes(:cards).map{ |c| c.destroy if c.cards.count == 0  }
+
 # ***********************************************************
 # ***********************************************************
