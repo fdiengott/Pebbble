@@ -13,7 +13,7 @@
       break if i >= 4
 
       json.set! card.id do 
-        json.extract! card, :id
+        json.extract! card, :id, :title
         json.collection_id collection.id
         json.img card.img.attached? ? url_for(card.img) : nil
       end
