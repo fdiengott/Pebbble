@@ -7,13 +7,14 @@ class CollectionModal extends React.Component {
 
     this.state = { 
       page: this.props.haveCollections ? 2 : 1,
-      active: true, 
+      // active: this.props.active, 
       name: "", 
       description: "", 
     }
 
     this.handleSubmit = this.handleSubmit.bind(this); 
     this.handleInput = this.handleInput.bind(this); 
+    this.closeModal = this.closeModal.bind(this); 
   }
 
 
@@ -33,22 +34,26 @@ class CollectionModal extends React.Component {
     ); 
   }
 
+  closeModal() {
+    this.props.closeModal(); 
+  }
 
 
   render() {
-    const { active } = this.state; 
-
+    const { active } = this.props; 
+    // debugger
+    if (!active) return null; 
 
     const modal = this.state.page === 1 ? (
       // page 1: create a new collection
-      <div>
+      <div className="modal-form-container" onClick={e => e.stopPropagation()}>
         <form onSubmit={this.handleSubmit}>
           <h1>Create a new Collection</h1>
           <label htmlFor="name">Name
             <input type="text" onChange={this.handleInput("name")} value={this.state.name} required id="name"/>
           </label>
           <label htmlFor="description">Description (optional)
-            <textarea type="text" onChange={this.handleInput("description")} value={this.state.description} rows="6" id="description"/>
+            <textarea type="text" onChange={this.handleInput("description")} value={this.state.description} rows="4" id="description"/>
           </label>
 
           <div className="form-buttons">
@@ -59,18 +64,17 @@ class CollectionModal extends React.Component {
       </div>
     ) : (
       // page 2: add cards to a collection
-      <div>this is modal page 2</div>
+      <div onClick={e => e.stopPropagation()}>this is modal page 2</div>
     )
 
 
 
     return (
+      <div className="collection-modal-container">
+        <div className="modal-background" onClick={this.closeModal}>
+          { modal }
 
-      <div className={"collection-modal-container " + 
-        active ? "active" : null
-      }>
-        { modal }
-        <div className="modal-background"></div>
+        </div>
       </div>
     )
   }

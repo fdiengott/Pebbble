@@ -17,6 +17,7 @@ class CardIndexItem extends React.Component {
 
     this.autoPlayOn = this.autoPlayOn.bind(this); 
     this.autoPlayOff = this.autoPlayOff.bind(this); 
+    this.openCollectionModal = this.openCollectionModal.bind(this); 
   }
 
   autoPlayOn () {
@@ -27,6 +28,12 @@ class CardIndexItem extends React.Component {
     this.setState({autoPlay: false})
   }
 
+  openCollectionModal(e) {
+    e.preventDefault(); 
+    // e.stopPropagation();
+    this.props.openModal(); 
+  }
+
   render () {
     const { card, user } = this.props; 
 
@@ -34,8 +41,8 @@ class CardIndexItem extends React.Component {
       <section className="card-hover-info">
         <h3>{card.title}</h3>
         <aside className="card-buttons">
-          <div /* onClick={} */ >
-            <button>{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
+          <div>
+            <button onClick={this.openCollectionModal} >{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
           </div>
           <div /* onClick={} */ >
             <button>{<FontAwesomeIcon icon={faHeart}/>}</button>

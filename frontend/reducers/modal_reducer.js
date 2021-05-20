@@ -6,9 +6,9 @@ const modalReducer = (state = false, action) => {
 
   switch (action.type) {
     case OPEN_MODAL:
-      return true; 
+      return action.modal; 
     case CLOSE_MODAL:
-      return false; 
+      return action.modal; 
       
     default:
       return state;

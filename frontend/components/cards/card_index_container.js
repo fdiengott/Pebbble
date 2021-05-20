@@ -3,6 +3,8 @@ import { withRouter } from 'react-router';
 
 import {fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards, fetchCollectionCards } from '../../actions/card_actions';					//actions
 import { fetchFollows, fetchUserFollows } from '../../actions/follow_actions'; 
+import { openModal } from '../../actions/modal_actions'; 
+
 import CardIndex from './card_index';						//display component
 import { selectCardsByUserId, selectFollowedUsers, selectCardsByCollectionId } from '../../reducers/selectors'; 
 
@@ -36,6 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserFollows: (followerId) => dispatch(fetchUserFollows(followerId)),
   fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
   fetchCollectionCards: (collectionId) => dispatch(fetchCollectionCards(collectionId)),
+  openModal: () => dispatch(openModal()),
 });
 
 export default withRouter(connect(

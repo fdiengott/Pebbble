@@ -68,7 +68,8 @@ class CardIndex extends React.Component {
       cards, 
       frontpage, 
       collectionId,
-      collectionCards
+      collectionCards,
+      openModal
     } = this.props;  
 
     // will refactor to make this its own table
@@ -85,15 +86,15 @@ class CardIndex extends React.Component {
     let cardIndex; 
     if (frontpage) {
       cardIndex =  cardsByCategory.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
+        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
       )); 
     } else if (collectionId) {
       cardIndex = collectionCards.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]}/>
+        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
       ))
     } else {
       cardIndex = cards.map(card => (
-        <CardIndexItem key={card.id} card={card}/>
+        <CardIndexItem key={card.id} card={card} openModal={openModal}/>
       ))
     }
 

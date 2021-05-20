@@ -17,6 +17,7 @@ import CollectionModalContainer from './collections/collection_modal_container';
 
 const App = () => (
   <>
+    <CollectionModalContainer />
     {/* protect routes can only access if logged in; auth routes can only access if logged out */}
     <Route path="/" component={HeaderContainer}/> 
     <Switch>
@@ -33,7 +34,6 @@ const App = () => (
       <Route path="/" component={CardIndexContainer}/> 
     </Switch>
     <Route path="/" component={FooterContainer}/> 
-    <CollectionModalContainer />
   </>
 ); 
 
