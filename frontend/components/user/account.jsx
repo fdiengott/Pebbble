@@ -64,7 +64,7 @@ class Account extends React.Component {
         { header }
 
         {/* will need to pass some arguments for num cards, num collections, num likes.  */}
-        <AccountNavBar user={user} />
+        <AccountNavBar user={user} currentUser={currentUser}/>
         <Switch>
           {/* this will include cards, collections, liked shots, and about, depending upon the url */}
           

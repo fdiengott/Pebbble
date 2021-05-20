@@ -22,7 +22,16 @@ class Api::UsersController < ApplicationController
   def update
     @user = selected_user
 
-    if @user && @user.update(user_params)
+    # TO REMOVE A PROFILE PICTURE FROM A USER
+    if params[:user][:profile_picture] == ""
+      @user.profile_picture.purge
+      modified_user_params = params.require(:user).permit(:username, :name, :location, :email, :bio, :website_url, :password)
+    else 
+      modified_user_params = user_params
+    end
+    
+
+    if @user && @user.update(modified_user_params)
       render '/api/users/show'
     elsif !@user
       render json: ["Could not location user"], status: 400

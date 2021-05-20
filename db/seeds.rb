@@ -10,6 +10,8 @@ require 'open-uri'
 
 Follow.destroy_all
 Card.destroy_all
+CollectionsCard.destroy_all
+Collection.destroy_all
 User.destroy_all
 
 # **************************************************************

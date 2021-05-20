@@ -25,7 +25,7 @@ class CollectionShow extends React.Component {
         <p><span>{collection.numCards} Cards</span>&#183;<span
           >{collection.numCreators} Creatives</span></p>
         <div>
-          <Link to={`/users/${curator.id}`}>
+          <Link to={`/users/${curator.id}/cards`}>
             <Avatar user={curator}/>
             <h3>{curator.name}</h3>
           </Link>

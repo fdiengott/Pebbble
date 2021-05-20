@@ -1,10 +1,12 @@
 import React from 'react'; 
 import { NavLink } from 'react-router-dom'; 
 
-const AccountNavBar = ({ user }) => {
+const AccountNavBar = ({ user, currentUser }) => {
 
   // if it's the current user make the url build off of /account/, otherwise the user's show page
   const urlRoot = user ? `users/${user.id}` : 'account'; 
+
+  const renderedUser = user || currentUser; 
 
   return (
     <div className="account-nav-borderline">
@@ -12,11 +14,11 @@ const AccountNavBar = ({ user }) => {
         <ul role="list" className="account-nav-list">
 
           <li><NavLink to={`/${urlRoot}/cards`}>Cards <span    
-            className="user-stats">{user.numCards}</span></NavLink></li>
+            className="user-stats">{renderedUser.numCards}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/collections`}>Collections <span    
             className="user-stats"
-            >{user.numCollections}</span></NavLink></li>
+            >{renderedUser.numCollections}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/likes`}>Liked Cards <span    
             className="user-stats"
