@@ -21,6 +21,7 @@ class CollectionIndex extends React.Component {
     const collectionsArr = Object.values(collections); 
     const cardsArr = Object.values(cards); 
 
+
     return (
       <ul className="collections-index-list" role="list">
         {
