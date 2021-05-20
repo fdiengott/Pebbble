@@ -4,7 +4,7 @@ import CollectionIndex from './collection_index';				//display component
 
 const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.match.params.userId,
-  currentUserId: state.session.id, 
+  // currentUserId: state.session.id, 
   collections: state.entities.collections,
   cards: state.entities.cards,
 });
