@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'figaro'
 gem 'aws-sdk-s3'
+gem 'faker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -47,7 +48,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'faker'
   gem 'annotate'
 end
 
