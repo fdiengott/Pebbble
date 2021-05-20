@@ -20,7 +20,7 @@ const usersReducer = (state = {}, action) => {
       return action.users; 
 
     case RECEIVE_CARDS_AND_USERS: 
-      return action.data.users; 
+      return {...state, ...action.data.users }
 
     default:
       return state; 
