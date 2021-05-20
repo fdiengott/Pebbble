@@ -1,1 +1,1 @@
-json.extract! @collection, :title, :curator_id, :id
+json.extract! @collection, :title, :curator_id, :id, :num_cards, :num_creators

@@ -4,6 +4,7 @@ import {
   RECEIVE_USERS,
   RECEIVE_USER,
 } from '../actions/user_actions'; 
+import { RECEIVE_COLLECTION_AND_CARDS } from '../actions/card_actions'; 
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state); 
@@ -20,6 +21,9 @@ const usersReducer = (state = {}, action) => {
       return action.users; 
 
     case RECEIVE_CARDS_AND_USERS: 
+      return {...state, ...action.data.users }
+
+    case RECEIVE_COLLECTION_AND_CARDS: 
       return {...state, ...action.data.users }
 
     default:

@@ -1,23 +1,27 @@
 import {connect} from 'react-redux';
-import { fetchCollectionCards } from '../../actions/card_actions';				//actions
+
+import { fetchCollection } from '../../actions/collection_actions';				//actions
+import { fetchUser } from '../../actions/user_actions'; 
+
 import CollectionShow from './collection_show';				//display component
-import { selectCardsByCollectionId } from '../../reducers/selectors'; 
 
 
 const mapStateToProps = (state, ownProps) => {
   const collectionId = ownProps.match.params.collectionId; 
+  const collection = state.entities.collections[collectionId]; 
 
   return ({
     collectionId, 
-    collection: state.entities.collections[collectionId],
-    cards: selectCardsByCollectionId(Object.values(state.entities.collections), collectionId),
+    collection,
+    curator: collection ? state.entities.users[collection.curatorId] : null,
 })};
 
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchCollectionCards: (collectionId) => dispatch(fetchCollectionCards(collectionId)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchCollection: collectionId => dispatch(fetchCollection(collectionId)),
+  fetchUser: userId => dispatch(fetchUser(userId)),
+})
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )(CollectionShow);

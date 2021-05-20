@@ -89,7 +89,7 @@ class CardIndex extends React.Component {
       )); 
     } else if (collectionId) {
       cardIndex = collectionCards.map(card => (
-        <CardIndexItem key={card.id} card={card} />
+        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]}/>
       ))
     } else {
       cardIndex = cards.map(card => (
