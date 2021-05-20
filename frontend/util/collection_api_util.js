@@ -17,14 +17,14 @@ export const createCollection = (collection) => (
   $.ajax({
     method: "POST", 
     url: `/api/collections/`,
-    data: collection,
+    data: { collection },
   })
 ); 
 export const updateCollection = (collection) => (
   $.ajax({
     method: "POST", 
     url: `/api/collections/${collection.id}`,
-    data: collection,
+    data: { collection },
   })
 ); 
 export const deleteCollection = (collectionId) => (

@@ -25,11 +25,8 @@
     flex-direction: column;
     font-weight: 600;
 
-    input, textarea {
+    input {
       @include inputHover(); 
-    }
-    textarea {
-      height: unset; 
     }
 
     h1 {
@@ -43,6 +40,7 @@
     > label {
       display: flex;
       flex-direction: column;
+      margin-bottom: 60px;
     }
 
     .form-buttons > * {
@@ -50,7 +48,7 @@
     }
 
     .gray-button {
-      @include color-button($lighter-gray); 
+      @include color-button($lightest-gray); 
       padding: 15px 22px;
     }
   }

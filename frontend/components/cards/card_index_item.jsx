@@ -30,8 +30,8 @@ class CardIndexItem extends React.Component {
 
   openCollectionModal(e) {
     e.preventDefault(); 
-    // e.stopPropagation();
     this.props.openModal(); 
+    document.body.style.overflow = 'hidden';
   }
 
   render () {

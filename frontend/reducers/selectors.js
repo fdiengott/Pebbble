@@ -40,6 +40,12 @@ export const selectCardsByCollectionId = (cards, collectionId) => {
   )); 
 }
 
+export const selectCollectionsByCuratorId = (state, curatorId) => {
+  return toArray(state.entities.collections).filter( collection => (
+    collection.curatorId === parseInt(curatorId)
+  )); 
+}; 
+
 
 // Follows
 // creatorIds for where the followerId is the current user
