@@ -14,6 +14,7 @@
 
       json.set! card.id do 
         json.extract! card, :id
+        json.collection_id collection.id
         json.img card.img.attached? ? url_for(card.img) : nil
       end
     end

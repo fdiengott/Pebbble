@@ -34,6 +34,13 @@ export const selectCardsByUserId = (state, userId) => {
 // Collections:
 // numCards
 
+// takes in an array of cards
+export const selectCardsByCollectionId = (cards, collectionId) => {
+  return cards.filter( card => (
+    card.collectionId === parseInt(collectionId)
+  )); 
+}
+
 
 // Follows
 // creatorIds for where the followerId is the current user
