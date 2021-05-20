@@ -10,6 +10,7 @@ end
   json.cards do 
     json.set! card.id do 
       json.partial! 'api/cards/card', card: card
+      json.collection_id @collection.id
     end
   end
 end

@@ -10,20 +10,24 @@
     
 
   > li {
-    @include flex(space-between, center, column); 
-
-    transition: opacity 250ms, text-decoration-color 250ms;
-
-    h3 {
-      text-decoration: underline;
-      text-decoration-color: white;
-    }
-    &:hover {
-      opacity: 0.8;
+    a {
+      @include flex(space-between, center, column); 
+      text-decoration: none;
+      color: black; 
+      
+      transition: opacity 250ms, text-decoration-color 250ms;
       h3 {
-        text-decoration-color: black;
+        text-decoration: underline;
+        text-decoration-color: white;
+      }
+      &:hover {
+        opacity: 0.8;
+        h3 {
+          text-decoration-color: black;
+        }
       }
     }
+
   }
 
   .image-container {

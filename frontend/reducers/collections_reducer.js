@@ -19,7 +19,7 @@ const collectionsReducer = (state = {}, action) => {
       return nextState; 
 
     case RECEIVE_COLLECTION_AND_CARDS:
-      return action.data.collection; 
+      return action.data.collections; 
 
     case RECEIVE_COLLECTIONS_AND_CARDS:
       return action.data.collections; 

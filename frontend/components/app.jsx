@@ -12,6 +12,7 @@ import CardIndexContainer from './cards/card_index_container';
 import CardDetailsContainer from './cards/card_details_container';
 import CardCreateFormContainer from './cards/card_create_form_container'; 
 import CardEditFormContainer from './cards/card_edit_form_container'; 
+import CollectionShowContainer from './collections/collection_show_container'; 
 
 const App = () => (
   <>
@@ -23,6 +24,7 @@ const App = () => (
       <ProtectedRoute path="/cards/new" component={CardCreateFormContainer}/>
       <ProtectedRoute path="/cards/:cardId/edit" component={CardEditFormContainer}/>
       <Route path="/cards/:cardId" component={CardDetailsContainer}/> 
+      <Route path="/collections/:collectionId" component={CollectionShowContainer}/> 
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />

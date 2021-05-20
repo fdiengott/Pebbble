@@ -32,7 +32,6 @@ export const selectCardsByUserId = (state, userId) => {
 }; 
 
 // Collections:
-// numCards
 
 // takes in an array of cards
 export const selectCardsByCollectionId = (cards, collectionId) => {

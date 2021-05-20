@@ -24,6 +24,8 @@ class CardIndex extends React.Component {
       this.props.fetchUserFollows(this.props.currentUserId); 
       this.props.fetchCardsAndUsers(); 
       this.props.history.push('/all');
+    } else if (this.props.collectionId) {
+      this.props.fetchCollectionCards(this.props.collectionId); 
     } else {
       this.props.userId ? 
         // if it's a user show page
@@ -65,6 +67,8 @@ class CardIndex extends React.Component {
       users, 
       cards, 
       frontpage, 
+      collectionId,
+      collectionCards
     } = this.props;  
 
     // will refactor to make this its own table
@@ -78,15 +82,20 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
-    const cardIndex = frontpage ? (
-      cardsByCategory.map(card => (
+    let cardIndex; 
+    if (frontpage) {
+      cardIndex =  cardsByCategory.map(card => (
         <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} />
+      )); 
+    } else if (collectionId) {
+      cardIndex = collectionCards.map(card => (
+        <CardIndexItem key={card.id} card={card} />
       ))
-      ) : (
-      cards.map(card => (
+    } else {
+      cardIndex = cards.map(card => (
         <CardIndexItem key={card.id} card={card}/>
       ))
-    )
+    }
 
     const icon = <FontAwesomeIcon icon={this.state.followDropdown ? faChevronUp : faChevronDown}/>
 
