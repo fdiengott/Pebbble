@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_180129) do
+ActiveRecord::Schema.define(version: 2021_05_19_210400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2021_05_18_180129) do
     t.index ["creator_id", "title"], name: "index_cards_on_creator_id_and_title", unique: true
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "curator_id", null: false
+    t.index ["curator_id"], name: "index_collections_on_curator_id"
+  end
+
+  create_table "collections_cards", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "card_id", null: false
+    t.index ["card_id", "collection_id"], name: "index_collections_cards_on_card_id_and_collection_id", unique: true
+    t.index ["collection_id"], name: "index_collections_cards_on_collection_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,6 +90,9 @@ ActiveRecord::Schema.define(version: 2021_05_18_180129) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "collections", "users", column: "curator_id"
+  add_foreign_key "collections_cards", "cards"
+  add_foreign_key "collections_cards", "collections"
   add_foreign_key "follows", "users", column: "creator_id"
   add_foreign_key "follows", "users", column: "follower_id"
 end

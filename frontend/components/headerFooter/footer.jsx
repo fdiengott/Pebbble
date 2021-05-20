@@ -1,6 +1,9 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
+
 const Footer = ({ url, pathsNotToRender }) => {
   const urlArr = url.split("/"); 
   const cardEdit = urlArr[urlArr.length-1] === 'edit' && urlArr[1] === 'cards'; 
@@ -10,7 +13,7 @@ const Footer = ({ url, pathsNotToRender }) => {
 
   const logo = (
     <figure className="footer-logo logo">
-      <Link to="/all">pebbble</Link>
+      <Link to="/all" onClick={() => window.scrollTo(0,0)}>pebbble</Link>
     </figure>
   )
 
@@ -19,6 +22,14 @@ const Footer = ({ url, pathsNotToRender }) => {
       <section>
         { logo }
         <p>Pebbble is the world’s leading community for creatives to share, grow, and get hired.</p>
+        <div className="personal-links">
+          <a className="icon" target="_blank" href="https://github.com/fdiengott/" >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a className="icon" target="_blank" href="https://www.linkedin.com/in/freddiengott/">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+        </div>
       </section>
       <div>
         <p className="copywright-text">© 2021 Pebbble. All rights reserved.</p>

@@ -22,16 +22,23 @@
     p {
       max-width: 250px;
     }
+    .personal-links {
+      margin-top: 10px;
+      
+      > * {
+        margin-right: 50px;
+      }
+    }
   }
 
   img {
     max-width: 25px;
   }
 
-  div {
+  > div {
     border-top: 1px solid $lighter-gray;
     @include flex(space-between); 
-    margin: 40px 0; 
+    margin: 30px 0; 
     padding: 20px 0; 
   }
 }

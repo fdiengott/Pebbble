@@ -205,6 +205,16 @@
   .image-cropper {
     @include image-cropper(40px); 
     margin-right: 10px;
+  }  
+  
+  span:first-child {
+    transition: color 250ms;
+    margin-right: 2px;
+    cursor: pointer;
+  }
+
+  span:first-child:hover {
+    color: $bright-pink; 
   }
 }
 

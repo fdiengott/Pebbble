@@ -4,6 +4,7 @@ import {
   RECEIVE_USERS,
   RECEIVE_USER,
 } from '../actions/user_actions'; 
+import { RECEIVE_COLLECTION_AND_CARDS } from '../actions/card_actions'; 
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state); 
@@ -16,11 +17,13 @@ const usersReducer = (state = {}, action) => {
       return {...state, [action.user.id]: action.user}
 
     case RECEIVE_USERS: 
-      // I'M UNSURE WHAT TO RETURN HERE
-      return action.users; 
+      return {...state, ...action.users}; 
 
     case RECEIVE_CARDS_AND_USERS: 
-      return action.data.users; 
+      return {...state, ...action.data.users }
+
+    case RECEIVE_COLLECTION_AND_CARDS: 
+      return {...state, ...action.data.users }
 
     default:
       return state; 

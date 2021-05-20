@@ -30,8 +30,10 @@ class UserAbout extends React.Component {
 
     const website = (
       renderedUser.websiteUrl ? 
-      <a href={renderedUser.websiteUrl} target="_blank">{renderedUser.websiteUrl}</a> : 
-      <Link to="/account/about/edit" className="pink-link">Add website links</Link>
+      <a href={renderedUser.websiteUrl} target="_blank">{renderedUser.websiteUrl}</a> : (
+        userShowPage ? null : 
+        <Link to="/account/about/edit" className="pink-link">Add website links</Link>
+      )
     )
 
     return (

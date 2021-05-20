@@ -5,6 +5,7 @@ export const RECEIVE_CARD = "RECEIVE_CARD";
 export const REMOVE_CARD = "REMOVE_CARD"; 
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"; 
 export const RECEIVE_CARDS_AND_USERS = "RECEIVE_CARDS_AND_USERS"; 
+export const RECEIVE_COLLECTION_AND_CARDS = "RECEIVE_COLLECTION_AND_CARDS"; 
 
 // ACTIONS
 const receiveCards = (cards) => ({
@@ -29,6 +30,10 @@ const receiveCardErrors = (errors) => ({
 
 const receiveCardsAndUsers = (data) => ({
   type: RECEIVE_CARDS_AND_USERS,
+  data
+}); 
+const receiveCollectionAndCards = (data) => ({
+  type: RECEIVE_COLLECTION_AND_CARDS,
   data
 }); 
 
@@ -77,7 +82,16 @@ export const fetchFollowedUsersCards = (userId) => dispatch => {
     data => dispatch(receiveCardsAndUsers(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
-)}; 
+  )}; 
+  
+  // COLLECTIONS
+  export const fetchCollectionCards = (collectionId) => dispatch => (
+    CardAPIUtil.fetchCollectionCards(collectionId).then(
+      data => dispatch(receiveCollectionAndCards(data)), 
+      err => dispatch(receiveCardErrors(err.responseJSON))
+    )
+  ); 
+
 
 // TESTING
 // window.fetchFollowedUsersCards = fetchFollowedUsersCards; 

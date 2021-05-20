@@ -14,6 +14,15 @@ class Card < ApplicationRecord
     through: :creator, 
     source: :profile_picture_attachment
 
+  has_many :received_collections_cards, 
+    foreign_key: :card_id, 
+    class_name: :CollectionsCard, 
+    dependent: :destroy
+  
+  has_many :collections, 
+    through: :received_collections_cards, 
+    source: :collection
+
   def ensure_img
     unless self.img.attached? 
       errors[:card] << "File must be added"

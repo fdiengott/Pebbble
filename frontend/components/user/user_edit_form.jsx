@@ -32,7 +32,7 @@ class UserEditForm extends React.Component {
 
     this.props.updateUser(formattedUser).then(
       () => this.setState({ success: true })
-    ).then(window.scrollTo(0,0)); 
+    ).then(() => window.scrollTo(0,0)); 
   }
 
   handleInput(type) {
@@ -46,7 +46,15 @@ class UserEditForm extends React.Component {
   }
 
   deleteFile() {
-    this.setState({ photoFile: "" })
+    // this.setState({ photoFile: "" })
+
+    const formData = new FormData(); 
+    formData.append('user[profile_picture]', "")
+    const formattedUser = {id: this.state.id, formData}; 
+
+    this.props.updateUser(formattedUser).then(
+      () => this.setState({ success: true })
+    ).then(window.scrollTo(0,0)); 
   }
 
   openUploadInput() {
@@ -85,13 +93,14 @@ class UserEditForm extends React.Component {
         <div className="edit-profile-form-container">
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
-              <Link to="/account">
+              <Link to="/account/cards">
                 <Avatar user={currentUser}/>
               </Link>
-              <a className="pink-button" onClick={this.openUploadInput}>Upload new picture</a>
+              <a className="pink-button" onClick={this.openUploadInput}>{upload ? "Cancel": "Upload new picture" }</a>
               <a className="gray-button" onClick={this.deleteFile}>Delete</a>
             </div>
-            { upload ? 
+            { 
+            upload ? 
               <div className="new-avatar-form">
                 <input 
                   type="file" 
@@ -99,7 +108,9 @@ class UserEditForm extends React.Component {
                   id="avatar-file"
                   onChange={this.handleFile}/>
                 <button className="pink-button upload-btn">Upload Now</button>
-              </div> : false }
+              </div> : 
+              null 
+            }
             <label htmlFor="name">Name
               <input type="text" id="name" value={currentUser.name} onChange={this.handleInput("name")}/>
             </label>
