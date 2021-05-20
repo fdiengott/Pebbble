@@ -3,6 +3,7 @@ import { fetchUserCollections } from '../../actions/collection_actions';				//ac
 import CollectionIndex from './collection_index';				//display component
 
 const mapStateToProps = (state, ownProps) => ({
+  currentUserId: state.session.id,
   userId: ownProps.match.params.userId,
   collections: state.entities.collections,
   cards: state.entities.cards,

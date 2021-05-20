@@ -10,13 +10,14 @@ class CollectionIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserCollections(this.props.userId)
+    const id = this.props.userId || this.props.currentUserId; 
+
+    this.props.fetchUserCollections(id)
       .then( null, () => this.setState({ noCollections: true })); 
   }
 
   render () {
     const {
-      // currentUserId,
       collections,
       cards,
     } = this.props; 
