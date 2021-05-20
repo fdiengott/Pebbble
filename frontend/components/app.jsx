@@ -13,6 +13,7 @@ import CardDetailsContainer from './cards/card_details_container';
 import CardCreateFormContainer from './cards/card_create_form_container'; 
 import CardEditFormContainer from './cards/card_edit_form_container'; 
 import CollectionShowContainer from './collections/collection_show_container'; 
+// import CollectionModalContainer from './collections/'
 
 const App = () => (
   <>
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/" component={CardIndexContainer}/> 
     </Switch>
     <Route path="/" component={FooterContainer}/> 
+    {/* <CollectionModalContainer /> */}
   </>
 ); 
 

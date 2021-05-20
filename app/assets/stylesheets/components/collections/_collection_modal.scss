@@ -1,0 +1,16 @@
+
+.collection-modal-container {
+  display: none;
+}
+
+
+.collection-modal-container.active {
+  display: block; 
+
+
+  .modal-background {
+    @include fullsize(); 
+  }
+
+
+}
