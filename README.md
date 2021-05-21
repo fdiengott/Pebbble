@@ -4,7 +4,7 @@
 
 
 
-![alt-text](https://github.com/fdiengott/Pebbble/app/asset/images/splash-page.png "Pebbble Splash page")
+![Pebbble Splash page](https://github.com/fdiengott/Pebbble/app/asset/images/splash-page.png)
 
 
 [Live Site!](https://pebbble.herokuapp.com/)
