@@ -92,7 +92,7 @@ header {
 }
 
 .standard-header {
-  border-bottom: 1px solid $lightest-gray;
+  border-bottom: 1px solid lighten($lightest-gray, 2%);
   height: 77px;
   margin: 0 20px;
 
@@ -127,7 +127,7 @@ header {
   
   .login-btn, .signup-btn {
     text-decoration: none; 
-    padding: 10px; 
+    padding: 8px; 
     margin-left: 10px; 
   }
   
@@ -139,7 +139,7 @@ header {
 
 .signup-banner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   background-color: #faf9fe;
@@ -149,6 +149,7 @@ header {
   main {
     width: 60%;
     margin-right: 26px;
+    max-width: 550px;
 
     h1 {
       font-weight: 700;
@@ -158,7 +159,8 @@ header {
 
     a {
       text-decoration: none;
-      padding: 15px 18px;
+      padding: 12px;
+      font-weight: 500;
     }
     
     & * {
@@ -167,6 +169,7 @@ header {
 
     p {
       margin-bottom: 30px;
+      line-height: 1.5;
     }
   }
   
@@ -176,10 +179,10 @@ header {
     align-items: flex-end;
     width: 40%;
     text-align: right;
-    margin: 15px 0;
+    margin: 40px 0;
 
     img {
-      height: 100%;
+      max-width: 80%;
     }
 
     span {

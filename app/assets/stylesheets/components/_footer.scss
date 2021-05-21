@@ -1,9 +1,10 @@
 
 .main-footer {
-  padding: $landing-page-padding; 
+  padding: $landing-page-padding/2 $landing-page-padding; 
   padding-bottom: 10px;
   font-size: 12px;
   background-color: #ebebeb;
+  @include flex(flex-start, flex-start, column); 
 
   .footer-logo {
     a {
@@ -19,6 +20,9 @@
   }
 
   section {
+    @include flex(space-between, flex-start); 
+    width: 100%;
+
     p {
       max-width: 250px;
     }
@@ -28,6 +32,9 @@
       > * {
         margin-right: 50px;
       }
+    }
+    ul {
+      padding: 0;
     }
   }
 
@@ -40,5 +47,6 @@
     @include flex(space-between); 
     margin: 30px 0; 
     padding: 20px 0; 
+    width: 100%;
   }
 }
