@@ -51,9 +51,12 @@ const Footer = ({ url, pathsNotToRender }) => {
         </ul>
         <ul role="list">
           <h3>Words I enjoy</h3>
+          <li>Breviloquent</li>
           <li>Gamboge</li>
+          <li>Assiduous</li>
           <li>Panglossian</li>
-          <li>Assiduously</li>
+          <li>Autodidactic</li>
+          <li>Kintsugi</li>
         </ul>
       </section>
       <div>
