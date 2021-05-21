@@ -30,7 +30,7 @@ class CardIndexItem extends React.Component {
 
   openCollectionModal(e) {
     e.preventDefault(); 
-    this.props.openModal(); 
+    this.props.openModal(this.props.card.id); 
     document.body.style.overflow = 'hidden';
   }
 

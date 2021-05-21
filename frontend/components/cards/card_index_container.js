@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserFollows: (followerId) => dispatch(fetchUserFollows(followerId)),
   fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
   fetchCollectionCards: (collectionId) => dispatch(fetchCollectionCards(collectionId)),
-  openModal: () => dispatch(openModal()),
+  openModal: (cardId) => dispatch(openModal(cardId)),
 });
 
 export default withRouter(connect(
