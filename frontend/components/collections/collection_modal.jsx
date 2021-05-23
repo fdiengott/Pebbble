@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { CSSTransition } from 'react-transition-group'; 
 
 import CollectionModalListItem from './collection_modal_list_item'; 
 
@@ -88,7 +89,7 @@ class CollectionModal extends React.Component {
 
     const modal = this.state.page === 1 ? (
       // page 1: create a new collection
-      <div className="modal-form-container" onClick={e => e.stopPropagation()}>
+      <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionSubmit}>
           <h1>Create a new Collection</h1>
 
@@ -104,10 +105,10 @@ class CollectionModal extends React.Component {
       </div>
     ) : (
       // page 2: add cards to a collection
-      <div className="modal-form-container" onClick={e => e.stopPropagation()}>
+      <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionCardSubmit}>
           <h1>Add this Card to a collection</h1>
-          <ul>
+          <ul role="list">
             { collectionsItems }
           </ul>
           <div className="form-buttons">
@@ -121,12 +122,18 @@ class CollectionModal extends React.Component {
 
 
     return (
-      <div className="collection-modal-container">
-        <div className="modal-background" onClick={this.closeModal}>
-          { modal }
-
+      <CSSTransition
+        in={!!active}
+        classNames="collection-modal"
+        timeout={250}
+        appear
+        >
+        <div className="collection-modal-container">
+          <div className="modal-background" onClick={this.closeModal}>
+            { modal }
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     )
   }
 }

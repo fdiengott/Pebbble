@@ -8,13 +8,22 @@
   // display: block; 
 // }
 
+.collection-modal-enter-active .modal-form-container, .collection-modal-appear-active .modal-form-container,
+.collection-modal-exit-active .modal-form-container {
+  transform: scale(0) translate(-75%, -50%);
+}
+.collection-modal-enter-done .modal-form-container,
+.collection-modal-exit .modal-form-container {
+  transition: transform ease 300ms;
+  transform: scale(1) translate(-50%, -50%);
+}
 
-  
+
 .modal-form-container {
   position: absolute;
   top: 40%; 
   left: 50%;
-  transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
   background-color: white;
   width: 80vw;
   border-radius: 12px;
