@@ -80,13 +80,11 @@ class CollectionModal extends React.Component {
 
   render() {
     const { active, collections } = this.props; 
-    // debugger
     if (!active) return null; 
 
-    const collectionsItems = Object.values(collections).map(collection => {
-      debugger
-      return <CollectionModalListItem collection={collection}/>
-    }); 
+    const collectionsItems = Object.values(collections).map(collection => (
+      <CollectionModalListItem key={collection.id} collection={collection}/>
+    )); 
 
     const modal = this.state.page === 1 ? (
       // page 1: create a new collection
