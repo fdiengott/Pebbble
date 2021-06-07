@@ -16,7 +16,11 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors }) => {
     </figure>
   )
 
-  const signupBanner = (!loggedIn && homePage) ? (
+  let categories = ["typography", "illustration", "animation", "web design" ]; 
+  categories = categories.map(cat => `/${cat}`); 
+  const pathsToRender = categories.concat(["/", "/all"]); 
+
+  const signupBanner = (!loggedIn && pathsToRender.includes(url)) ? (
     <section className="signup-banner">
       <main>
         <h1>Dicover the world's top designers & creatives</h1>

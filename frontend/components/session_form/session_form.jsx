@@ -56,10 +56,17 @@ class SessionForm extends React.Component {
     ) : null; 
 
     let demoLogin = (signin) ? (
-      <button 
-        onClick={this.handleDemoLogin} 
-        className="demo-login-button"
-      >Demo Login</button>
+      <div className="demo-login-button-container">
+        <button 
+          onClick={this.handleDemoLogin} 
+          className="demo-login-button"
+        >Demo Login</button>
+        <div>
+          <hr/>
+          <p>Or</p>
+          <hr/>
+        </div>
+      </div>
     ) : null; 
     
 
@@ -81,6 +88,7 @@ class SessionForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <Errors errors={errors}/>
               <h2>{formType} to Pebbble</h2>
+              { demoLogin }
               <div className="name-container">
                 { nameInput }
 
@@ -107,7 +115,6 @@ class SessionForm extends React.Component {
               </label>
 
               <button>{ signin ? "Sign In" : "Create Account" }</button>
-              { demoLogin }
             </form>
           </div>
         </section>

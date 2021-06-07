@@ -10,6 +10,7 @@
 
   > div {
     @include flex(space-between); 
+    font-size: 14px; 
   }
 
   ul {
@@ -37,7 +38,18 @@
     ul {
       @include flex(space-between, center); 
       width: 100%;
+      max-width: 550px;
       white-space: nowrap;
+      li > a {
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        transition: text-decoration-color 250ms;
+      }
+      
+      li:hover > a {
+        text-decoration-color: black;
+        border-radius: $border-radius;
+      }
     }
   }
 
@@ -192,7 +204,7 @@
   padding: 5px 3px;
 
   h3 {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   a {
@@ -203,7 +215,7 @@
   }
 
   .image-cropper {
-    @include image-cropper(40px); 
+    @include image-cropper(35px); 
     margin-right: 10px;
   }  
   
