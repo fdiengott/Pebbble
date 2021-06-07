@@ -4,7 +4,7 @@
 
 
 
-![alt-text](https://github.com/fdiengott/Pebbble/app/asset/images/splash-page.png "Pebbble Splash page")
+![image, Main splash page](https://user-images.githubusercontent.com/78871840/119154111-dbd73a00-ba1f-11eb-88d7-c0b3e1dbd229.png)
 
 
 [Live Site!](https://pebbble.herokuapp.com/)
@@ -18,7 +18,7 @@ Pebbble has a React/Redux frontend and a Rails backend. It heavily employs the u
 ### Creating a card
 After deciding not to use any external libraries to make the card's drap-and-drop upload feature, it was not obvious where to begin. 
 
-![alt text](https://github.com/fdiengott/Pebbble/app/asset/images/card_upload_page.png "Card Upload Page")
+![image, card upload page](https://user-images.githubusercontent.com/78871840/119154269-00331680-ba20-11eb-8eda-a493d46f0c9f.png)
 
 I started with simple clicking and styling of the file input. Because when a user clicks on an input's label they are essentially clicking on the input, I was able to make the actually input 0.1px by 0.1px, and transparent and then styled the file input's label. I made sure the dropzone's dragOver, dragEnter, and dragLeave didn't cause the browser to change as it normally would and had an onDrop which would submit the photo in the same was as onClick. 
 
