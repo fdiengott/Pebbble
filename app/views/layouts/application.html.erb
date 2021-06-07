@@ -8,6 +8,14 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('pebbble-icon.svg') %>
+    <meta property="og:title" content="Pebbble"/>
+    <meta property="og:image" content="<%= image_url('pebbble-highlight.png') %>"/>
+    <meta property="og:description" 
+      content="A haven for designers and design enthusiasts to share their work or find inspiration, inspired by Dribbble and my love of design!"
+    />
+    <meta property="og:url" 
+      content="https://pebbble.herokuapp.com/"
+    />
     
     <script>
       window.clip_trumpeter = "<%= image_url('clip_trumpeter.png') %>"; 
