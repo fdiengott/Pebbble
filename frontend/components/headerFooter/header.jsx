@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
+import { faGithub, faLinkedin, faAngellist } from '@fortawesome/free-brands-svg-icons';   
 
 import CurrentUserDropdownContainer from '../user/current_user_dropdown_container.js';
 
@@ -64,6 +64,11 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors }) => {
           <li>
             <a className="icon" target="_blank" href="https://www.linkedin.com/in/freddiengott/">
               <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </li>
+          <li>
+            <a className="icon" target="_blank" href="https://angel.co/u/freddy-diengott">
+              <FontAwesomeIcon icon={faAngellist} />
             </a>
           </li>
         </ul>
