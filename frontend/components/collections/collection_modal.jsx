@@ -11,13 +11,13 @@ class CollectionModal extends React.Component {
     this.state = { 
       title: "", 
       curator_id: this.props.currentUserId, 
-      collectionIds: new Set([""]),
+      collectionIds: new Set(),
     }
 
     this.handleCollectionSubmit = this.handleCollectionSubmit.bind(this); 
     this.handleCollectionInput = this.handleCollectionInput.bind(this); 
 
-    this.handleCollectionCardSubmit = this.handleCollectionCardSubmit.bind(this); 
+    this.handleCollectionsCardSubmit = this.handleCollectionsCardSubmit.bind(this); 
     this.handleCollectionCardInput = this.handleCollectionCardInput.bind(this); 
 
     this.closeModal = this.closeModal.bind(this); 
@@ -79,7 +79,7 @@ class CollectionModal extends React.Component {
     ); 
   }
 
-  handleCollectionCardSubmit(e) {
+  handleCollectionsCardSubmit(e) {
     e.preventDefault(); 
 
     const collections_cards = {
@@ -127,7 +127,7 @@ class CollectionModal extends React.Component {
     ) : (
       // page 2: add cards to a collection
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
-        <form onSubmit={this.handleCollectionCardSubmit}>
+        <form onSubmit={this.handleCollectionsCardSubmit}>
           <h1>Add this Card to a collection</h1>
           <ul role="list" onClick={this.handleCollectionCardInput}>
             { collectionsItems }
