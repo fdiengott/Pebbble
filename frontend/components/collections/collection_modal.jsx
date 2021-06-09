@@ -9,7 +9,6 @@ class CollectionModal extends React.Component {
     super(props); 
 
     this.state = { 
-      // page: this.props.haveCollections ? 2 : 1,
       title: "", 
       curator_id: this.props.currentUserId, 
       collection_ids: [""],
@@ -31,13 +30,20 @@ class CollectionModal extends React.Component {
     ); 
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // debugger
     // this will break app if not fixed
 
     // if (!Object.values(this.props.collections).length) {
     //   this.props.fetchUserCollections(this.props.currentUserId); 
     // }
+
+    if (prevProps.active !== this.props.active) {
+      if (!this.state.active) {
+        this.setState({ page: this.props.haveCollections ? 2 : 1 }); 
+      }
+    }
+
   }
 
 
@@ -116,6 +122,7 @@ class CollectionModal extends React.Component {
             <a className="cancel-button gray-button" onClick={this.closeModal}>Cancel</a>
           </div>
         </form>
+        <button onClick={this.switchToPageOne}>Create New Collection</button>
       </div>
     )
 
