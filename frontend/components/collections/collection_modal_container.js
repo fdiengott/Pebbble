@@ -6,10 +6,11 @@ import CollectionModal from './collection_modal';				//display component
 
 const mapStateToProps = (state) => {
   return ({
-  currentUserId: state.session.id, 
-  collections: state.entities.collections, 
-  active: state.ui.modal,
-  haveCollections: !!Object.keys(state.entities.collections).length,
+    currentUserId: state.session.id, 
+    collections: state.entities.collections, 
+    active: !!state.ui.modal,
+    cardId: state.ui.modal,
+    haveCollections: !!Object.keys(state.entities.collections).length,
 })};
 
 const mapDispatchToProps = (dispatch) => ({

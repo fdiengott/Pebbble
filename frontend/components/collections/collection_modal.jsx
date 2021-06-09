@@ -11,7 +11,7 @@ class CollectionModal extends React.Component {
     this.state = { 
       title: "", 
       curator_id: this.props.currentUserId, 
-      collection_ids: [""],
+      collectionIds: new Set([""]),
     }
 
     this.handleCollectionSubmit = this.handleCollectionSubmit.bind(this); 
@@ -56,10 +56,20 @@ class CollectionModal extends React.Component {
 
   handleCollectionCardInput(e) {
     debugger
-    this.setState({ collection_ids: e.target.key })
+    const { collectionIds } = this.state; 
+    const collId = Number(e.target.parentElement.dataset.collectionId); 
+
+    // set.add returns the set, set.delete returns a boolean
+    if (collectionIds.has(collId)) {
+      const cIds = collectionIds; 
+      cIds.delete(collId); 
+
+      this.setState({ collectionIds: cIds }); 
+    } else {
+      this.setState({ collectionIds: collectionIds.add(collId) }); 
+    }
   }
 
-  
 
   handleCollectionSubmit(e) {
     e.preventDefault(); 
@@ -72,7 +82,12 @@ class CollectionModal extends React.Component {
   handleCollectionCardSubmit(e) {
     e.preventDefault(); 
 
-    this.props.createCollectionsCard(this.state).then(() => this.closeModal())
+    const collections_cards = {
+      collection_ids: Array.from(this.state.collectionIds), 
+      card_id: this.props.cardId, 
+    }
+
+    this.props.createCollectionsCard(collections_cards).then(() => this.closeModal())
   }
 
   closeModal() {
@@ -90,7 +105,7 @@ class CollectionModal extends React.Component {
     if (!active) return null; 
 
     const collectionsItems = Object.values(collections).map(collection => (
-      <CollectionModalListItem key={collection.id} collection={collection}/>
+      <CollectionModalListItem key={collection.id} collection={collection} collectionIds={this.state.collectionIds}/>
     )); 
 
     const modal = this.state.page === 1 ? (
@@ -114,7 +129,7 @@ class CollectionModal extends React.Component {
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionCardSubmit}>
           <h1>Add this Card to a collection</h1>
-          <ul role="list">
+          <ul role="list" onClick={this.handleCollectionCardInput}>
             { collectionsItems }
           </ul>
           <div className="form-buttons">

@@ -34,6 +34,15 @@
     flex-direction: column;
     font-weight: 600;
 
+    ul {
+      padding: 0;
+    }
+
+    li.active {
+      background-color: $pink; 
+      color: white; 
+    }
+
     input {
       @include inputHover(); 
     }
