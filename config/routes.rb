@@ -35,6 +35,7 @@
 # api_collections_cards POST   /api/collections_cards(.:format)                     api/collections_cards#create {:format=>:json}
 #  api_collections_card DELETE /api/collections_cards/:id(.:format)                 api/collections_cards#destroy {:format=>:json}
 #                       GET    /api/collections/:collection_id/cards(.:format)      api/collection_cards#index {:format=>:json}
+#                       GET    /api/collections_cards/:user_id(.:format)            api/user_collections_card#index {:format=>:json}
 
 #                  root GET    /                                                    static_pages#root
 
@@ -70,7 +71,8 @@ Rails.application.routes.draw do
     resources :collections_cards, only: [:create, :destroy]
     
     get '/collections/:collection_id/cards', to: 'collection_cards#index'
-    
+
+    get '/collections_cards/:user_id', to: 'user_collections_card#index'
 
   end
 

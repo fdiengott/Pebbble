@@ -3,17 +3,15 @@
 class Api::CollectionsCardsController < ApplicationController
 
   def create
-    debugger
     collection_ids = params[:collections_card][:collection_ids]
 
     if collection_ids
       card = Card.find_by(id: params[:collections_card][:card_id])
-      debugger
+
       if card
-        debugger
         card.collection_ids = collection_ids
         @collections_card = CollectionsCard.where(card_id: card.id, collection_id: collection_ids)
-        render '/api/collections_cards/index'
+        render '/api/collections_card/index'
       else 
         render json: ['Card not found'], status: 404
       end

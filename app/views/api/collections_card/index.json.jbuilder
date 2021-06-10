@@ -7,6 +7,3 @@ json.collections_card do
   end
   
 end
-# curator id
-# card id
-# collections ids

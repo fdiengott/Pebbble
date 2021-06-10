@@ -22,6 +22,13 @@ const receiveErrors = (errors) => ({
 
 
 // THUNK ACTION CREATORS
+export const fetchUserCollectionsCard = (userId) => dispatch => (
+  CollectionsCardAPIUtil.fetchUserCollectionsCard(userId).then(
+    collectionsCard => dispatch(receiveCollectionsCard(collectionsCard)),
+    err => dispatch(receiveErrors(err))
+  )
+); 
+
 export const createCollectionsCard = (collectionsCard) => dispatch => (
   CollectionsCardAPIUtil.createCollectionsCard(collectionsCard).then(
     collectionsCard => dispatch(receiveCollectionsCard(collectionsCard)),
