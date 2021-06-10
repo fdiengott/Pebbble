@@ -11,7 +11,7 @@ class CollectionModal extends React.Component {
     this.state = { 
       title: "", 
       curator_id: this.props.currentUserId, 
-      collectionIds: new Set(this.props.activeCollections),
+      collectionIds: new Set(),
     }
 
     this.handleCollectionSubmit = this.handleCollectionSubmit.bind(this); 
@@ -40,8 +40,10 @@ class CollectionModal extends React.Component {
     // }
 
     if (prevProps.active !== this.props.active) {
-      if (!this.state.active) {
+      if (!this.props.active) {
         this.setState({ page: this.props.haveCollections ? 2 : 1 }); 
+      } else {
+        this.setState({ collectionIds: new Set(this.props.activeCollections) })
       }
     }
 
@@ -56,7 +58,6 @@ class CollectionModal extends React.Component {
   }
 
   handleCollectionCardInput(e) {
-    debugger
     const { collectionIds } = this.state; 
     const collId = Number(e.target.parentElement.dataset.collectionId); 
 

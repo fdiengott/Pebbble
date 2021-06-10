@@ -48,9 +48,9 @@ export const selectCollectionsByCuratorId = (state, curatorId) => {
 
 // Collections Card
 export const selectCollectionsArrByCardId = (state, cardId) => {
-  return toArray(state.entities.collectionsCards).filter( cc => (
-    cc.cardId === cardId
-  ))
+  return toArray(state.entities.collectionsCards)
+    .filter( cc => cc.cardId === cardId)
+    .map( cc => cc.collectionId)
 }
 
 // Follows
