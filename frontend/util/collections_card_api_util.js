@@ -1,11 +1,11 @@
 
 
-export const fetchUserCollectionsCard = ({ userId }) => (
+export const fetchUserCollectionsCard = (userId) => (
   $.ajax({
     method: "GET", 
     url: `/api/collections_cards/${userId}` 
   })
-)
+); 
 
 export const createCollectionsCard = (collectionsCard) => (
   $.ajax({

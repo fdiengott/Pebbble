@@ -46,6 +46,12 @@ export const selectCollectionsByCuratorId = (state, curatorId) => {
   )); 
 }; 
 
+// Collections Card
+export const selectCollectionsArrByCardId = (state, cardId) => {
+  return toArray(state.entities.collectionsCards).filter( cc => (
+    cc.cardId === cardId
+  ))
+}
 
 // Follows
 // creatorIds for where the followerId is the current user

@@ -11,7 +11,7 @@ class CollectionModal extends React.Component {
     this.state = { 
       title: "", 
       curator_id: this.props.currentUserId, 
-      collectionIds: new Set(),
+      collectionIds: new Set(this.props.activeCollections),
     }
 
     this.handleCollectionSubmit = this.handleCollectionSubmit.bind(this); 
@@ -25,9 +25,10 @@ class CollectionModal extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserCollections(this.props.currentUserId).then(
+    this.props.fetchUserCollections(this.props.currentUserId)
+    .then(
       (res) => this.setState({ page: !!Object.keys(res.data.collections).length ? 2 : 1 })
-    ); 
+    ).then(() => this.props.fetchUserCollectionsCard(this.props.currentUserId));
   }
 
   componentDidUpdate(prevProps) {
@@ -105,7 +106,11 @@ class CollectionModal extends React.Component {
     if (!active) return null; 
 
     const collectionsItems = Object.values(collections).map(collection => (
-      <CollectionModalListItem key={collection.id} collection={collection} collectionIds={this.state.collectionIds}/>
+      <CollectionModalListItem 
+        key={collection.id} 
+        collection={collection} 
+        collectionIds={this.state.collectionIds} 
+      />
     )); 
 
     const modal = this.state.page === 1 ? (
