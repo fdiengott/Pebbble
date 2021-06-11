@@ -22,3 +22,7 @@
   color: #000;
   font-size: 24px;
 }
+
+.form-errors {
+  @include form-errors(); 
+}
