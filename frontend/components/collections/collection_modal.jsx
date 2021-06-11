@@ -95,6 +95,7 @@ class CollectionModal extends React.Component {
   }
 
   closeModal() {
+    this.setState({ title: "" })
     this.props.closeModal(); 
     document.body.style.overflow = 'unset';
   }

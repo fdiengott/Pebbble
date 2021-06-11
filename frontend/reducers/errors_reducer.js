@@ -9,6 +9,7 @@ import {
   RECEIVE_ERRORS,
   RECEIVE_CARD,
 } from '../actions/card_actions'; 
+import { CLOSE_MODAL } from '../actions/modal_actions';
 
 const errorsReducer = (state = [], action) => {
   Object.freeze(state); 
@@ -28,6 +29,9 @@ const errorsReducer = (state = [], action) => {
       return _nullErrors; 
     case CLEAR_ERRORS: 
       return _nullErrors; 
+    case CLOSE_MODAL: 
+      return _nullErrors; 
+      
   
     default:
       return state; 
