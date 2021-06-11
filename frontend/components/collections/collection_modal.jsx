@@ -121,15 +121,16 @@ class CollectionModal extends React.Component {
       // page 1: create a new collection
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionSubmit}>
-          <h1>Create a new Collection</h1>
-
-          <label htmlFor="title">Title
-            <input type="text" onChange={this.handleCollectionInput("title")} value={this.state.title} required id="title"/>
-          </label>
+          <div>
+            <h1>Create a new Collection</h1>
+            <label htmlFor="title">Title
+              <input type="text" onChange={this.handleCollectionInput("title")} value={this.state.title} required id="title"/>
+            </label>
+          </div>
 
           <div className="form-buttons">
             <button className="pink-button">Create Collection</button>
-            <a className="cancel-button gray-button" onClick={this.closeModal}>Cancel</a>
+            <a className="cancel-button" onClick={this.closeModal}>&#215;</a>
           </div>
         </form>
       </div>
@@ -137,16 +138,21 @@ class CollectionModal extends React.Component {
       // page 2: add cards to a collection
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionsCardSubmit}>
-          <h1>Add this Card to a collection</h1>
-          <ul role="list" onClick={this.handleCollectionCardInput}>
-            { collectionsItems }
-          </ul>
+          <div>
+            <a className="cancel-button" onClick={this.closeModal}>&#215;</a>
+            <h1>Add this Card to a collection</h1>
+            <ul role="list" onClick={this.handleCollectionCardInput}>
+              { collectionsItems }
+            </ul>
+          </div>
           <div className="form-buttons">
             <button className="pink-button">Done</button>
-            <a className="cancel-button gray-button" onClick={this.closeModal}>Cancel</a>
+            <a 
+              className="create-collection-btn" 
+              onClick={this.switchToPageOne}
+            >Create New Collection</a>
           </div>
         </form>
-        <button onClick={this.switchToPageOne}>Create New Collection</button>
       </div>
     )
 
