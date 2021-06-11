@@ -31,8 +31,8 @@ export const fetchUserCollectionsCard = (userId) => dispatch => (
 
 export const createCollectionsCard = (collectionsCard) => dispatch => (
   CollectionsCardAPIUtil.createCollectionsCard(collectionsCard).then(
-    collectionsCard => dispatch(receiveCollectionsCard(collectionsCard)),
-    err => dispatch(receiveErrors(err))
+    res => {dispatch(receiveCollectionsCard(res))},
+    err => {dispatch(receiveErrors(err))}
   )
 ); 
 export const deleteCollectionsCard = (collectionsCardId) => dispatch => (
