@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
     cardId: state.ui.modal,
     activeCollections: selectCollectionsArrByCardId(state, state.ui.modal), 
     haveCollections: !!Object.keys(state.entities.collections).length,
+    errors: state.errors, 
 })};
 
 const mapDispatchToProps = (dispatch) => ({

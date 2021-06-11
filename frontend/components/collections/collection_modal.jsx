@@ -1,4 +1,5 @@
 import React from 'react'; 
+import Errors from '../util/errors';
 import { CSSTransition } from 'react-transition-group'; 
 
 import CollectionModalListItem from './collection_modal_list_item'; 
@@ -122,7 +123,9 @@ class CollectionModal extends React.Component {
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionSubmit}>
           <div>
+            <a className="cancel-button-x" onClick={this.closeModal}>&#215;</a>
             <h1>Create a new Collection</h1>
+            <Errors errors={this.props.errors} />
             <label htmlFor="title">Title
               <input type="text" onChange={this.handleCollectionInput("title")} value={this.state.title} required id="title"/>
             </label>
@@ -130,7 +133,7 @@ class CollectionModal extends React.Component {
 
           <div className="form-buttons">
             <button className="pink-button">Create Collection</button>
-            <a className="cancel-button" onClick={this.closeModal}>&#215;</a>
+            <a className="cancel-button gray-button" onClick={this.closeModal}>Cancel</a>
           </div>
         </form>
       </div>
@@ -139,7 +142,7 @@ class CollectionModal extends React.Component {
       <div className="modal-form-container" onClick={e => e.stopPropagation()}  key={1}>
         <form onSubmit={this.handleCollectionsCardSubmit}>
           <div>
-            <a className="cancel-button" onClick={this.closeModal}>&#215;</a>
+            <a className="cancel-button-x" onClick={this.closeModal}>&#215;</a>
             <h1>Add this Card to a collection</h1>
             <ul role="list" onClick={this.handleCollectionCardInput}>
               { collectionsItems }
