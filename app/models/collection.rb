@@ -1,9 +1,10 @@
 class Collection < ApplicationRecord 
 
+  validates :title, presence: true, uniqueness: { scope: :curator_id }
+
   belongs_to :curator, 
     foreign_key: :curator_id, 
     class_name: :User
-
 
   has_many :received_collections_cards, 
     foreign_key: :collection_id, 
