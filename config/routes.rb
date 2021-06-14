@@ -37,6 +37,11 @@
 #                       GET    /api/collections/:collection_id/cards(.:format)      api/collection_cards#index {:format=>:json}
 #                       GET    /api/collections_cards/:user_id(.:format)            api/user_collections_card#index {:format=>:json}
 
+#             api_likes POST   /api/likes(.:format)                                 api/likes#create {:format=>:json}
+#              api_like DELETE /api/likes/:id(.:format)                             api/likes#destroy {:format=>:json}
+
+#                       GET    /api/users/:user_id/likes(.:format)                  api/user_likes#index {:format=>:json}
+
 #                  root GET    /                                                    static_pages#root
 
 Rails.application.routes.draw do
@@ -73,6 +78,9 @@ Rails.application.routes.draw do
     get '/collections/:collection_id/cards', to: 'collection_cards#index'
 
     get '/collections_cards/:user_id', to: 'user_collections_card#index'
+
+    resources :likes, only: [:create, :destroy]
+    get '/users/:user_id/likes', to: 'user_likes#index'
 
   end
 
