@@ -32,20 +32,20 @@ const receiveErrors = (errors) => ({
 export const createLike = (like) => dispatch => (
   LikeAPIUtil.createLike(like).then(
     receivedLike => dispatch(receiveLike(receivedLike)),
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
 
 export const deleteLike = (likeId) => dispatch => (
-  LikeAPIUtil.createLike(likeId).then(
+  LikeAPIUtil.deleteLike(likeId).then(
     receivedLike => dispatch(removeLike(receivedLike.id)),
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
 
 export const fetchUserLikes = (likerId) => dispatch => (
-  LikeAPIUtil.createLike(likerId).then(
+  LikeAPIUtil.fetchUserLikes(likerId).then(
     likes => dispatch(receiveLikes(likes)),
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors(err.responseJSON))
   )
 ); 
