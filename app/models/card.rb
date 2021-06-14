@@ -23,6 +23,14 @@ class Card < ApplicationRecord
     through: :received_collections_cards, 
     source: :collection
 
+  has_many :likes, 
+    foreign_key: :card_id, 
+    class_name: :Like
+
+  has_many :likers, 
+    through: :likes, 
+    source: :liker
+
   def ensure_img
     unless self.img.attached? 
       errors[:card] << "File must be added"

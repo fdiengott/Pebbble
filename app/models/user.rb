@@ -36,6 +36,14 @@ class User < ApplicationRecord
     foreign_key: :curator_id, 
     class_name: :Collection
 
+  has_many :likes, 
+    foreign_key: :liker_id, 
+    class_name: :Like
+
+  has_many :liked_cards, 
+    through: :likes,
+    source: :liker
+
   ### AUTH METHODS
 
   def self.find_by_credentials(username, password)
