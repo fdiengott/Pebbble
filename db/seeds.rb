@@ -502,11 +502,11 @@ card.img.attach(io: card_file, filename: "#{u.username}-#{card.title}." + "m4v")
 
 # ************** FOLLOWS ******************
 
-ids = User.pluck(:id)
+user_ids = User.pluck(:id)
 combos = []
 
 while combos.length < 30
-  newCombo = [ids.sample, ids.sample]
+  newCombo = [user_ids.sample, user_ids.sample]
   
   if newCombo.uniq.length > 1 && !combos.include?(newCombo)
     combos << newCombo
@@ -525,7 +525,7 @@ end
 
 20.times do 
   title = Faker::Book.title
-  curator_id = ids.sample
+  curator_id = user_ids.sample
 
   Collection.create(title: title, curator_id: curator_id)
 end
@@ -554,3 +554,21 @@ Collection.includes(:cards).map{ |c| c.destroy if c.cards.count == 0  }
 
 # ***********************************************************
 # ***********************************************************
+# ***********************************************************
+
+# ************** LIKES ******************
+
+# card_ids
+# user_ids
+combos = []
+
+40.times do 
+  user_id = user_ids.sample
+  card_id = card_ids.sample
+  newCombo = [user_id, card_id]
+
+  unless combos.include?(newCombo)
+    Like.create(liker_id: user_id, card_id: card_id)
+    combos << newCombo
+  end
+end
