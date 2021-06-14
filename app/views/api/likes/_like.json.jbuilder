@@ -1,4 +1,4 @@
 
 
-json.extract! like, :liker_id, :card_id, :id
+json.extract! like, :id, :liker_id, :card_id
 

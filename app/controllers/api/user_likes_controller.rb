@@ -1,7 +1,7 @@
 class Api::UserLikesController < ApplicationController 
 
   def index
-    @likes = Like.where(liker_id: params[:user_id])
+    @likes = Like.where(liker_id: params[:liker_id])
     if @likes
       render 'api/likes/index'
     else
