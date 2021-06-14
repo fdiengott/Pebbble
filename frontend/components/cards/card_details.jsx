@@ -20,6 +20,7 @@ class CardDetails extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this); 
     this.toggleFollow = this.toggleFollow.bind(this); 
+    this.openCollectionModal = this.openCollectionModal.bind(this); 
   }
 
   componentDidMount() {
@@ -76,9 +77,14 @@ class CardDetails extends React.Component {
       .includes(this.props.user.id)
   }
 
+  openCollectionModal(e) {
+    e.preventDefault(); 
+    this.props.openModal(this.props.card.id); 
+    document.body.style.overflow = 'hidden';
+  }
+
   render() {
     const { user, card, currentUserId, follows, errors } = this.props; 
-    
     
     if (!user || !card)       return null; 
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
@@ -100,19 +106,20 @@ class CardDetails extends React.Component {
       <>
       <span>&#183;</span>
       { followButton }
+      {/* HIRE ME BUTTON
       <span>&#183;</span>
       <div className="email-wrapper">
         <a className="email-button">Hire Me</a>
         <u className="email-popup">Send a message about a work opportunity
           <u className="arrow-down"></u>
         </u>
-      </div>
+      </div> */}
       </>
     )
 
     const saveAndLikeButtons = currentUserCard ? null : (
       <aside>
-        <button>Save</button>
+        <button onClick={this.openCollectionModal}>Save</button>
         <button><span>{
           <FontAwesomeIcon icon={faHeart} />
         }</span>Like</button>
@@ -121,11 +128,13 @@ class CardDetails extends React.Component {
 
     const creatorLinkRoute = currentUserCard ? `/account/cards` : `/users/${card.creatorId}/cards`; 
 
-    const avatarLink = (
+    const userShowLink = (comp) => (
       <Link to={creatorLinkRoute}> 
-        <Avatar user={user}/>
+        { comp }
       </Link>
-    ); 
+    )
+
+    const avatarLink = userShowLink(<Avatar user={user}/>); 
     
     const image = card.animated ? (
       <video src={card.img} autoPlay loop muted/>
@@ -185,14 +194,14 @@ class CardDetails extends React.Component {
               <hr/>
               { avatarLink }
             </div>
-            <h3>{user.name}</h3>
-            {
-              currentUserPage ? null : (
-                <button className="pink-button"
-                    ><span><FontAwesomeIcon icon={faEnvelope} 
-                    /></span>Hire Me
-                </button>
-                )
+            { userShowLink(<h3>{user.name}</h3> ) }
+            {// HIRE ME BUTTON
+              // currentUserPage ? null : (
+              //   <button className="pink-button"
+              //       ><span><FontAwesomeIcon icon={faEnvelope} 
+              //       /></span>Hire Me
+              //   </button>
+              //   )
             }
           </footer>
         </div>

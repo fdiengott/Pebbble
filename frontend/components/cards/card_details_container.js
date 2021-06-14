@@ -6,6 +6,8 @@ import { fetchUser } from '../../actions/user_actions';
 import { createFollow, deleteFollow, fetchUserFollows } from '../../actions/follow_actions';					//actions
 import { selectFollowedUsers } from '../../reducers/selectors'; 
 import { signInError } from '../../actions/session_actions'; 
+import { openModal } from '../../actions/modal_actions'; 
+
 
 import CardDetails from './card_details';						//display component
 
@@ -33,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCard: (cardId) => dispatch(fetchCard(cardId)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   deleteCard: (cardId) => dispatch(deleteCard(cardId)),
+  openModal: (cardId) => dispatch(openModal(cardId)),
 
   // follows
   fetchUserFollows: (followerId) => (
