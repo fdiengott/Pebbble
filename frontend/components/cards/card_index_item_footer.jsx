@@ -5,7 +5,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 import Avatar from '../user/avatar'; 
 
-const CardIndexItemFooter = ({ card, user }) => {
+const CardIndexItemFooter = ({ card, user, handleLike, liked }) => {
   
   return (
     <aside className="card-index-footer">
@@ -14,7 +14,7 @@ const CardIndexItemFooter = ({ card, user }) => {
         <h3>{user.name}</h3>
       </Link>
       <div>
-        <span className={card.liked ? "icon-pink" : "icon-gray"} /* onClick={} */
+        <span className={liked ? "icon-pink" : "icon-gray"} onClick={handleLike}
         >{<FontAwesomeIcon icon={faHeart}/>}</span><span>{card.likes}</span>
       </div>
     </aside>

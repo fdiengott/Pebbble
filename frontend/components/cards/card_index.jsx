@@ -33,6 +33,10 @@ class CardIndex extends React.Component {
         // if it's the current user's page
         this.props.fetchUserCards(this.props.currentUserId)
     }
+
+    if (this.props.currentUserId) {
+      this.props.fetchUserLikes(this.props.currentUserId)
+    }
   }
 
   handleClick(type) {
@@ -67,9 +71,13 @@ class CardIndex extends React.Component {
       users, 
       cards, 
       frontpage, 
+      currentUserId, 
       collectionId,
       collectionCards,
-      openModal
+      openModal,
+      likes, 
+      createLike,
+      deleteLike,
     } = this.props;  
 
     // will refactor to make this its own table
@@ -83,17 +91,32 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
-    let cardIndex; 
+    let unmappedCards; 
     if (frontpage) {
-      cardIndex =  cardsByCategory.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
-      )); 
+      unmappedCards = cardsByCategory; 
     } else if (collectionId) {
-      cardIndex = collectionCards.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
-      ))
+      unmappedCards = collectionCards;
     } else {
-      cardIndex = cards.map(card => (
+      unmappedCards = cards; 
+    }
+
+    let cardIndex; 
+    if (frontpage || collectionId) {
+      cardIndex =  unmappedCards.map(card => (
+        <CardIndexItem 
+          key={card.id} 
+          card={card} 
+          user={users[card.creatorId]} 
+          currentUserId={currentUserId}
+          openModal={openModal} 
+          likes={likes}
+          createLike={createLike}
+          deleteLike={deleteLike}
+        />
+      )); 
+    } else {
+      debugger // does this one need likes?
+      cardIndex = unmappedCards.map(card => (
         <CardIndexItem key={card.id} card={card} openModal={openModal}/>
       ))
     }
