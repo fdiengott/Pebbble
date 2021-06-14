@@ -78,3 +78,12 @@ const selectFollows = (state, followerId) => {
     follow.followerId === followerId
   ))
 }; 
+
+
+// LIKES
+
+export const selectUserLikes = (state, likerId) => {
+  return likerId ? 
+  toArray(state.entities.likes).filter(el => el.likerId === likerId) : 
+  undefined; 
+}
