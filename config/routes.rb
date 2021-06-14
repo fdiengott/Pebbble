@@ -80,7 +80,7 @@ Rails.application.routes.draw do
     get '/collections_cards/:user_id', to: 'user_collections_card#index'
 
     resources :likes, only: [:create, :destroy]
-    get '/users/:user_id/likes', to: 'user_likes#index'
+    get '/users/:liker_id/likes', to: 'user_likes#index'
 
   end
 
