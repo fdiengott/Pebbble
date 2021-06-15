@@ -6,7 +6,7 @@ import { fetchUser } from '../../actions/user_actions';
 import { createFollow, deleteFollow, fetchUserFollows } from '../../actions/follow_actions';
 import { signInError } from '../../actions/session_actions'; 
 import { openModal } from '../../actions/modal_actions'; 
-import { createLike, deleteLike } from '../../actions/like_actions';
+import { createLike, deleteLike, fetchUserLikes } from '../../actions/like_actions';
 import { selectFollowedUsers } from '../../reducers/selectors'; 
 
 
@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
   // likes
   createLike: (like) => dispatch(createLike(like)),
   deleteLike: (likeId) => dispatch(deleteLike(likeId)), 
+  fetchUserLikes: (userId) => dispatch(fetchUserLikes(userId)),
 })
 
 export default connect(

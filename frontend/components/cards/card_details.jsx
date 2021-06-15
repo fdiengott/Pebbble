@@ -29,6 +29,15 @@ class CardDetails extends React.Component {
     this.props.fetchCard(this.props.match.params.cardId)
       .then( card => this.props.fetchUser(card.card.creatorId))
       .then( () => this.props.fetchUserFollows(this.props.currentUserId))
+      .then( () => {
+        // only fetch likes on refresh, when there are no likes in state
+        if (!this.props.likes.length) {
+          this.props.fetchUserLikes(this.props.currentUserId).then(
+            () => this.setState({ likeId: this.getLikeId() })
+          )
+        }
+      } )
+
   }
 
   getLikeId() {
