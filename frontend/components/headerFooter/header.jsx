@@ -28,8 +28,7 @@ const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors }) => {
         <Link to="/signup" className="pink-button">Sign up</Link>
       </main>
       <aside>
-        <img src={window.splash_img} alt="Pebbble is the leading destination to find & showcase creative work and home to the world's best design professionals"/>
-        <span>Art by Romain Briaux</span>
+        <img src={window.splash_img} alt="A cute illustration of a designers desk using lots soft colors" />
       </aside>
     </section>
   ) : (
