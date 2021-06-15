@@ -115,5 +115,9 @@ class User < ApplicationRecord
     self.collections.count
   end
 
+  def num_liked_cards
+    self.liked_cards.count
+  end
+
 end
 

@@ -8,6 +8,8 @@ const AccountNavBar = ({ user, currentUser }) => {
 
   const renderedUser = user || currentUser; 
 
+  debugger
+
   return (
     <div className="account-nav-borderline">
       <nav className="account-nav">
@@ -22,7 +24,7 @@ const AccountNavBar = ({ user, currentUser }) => {
 
           <li><NavLink to={`/${urlRoot}/likes`}>Liked Cards <span    
             className="user-stats"
-            >{/* likes */}</span></NavLink></li>
+            >{renderedUser.numLikedCards}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/profile`}>About</NavLink></li>
         </ul>
