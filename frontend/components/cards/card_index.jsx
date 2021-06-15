@@ -46,7 +46,9 @@ class CardIndex extends React.Component {
 
     } else if (likedCardsPage) {
       // LIKED CARDS TAB
-      fetchLikedCards(userId); 
+      fetchUserLikes(userId).then(() => {
+        fetchLikedCards(userId)
+      })
 
     } else {
       userId ? 
@@ -101,6 +103,9 @@ class CardIndex extends React.Component {
       createLike,
       deleteLike,
     } = this.props;  
+
+    // Since sometimes cards is an object and othertimes and array
+    if (!Object.values(cards).length) return null; 
 
     // will refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 

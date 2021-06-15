@@ -15,13 +15,17 @@ class CardIndexItem extends React.Component {
     super(props); 
     this.state = { 
       autoPlay: false,
-      likeId: this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
+      likeId: this.getLikeId(),
     }
 
     this.autoPlayOn = this.autoPlayOn.bind(this); 
     this.autoPlayOff = this.autoPlayOff.bind(this); 
     this.openCollectionModal = this.openCollectionModal.bind(this); 
     this.handleLike = this.handleLike.bind(this); 
+  }
+
+  getLikeId() {
+    return this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
   }
 
   autoPlayOn () {
@@ -41,7 +45,7 @@ class CardIndexItem extends React.Component {
   handleLike(e) {
     e.preventDefault(); 
     
-    const likeId = this.state;
+    const { likeId } = this.state;
 
     if (likeId) {
       this.props.deleteLike(likeId).then( () => {
