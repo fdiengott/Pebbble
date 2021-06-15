@@ -146,6 +146,7 @@ class CardIndex extends React.Component {
         <CardIndexItem 
           key={card.id} 
           card={card} 
+          currentUserId={currentUserId}
           openModal={openModal} 
           likes={likes}
           createLike={createLike}

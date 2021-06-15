@@ -8,8 +8,6 @@ const AccountNavBar = ({ user, currentUser }) => {
 
   const renderedUser = user || currentUser; 
 
-  debugger
-
   return (
     <div className="account-nav-borderline">
       <nav className="account-nav">

@@ -55,7 +55,7 @@ class CardIndexItem extends React.Component {
       this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id}).then( (like) => {
         this.setState({ likeId: like.id }); 
       }); 
-    }s
+    }
   }
 
   render () {

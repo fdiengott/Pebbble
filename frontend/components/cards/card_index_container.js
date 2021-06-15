@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = state.session.id; 
   const collectionId = ownProps.match.params.collectionId;
   
-  return ({
+  return {
     userId, 
     currentUserId,
     collectionId,
@@ -37,7 +37,8 @@ const mapStateToProps = (state, ownProps) => {
     selectFollowedUsers: selectFollowedUsers(state, currentUserId),
     collectionCards: selectCardsByCollectionId(Object.values(state.entities.cards), collectionId),
     likes: selectUserLikes(state, currentUserId),
-})}; 
+  }
+}; 
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
