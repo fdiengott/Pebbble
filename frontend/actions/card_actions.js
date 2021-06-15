@@ -82,16 +82,22 @@ export const fetchFollowedUsersCards = (userId) => dispatch => {
     data => dispatch(receiveCardsAndUsers(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
-  )}; 
+)}; 
   
-  // COLLECTIONS
-  export const fetchCollectionCards = (collectionId) => dispatch => (
-    CardAPIUtil.fetchCollectionCards(collectionId).then(
-      data => dispatch(receiveCollectionAndCards(data)), 
-      err => dispatch(receiveCardErrors(err.responseJSON))
-    )
-  ); 
-
+// COLLECTIONS
+export const fetchCollectionCards = (collectionId) => dispatch => (
+  CardAPIUtil.fetchCollectionCards(collectionId).then(
+    data => dispatch(receiveCollectionAndCards(data)), 
+    err => dispatch(receiveCardErrors(err.responseJSON))
+  )
+); 
+    
+export const fetchLikedCards = (userId) => dispatch => (
+  CardAPIUtil.fetchLikedCards(userId).then(
+    cards => dispatch(receiveCards(cards)), 
+    err => dispatch(receiveCardErrors(err.responseJSON))
+  )
+); 
 
 // TESTING
 // window.fetchFollowedUsersCards = fetchFollowedUsersCards; 
