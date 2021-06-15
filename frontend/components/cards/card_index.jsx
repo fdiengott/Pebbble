@@ -103,7 +103,7 @@ class CardIndex extends React.Component {
     } = this.props;  
 
     // Since sometimes cards is an object and othertimes and array
-    if (!Object.values(cards).length) return <div>Loading...</div>; 
+    if (!Object.values(cards).length && !Object.values(collectionCards).length) return <div className="spinner"></div>; 
 
     // refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 
