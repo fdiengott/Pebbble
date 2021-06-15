@@ -15,18 +15,24 @@ class CardDetails extends React.Component {
 
     this.state = { 
       deleted: false, 
-      followingUser: this.props.followingUser 
+      followingUser: this.props.followingUser,
+      likeId: this.getLikeId(),
     }
 
     this.handleDelete = this.handleDelete.bind(this); 
     this.toggleFollow = this.toggleFollow.bind(this); 
     this.openCollectionModal = this.openCollectionModal.bind(this); 
+    this.handleLike = this.handleLike.bind(this); 
   }
 
   componentDidMount() {
     this.props.fetchCard(this.props.match.params.cardId)
       .then( card => this.props.fetchUser(card.card.creatorId))
       .then( () => this.props.fetchUserFollows(this.props.currentUserId))
+  }
+
+  getLikeId() {
+    return this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
   }
 
   handleDelete() {
@@ -77,6 +83,22 @@ class CardDetails extends React.Component {
       .includes(this.props.user.id)
   }
 
+  handleLike(e) {
+    e.preventDefault(); 
+    
+    const { likeId } = this.state;
+
+    if (likeId) {
+      this.props.deleteLike(likeId).then( () => {
+        this.setState({ likeId: undefined })
+      }); 
+    } else {
+      this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id})
+        .then( (data) => this.setState({ likeId: data.like.id })
+      ); 
+    }
+  }
+
   openCollectionModal(e) {
     e.preventDefault(); 
     this.props.openModal(this.props.card.id); 
@@ -117,12 +139,15 @@ class CardDetails extends React.Component {
       </>
     )
 
+    const { likeId } = this.state; 
+
     const saveAndLikeButtons = currentUserCard ? null : (
       <aside>
         <button onClick={this.openCollectionModal}>Save</button>
-        <button><span>{
-          <FontAwesomeIcon icon={faHeart} />
-        }</span>Like</button>
+        <button className={likeId ? "icon-pink" : "icon-gray"} onClick={this.handleLike}>
+          <span>{<FontAwesomeIcon icon={faHeart} />}
+          </span>{likeId ? "" : "Like"}
+        </button>
       </aside>
     )
 

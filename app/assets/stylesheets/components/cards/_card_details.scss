@@ -140,9 +140,11 @@
             background-color: darken($lightest-gray, 15%);
           }
         }
-
-        span {
+        .icon-gray span {
           margin-right: 8px;
+        }
+        .icon-pink {
+          color: $bright-pink;
         }
       }
 
