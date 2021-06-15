@@ -35,6 +35,14 @@
 # api_collections_cards POST   /api/collections_cards(.:format)                     api/collections_cards#create {:format=>:json}
 #  api_collections_card DELETE /api/collections_cards/:id(.:format)                 api/collections_cards#destroy {:format=>:json}
 #                       GET    /api/collections/:collection_id/cards(.:format)      api/collection_cards#index {:format=>:json}
+#                       GET    /api/collections_cards/:user_id(.:format)            api/user_collections_card#index {:format=>:json}
+
+#             api_likes POST   /api/likes(.:format)                                 api/likes#create {:format=>:json}
+#              api_like DELETE /api/likes/:id(.:format)                             api/likes#destroy {:format=>:json}
+
+#                       GET    /api/users/:user_id/likes(.:format)                  api/user_likes#index {:format=>:json}
+
+#                       GET    /api/cards/:liker_id/likes(.:format)                 api/liked_cards#index {:format=>:json}
 
 #                  root GET    /                                                    static_pages#root
 
@@ -53,13 +61,13 @@ Rails.application.routes.draw do
     resources :follows, only: [:index, :create, :destroy]
 
     get 'follows/:follower_id/cards', to: 'followed_cards#index'
-
+    
     # to get all of the followers of a user
     get '/users/:creator_id/followers', to: 'user_followers#index'
-
+    
     # to get all of the collections of a user
     get '/users/:curator_id/collections', to: 'user_collections#index'
-
+    
     # to get all of the users a user is following
     get '/users/:follower_id/followedUsers', to: 'followed_users#index'
     
@@ -71,6 +79,13 @@ Rails.application.routes.draw do
     
     get '/collections/:collection_id/cards', to: 'collection_cards#index'
     
+    get '/collections_cards/:user_id', to: 'user_collections_card#index'
+    
+    resources :likes, only: [:create, :destroy]
+    get '/users/:liker_id/likes', to: 'user_likes#index'
+
+    get 'cards/:liker_id/likes', to: 'liked_cards#index'
+
 
   end
 

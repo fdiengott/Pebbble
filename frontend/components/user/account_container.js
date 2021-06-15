@@ -13,15 +13,11 @@ const mapStateToProps = (state, ownProps) => {
   return ({
   currentUser: state.entities.users[currentUserId],
   userShow: ownProps.match.path === "/users/:userId",
-  userId,
+  userId: userId || currentUserId, 
   user: state.entities.users[ownProps.match.params.userId],
   follows: state.entities.follows, 
   followingUser: selectFollowedUsers(state, state.session.id).includes(userId),
   errors: state.errors, 
-  // currentUserCards: selectCardsByUserId(state, state.session.id),
-  // cards: selectCardsByUserId(ownProps.match.params.userId),
-  // collections: selector for num collections,
-  // likes, number of liked cards
 })}; 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,11 +28,6 @@ const mapDispatchToProps = (dispatch) => ({
   followUser: follow => dispatch(createFollow(follow)),
   unfollowUser: followId => dispatch(deleteFollow(followId)),
   signInError: () => dispatch(signInError()),
-    
-  // fetchFollowedUsers: (followerId) => (
-  //   dispatch(fetchFollowedUsers(followerId))
-  // ),
-  // fetchUsersCards: (userId) => dispatch(fetchUserCards(userId)),
 })
 
 export default connect(

@@ -6,7 +6,7 @@ class Api::CollectionCardsController < ApplicationController
     # this needs eager loading
     @collection = Collection.find_by(id: params[:collection_id])
     @cards = @collection.cards.includes(:creator)
-    render '/api/collections_cards/index' # this will render cards and the collection
+    render '/api/collection_cards/index' # this will render cards and the collection
   end
 
 end

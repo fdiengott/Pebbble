@@ -1,12 +1,19 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'; 
 
-import {fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards, fetchCollectionCards } from '../../actions/card_actions';					//actions
+import { fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards, fetchCollectionCards } from '../../actions/card_actions';					//actions
 import { fetchFollows, fetchUserFollows } from '../../actions/follow_actions'; 
-import { openModal } from '../../actions/modal_actions'; 
+import { createLike, deleteLike, fetchUserLikes } from '../../actions/like_actions';
 
 import CardIndex from './card_index';						//display component
-import { selectCardsByUserId, selectFollowedUsers, selectCardsByCollectionId } from '../../reducers/selectors'; 
+import { 
+  selectCardsByUserId, 
+  selectFollowedUsers, 
+  selectCardsByCollectionId,
+  selectUserLikes, 
+} from '../../reducers/selectors'; 
+
+import { openModal } from '../../actions/modal_actions'; 
 
 // selectors
 import { 
@@ -19,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = state.session.id; 
   const collectionId = ownProps.match.params.collectionId;
   
-  return ({
+  return {
     userId, 
     currentUserId,
     collectionId,
@@ -29,7 +36,9 @@ const mapStateToProps = (state, ownProps) => {
     cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category),
     selectFollowedUsers: selectFollowedUsers(state, currentUserId),
     collectionCards: selectCardsByCollectionId(Object.values(state.entities.cards), collectionId),
-})}; 
+    likes: selectUserLikes(state, currentUserId),
+  }
+}; 
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
@@ -38,6 +47,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserFollows: (followerId) => dispatch(fetchUserFollows(followerId)),
   fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
   fetchCollectionCards: (collectionId) => dispatch(fetchCollectionCards(collectionId)),
+  fetchUserLikes: (userId) => dispatch(fetchUserLikes(userId)), 
+  createLike: (like) => dispatch(createLike(like)),
+  deleteLike: (likeId) => dispatch(deleteLike(likeId)),
   openModal: (cardId) => dispatch(openModal(cardId)),
 });
 

@@ -20,18 +20,44 @@ class CardIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.frontpage) {
-      this.props.fetchUserFollows(this.props.currentUserId); 
-      this.props.fetchCardsAndUsers(); 
+    const {
+      frontpage, 
+      fetchUserFollows, 
+      fetchCardsAndUsers,
+      collectionId,
+      fetchCollectionCards,
+      likedCardsPage,
+      fetchLikedCards,
+      userId,
+      currentUserId,
+      fetchUserCards,
+      fetchUserLikes,
+    } = this.props; 
+
+    if (frontpage) {
+      // FRONTPAGE
+      fetchUserFollows(currentUserId); 
+      fetchCardsAndUsers(); 
       this.props.history.push('/all');
-    } else if (this.props.collectionId) {
-      this.props.fetchCollectionCards(this.props.collectionId); 
+
+    } else if (collectionId) {
+      // COLLECTION SHOW PAGE
+      fetchCollectionCards(collectionId); 
+
+    } else if (likedCardsPage) {
+      // LIKED CARDS TAB
+      fetchLikedCards(userId); 
+
     } else {
-      this.props.userId ? 
-        // if it's a user show page
-        this.props.fetchUserCards(this.props.userId) : 
-        // if it's the current user's page
-        this.props.fetchUserCards(this.props.currentUserId)
+      userId ? 
+        // USER SHOW PAGE
+        fetchUserCards(userId) : 
+        // CURRENT USER'S PAGE 
+        fetchUserCards(currentUserId)
+    }
+
+    if (currentUserId) {
+      fetchUserLikes(currentUserId)
     }
   }
 
@@ -67,12 +93,19 @@ class CardIndex extends React.Component {
       users, 
       cards, 
       frontpage, 
+      currentUserId, 
       collectionId,
       collectionCards,
-      openModal
+      openModal,
+      likes, 
+      createLike,
+      deleteLike,
     } = this.props;  
 
-    // will refactor to make this its own table
+    // Since sometimes cards is an object and othertimes and array
+    if (!Object.values(cards).length && !Object.values(collectionCards).length) return <div className="spinner"></div>; 
+
+    // refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 
     categories.unshift("all"); 
@@ -83,18 +116,40 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
-    let cardIndex; 
+    let unmappedCards; 
     if (frontpage) {
-      cardIndex =  cardsByCategory.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
-      )); 
+      unmappedCards = cardsByCategory; 
     } else if (collectionId) {
-      cardIndex = collectionCards.map(card => (
-        <CardIndexItem key={card.id} card={card} user={users[card.creatorId]} openModal={openModal}/>
-      ))
+      unmappedCards = collectionCards;
     } else {
-      cardIndex = cards.map(card => (
-        <CardIndexItem key={card.id} card={card} openModal={openModal}/>
+      unmappedCards = Object.values(cards); 
+    }
+
+    let cardIndex; 
+    if (frontpage || collectionId) {
+      cardIndex =  unmappedCards.map(card => (
+        <CardIndexItem 
+          key={card.id} 
+          card={card} 
+          user={users[card.creatorId]} 
+          currentUserId={currentUserId}
+          openModal={openModal} 
+          likes={likes}
+          createLike={createLike}
+          deleteLike={deleteLike}
+        />
+      )); 
+    } else {
+      cardIndex = unmappedCards.map(card => (
+        <CardIndexItem 
+          key={card.id} 
+          card={card} 
+          currentUserId={currentUserId}
+          openModal={openModal} 
+          likes={likes}
+          createLike={createLike}
+          deleteLike={deleteLike}
+        />
       ))
     }
 

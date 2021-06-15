@@ -41,7 +41,7 @@ export const fetchCollection = (collectionId) => dispatch => (
 export const createCollection = (collection) => dispatch => (
   CollectionAPIUtil.createCollection(collection).then(
     collection => dispatch(receiveCollection(collection)),
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors(err.responseJSON))
   )
 );
 export const updateCollection = (collection) => dispatch => (

@@ -90,7 +90,7 @@ class UserShowHeader extends React.Component {
           <Errors errors={errors}/>
           <div className="user-buttons">
             { followButton }
-            <a className="pink-button">Hire Me</a>
+            {/* <a className="pink-button">Hire Me</a> */}
           </div>
         </div>
         <div className="colored-blocks">

@@ -135,10 +135,16 @@
           font-weight: 600;
           padding: 8px 18px; 
           margin-left: 15px;
-        }
 
-        span {
+          &:active {
+            background-color: darken($lightest-gray, 15%);
+          }
+        }
+        .icon-gray span {
           margin-right: 8px;
+        }
+        .icon-pink {
+          color: $bright-pink;
         }
       }
 
@@ -177,7 +183,11 @@
       p {
         align-self: flex-start;
         margin-bottom: 40px;
+      }
 
+      a, a:visited {
+        color: inherit;
+        text-decoration: none;
       }
       
       .avatar-container {

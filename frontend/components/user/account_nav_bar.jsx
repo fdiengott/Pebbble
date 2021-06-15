@@ -22,7 +22,7 @@ const AccountNavBar = ({ user, currentUser }) => {
 
           <li><NavLink to={`/${urlRoot}/likes`}>Liked Cards <span    
             className="user-stats"
-            >{/* likes */}</span></NavLink></li>
+            >{renderedUser.numLikedCards}</span></NavLink></li>
 
           <li><NavLink to={`/${urlRoot}/profile`}>About</NavLink></li>
         </ul>

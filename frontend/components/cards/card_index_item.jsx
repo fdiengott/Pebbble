@@ -13,11 +13,19 @@ import CardIndexItemFooter from './card_index_item_footer';
 class CardIndexItem extends React.Component {
   constructor(props) {
     super(props); 
-    this.state = { autoPlay: false }
+    this.state = { 
+      autoPlay: false,
+      likeId: this.getLikeId(),
+    }
 
     this.autoPlayOn = this.autoPlayOn.bind(this); 
     this.autoPlayOff = this.autoPlayOff.bind(this); 
     this.openCollectionModal = this.openCollectionModal.bind(this); 
+    this.handleLike = this.handleLike.bind(this); 
+  }
+
+  getLikeId() {
+    return this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
   }
 
   autoPlayOn () {
@@ -34,6 +42,22 @@ class CardIndexItem extends React.Component {
     document.body.style.overflow = 'hidden';
   }
 
+  handleLike(e) {
+    e.preventDefault(); 
+    
+    const { likeId } = this.state;
+
+    if (likeId) {
+      this.props.deleteLike(likeId).then( () => {
+        this.setState({ likeId: undefined })
+      }); 
+    } else {
+      this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id})
+        .then( (data) => this.setState({ likeId: data.like.id })
+      ); 
+    }
+  }
+
   render () {
     const { card, user } = this.props; 
 
@@ -44,8 +68,8 @@ class CardIndexItem extends React.Component {
           <div>
             <button onClick={this.openCollectionModal} >{<FontAwesomeIcon icon={faFolderPlus}/>}</button>
           </div>
-          <div /* onClick={} */ >
-            <button>{<FontAwesomeIcon icon={faHeart}/>}</button>
+          <div onClick={this.handleLike} >
+            <button className={this.state.likeId ? "icon-pink" : "icon-gray"}>{<FontAwesomeIcon icon={faHeart}/>}</button>
           </div>
         </aside>
       </section>
@@ -80,7 +104,7 @@ class CardIndexItem extends React.Component {
           { cardElement }
         </Link>
         { 
-          user ? <CardIndexItemFooter card={card} user={user} /> : null
+          user ? <CardIndexItemFooter card={card} user={user} handleLike={this.handleLike} liked={!!this.state.likeId}/> : null
         }
       </li>
     )

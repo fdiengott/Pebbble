@@ -21,18 +21,49 @@
 
 .modal-form-container {
   position: absolute;
-  top: 40%; 
+  top: 36%;
   left: 50%;
-  // transform: translate(-50%, -50%);
   background-color: white;
   width: 80vw;
+  max-width: 750px;
   border-radius: 12px;
-  padding: 40px 100px;
+  padding: 30px 70px;
+  height: 465px;
 
   form {
-    display: flex;
-    flex-direction: column;
+    @include flex(space-between, center, column); 
+    align-items: unset;
+    height: 100%;
+
     font-weight: 600;
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      box-shadow: 0 0 0 1px $lighter-gray;
+      background-color: #fafafa;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $lightest-gray; 
+        box-shadow: none;
+      }
+      
+      &.active {
+        background-color: $bright-pink; 
+        color: white; 
+        box-shadow: none;
+      }
+    }
+
+    p {      
+      font-size: 13px;
+    }
 
     input {
       @include inputHover(); 
@@ -40,6 +71,12 @@
 
     h1 {
       border-bottom: 1px solid $light-gray; 
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    h3 {
+      font-size: 16px;
     }
 
     > * {
@@ -52,18 +89,70 @@
       margin-bottom: 60px;
     }
 
-    .form-buttons > * {
-      margin-right: 10px;
-    }
+      .form-buttons {
+        @include flex(space-between); 
+      }
 
     .gray-button {
-      @include color-button($lightest-gray); 
-      padding: 15px 22px;
+      @include color-button($lightest-gray, black); 
+      padding: 6px 8px;
+    }
+
+    .cancel-button-x {
+      background-color: $light-gray;
+      color: white;
+      font-size: 23px;
+      font-weight: 300;
+
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      text-align: center;;
+      position: absolute;      
+      top: -9px;
+      right: -10px;
+
+
+      align-self: flex-end;
+      line-height: 1.1;
+
+      cursor: pointer;
+    }
+
+    .pink-button {
+      padding: 6px 10px;
+    }
+  }
+
+  label {
+    margin-top: 20px;
+    display: block;
+  }
+
+  .form-errors {
+    padding: 0;
+    font-size: 14px;
+    font-weight: 400;
+
+    li {
+      background-color: white;
+      box-shadow: none;
+      margin-bottom: -10px;
+      padding: 0;
     }
   }
 }
 
+.create-collection-btn {
+  border: 1px solid $lighter-gray;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
 
+  &:hover {
+    border: 1px solid $light-gray; 
+  }
+}
 
 .modal-background {
   z-index: 10;

@@ -225,8 +225,12 @@
     cursor: pointer;
   }
 
-  span:first-child:hover {
+  .icon-pink:hover {
     color: $bright-pink; 
   }
+}
+
+.icon-pink {
+  color: $bright-pink; 
 }
 

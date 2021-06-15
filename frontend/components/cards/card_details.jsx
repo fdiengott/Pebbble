@@ -15,17 +15,33 @@ class CardDetails extends React.Component {
 
     this.state = { 
       deleted: false, 
-      followingUser: this.props.followingUser 
+      followingUser: this.props.followingUser,
+      likeId: this.getLikeId(),
     }
 
     this.handleDelete = this.handleDelete.bind(this); 
     this.toggleFollow = this.toggleFollow.bind(this); 
+    this.openCollectionModal = this.openCollectionModal.bind(this); 
+    this.handleLike = this.handleLike.bind(this); 
   }
 
   componentDidMount() {
     this.props.fetchCard(this.props.match.params.cardId)
       .then( card => this.props.fetchUser(card.card.creatorId))
       .then( () => this.props.fetchUserFollows(this.props.currentUserId))
+      .then( () => {
+        // only fetch likes on refresh, when there are no likes in state
+        if (!this.props.likes.length) {
+          this.props.fetchUserLikes(this.props.currentUserId).then(
+            () => this.setState({ likeId: this.getLikeId() })
+          )
+        }
+      } )
+
+  }
+
+  getLikeId() {
+    return this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
   }
 
   handleDelete() {
@@ -76,9 +92,30 @@ class CardDetails extends React.Component {
       .includes(this.props.user.id)
   }
 
+  handleLike(e) {
+    e.preventDefault(); 
+    
+    const { likeId } = this.state;
+
+    if (likeId) {
+      this.props.deleteLike(likeId).then( () => {
+        this.setState({ likeId: undefined })
+      }); 
+    } else {
+      this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id})
+        .then( (data) => this.setState({ likeId: data.like.id })
+      ); 
+    }
+  }
+
+  openCollectionModal(e) {
+    e.preventDefault(); 
+    this.props.openModal(this.props.card.id); 
+    document.body.style.overflow = 'hidden';
+  }
+
   render() {
     const { user, card, currentUserId, follows, errors } = this.props; 
-    
     
     if (!user || !card)       return null; 
     if (this.state.deleted)   return <Redirect to={`/users/${currentUserId}/cards`} />
@@ -100,32 +137,38 @@ class CardDetails extends React.Component {
       <>
       <span>&#183;</span>
       { followButton }
+      {/* HIRE ME BUTTON
       <span>&#183;</span>
       <div className="email-wrapper">
         <a className="email-button">Hire Me</a>
         <u className="email-popup">Send a message about a work opportunity
           <u className="arrow-down"></u>
         </u>
-      </div>
+      </div> */}
       </>
     )
 
+    const { likeId } = this.state; 
+
     const saveAndLikeButtons = currentUserCard ? null : (
       <aside>
-        <button>Save</button>
-        <button><span>{
-          <FontAwesomeIcon icon={faHeart} />
-        }</span>Like</button>
+        <button onClick={this.openCollectionModal}>Save</button>
+        <button className={likeId ? "icon-pink" : "icon-gray"} onClick={this.handleLike}>
+          <span>{<FontAwesomeIcon icon={faHeart} />}
+          </span>{likeId ? "" : "Like"}
+        </button>
       </aside>
     )
 
     const creatorLinkRoute = currentUserCard ? `/account/cards` : `/users/${card.creatorId}/cards`; 
 
-    const avatarLink = (
+    const userShowLink = (comp) => (
       <Link to={creatorLinkRoute}> 
-        <Avatar user={user}/>
+        { comp }
       </Link>
-    ); 
+    )
+
+    const avatarLink = userShowLink(<Avatar user={user}/>); 
     
     const image = card.animated ? (
       <video src={card.img} autoPlay loop muted/>
@@ -185,14 +228,14 @@ class CardDetails extends React.Component {
               <hr/>
               { avatarLink }
             </div>
-            <h3>{user.name}</h3>
-            {
-              currentUserPage ? null : (
-                <button className="pink-button"
-                    ><span><FontAwesomeIcon icon={faEnvelope} 
-                    /></span>Hire Me
-                </button>
-                )
+            { userShowLink(<h3>{user.name}</h3> ) }
+            {// HIRE ME BUTTON
+              // currentUserPage ? null : (
+              //   <button className="pink-button"
+              //       ><span><FontAwesomeIcon icon={faEnvelope} 
+              //       /></span>Hire Me
+              //   </button>
+              //   )
             }
           </footer>
         </div>

@@ -64,3 +64,11 @@ export const fetchCollectionCards = (collectionId) => (
     url: `/api/collections/${collectionId}/cards`,
   })
 ); 
+
+
+export const fetchLikedCards = (userId) => (
+  $.ajax({
+    method: "GET", 
+    url: `/api/cards/${userId}/likes`,
+  })
+)

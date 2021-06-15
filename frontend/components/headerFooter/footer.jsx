@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
+import { faAngellist, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';   
 
 const Footer = ({ url, pathsNotToRender }) => {
   const urlArr = url.split("/"); 
@@ -30,11 +30,14 @@ const Footer = ({ url, pathsNotToRender }) => {
             <a className="icon" target="_blank" href="https://www.linkedin.com/in/freddiengott/">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
+            <a className="icon" target="_blank" href="https://angel.co/u/freddy-diengott">
+              <FontAwesomeIcon icon={faAngellist} />
+            </a>
           </div>
         </aside>
         <ul role="list">
           <h3>Skills</h3>
-          <li>Singing</li>
+          <li>Classical Singing</li>
           <li>Jazz Piano</li>
           <li>Graphic Design</li>
           <li>Audio Editing</li>
@@ -42,9 +45,9 @@ const Footer = ({ url, pathsNotToRender }) => {
         </ul>
         <ul role="list">
           <h3>Hobbies</h3>
-          <li>DnD</li>
           <li>Reading</li>
           <li>Podcasts</li>
+          <li>DnD</li>
           <li>Rock Climbing</li>
           <li>Biking</li>
           <li>Vegan Cooking/Baking</li>
@@ -54,7 +57,7 @@ const Footer = ({ url, pathsNotToRender }) => {
           <li>Breviloquent</li>
           <li>Gamboge</li>
           <li>Assiduous</li>
-          <li>Panglossian</li>
+          <li>Ebullient</li>
           <li>Autodidactic</li>
           <li>Kintsugi</li>
         </ul>
