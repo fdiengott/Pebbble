@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
   has_many :liked_cards, 
     through: :likes,
-    source: :liker
+    source: :liked_card
 
   ### AUTH METHODS
 
