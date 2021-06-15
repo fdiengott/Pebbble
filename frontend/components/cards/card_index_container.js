@@ -31,7 +31,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId,
     collectionId,
     frontpage: ["/:category", "/"].includes(ownProps.match.path),
-    cards: userId ? selectCardsByUserId(state, userId) : selectCardsByUserId(state, currentUserId), 
+    cards: selectCardsByUserId(state, userId || currentUserId), 
     users: selectAllUsers(state), // all users, as an object,
     cardsByCategory: selectCardsByCategory(state, ownProps.match.params.category),
     selectFollowedUsers: selectFollowedUsers(state, currentUserId),

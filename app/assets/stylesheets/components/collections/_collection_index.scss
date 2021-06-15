@@ -1,3 +1,5 @@
+$min_width: 300px; 
+$max_width: 360px; 
 
 .collections-index-list {
   padding: 
@@ -7,9 +9,10 @@
     $landing-page-padding;
     
   @include flex(space-between); 
+  flex-wrap: wrap;
     
 
-  > li {
+  .collections-index-item {
     a {
       @include flex(space-between, center, column); 
       text-decoration: none;
@@ -28,11 +31,14 @@
       }
     }
 
+    &.hidden {
+      visibility: hidden;
+      width: $min_width; 
+    }
+
   }
 
   .image-container {
-    $min_width: 300px; 
-    $max_width: 360px; 
     // flex: $min_width; 
     max-width: $max_width;
     border-radius: $border-radius*2;

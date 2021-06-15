@@ -126,6 +126,10 @@
   img {
     border-radius: $border-radius;
   }
+
+  &.hidden {
+    visibility: hidden;
+  }
 }
 
 .card-img {

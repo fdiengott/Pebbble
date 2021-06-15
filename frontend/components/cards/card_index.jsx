@@ -103,7 +103,9 @@ class CardIndex extends React.Component {
     } = this.props;  
 
     // Since sometimes cards is an object and othertimes and array
-    if (!Object.values(cards).length && !Object.values(collectionCards).length) return <div className="spinner"></div>; 
+    if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length)) {
+      return <div className="spinner"></div>; 
+    }
 
     // refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 
@@ -196,6 +198,8 @@ class CardIndex extends React.Component {
         }
         <ul className="card-index" role="list">
           { cardIndex }
+          <li className="card-index-item hidden"></li>
+          <li className="card-index-item hidden"></li>
         </ul>
       </main>
     )

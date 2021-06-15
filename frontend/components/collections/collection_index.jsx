@@ -40,6 +40,7 @@ class CollectionIndex extends React.Component {
             />
           ))
         }
+        <li className="collections-index-item hidden"></li>
       </ul>
     )
   }

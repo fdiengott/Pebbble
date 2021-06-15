@@ -9,7 +9,7 @@ const CollectionIndexItem = ({ collection, cards }) => {
   const renderedCards = selectCardsByCollectionId(cards, collection.id); 
 
   return (
-    <li key={collection.id}>
+    <li key={collection.id} className="collections-index-item">
       <Link to={`/collections/${collection.id}`}>
         <div className="image-container">
           <Image image={renderedCards[0]} className="main-image"/>
