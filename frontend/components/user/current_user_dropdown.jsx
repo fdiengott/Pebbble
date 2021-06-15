@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import Avatar from './avatar';
 
-const CurrentUserDropdown = (props) => {
-  const { logout, loggedIn, currentUser } = props; 
-  
+const CurrentUserDropdown = ({ logout, loggedIn, currentUser }) => {
+
   return loggedIn ? (
     <>
       <ul role="list" className="user-nav">

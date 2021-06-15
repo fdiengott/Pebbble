@@ -14,9 +14,7 @@ import LikedCardsContainer from '../cards/liked_cards_container';
 
 class Account extends React.Component {
   componentDidMount() {
-    if (this.props.userShow) {
-      this.props.fetchUser(this.props.userId); 
-    }
+    this.props.fetchUser(this.props.userId); 
   }
 
   getFollows(followerId) {
