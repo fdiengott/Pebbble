@@ -25,19 +25,17 @@ class CollectionModal extends React.Component {
     this.switchToPageOne = this.switchToPageOne.bind(this); 
   }
 
-  componentDidMount() {
-    this.props.fetchUserCollections(this.props.currentUserId)
-    .then(
-      (res) => this.setState({ page: !!Object.keys(res.data.collections).length ? 2 : 1 })
-    )
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.active !== this.props.active) {
       if (!this.props.active) {
         this.setState({ page: this.props.haveCollections ? 2 : 1 }); 
       } else {
-        this.props.fetchUserCollectionsCard(this.props.currentUserId); 
+        this.props.fetchUserCollections(this.props.currentUserId)
+          .then(
+            (res) => this.setState({ page: !!Object.keys(res.data.collections).length ? 2 : 1 })
+          ).then( () => {
+            this.props.fetchUserCollectionsCard(this.props.currentUserId); 
+          })
 
         let newSet = new Set(this.props.activeCollections); 
         newSet.add(''); 

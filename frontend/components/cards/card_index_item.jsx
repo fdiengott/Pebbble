@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+import { Link, withRouter } from 'react-router-dom'; 
 
 // import HoverVideoPlayer from 'react-hover-video-player'; 
 
@@ -38,8 +38,13 @@ class CardIndexItem extends React.Component {
 
   openCollectionModal(e) {
     e.preventDefault(); 
-    this.props.openModal(this.props.card.id); 
-    document.body.style.overflow = 'hidden';
+
+    if (this.props.currentUserId) {
+      this.props.openModal(this.props.card.id); 
+      document.body.style.overflow = 'hidden';
+    } else {
+      this.props.history.push("/login")
+    }
   }
 
   handleLike(e) {
@@ -111,4 +116,4 @@ class CardIndexItem extends React.Component {
   }
 }
 
-export default CardIndexItem; 
+export default withRouter(CardIndexItem); 

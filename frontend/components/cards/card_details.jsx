@@ -110,8 +110,12 @@ class CardDetails extends React.Component {
 
   openCollectionModal(e) {
     e.preventDefault(); 
-    this.props.openModal(this.props.card.id); 
-    document.body.style.overflow = 'hidden';
+    if (this.props.currentUserId) {
+      this.props.openModal(this.props.card.id); 
+      document.body.style.overflow = 'hidden';
+    } else {
+      this.props.history.push("/login")
+    }
   }
 
   render() {
