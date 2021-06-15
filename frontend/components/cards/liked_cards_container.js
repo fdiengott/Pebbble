@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import { fetchLikedCards } from '../../actions/card_actions';				//actions
 import { createLike, deleteLike, fetchUserLikes } from '../../actions/like_actions';
+import { openModal } from '../../actions/modal_actions';
 import { selectUserLikes } from '../../reducers/selectors'; 
 
 import CardIndex from './card_index';				//display component
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserLikes: (userId) => dispatch(fetchUserLikes(userId)),
   createLike: (like) => dispatch(createLike(like)),
   deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+  openModal: (cardId) => dispatch(openModal(cardId)),
 });
 
 export default connect(
