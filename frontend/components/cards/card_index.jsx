@@ -20,22 +20,44 @@ class CardIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.frontpage) {
-      this.props.fetchUserFollows(this.props.currentUserId); 
-      this.props.fetchCardsAndUsers(); 
+    const {
+      frontpage, 
+      fetchUserFollows, 
+      fetchCardsAndUsers,
+      collectionId,
+      fetchCollectionCards,
+      likedCardsPage,
+      fetchLikedCards,
+      userId,
+      currentUserId,
+      fetchUserCards,
+      fetchUserLikes,
+    } = this.props; 
+
+    if (frontpage) {
+      // FRONTPAGE
+      fetchUserFollows(currentUserId); 
+      fetchCardsAndUsers(); 
       this.props.history.push('/all');
-    } else if (this.props.collectionId) {
-      this.props.fetchCollectionCards(this.props.collectionId); 
+
+    } else if (collectionId) {
+      // COLLECTION SHOW PAGE
+      fetchCollectionCards(collectionId); 
+
+    } else if (likedCardsPage) {
+      // LIKED CARDS TAB
+      fetchLikedCards(userId); 
+
     } else {
-      this.props.userId ? 
-        // if it's a user show page
-        this.props.fetchUserCards(this.props.userId) : 
-        // if it's the current user's page
-        this.props.fetchUserCards(this.props.currentUserId)
+      userId ? 
+        // USER SHOW PAGE
+        fetchUserCards(userId) : 
+        // CURRENT USER'S PAGE 
+        fetchUserCards(currentUserId)
     }
 
-    if (this.props.currentUserId) {
-      this.props.fetchUserLikes(this.props.currentUserId)
+    if (currentUserId) {
+      fetchUserLikes(currentUserId)
     }
   }
 
@@ -97,7 +119,7 @@ class CardIndex extends React.Component {
     } else if (collectionId) {
       unmappedCards = collectionCards;
     } else {
-      unmappedCards = cards; 
+      unmappedCards = Object.values(cards); 
     }
 
     let cardIndex; 
@@ -115,9 +137,15 @@ class CardIndex extends React.Component {
         />
       )); 
     } else {
-      debugger // does this one need likes?
       cardIndex = unmappedCards.map(card => (
-        <CardIndexItem key={card.id} card={card} openModal={openModal}/>
+        <CardIndexItem 
+          key={card.id} 
+          card={card} 
+          openModal={openModal} 
+          likes={likes}
+          createLike={createLike}
+          deleteLike={deleteLike}
+        />
       ))
     }
 

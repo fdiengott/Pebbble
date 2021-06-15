@@ -9,6 +9,7 @@ import UserShowHeader from './user_show_header';
 import AccountNavBar from './account_nav_bar'; 
 import CardIndexContainer from '../cards/card_index_container'; 
 import CollectionIndexContainer from '../collections/collection_index_container'; 
+import LikedCardsContainer from '../cards/liked_cards_container'; 
 
 
 class Account extends React.Component {
@@ -69,12 +70,12 @@ class Account extends React.Component {
           {/* this will include cards, collections, liked shots, and about, depending upon the url */}
           
           <Route path="/account/cards" component={CardIndexContainer}/> 
-          {/* <Route path="/account/likes" component={CardIndexContainer}/>  */}
+          <Route path="/account/likes" component={LikedCardsContainer}/> 
           <Route path="/account/collections" component={CollectionIndexContainer}/> 
-
           <Route path="/account/profile" component={UserAboutContainer}/> 
+
           <Route path="/users/:userId/cards" component={CardIndexContainer}/> 
-          {/* <Route path="/users/:userId/likes" component={CardIndexContainer}/>  */}
+          <Route path="/users/:userId/likes" component={LikedCardsContainer}/>
           <Route path="/users/:userId/collections" component={CollectionIndexContainer}/> 
           <Route path="/users/:userId/profile" component={UserAboutContainer}/> 
         </Switch>

@@ -3,7 +3,7 @@ class Api::CardsController < ApplicationController
     # @cards = Card.includes(:creator, profile_picture_attachment: :blob)
     # @cards = Card.includes(:creator).with_attached_img
     @cards = Card.with_attached_img.includes(:creator, :profile_picture)
-    render '/api/cards/index'
+    render '/api/cards_and_users/index'
   end
 
   def show

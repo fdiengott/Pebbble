@@ -15,7 +15,7 @@ class CardIndexItem extends React.Component {
     super(props); 
     this.state = { 
       autoPlay: false,
-      likeId: this.props.likes.find(like => like.cardId === this.props.card.id)?.id
+      likeId: this.props.likes?.find(like => like.cardId === this.props.card.id)?.id
     }
 
     this.autoPlayOn = this.autoPlayOn.bind(this); 
