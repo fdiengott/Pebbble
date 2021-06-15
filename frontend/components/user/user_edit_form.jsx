@@ -15,6 +15,12 @@ class UserEditForm extends React.Component {
     
   }
 
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUser.id).then(
+      () => this.setState({ ...this.props.currentUser })
+    )
+  }
+
   handleSubmit(e) {
     e.preventDefault(); 
 
