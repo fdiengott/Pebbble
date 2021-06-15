@@ -10,6 +10,7 @@ $max_width: 360px;
     
   @include flex(space-between); 
   flex-wrap: wrap;
+  gap: 15px; 
     
 
   .collections-index-item {
@@ -55,6 +56,10 @@ $max_width: 360px;
     .main-image {
       flex: $min_width; 
       max-width: $max_width;
+
+      &.empty {
+        width: 100%; 
+      }
     }
     
     .sub-images {

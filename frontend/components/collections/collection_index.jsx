@@ -6,14 +6,16 @@ import NoCollections from './no_collections';
 class CollectionIndex extends React.Component {
   constructor(props) {
     super(props); 
-    this.state = { noCollections: false }
+    this.state = { noCollections: false, ready: false }
   }
 
   componentDidMount() {
     const id = this.props.userId || this.props.currentUserId; 
 
     this.props.fetchUserCollections(id)
-      .then( null, () => this.setState({ noCollections: true })); 
+      .then( 
+        () => this.setState({ ready: true }), 
+        () => this.setState({ noCollections: true })); 
   }
 
   render () {
@@ -28,6 +30,8 @@ class CollectionIndex extends React.Component {
     if (this.state.noCollections) {
       return <NoCollections />
     }
+
+    if (!this.state.ready) return <div className="spinner"></div>; 
 
     return (
       <ul className="collections-index-list" role="list">
