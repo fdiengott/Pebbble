@@ -160,7 +160,7 @@ class CardIndex extends React.Component {
     const { followersCards } = this.state; 
     const buttonText = followersCards ? "Following" : "Popular"; 
 
-    const followingFilter = (
+    const followingFilter = currentUserId ? (
       <div className="cards-filter">
         <a onClick={this.handleDropdown}
         >{buttonText} <span> {icon}</span></a>
@@ -178,7 +178,7 @@ class CardIndex extends React.Component {
             >Following</li>
         </ul>
       </div>
-      ) 
+    ) : <div className="cards-filter"></div>
 
 
     return (  
