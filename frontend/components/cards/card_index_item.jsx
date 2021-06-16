@@ -102,7 +102,6 @@ class CardIndexItem extends React.Component {
         )
     }
 
-
     return (
       <li className="card-index-item">
         <Link to={`/cards/${card.id}`}>
