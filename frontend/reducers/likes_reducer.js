@@ -3,6 +3,7 @@ import {
   RECEIVE_LIKE,
   REMOVE_LIKE,
 } from '../actions/like_actions'; 
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const likesReducer = (state = {}, action) => {
   Object.freeze(state); 
@@ -18,6 +19,9 @@ const likesReducer = (state = {}, action) => {
       let nextState = {...state}; 
       delete nextState[action.likeId]; 
       return nextState;       
+
+    case LOGOUT_CURRENT_USER: 
+      return {}; 
   
     default:
       return state; 

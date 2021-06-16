@@ -3,6 +3,7 @@ import {
   RECEIVE_FOLLOW,
   REMOVE_FOLLOW,
 } from '../actions/follow_actions'; 
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const followsReducer = (state = {}, action) => {
   Object.freeze(state); 
@@ -18,6 +19,9 @@ const followsReducer = (state = {}, action) => {
       let nextState = {...state}; 
       delete nextState[action.followId]; 
       return nextState; 
+
+    case LOGOUT_CURRENT_USER: 
+      return {}; 
 
     default:
       return state; 
