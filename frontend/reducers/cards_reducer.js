@@ -31,7 +31,7 @@ const cardsReducer = (state = {}, action) => {
 
     // comes with collections
     case RECEIVE_COLLECTION_AND_CARDS: 
-      return action.data.cards; 
+      return action.data.cards || state; 
 
     case RECEIVE_COLLECTIONS_AND_CARDS: 
       return {...state, ...action.data.cards}; 

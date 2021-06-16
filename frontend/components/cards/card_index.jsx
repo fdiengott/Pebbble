@@ -103,7 +103,7 @@ class CardIndex extends React.Component {
     } = this.props;  
 
     // Since sometimes cards is an object and othertimes and array
-    if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length)) {
+    if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length) && !collectionId) {
       return <div className="spinner"></div>; 
     }
 

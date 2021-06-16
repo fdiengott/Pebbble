@@ -20,7 +20,19 @@
   }
   
   > div {
-    display: flex;
+    @include flex(space-between); 
+
+    .gray-button {
+      background-color: white;
+      font-weight: 500;
+      border: 2px solid $lightest-gray;
+      border-radius: $border-radius;
+      cursor: pointer;
+      
+      &:hover {
+        border: 2px solid darken($lightest-gray, 10%);
+      }
+    }
   }
 
   a {

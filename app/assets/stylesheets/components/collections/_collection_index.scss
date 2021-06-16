@@ -56,10 +56,7 @@ $max_width: 360px;
     .main-image {
       flex: $min_width; 
       max-width: $max_width;
-
-      &.empty {
-        width: 100%; 
-      }
+      width: $max_width; 
     }
     
     .sub-images {
