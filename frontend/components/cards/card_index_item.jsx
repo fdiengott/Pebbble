@@ -49,17 +49,21 @@ class CardIndexItem extends React.Component {
 
   handleLike(e) {
     e.preventDefault(); 
-    
-    const { likeId } = this.state;
 
-    if (likeId) {
-      this.props.deleteLike(likeId).then( () => {
-        this.setState({ likeId: undefined })
-      }); 
+    if (this.props.currentUserId) {
+      const { likeId } = this.state;
+
+      if (likeId) {
+        this.props.deleteLike(likeId).then( () => {
+          this.setState({ likeId: undefined })
+        }); 
+      } else {
+        this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id})
+          .then( (data) => this.setState({ likeId: data.like.id })
+        ); 
+      }
     } else {
-      this.props.createLike({liker_id: this.props.currentUserId, card_id: this.props.card.id})
-        .then( (data) => this.setState({ likeId: data.like.id })
-      ); 
+      this.props.history.push("/login")
     }
   }
 
