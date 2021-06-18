@@ -54,13 +54,17 @@ class UserEditForm extends React.Component {
   deleteFile() {
     // this.setState({ photoFile: "" })
 
-    const formData = new FormData(); 
-    formData.append('user[profile_picture]', "")
-    const formattedUser = {id: this.state.id, formData}; 
+    const confirmation = window.confirm("Are you sure?"); 
 
-    this.props.updateUser(formattedUser).then(
-      () => this.setState({ success: true })
-    ).then(window.scrollTo(0,0)); 
+    if (confirmation) { 
+      const formData = new FormData(); 
+      formData.append('user[profile_picture]', "")
+      const formattedUser = {id: this.state.id, formData}; 
+      
+      this.props.updateUser(formattedUser).then(
+        () => this.setState({ success: true })
+        ).then(window.scrollTo(0,0)); 
+    }
   }
 
   openUploadInput() {
@@ -89,8 +93,6 @@ class UserEditForm extends React.Component {
           errors.map((err, i) => <li key={i}>{err}</li> ) 
         }</ul>; 
     }
-
-    debugger
 
     return (
       <main className="main-container">
