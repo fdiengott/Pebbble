@@ -37,7 +37,7 @@ class UserEditForm extends React.Component {
     const formattedUser = {id: this.state.id, formData}; 
 
     this.props.updateUser(formattedUser).then(
-      () => this.setState({ success: true })
+      () => this.setState({ success: true, upload: false })
     ).then(() => window.scrollTo(0,0)); 
   }
 
@@ -90,6 +90,7 @@ class UserEditForm extends React.Component {
         }</ul>; 
     }
 
+    debugger
 
     return (
       <main className="main-container">
@@ -100,22 +101,22 @@ class UserEditForm extends React.Component {
           <form className="edit-profile-form" onSubmit={this.handleSubmit}>
             <div className="delete-avatar-form">
               <Link to="/account/cards">
-                <Avatar user={currentUser}/>
+                <Avatar user={this.props.currentUser}/>
               </Link>
               <a className="pink-button" onClick={this.openUploadInput}>{upload ? "Cancel": "Upload new picture" }</a>
               <a className="gray-button" onClick={this.deleteFile}>Delete</a>
             </div>
             { 
-            upload ? 
-              <div className="new-avatar-form">
-                <input 
-                  type="file" 
-                  name="avatar-file" 
-                  id="avatar-file"
-                  onChange={this.handleFile}/>
-                <button className="pink-button upload-btn">Upload Now</button>
-              </div> : 
-              null 
+              upload ? 
+                <div className="new-avatar-form">
+                  <input 
+                    type="file" 
+                    name="avatar-file" 
+                    id="avatar-file"
+                    onChange={this.handleFile}/>
+                  <button className="pink-button upload-btn">Upload Now</button>
+                </div> : 
+                null 
             }
             <label htmlFor="name">Name
               <input type="text" id="name" value={currentUser.name} onChange={this.handleInput("name")}/>
