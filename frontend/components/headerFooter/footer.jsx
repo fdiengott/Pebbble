@@ -44,6 +44,15 @@ const Footer = ({ url, pathsNotToRender }) => {
           <li>Event Planning</li>
         </ul>
         <ul role="list">
+          <h3>Main Technologies</h3>
+          <li>React/Redux</li>
+          <li>Ruby on Rails</li>
+          <li>Javascript</li>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>CSS3</li>
+        </ul>
+        <ul role="list">
           <h3>Hobbies</h3>
           <li>Reading</li>
           <li>Podcasts</li>
