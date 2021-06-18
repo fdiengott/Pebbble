@@ -24,15 +24,23 @@ class UserAbout extends React.Component {
     // if it's a user show page, display their info, otherwise it's the current user's account page
     const renderedUser = userShowPage ? user : currentUser; 
 
-    const bio = (renderedUser.bio ? 
-      <p>{renderedUser.bio}</p> : 
-      <Link to="/account/about/edit" className="pink-link">Add Bio</Link>)
-
+    const bio = (
+      renderedUser.bio ? 
+        <p>{renderedUser.bio}</p> : 
+        <Link to="/account/about/edit" className="pink-link">Add Bio</Link>
+    )
+    
     const website = (
       renderedUser.websiteUrl ? 
-      <a href={renderedUser.websiteUrl} target="_blank">{renderedUser.websiteUrl}</a> : (
+        <div> 
+          <h3>Social</h3>
+          <a href={renderedUser.websiteUrl} target="_blank">{renderedUser.websiteUrl}</a> 
+        </div> : (
         userShowPage ? null : 
-        <Link to="/account/about/edit" className="pink-link">Add website links</Link>
+          <div>
+            <h3>Social</h3>
+            <Link to="/account/about/edit" className="pink-link">Add website links</Link>
+          </div>
       )
     )
 
@@ -55,10 +63,7 @@ class UserAbout extends React.Component {
             <span>{renderedUser.numFollowers} followers</span
               ><span>{renderedUser.numFollowing} following</span>
           </section>
-          <div>
-            <h3>Social</h3>
-            {website}
-          </div>
+          { website }
         </section>
       </div>
     )
