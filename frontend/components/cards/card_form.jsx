@@ -44,7 +44,11 @@ class CardForm extends React.Component {
     formData.append('card[category]', this.state.category); 
     formData.append('card[creator_id]', this.state.creatorId); 
     formData.append('card[animated]', this.state.animated); 
-    formData.append('card[id]', this.state.cardId); 
+
+    // if it's an edit card
+    if (this.props.submitText === 'Save') {
+      formData.append('card[id]', this.state.cardId); 
+    }
 
     
     if (this.state.imgFile) {
