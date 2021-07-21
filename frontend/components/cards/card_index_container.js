@@ -41,12 +41,12 @@ const mapStateToProps = (state, ownProps) => {
 }; 
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCardsAndUsers: () => dispatch(fetchCardsAndUsers()),
-  fetchUserCards: (userId) => dispatch(fetchUserCards(userId)),
+  fetchCardsAndUsers: (data) => dispatch(fetchCardsAndUsers(data)),
+  fetchUserCards: (data) => dispatch(fetchUserCards(data)),
   fetchFollows: () => dispatch(fetchFollows()),
   fetchUserFollows: (followerId) => dispatch(fetchUserFollows(followerId)),
-  fetchFollowedUsersCards: (followerId) => dispatch(fetchFollowedUsersCards(followerId)),
-  fetchCollectionCards: (collectionId) => dispatch(fetchCollectionCards(collectionId)),
+  fetchFollowedUsersCards: (data) => dispatch(fetchFollowedUsersCards(data)),
+  fetchCollectionCards: (data) => dispatch(fetchCollectionCards(data)),
   fetchUserLikes: (userId) => dispatch(fetchUserLikes(userId)), 
   createLike: (like) => dispatch(createLike(like)),
   deleteLike: (likeId) => dispatch(deleteLike(likeId)),

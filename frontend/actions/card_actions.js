@@ -38,14 +38,16 @@ const receiveCollectionAndCards = (data) => ({
 }); 
 
 // THUNK ACTION CREATORS
-export const fetchCardsAndUsers = () => dispatch => (
-  CardAPIUtil.fetchCards().then(
+export const fetchCardsAndUsers = (data) => dispatch => {
+  // debugger
+  return (
+  CardAPIUtil.fetchCards(data).then(
     data => dispatch(receiveCardsAndUsers(data)),
     err => dispatch(receiveCardErrors(err))
   )
-); 
-export const fetchUserCards = (userId) => dispatch => (
-  CardAPIUtil.fetchUserCards(userId).then(
+)}; 
+export const fetchUserCards = (data) => dispatch => (
+  CardAPIUtil.fetchUserCards(data).then(
     cards => dispatch(receiveCards(cards)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
@@ -76,24 +78,24 @@ export const deleteCard = (cardId) => dispatch => (
 ); 
 
 // FOLLOWS
-export const fetchFollowedUsersCards = (userId) => dispatch => {
+export const fetchFollowedUsersCards = (data) => dispatch => {
   return (
-  CardAPIUtil.fetchFollowedUsersCards(userId).then(
+  CardAPIUtil.fetchFollowedUsersCards(data).then(
     data => dispatch(receiveCardsAndUsers(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 )}; 
   
 // COLLECTIONS
-export const fetchCollectionCards = (collectionId) => dispatch => (
-  CardAPIUtil.fetchCollectionCards(collectionId).then(
+export const fetchCollectionCards = (data) => dispatch => (
+  CardAPIUtil.fetchCollectionCards(data).then(
     data => dispatch(receiveCollectionAndCards(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 ); 
     
-export const fetchLikedCards = (userId) => dispatch => (
-  CardAPIUtil.fetchLikedCards(userId).then(
+export const fetchLikedCards = (data) => dispatch => (
+  CardAPIUtil.fetchLikedCards(data).then(
     cards => dispatch(receiveCards(cards)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )

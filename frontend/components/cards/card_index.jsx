@@ -13,9 +13,16 @@ class CardIndex extends React.Component {
       followersCards: false, 
       clicked: false,
       followDropdown: false, 
+      pageNum: 1, // offset is derived by pageNum
+      received: false
     }; 
 
-    this.handleClick = this.handleClick.bind(this); 
+    // this has keys of page nums, any time fetch cards set pageCards[`page-${pageNum}`] = cards
+    //      pageCards[`following-page-${pageNum}`] = cards
+    //      pageCards[`liked-page-${pageNum}`] = cards
+    this.pageCards = {}; 
+
+    this.handleFilter = this.handleFilter.bind(this); 
     this.handleDropdown = this.handleDropdown.bind(this); 
   }
 
@@ -37,31 +44,48 @@ class CardIndex extends React.Component {
     if (frontpage) {
       // FRONTPAGE
       fetchUserFollows(currentUserId); 
-      fetchCardsAndUsers(); 
+      fetchCardsAndUsers().then( data => {
+        console.log(data); // set the cards to the correct key situation in memo
+        this.setState({ received: true })
+      }); 
       this.props.history.push('/all');
-
+      
     } else if (collectionId) {
       // COLLECTION SHOW PAGE
-      fetchCollectionCards(collectionId); 
+      fetchCollectionCards(collectionId).then( () => { // TODO add .then and set cards in memo
+          this.setState({ received: true })
+        }
+      )
 
     } else if (likedCardsPage) {
       // LIKED CARDS TAB
-      fetchLikedCards(userId); 
+      fetchLikedCards(userId).then( () => { // TODO add .then and set cards in memo
+          this.setState({ received: true })
+        }
+      )
 
     } else {
-      userId ? 
+      if (userId) {
         // USER SHOW PAGE
-        fetchUserCards(userId) : 
+        fetchUserCards(userId).then( () => { // TODO add .then and set cards in memo
+            this.setState({ received: true })
+          }
+        )
+      } else {
         // CURRENT USER'S PAGE 
-        fetchUserCards(currentUserId)
+        fetchUserCards(currentUserId).then( () => { // TODO add .then and set cards in memo
+            this.setState({ received: true })
+          }
+        )
+      }
     }
 
     if (currentUserId) {
-      fetchUserLikes(currentUserId)
+      fetchUserLikes(currentUserId) // TODO add .then and set cards in memo
     }
   }
 
-  handleClick(type) {
+  handleFilter(type) {
     return () => {
       // if (this.state.followersCards) {
       if (type === "popular") {
@@ -86,6 +110,66 @@ class CardIndex extends React.Component {
     this.setState({ followDropdown: !this.state.followDropdown })
   }
 
+  handlePage(direction) {
+    return () => {
+      const {
+        frontpage, 
+        fetchCardsAndUsers,
+        collectionId,
+        fetchCollectionCards,
+        likedCardsPage,
+        fetchLikedCards,
+        userId,
+        currentUserId,
+        fetchUserCards,
+      } = this.props; 
+      let { pageNum } = this.state; 
+      
+      if (direction === "next") {
+        this.setState({ received: false, pageNum: pageNum + 1})
+        pageNum++; 
+      } else {
+        this.setState({ received: false, pageNum: pageNum - 1})
+        pageNum--; 
+      }
+      
+      // TODO check if memoized
+      
+      let offset = (pageNum - 1) * 12; 
+      
+      if (frontpage) {// FRONTPAGE
+        fetchCardsAndUsers({ offset }).then( data => {
+          this.setState({ received: true })
+        }); 
+        
+      } else if (collectionId) {// COLLECTION SHOW PAGE
+        fetchCollectionCards({ collectionId, offset }).then( () => { 
+          this.setState({ received: true })
+        }
+        )
+        
+      } else if (likedCardsPage) {// LIKED CARDS TAB
+        fetchLikedCards({ userId, offset }).then( () => { 
+          this.setState({ received: true })
+        }
+        )
+        
+      } else {
+        if (userId) {// USER SHOW PAGE
+          fetchUserCards({ userId, offset }).then( () => { 
+            this.setState({ received: true })
+          }
+          )
+        } else {// CURRENT USER'S PAGE 
+          fetchUserCards({currentUserId, offset }).then( () => { 
+            this.setState({ received: true })
+          }
+          )
+        }
+      }
+    }
+  }
+
   render() {
     // cards is an array, users is an object
     const { 
@@ -103,10 +187,14 @@ class CardIndex extends React.Component {
     } = this.props;  
 
     // Since sometimes cards is an object and othertimes and array
-    if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length) && !collectionId) {
+    // if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length) && !collectionId) {
+    //   return <div className="spinner"></div>; 
+    // }
+
+    if (!this.state.received) {
       return <div className="spinner"></div>; 
     }
-
+    
     // refactor to make this its own table
     const categories = ["typography", "illustration", "animation", "web design" ]; 
 
@@ -170,11 +258,11 @@ class CardIndex extends React.Component {
         >
           <li 
             className={ followersCards ? "" : "pink" }
-            onClick={this.handleClick("popular")}
+            onClick={this.handleFilter("popular")}
             >Popular</li>
           <li 
             className={ followersCards ? "pink" : "" }
-            onClick={this.handleClick("following")}
+            onClick={this.handleFilter("following")}
             >Following</li>
         </ul>
       </div>
@@ -201,6 +289,10 @@ class CardIndex extends React.Component {
           <li className="card-index-item hidden"></li>
           <li className="card-index-item hidden"></li>
         </ul>
+        <nav>
+          <button onClick={this.handlePage("prev")}>Prev Page</button>
+          <button onClick={this.handlePage("next")}>Next Page</button>
+        </nav>
       </main>
     )
   }

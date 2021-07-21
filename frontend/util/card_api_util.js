@@ -1,15 +1,20 @@
 
-export const fetchCards = () => (
+export const fetchCards = (data) => {
+  // debugger
+  
+  return (
   $.ajax({
     method: "GET", 
-    url: "api/cards"
+    url: "api/cards",
+    data,
   })
-);
+)};
 
-export const fetchUserCards = (userId) => (
+export const fetchUserCards = (data) => (
   $.ajax({
     method: "GET", 
-    url: `api/users/${userId}/cards`
+    url: `api/users/${data.userId}/cards`,
+    data, 
   })
 );
 
@@ -49,26 +54,29 @@ export const deleteCard = cardId => (
 
 
 // FOLLOWS
-export const fetchFollowedUsersCards = (userId) => (
+export const fetchFollowedUsersCards = (data) => (
   $.ajax({
     method: "GET", 
-    url: `api/follows/${userId}/cards`
+    url: `api/follows/${data.userId}/cards`,
+    data, 
   })
 );
 
 
 // COLLECTIONS
-export const fetchCollectionCards = (collectionId) => (
+export const fetchCollectionCards = (data) => (
   $.ajax({
     method: "GET", 
-    url: `/api/collections/${collectionId}/cards`,
+    url: `/api/collections/${data.collectionId}/cards`,
+    data,
   })
 ); 
 
 
-export const fetchLikedCards = (userId) => (
+export const fetchLikedCards = (data) => (
   $.ajax({
     method: "GET", 
-    url: `/api/cards/${userId}/likes`,
+    url: `/api/cards/${data.userId}/likes`,
+    data, 
   })
 )
