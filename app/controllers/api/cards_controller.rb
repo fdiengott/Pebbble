@@ -2,20 +2,17 @@ class Api::CardsController < ApplicationController
   def index
     # @cards = Card.includes(:creator, profile_picture_attachment: :blob)
     # @cards = Card.includes(:creator).with_attached_img
-    # puts params
-    # debugger
-    if params[:followed]
-      followed_users_arr = Follow.where(follower_id: params[:follower_id]).pluck(:creator_id)
-      @cards = Card.with_attached_img.includes(:creator, :profile_picture)
-        .where(creator_id: followed_users_arr)
-        .limit(12)
-    else 
-      @cards = Card.with_attached_img.includes(:creator, :profile_picture)
-      .limit(12)
+    
+    offset, category = params[:offset], params[:category]
+
+    @cards = Card.with_attached_img.includes(:creator, :profile_picture).limit(12)
+    
+    if offset
+      @cards = @cards.offset(params[:offset])
     end
 
-    if params[:offset]
-      @cards = @cards.offset(params[:offset])
+    if category != nil && category.downcase != "all"
+      @cards = @cards.where(category: category.downcase)
     end
 
     render '/api/cards_and_users/index'

@@ -30,7 +30,7 @@ const App = () => (
       <ProtectedRoute path="/account" component={AccountContainer}/>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Route path="/:category" component={CardIndexContainer}/> 
+      {/* <Route path="/:category" component={CardIndexContainer}/>  */}
       <Route path="/" component={CardIndexContainer}/> 
     </Switch>
     <Route path="/" component={FooterContainer}/> 

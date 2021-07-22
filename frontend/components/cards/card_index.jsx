@@ -14,7 +14,8 @@ class CardIndex extends React.Component {
       clicked: false,
       followDropdown: false, 
       pageNum: 1, // offset is derived by pageNum
-      received: false
+      received: false,
+      category: "all"
     }; 
 
     // this has keys of page nums, any time fetch cards set pageCards[`page-${pageNum}`] = cards
@@ -24,6 +25,7 @@ class CardIndex extends React.Component {
 
     this.handleFilter = this.handleFilter.bind(this); 
     this.handleDropdown = this.handleDropdown.bind(this); 
+    this.handleCategory = this.handleCategory.bind(this); 
   }
 
   componentDidMount() {
@@ -52,31 +54,27 @@ class CardIndex extends React.Component {
       
     } else if (collectionId) {
       // COLLECTION SHOW PAGE
-      fetchCollectionCards(collectionId).then( () => { // TODO add .then and set cards in memo
-          this.setState({ received: true })
-        }
-      )
+      fetchCollectionCards({ collectionId }).then( () => { // TODO add .then and set cards in memo
+        this.setState({ received: true })
+      })
 
     } else if (likedCardsPage) {
       // LIKED CARDS TAB
-      fetchLikedCards(userId).then( () => { // TODO add .then and set cards in memo
-          this.setState({ received: true })
-        }
-      )
+      fetchLikedCards({ userId }).then( () => { // TODO add .then and set cards in memo
+        this.setState({ received: true })
+      })
 
     } else {
       if (userId) {
         // USER SHOW PAGE
-        fetchUserCards(userId).then( () => { // TODO add .then and set cards in memo
-            this.setState({ received: true })
-          }
-        )
+        fetchUserCards({ userId }).then( () => { // TODO add .then and set cards in memo
+          this.setState({ received: true })
+        })
       } else {
         // CURRENT USER'S PAGE 
-        fetchUserCards(currentUserId).then( () => { // TODO add .then and set cards in memo
-            this.setState({ received: true })
-          }
-        )
+        fetchUserCards({ currentUserId }).then( () => { // TODO add .then and set cards in memo
+          this.setState({ received: true })
+        })
       }
     }
 
@@ -85,6 +83,7 @@ class CardIndex extends React.Component {
     }
   }
 
+
   handleFilter(type) {
     return () => {
       // if (this.state.followersCards) {
@@ -92,14 +91,20 @@ class CardIndex extends React.Component {
         this.props.fetchCardsAndUsers().then( () => (
           this.setState({ 
             followersCards: false, 
-            followDropdown: !this.state.followDropdown 
+            followDropdown: !this.state.followDropdown
           }))
         )
       } else {
-        this.props.fetchFollowedUsersCards(this.props.currentUserId).then( () => (
+        this.props.fetchFollowedUsersCards({ 
+          userId: this.props.currentUserId, 
+          offset: this.state.offset,
+          category: this.state.category
+        }
+        ).then( () => (
           this.setState({ 
             followersCards: true, 
-            followDropdown: !this.state.followDropdown
+            followDropdown: !this.state.followDropdown,
+            received: true
           }))
         )
       }
@@ -138,7 +143,7 @@ class CardIndex extends React.Component {
       let offset = (pageNum - 1) * 12; 
       
       if (frontpage) {// FRONTPAGE
-        fetchCardsAndUsers({ offset }).then( data => {
+        fetchCardsAndUsers({ offset, category }).then( data => {
           this.setState({ received: true })
         }); 
         
@@ -170,12 +175,21 @@ class CardIndex extends React.Component {
     }
   }
 
+  handleCategory(e) {
+    const offset = this.state.offset; 
+    const category = e.target.innerText; 
+    this.props.fetchCardsAndUsers({ offset, category }).then( () => { 
+        this.setState({ category, received: true })
+    }); 
+  }
+
   render() {
     // cards is an array, users is an object
     const { 
-      cardsByCategory, 
+      // cardsByCategory, 
       users, 
       cards, 
+      userCards,
       frontpage, 
       currentUserId, 
       collectionId,
@@ -185,11 +199,6 @@ class CardIndex extends React.Component {
       createLike,
       deleteLike,
     } = this.props;  
-
-    // Since sometimes cards is an object and othertimes and array
-    // if ([cards, collectionCards, cardsByCategory].every(list => !Object.values(list)?.length) && !collectionId) {
-    //   return <div className="spinner"></div>; 
-    // }
 
     if (!this.state.received) {
       return <div className="spinner"></div>; 
@@ -206,10 +215,9 @@ class CardIndex extends React.Component {
       </li>
     )); 
 
+
     let unmappedCards; 
-    if (frontpage) {
-      unmappedCards = cardsByCategory; 
-    } else if (collectionId) {
+    if (collectionId) {
       unmappedCards = collectionCards;
     } else {
       unmappedCards = Object.values(cards); 
@@ -268,6 +276,9 @@ class CardIndex extends React.Component {
       </div>
     ) : <div className="cards-filter"></div>
 
+    let noCards = (
+      <h2>No Cards :(</h2>
+    )
 
     return (  
       <main className="card-index-container">
@@ -276,7 +287,7 @@ class CardIndex extends React.Component {
             <div>
               { followingFilter }
               <nav>
-                <ul role="list">
+                <ul role="list" onClick={this.handleCategory}>
                   { categoryLinks }
                 </ul>
               </nav>
@@ -285,7 +296,7 @@ class CardIndex extends React.Component {
           ) : null
         }
         <ul className="card-index" role="list">
-          { cardIndex }
+          { cardIndex.length !== 0 ? cardIndex : noCards }
           <li className="card-index-item hidden"></li>
           <li className="card-index-item hidden"></li>
         </ul>

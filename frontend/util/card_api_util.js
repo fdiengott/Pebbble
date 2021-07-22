@@ -13,7 +13,7 @@ export const fetchCards = (data) => {
 export const fetchUserCards = (data) => (
   $.ajax({
     method: "GET", 
-    url: `api/users/${data.userId}/cards`,
+    url: `api/users/${data.userId || data.currentUserId}/cards`,
     data, 
   })
 );
