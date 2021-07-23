@@ -96,7 +96,8 @@ class CardIndex extends React.Component {
         this.props.fetchCardsAndUsers({ category: this.state.category }).then( () => (
           this.setState({ 
             followed: false, 
-            followDropdown: !this.state.followDropdown
+            followDropdown: !this.state.followDropdown,
+            pageNum: 1
           })
         )).then( () => {
           this.setState({ followed: false }); 
@@ -112,6 +113,7 @@ class CardIndex extends React.Component {
             followed: true, 
             followDropdown: !this.state.followDropdown,
             received: true,
+            pageNum: 1
           }))
         ); 
       }
@@ -187,12 +189,15 @@ class CardIndex extends React.Component {
     const category = e.target.innerText; 
     
     this.props.fetchCardsAndUsers({ 
-      offset, 
       category, 
       followed,
       userId: this.props.currentUserId, 
     }).then( () => { 
-        this.setState({ category, received: true })
+        this.setState({ 
+          category, 
+          received: true, 
+          pageNum: 1
+        })
     }); 
   }
 
