@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUserId, 
     likedCardsPage: true, 
+    numPages: Math.ceil(state.ui.cardCount / 12),
     userId: ownProps.match.params.userId || currentUserId,
     cards: state.entities.cards, 
     likes: selectUserLikes(state, currentUserId),
@@ -19,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchLikedCards: (userId) => dispatch(fetchLikedCards(userId)),
+  fetchLikedCards: (data) => dispatch(fetchLikedCards(data)),
   fetchUserLikes: (userId) => dispatch(fetchUserLikes(userId)),
   createLike: (like) => dispatch(createLike(like)),
   deleteLike: (likeId) => dispatch(deleteLike(likeId)),

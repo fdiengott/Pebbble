@@ -115,7 +115,7 @@ class CardIndex extends React.Component {
     this.setState({ followDropdown: !this.state.followDropdown })
   }
 
-  handlePage(direction) {
+  handlePage(num) {
     return () => {
       const {
         frontpage, 
@@ -128,19 +128,19 @@ class CardIndex extends React.Component {
         currentUserId,
         fetchUserCards,
       } = this.props; 
-      let { pageNum } = this.state; 
+      let { pageNum, category } = this.state; 
+
+      this.setState({ received: false, pageNum: num })
       
-      if (direction === "next") {
-        this.setState({ received: false, pageNum: pageNum + 1})
-        pageNum++; 
-      } else {
-        this.setState({ received: false, pageNum: pageNum - 1})
-        pageNum--; 
-      }
+      // if (direction === "next") {
+      //   this.setState({ received: false, pageNum: num })
+      // } else {
+      //   this.setState({ received: false, pageNum: num })
+      // }
       
       // TODO check if memoized
       
-      let offset = (pageNum - 1) * 12; 
+      let offset = (num - 1) * 12; 
       
       if (frontpage) {// FRONTPAGE
         fetchCardsAndUsers({ offset, category }).then( data => {
@@ -189,7 +189,7 @@ class CardIndex extends React.Component {
       // cardsByCategory, 
       users, 
       cards, 
-      userCards,
+      // userCards,
       frontpage, 
       currentUserId, 
       collectionId,
@@ -198,6 +198,7 @@ class CardIndex extends React.Component {
       likes, 
       createLike,
       deleteLike,
+      numPages
     } = this.props;  
 
     if (!this.state.received) {
@@ -280,6 +281,13 @@ class CardIndex extends React.Component {
       <h2>No Cards :(</h2>
     )
 
+    // debugger
+    let pageNums = [];
+    for (let i = 1; i <= numPages; i++) { pageNums.push(i) }
+    pageNums = pageNums.map( n => (
+      <li key={n}><a onClick={this.handlePage(n)}>{n}</a></li>
+    ))
+
     return (  
       <main className="card-index-container">
         {
@@ -301,8 +309,9 @@ class CardIndex extends React.Component {
           <li className="card-index-item hidden"></li>
         </ul>
         <nav>
-          <button onClick={this.handlePage("prev")}>Prev Page</button>
-          <button onClick={this.handlePage("next")}>Next Page</button>
+          <ul role="list">
+            { pageNums }
+          </ul>
         </nav>
       </main>
     )
