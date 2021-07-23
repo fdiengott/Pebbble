@@ -8,7 +8,6 @@ import {
 const cardCountReducer = (state = -1, action) => {
   Object.freeze(state); 
 
-  debugger
   switch (action.type) {
     case RECEIVE_CARDS:
       return action.data.cardCount; 

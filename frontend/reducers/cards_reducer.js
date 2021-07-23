@@ -15,6 +15,7 @@ const cardsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CARDS:
+      debugger
       return action.data.cards; 
       
     case RECEIVE_CARD:
