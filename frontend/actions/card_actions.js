@@ -46,10 +46,7 @@ export const fetchCardsAndUsers = (data) => dispatch => (
 ); 
 export const fetchUserCards = (data) => dispatch => (
   CardAPIUtil.fetchUserCards(data).then(
-    data => {
-      debugger
-      return dispatch(receiveCards(data))
-    },
+    data => dispatch(receiveCards(data)),
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 ); 

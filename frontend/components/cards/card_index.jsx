@@ -10,12 +10,13 @@ class CardIndex extends React.Component {
     super(props); 
 
     this.state = { 
-      followersCards: false, 
+      followed: false, 
       clicked: false,
       followDropdown: false, 
       pageNum: 1, // offset is derived by pageNum
       received: false,
-      category: "all"
+      category: "all",
+      followed: false 
     }; 
 
     // this has keys of page nums, any time fetch cards set pageCards[`page-${pageNum}`] = cards
@@ -86,27 +87,28 @@ class CardIndex extends React.Component {
 
   handleFilter(type) {
     return () => {
-      // if (this.state.followersCards) {
       if (type === "popular") {
-        this.props.fetchCardsAndUsers().then( () => (
+        this.props.fetchCardsAndUsers({ category: this.state.category }).then( () => (
           this.setState({ 
-            followersCards: false, 
+            followed: false, 
             followDropdown: !this.state.followDropdown
-          }))
-        )
+          })
+        )).then( () => {
+          this.setState({ followed: false }); 
+        }); 
       } else {
-        this.props.fetchFollowedUsersCards({ 
+        this.props.fetchCardsAndUsers({ 
           userId: this.props.currentUserId, 
-          offset: this.state.offset,
-          category: this.state.category
-        }
-        ).then( () => (
+          offset: 0,
+          category: this.state.category,
+          followed: true,
+        }).then( () => (
           this.setState({ 
-            followersCards: true, 
+            followed: true, 
             followDropdown: !this.state.followDropdown,
-            received: true
+            received: true,
           }))
-        )
+        ); 
       }
     }
   }
@@ -254,8 +256,8 @@ class CardIndex extends React.Component {
 
     const icon = <FontAwesomeIcon icon={this.state.followDropdown ? faChevronUp : faChevronDown}/>
 
-    const { followersCards } = this.state; 
-    const buttonText = followersCards ? "Following" : "Popular"; 
+    const { followed } = this.state; 
+    const buttonText = followed ? "Following" : "Popular"; 
 
     const followingFilter = currentUserId ? (
       <div className="cards-filter">
@@ -266,11 +268,11 @@ class CardIndex extends React.Component {
           role="list"
         >
           <li 
-            className={ followersCards ? "" : "pink" }
+            className={ followed ? "" : "pink" }
             onClick={this.handleFilter("popular")}
             >Popular</li>
           <li 
-            className={ followersCards ? "pink" : "" }
+            className={ followed ? "pink" : "" }
             onClick={this.handleFilter("following")}
             >Following</li>
         </ul>
