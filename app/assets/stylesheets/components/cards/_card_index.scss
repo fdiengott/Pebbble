@@ -1,42 +1,37 @@
-
 .card-index-container {
-  padding: 
-    0 
-    $landing-page-padding 
-    $landing-page-padding/2 
-    $landing-page-padding;
+  padding: 0 $landing-page-padding $landing-page-padding/2 $landing-page-padding;
 
   // background-color: #f5f5f5;
 
   > div {
-    @include flex(space-between); 
-    font-size: 14px; 
+    @include flex(space-between);
+    font-size: 14px;
   }
 
   ul {
-    padding: 30px 0; 
-    margin: 0; 
+    padding: 30px 0;
+    margin: 0;
   }
 
   nav {
-    @include flex(center); 
-    width: 60%; 
+    @include flex(center);
+    width: 60%;
 
     a {
       text-transform: capitalize;
       text-decoration: none;
-      padding: 10px; 
+      padding: 10px;
       color: $gray;
     }
     a.active {
       color: black;
       font-weight: bold;
       background-color: $lightest-gray;
-      border-radius: $border-radius; 
+      border-radius: $border-radius;
     }
 
     ul {
-      @include flex(space-between, center); 
+      @include flex(space-between, center);
       width: 100%;
       max-width: 550px;
       white-space: nowrap;
@@ -45,37 +40,36 @@
         text-decoration-color: transparent;
         transition: text-decoration-color 250ms;
       }
-      
+
       li:hover > a {
         text-decoration-color: black;
         border-radius: $border-radius;
       }
     }
   }
-
 }
 
 .cards-filter {
-  position: relative; 
+  position: relative;
 
   > a {
-    @include color-button(white, black); 
+    @include color-button(white, black);
     box-shadow: 0 0 0 4px change-color($color: $bright-pink, $alpha: 0.12);
-    padding: 10px; 
+    padding: 10px;
 
     &:hover {
       background-color: unset;
     }
-    
+
     &:active {
       box-shadow: none;
-      border: 1px solid $lightest-gray; 
+      border: 1px solid $lightest-gray;
     }
   }
 
   ul {
-    position: absolute; 
-    // top: 100%; 
+    position: absolute;
+    // top: 100%;
   }
 
   .dropdown-active {
@@ -90,37 +84,36 @@
     top: 50px;
 
     .pink {
-      color: $bright-pink; 
+      color: $bright-pink;
       font-weight: 600;
     }
 
     li:first-child {
-      border-bottom: 1px solid $lightest-gray
+      border-bottom: 1px solid $lightest-gray;
     }
 
     > * {
-      padding: 8px; 
+      padding: 8px;
       cursor: pointer;
       &:hover {
-        background-color: $lightest-gray; 
+        background-color: $lightest-gray;
       }
     }
   }
   .dropdown-hidden {
-    display: none; 
+    display: none;
   }
-  
 }
 
 .card-index {
-  @include flex(space-between, center); 
+  @include flex(space-between, center);
   flex-wrap: wrap;
-  gap: 20px 40px; 
+  gap: 20px 40px;
 }
 
 .card-index-item {
   // width: 300px;
-  flex: 280px; 
+  flex: 280px;
   max-width: 380px;
 
   img {
@@ -137,71 +130,68 @@
   // background-color: #bdbdff;
 
   display: flex;
-  
+
   width: 100%;
-  height: auto; 
+  height: auto;
   position: relative;
-  
-  img, video {
-    border-radius: $border-radius; 
+
+  img,
+  video {
+    border-radius: $border-radius;
     width: 100%;
   }
 }
 
-
 .card-hover-info {
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 250ms;
-  background: linear-gradient(180deg, 
-  rgba(0,0,0,0) 30%, 
-  rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   color: white;
 
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0; 
-  z-index: 1; 
-  
-  @include flex(space-between, flex-end);
-  padding: 15px; 
-  border-radius: $border-radius; 
+  right: 0;
+  z-index: 1;
 
+  @include flex(space-between, flex-end);
+  padding: 15px;
+  border-radius: $border-radius;
 
   &:hover {
-    opacity: 1; 
+    opacity: 1;
   }
 }
 
 .card-buttons {
-  @include flex(space-between, center); 
+  @include flex(space-between, center);
 
   & > div {
-    padding-left: 8px; 
+    padding-left: 8px;
   }
   button {
-    border-radius: $border-radius; 
+    border-radius: $border-radius;
 
-    $side: 36px; 
+    $side: 36px;
     width: $side;
     width: $side;
     border: none;
-    outline: none; 
+    outline: none;
     cursor: pointer;
 
     &:hover {
-      background-color: $lighter-gray; 
+      background-color: $lighter-gray;
     }
     &:active {
-      background-color: $light-gray; 
+      background-color: $light-gray;
     }
   }
-  
 }
-
-
-
 
 .card-index-footer {
   @include flex(space-between);
@@ -210,19 +200,19 @@
   h3 {
     font-size: 15px;
   }
-  
+
   a {
-    @include flex(flex-start); 
-    color: black; 
+    @include flex(flex-start);
+    color: black;
     text-decoration: none;
-    // width: 50%; 
+    // width: 50%;
   }
 
   .image-cropper {
-    @include image-cropper(35px); 
+    @include image-cropper(35px);
     margin-right: 10px;
-  }  
-  
+  }
+
   span:first-child {
     transition: color 250ms;
     margin-right: 2px;
@@ -230,11 +220,35 @@
   }
 
   .icon-gray:hover {
-    color: $bright-pink; 
+    color: $bright-pink;
   }
 }
 
 .icon-pink {
-  color: $bright-pink; 
+  color: $bright-pink;
 }
 
+nav.pageNums {
+  width: 100%;
+
+  & > ul {
+    width: unset;
+    max-width: unset;
+
+    & > li {
+      cursor: pointer;
+      margin-right: 5px;
+
+      &.active {
+        background-color: lighten($bright-pink, 5%);
+        border-radius: $border-radius;
+
+        > a,
+        a:hover {
+          text-decoration: none;
+          color: $lightest-gray;
+        }
+      }
+    }
+  }
+}

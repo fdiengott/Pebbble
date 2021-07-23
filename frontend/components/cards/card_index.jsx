@@ -188,10 +188,8 @@ class CardIndex extends React.Component {
   render() {
     // cards is an array, users is an object
     const { 
-      // cardsByCategory, 
       users, 
       cards, 
-      // userCards,
       frontpage, 
       currentUserId, 
       collectionId,
@@ -287,7 +285,9 @@ class CardIndex extends React.Component {
     let pageNums = [];
     for (let i = 1; i <= numPages; i++) { pageNums.push(i) }
     pageNums = pageNums.map( n => (
-      <li key={n}><a onClick={this.handlePage(n)}>{n}</a></li>
+      <li key={n} className={ n === this.state.pageNum ? "active" : ""}>
+        <a onClick={this.handlePage(n)}>{n}</a>
+      </li>
     ))
 
     return (  
@@ -310,7 +310,7 @@ class CardIndex extends React.Component {
           <li className="card-index-item hidden"></li>
           <li className="card-index-item hidden"></li>
         </ul>
-        <nav>
+        <nav className="pageNums">
           <ul role="list">
             { pageNums }
           </ul>
