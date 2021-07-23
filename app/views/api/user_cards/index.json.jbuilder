@@ -4,3 +4,4 @@
     json.partial! 'api/cards/card', card: card
   end
 end
+json.cardCount @count

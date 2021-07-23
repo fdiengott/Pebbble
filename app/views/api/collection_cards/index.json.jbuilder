@@ -23,3 +23,4 @@ end
     end
   end
 end
+json.cardCount @count
