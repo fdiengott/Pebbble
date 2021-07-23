@@ -15,7 +15,7 @@ class CardIndex extends React.Component {
       followDropdown: false, 
       pageNum: 1, // offset is derived by pageNum
       received: false,
-      category: "all",
+      category: props.category,
       followed: false 
     }; 
 
@@ -43,16 +43,21 @@ class CardIndex extends React.Component {
       fetchUserCards,
       fetchUserLikes,
     } = this.props; 
+    let key = `${this.state.category}-${this.state.pageNum}-${this.state.followed}`; 
 
     if (frontpage) {
       // FRONTPAGE
+      let { category } = this.state; 
+      if (category.length === 0) {
+        this.props.history.push('/all');
+      }
+      category = category.length > 0 ? category : "all"; 
       fetchUserFollows(currentUserId); 
-      fetchCardsAndUsers().then( data => {
-        console.log(data); // set the cards to the correct key situation in memo
+      fetchCardsAndUsers({ category }).then( data => {
+        this.pageCards[key] = data.cards;
         this.setState({ received: true })
       }); 
-      this.props.history.push('/all');
-      
+
     } else if (collectionId) {
       // COLLECTION SHOW PAGE
       fetchCollectionCards({ collectionId }).then( () => { // TODO add .then and set cards in memo

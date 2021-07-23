@@ -31,6 +31,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId,
     collectionId,
     frontpage: ["/:category", "/"].includes(ownProps.match.path),
+    category: ownProps.location.pathname.slice(1), 
     cards: state.entities.cards, 
     numPages: Math.ceil(state.ui.cardCount / 12),
     users: selectAllUsers(state), // all users, as an object,
