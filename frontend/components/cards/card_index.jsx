@@ -178,9 +178,15 @@ class CardIndex extends React.Component {
   }
 
   handleCategory(e) {
-    const offset = this.state.offset; 
+    const { offset, followed } = this.state; 
     const category = e.target.innerText; 
-    this.props.fetchCardsAndUsers({ offset, category }).then( () => { 
+    
+    this.props.fetchCardsAndUsers({ 
+      offset, 
+      category, 
+      followed,
+      userId: this.props.currentUserId, 
+    }).then( () => { 
         this.setState({ category, received: true })
     }); 
   }
@@ -281,7 +287,6 @@ class CardIndex extends React.Component {
       <h2>No Cards :(</h2>
     )
 
-    // debugger
     let pageNums = [];
     for (let i = 1; i <= numPages; i++) { pageNums.push(i) }
     pageNums = pageNums.map( n => (
