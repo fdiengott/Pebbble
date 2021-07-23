@@ -8,9 +8,9 @@ export const RECEIVE_CARDS_AND_USERS = "RECEIVE_CARDS_AND_USERS";
 export const RECEIVE_COLLECTION_AND_CARDS = "RECEIVE_COLLECTION_AND_CARDS"; 
 
 // ACTIONS
-const receiveCards = (cards) => ({
+const receiveCards = (data) => ({
   type: RECEIVE_CARDS, 
-  cards
+  data
 }); 
 
 const receiveCard = (card) => ({
@@ -38,14 +38,12 @@ const receiveCollectionAndCards = (data) => ({
 }); 
 
 // THUNK ACTION CREATORS
-export const fetchCardsAndUsers = (data) => dispatch => {
-  // debugger
-  return (
+export const fetchCardsAndUsers = (data) => dispatch => (
   CardAPIUtil.fetchCards(data).then(
     data => dispatch(receiveCardsAndUsers(data)),
     err => dispatch(receiveCardErrors(err))
   )
-)}; 
+); 
 export const fetchUserCards = (data) => dispatch => (
   CardAPIUtil.fetchUserCards(data).then(
     cards => dispatch(receiveCards(cards)), 
@@ -96,7 +94,7 @@ export const fetchCollectionCards = (data) => dispatch => (
     
 export const fetchLikedCards = (data) => dispatch => (
   CardAPIUtil.fetchLikedCards(data).then(
-    cards => dispatch(receiveCards(cards)), 
+    data => dispatch(receiveCards(data)), 
     err => dispatch(receiveCardErrors(err.responseJSON))
   )
 ); 

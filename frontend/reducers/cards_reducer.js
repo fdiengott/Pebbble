@@ -15,7 +15,7 @@ const cardsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CARDS:
-      return action.cards; 
+      return action.data.cards; 
       
     case RECEIVE_CARD:
       return { ...state, [action.card.id]: action.card }; 
