@@ -3,10 +3,14 @@ class Api::CardsController < ApplicationController
     # @cards = Card.includes(:creator, profile_picture_attachment: :blob)
     # @cards = Card.includes(:creator).with_attached_img
     
-    offset, category = params[:offset], params[:category]
+    offset, category, followed = params[:offset], params[:category], params[:followed]
 
-    @cards = Card.with_attached_img.includes(:creator, :profile_picture)
-    # .limit(12)
+    if followed == "true"
+      followed_users_arr = Follow.where(follower_id: params[:userId]).pluck(:creator_id)
+      @cards = Card.with_attached_img.includes(:creator, :profile_picture).where(creator_id: followed_users_arr)  
+    else
+      @cards = Card.with_attached_img.includes(:creator, :profile_picture)
+    end
     
     if category != nil && category.downcase != "all"
       @cards = @cards.where(category: category.downcase)
@@ -16,7 +20,7 @@ class Api::CardsController < ApplicationController
     @cards = @cards.limit(12)
 
     if offset
-      @cards = @cards.offset(params[:offset])
+      @cards = @cards.offset(params[:offset].to_i)
     end
 
     render '/api/cards_and_users/index'

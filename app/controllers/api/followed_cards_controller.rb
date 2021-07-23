@@ -2,7 +2,6 @@ class Api::FollowedCardsController < ApplicationController
 
   def index
     offset, category = params[:offset], params[:category]
-    @data = {}
 
     followed_users_arr = Follow.where(follower_id: params[:follower_id]).pluck(:creator_id)
     @cards = Card.with_attached_img.includes(:creator, :profile_picture).where(creator_id: followed_users_arr)
@@ -15,7 +14,7 @@ class Api::FollowedCardsController < ApplicationController
     @cards = @cards.limit(12)
 
     if offset
-      @cards = @cards.offset(params[:offset])
+      @cards = @cards.offset(params[:offset].to_i)
     end
 
     render 'api/cards_and_users/index'
