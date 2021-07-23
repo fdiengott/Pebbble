@@ -5,14 +5,18 @@ class Api::CardsController < ApplicationController
     
     offset, category = params[:offset], params[:category]
 
-    @cards = Card.with_attached_img.includes(:creator, :profile_picture).limit(12)
+    @cards = Card.with_attached_img.includes(:creator, :profile_picture)
+    # .limit(12)
     
-    if offset
-      @cards = @cards.offset(params[:offset])
-    end
-
     if category != nil && category.downcase != "all"
       @cards = @cards.where(category: category.downcase)
+    end
+
+    @count = @cards.count
+    @cards = @cards.limit(12)
+
+    if offset
+      @cards = @cards.offset(params[:offset])
     end
 
     render '/api/cards_and_users/index'
