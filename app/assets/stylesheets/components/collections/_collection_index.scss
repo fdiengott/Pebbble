@@ -1,24 +1,19 @@
-$min_width: 300px; 
-$max_width: 360px; 
+$min_width: 300px;
+$max_width: 360px;
 
 .collections-index-list {
-  padding: 
-    0 
-    $landing-page-padding 
-    $landing-page-padding/2 
-    $landing-page-padding;
-    
-  @include flex(space-between); 
+  padding: 0 $landing-page-padding $landing-page-padding/2 $landing-page-padding;
+
+  @include flex(space-between);
   flex-wrap: wrap;
-  gap: 15px; 
-    
+  gap: 15px;
 
   .collections-index-item {
     a {
-      @include flex(space-between, center, column); 
+      @include flex(space-between, center, column);
       text-decoration: none;
-      color: black; 
-      
+      color: black;
+
       transition: opacity 250ms, text-decoration-color 250ms;
       h3 {
         text-decoration: underline;
@@ -34,53 +29,52 @@ $max_width: 360px;
 
     &.hidden {
       visibility: hidden;
-      width: $min_width; 
+      width: $min_width;
     }
-
   }
 
   .image-container {
-    // flex: $min_width; 
+    // flex: $min_width;
     max-width: $max_width;
-    border-radius: $border-radius*2;
-    gap: 5px; 
+    border-radius: $border-radius * 2;
+    gap: 5px;
     overflow: hidden;
     @include flex(space-between, center, column);
-    
-    img, video {
+
+    img,
+    video {
       width: 100%;
-      height: auto; 
+      height: auto;
     }
-    
-    
+
     .main-image {
-      flex: $min_width; 
+      flex: $min_width;
       max-width: $max_width;
-      width: $max_width; 
+      width: $max_width;
     }
-    
+
     .sub-images {
-      @include flex(space-between, flex-end); 
+      @include flex(space-between, flex-end);
       padding: 0;
-      gap: 5px; 
+      gap: 5px;
       width: 100%;
 
       > * {
-        height: ($min_width - 39) / 3; 
-        flex: ($min_width - 39) / 3; 
+        height: ($min_width - 39) / 3;
+        flex: ($min_width - 39) / 3;
         max-width: $max_width / 3;
         min-width: $min_width / 3;
         background-color: $lighter-gray;
       }
     }
   }
-    
+
   footer {
-    padding: 10px; 
-    @include flex(center, center, column); 
+    padding: 10px;
+    @include flex(center, center, column);
 
     h3 {
-      padding-top: 10px; 
+      padding-top: 10px;
     }
     p {
       color: $gray;
@@ -89,10 +83,10 @@ $max_width: 360px;
       padding: 0 5px;
     }
   }
-
 }
 
-.no-collections-container {
+.no-collections-container,
+.no-cards-container {
   @include flex($flex-direction: column);
   margin-bottom: 60px;
 
@@ -100,7 +94,7 @@ $max_width: 360px;
     width: 60%;
     max-width: 650px;
   }
-  
+
   h2 {
     font-size: 22px;
     font-weight: 600;

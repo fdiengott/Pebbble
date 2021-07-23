@@ -284,7 +284,10 @@ class CardIndex extends React.Component {
     ) : <div className="cards-filter"></div>
 
     let noCards = (
-      <h2>No Cards :(</h2>
+      <div className="no-cards-container">
+        <img src={window.no_collections} alt="no cards illustration"/>
+        <h2>No Cards :(</h2>
+      </div>
     )
 
     let pageNums = [];
