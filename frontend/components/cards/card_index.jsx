@@ -11,18 +11,11 @@ class CardIndex extends React.Component {
 
     this.state = { 
       followed: false, 
-      clicked: false,
       followDropdown: false, 
       pageNum: 1, // offset is derived by pageNum
       received: false,
-      category: props.category,
-      followed: false 
+      category: props.category
     }; 
-
-    // this has keys of page nums, any time fetch cards set pageCards[`page-${pageNum}`] = cards
-    //      pageCards[`following-page-${pageNum}`] = cards
-    //      pageCards[`liked-page-${pageNum}`] = cards
-    this.pageCards = {}; 
 
     this.handleFilter = this.handleFilter.bind(this); 
     this.handleDropdown = this.handleDropdown.bind(this); 
@@ -43,49 +36,44 @@ class CardIndex extends React.Component {
       fetchUserCards,
       fetchUserLikes,
     } = this.props; 
-    let key = `${this.state.category}-${this.state.pageNum}-${this.state.followed}`; 
 
-    if (frontpage) {
-      // FRONTPAGE
+    if (frontpage) { // FRONTPAGE
       let { category } = this.state; 
       if (category.length === 0) {
         this.props.history.push('/all');
       }
       category = category.length > 0 ? category : "all"; 
+
       fetchUserFollows(currentUserId); 
-      fetchCardsAndUsers({ category }).then( data => {
-        this.pageCards[key] = data.cards;
+      fetchCardsAndUsers({ category }).then( () => {
         this.setState({ received: true })
       }); 
-
-    } else if (collectionId) {
-      // COLLECTION SHOW PAGE
-      fetchCollectionCards({ collectionId }).then( () => { // TODO add .then and set cards in memo
+      
+    } else if (collectionId) { // COLLECTION SHOW PAGE
+      fetchCollectionCards({ collectionId }).then( () => { 
         this.setState({ received: true })
       })
-
-    } else if (likedCardsPage) {
-      // LIKED CARDS TAB
-      fetchLikedCards({ userId }).then( () => { // TODO add .then and set cards in memo
+      
+    } else if (likedCardsPage) { // LIKED CARDS TAB
+      fetchLikedCards({ userId }).then( () => { 
         this.setState({ received: true })
       })
-
+      
     } else {
-      if (userId) {
-        // USER SHOW PAGE
-        fetchUserCards({ userId }).then( () => { // TODO add .then and set cards in memo
+      if (userId) { // USER SHOW PAGE
+        fetchUserCards({ userId }).then( () => { 
           this.setState({ received: true })
         })
-      } else {
-        // CURRENT USER'S PAGE 
-        fetchUserCards({ currentUserId }).then( () => { // TODO add .then and set cards in memo
+
+      } else { // CURRENT USER'S PAGE 
+        fetchUserCards({ currentUserId }).then( () => { 
           this.setState({ received: true })
         })
       }
     }
 
     if (currentUserId) {
-      fetchUserLikes(currentUserId) // TODO add .then and set cards in memo
+      fetchUserLikes(currentUserId) 
     }
   }
 
@@ -102,6 +90,7 @@ class CardIndex extends React.Component {
         )).then( () => {
           this.setState({ followed: false }); 
         }); 
+
       } else {
         this.props.fetchCardsAndUsers({ 
           userId: this.props.currentUserId, 
@@ -137,55 +126,42 @@ class CardIndex extends React.Component {
         currentUserId,
         fetchUserCards,
       } = this.props; 
-      let { pageNum, category } = this.state; 
-
-      this.setState({ received: false, pageNum: num })
-      
-      // if (direction === "next") {
-      //   this.setState({ received: false, pageNum: num })
-      // } else {
-      //   this.setState({ received: false, pageNum: num })
-      // }
-      
-      // TODO check if memoized
+      let { category } = this.state; 
       
       let offset = (num - 1) * 12; 
       
       if (frontpage) {// FRONTPAGE
         fetchCardsAndUsers({ offset, category }).then( data => {
-          this.setState({ received: true })
+          this.setState({ received: true, pageNum: num })
         }); 
         
       } else if (collectionId) {// COLLECTION SHOW PAGE
         fetchCollectionCards({ collectionId, offset }).then( () => { 
-          this.setState({ received: true })
-        }
-        )
+          this.setState({ received: true, pageNum: num })
+        })
         
       } else if (likedCardsPage) {// LIKED CARDS TAB
         fetchLikedCards({ userId, offset }).then( () => { 
-          this.setState({ received: true })
-        }
-        )
+          this.setState({ received: true, pageNum: num })
+        })
         
       } else {
         if (userId) {// USER SHOW PAGE
           fetchUserCards({ userId, offset }).then( () => { 
-            this.setState({ received: true })
-          }
-          )
+            this.setState({ received: true, pageNum: num })
+          })
+
         } else {// CURRENT USER'S PAGE 
-          fetchUserCards({currentUserId, offset }).then( () => { 
-            this.setState({ received: true })
-          }
-          )
+          fetchUserCards({ currentUserId, offset }).then( () => { 
+            this.setState({ received: true, pageNum: num })
+          })
         }
       }
     }
   }
 
   handleCategory(e) {
-    const { offset, followed } = this.state; 
+    const { followed } = this.state; 
     const category = e.target.innerText; 
     
     this.props.fetchCardsAndUsers({ 
@@ -226,19 +202,14 @@ class CardIndex extends React.Component {
 
     categories.unshift("all"); 
 
-    const categoryLinks = categories.map( (lnk, i) => (
+    const categoryLinks = categories.map( (category, i) => (
       <li key={i}>
-        <NavLink to={`/${lnk}`}>{lnk}</NavLink>
+        <NavLink to={`/${category}`}>{category}</NavLink>
       </li>
     )); 
 
 
-    let unmappedCards; 
-    if (collectionId) {
-      unmappedCards = collectionCards;
-    } else {
-      unmappedCards = Object.values(cards); 
-    }
+    let unmappedCards = collectionId ? collectionCards : Object.values(cards); 
 
     let cardIndex; 
     if (frontpage || collectionId) {
@@ -301,7 +272,7 @@ class CardIndex extends React.Component {
     )
 
     let pageNums = [];
-    for (let i = 1; i <= numPages; i++) { pageNums.push(i) }
+    for (let i = 1; i <= numPages; i++) pageNums.push(i) 
     pageNums = pageNums.map( n => (
       <li key={n} className={ n === this.state.pageNum ? "active" : ""}>
         <a onClick={this.handlePage(n)}>{n}</a>
