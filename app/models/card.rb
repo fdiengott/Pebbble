@@ -25,7 +25,8 @@ class Card < ApplicationRecord
 
   has_many :likes, 
     foreign_key: :card_id, 
-    class_name: :Like
+    class_name: :Like,
+    dependent: :destroy
 
   has_many :likers, 
     through: :likes, 
