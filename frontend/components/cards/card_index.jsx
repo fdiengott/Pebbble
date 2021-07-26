@@ -81,9 +81,7 @@ class CardIndex extends React.Component {
     let { category } = this.props; 
     
     if (prevProps.category !== "all" && category === "all") {
-      this.props.fetchCardsAndUsers({ category }).then( () => {
-          this.setState({ received: true })
-      })
+      this.props.fetchCardsAndUsers({ category, followed: this.state.followed })
     }
   }
 
