@@ -13,12 +13,20 @@ import LikedCardsContainer from '../cards/liked_cards_container';
 
 
 class Account extends React.Component {
+  constructor(props) {
+    super(props); 
+
+    this.state = { receivedFollows: false }; 
+  }
+
   componentDidMount() {
     this.props.fetchUser(this.props.userId); 
   }
 
   getFollows(followerId) {
-    this.props.fetchUserFollows(followerId); 
+    this.props.fetchUserFollows(followerId).then( () => {
+      this.setState({ receivedFollows: true }); 
+    })
   }
 
   render() {
@@ -37,7 +45,7 @@ class Account extends React.Component {
     // if neither have loaded early return
     if (userShow && !user) return null; 
     
-    if (userShow && !Object.keys(follows).length && currentUser) {
+    if (userShow && currentUser && !this.state.receivedFollows) {
       this.getFollows(currentUser.id); 
       return null; 
     }
