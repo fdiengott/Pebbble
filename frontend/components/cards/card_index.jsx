@@ -93,7 +93,11 @@ class CardIndex extends React.Component {
       this.setState({ received: false }); 
 
       if (type === "popular") {
-        this.props.fetchCardsAndUsers({ category: this.state.category }).then( () => (
+        this.props.fetchCardsAndUsers({ 
+          category: this.state.category,
+          followed: false, 
+          userId: this.props.currentUserId, 
+        }).then( () => (
           this.setState({ 
             followed: false, 
             followDropdown: !this.state.followDropdown,
@@ -103,10 +107,9 @@ class CardIndex extends React.Component {
         )); 
       } else {
         this.props.fetchCardsAndUsers({ 
-          userId: this.props.currentUserId, 
-          offset: 0,
           category: this.state.category,
           followed: true,
+          userId: this.props.currentUserId, 
         }).then( () => (
           this.setState({ 
             followed: true, 
