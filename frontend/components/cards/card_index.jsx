@@ -81,23 +81,26 @@ class CardIndex extends React.Component {
     let { category } = this.props; 
     
     if (prevProps.category !== "all" && category === "all") {
-      this.props.fetchCardsAndUsers({ category, followed: this.state.followed })
+      this.setState({ received: false })
+      this.props.fetchCardsAndUsers({ category, followed: this.state.followed }).then( () => {
+        this.setState({ received: true })
+      })
     }
   }
 
   handleFilter(type) {
     return () => {
+      this.setState({ received: false }); 
+
       if (type === "popular") {
         this.props.fetchCardsAndUsers({ category: this.state.category }).then( () => (
           this.setState({ 
             followed: false, 
             followDropdown: !this.state.followDropdown,
-            pageNum: 1
+            pageNum: 1, 
+            received: true, 
           })
-        )).then( () => {
-          this.setState({ followed: false }); 
-        }); 
-
+        )); 
       } else {
         this.props.fetchCardsAndUsers({ 
           userId: this.props.currentUserId, 
@@ -134,6 +137,7 @@ class CardIndex extends React.Component {
         fetchUserCards,
       } = this.props; 
       let { category } = this.state; 
+      this.setState({ received: false }); 
       
       let offset = (num - 1) * 12; 
       
@@ -170,6 +174,7 @@ class CardIndex extends React.Component {
   handleCategory(e) {
     const { followed } = this.state; 
     const category = e.target.innerText; 
+    this.setState({ received: false }); 
     
     this.props.fetchCardsAndUsers({ 
       category, 
