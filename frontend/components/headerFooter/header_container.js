@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import Header from './header';						//display component
 import { clearErrors } from '../../actions/session_actions'; 
-import { fetchCardsAndUsers } from '../../actions/card_actions.js';
+import { fetchCardsAndUsers, toggleResetAllCards } from '../../actions/card_actions.js';
 
 const mapStateToProps = (state, ownProps) => ({
   url: ownProps.location.pathname, 
@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   clearErrors: () => dispatch(clearErrors()),
   fetchCardsAndUsers: (data) => dispatch(fetchCardsAndUsers(data)),
+  toggleResetAllCards: () => dispatch(toggleResetAllCards()), 
 })
 
 export default connect(

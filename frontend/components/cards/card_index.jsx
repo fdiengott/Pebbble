@@ -81,6 +81,13 @@ class CardIndex extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.followed && this.props.resetAllCards) {
+      this.props.toggleResetAllCards(); 
+      this.setState({ followed: false }); 
+    }
+  }
+
   handleFilter(type) {
     return () => {
       this.setState({ received: false }); 

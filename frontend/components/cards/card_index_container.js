@@ -1,7 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'; 
 
-import { fetchCardsAndUsers, fetchFollowedUsersCards, fetchUserCards, fetchCollectionCards } from '../../actions/card_actions';					//actions
+import { 
+  fetchCardsAndUsers, 
+  fetchFollowedUsersCards, 
+  fetchUserCards, 
+  fetchCollectionCards,
+  toggleResetAllCards
+} from '../../actions/card_actions';					//actions
 import { fetchFollows, fetchUserFollows } from '../../actions/follow_actions'; 
 import { createLike, deleteLike, fetchUserLikes } from '../../actions/like_actions';
 
@@ -38,6 +44,7 @@ const mapStateToProps = (state, ownProps) => {
     selectFollowedUsers: selectFollowedUsers(state, currentUserId),
     collectionCards: selectCardsByCollectionId(Object.values(state.entities.cards), collectionId),
     likes: selectUserLikes(state, currentUserId),
+    resetAllCards: state.ui.resetCards,
   }
 }; 
 
@@ -52,6 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   createLike: (like) => dispatch(createLike(like)),
   deleteLike: (likeId) => dispatch(deleteLike(likeId)),
   openModal: (cardId) => dispatch(openModal(cardId)),
+  toggleResetAllCards: () => dispatch(toggleResetAllCards()),
 });
 
 export default withRouter(connect(

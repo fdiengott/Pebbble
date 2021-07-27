@@ -6,6 +6,7 @@ export const REMOVE_CARD = "REMOVE_CARD";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"; 
 export const RECEIVE_CARDS_AND_USERS = "RECEIVE_CARDS_AND_USERS"; 
 export const RECEIVE_COLLECTION_AND_CARDS = "RECEIVE_COLLECTION_AND_CARDS"; 
+export const TOGGLE_RESET_ALL_CARDS = "TOGGLE_RESET_ALL_CARDS"; 
 
 // ACTIONS
 const receiveCards = (data) => ({
@@ -35,6 +36,9 @@ const receiveCardsAndUsers = (data) => ({
 const receiveCollectionAndCards = (data) => ({
   type: RECEIVE_COLLECTION_AND_CARDS,
   data
+}); 
+export const toggleResetAllCards = () => ({
+  type: TOGGLE_RESET_ALL_CARDS,
 }); 
 
 // THUNK ACTION CREATORS

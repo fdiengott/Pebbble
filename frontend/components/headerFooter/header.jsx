@@ -6,12 +6,16 @@ import { faGithub, faLinkedin, faAngellist } from '@fortawesome/free-brands-svg-
 
 import CurrentUserDropdownContainer from '../user/current_user_dropdown_container.js';
 
-const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors, fetchCardsAndUsers }) => {
+const Header = ({ url, loggedIn, homePage, pathsNotToRender, clearErrors, fetchCardsAndUsers, toggleResetAllCards }) => {
 
   if (pathsNotToRender.includes(url)) return null; 
 
   const logo = (
-    <figure className="header-logo logo" onClick={() => fetchCardsAndUsers({ category: "all" }) }>
+    <figure className="header-logo logo" onClick={() => {
+      fetchCardsAndUsers({ category: "all" }).then( () => {
+        toggleResetAllCards(); 
+      }); 
+    }}>
       <Link to="/all">pebbble</Link>
     </figure>
   )
