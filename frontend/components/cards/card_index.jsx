@@ -45,7 +45,11 @@ class CardIndex extends React.Component {
       category = category.length > 0 ? category : "all"; 
 
       fetchUserFollows(currentUserId); 
-      fetchCardsAndUsers({ category }).then( () => {
+      fetchCardsAndUsers({ 
+        category, 
+        followed: this.state.followed, 
+        userId: this.props.currentUserId, 
+       }).then( () => {
         this.setState({ received: true })
       }); 
       
@@ -74,17 +78,6 @@ class CardIndex extends React.Component {
 
     if (currentUserId) {
       fetchUserLikes(currentUserId) 
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    let { category } = this.props; 
-    
-    if (prevProps.category !== "all" && category === "all") {
-      this.setState({ received: false })
-      this.props.fetchCardsAndUsers({ category, followed: this.state.followed }).then( () => {
-        this.setState({ received: true })
-      })
     }
   }
 
